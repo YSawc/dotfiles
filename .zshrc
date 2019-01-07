@@ -154,3 +154,10 @@ bindkey '^[word-remove-left' backward-kill-word
 
 # zsh起動時にtmux起動
 [[ -z "$TMUX" && ! -z "$PS1" ]] && exec tmux
+
+#========================
+# rbenvパス設定
+#=========================
+export PATH="$HOME/.rbenv/bin:$PATH"
+eval "$(rbenv init - )"
+#=========================
