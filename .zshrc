@@ -161,3 +161,4 @@ bindkey '^[word-remove-left' backward-kill-word
 export PATH="$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init - )"
 #=========================
+

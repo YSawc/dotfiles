@@ -1,5 +1,3 @@
-#path rbenv
-
 # rbenvパス
 export PATH="~/.rbenv/shims:/usr/local/bin:$PATH"
 eval "$(rbenv init -)"
@@ -20,5 +18,5 @@ eval "$(pyenv init -)"
 PATH=$PATH:~/Library/play-2.2.6
 export PATH
 
-source ~/.bash_profile
-
+#source ~/.bash_profile
+source ~/.zshrc
