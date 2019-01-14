@@ -27,9 +27,40 @@ Plug 'gorodinskiy/vim-coloresque'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
+" Html入力補完
+Plug 'mattn/emmet-vim'
+
+" 入力補完 https://github.com/Shougo/deoplete.nvim
+" ======================================================================
+if has('nvim')
+  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+else
+  Plug 'Shougo/deoplete.nvim'
+  Plug 'roxma/nvim-yarp'
+  Plug 'roxma/vim-hug-neovim-rpc'
+
+" 補完用追加プラグイン
+" --------------------------------
+  Plug 'Shougo/neco-vim'
+  Plug 'Shougo/neco-syntax'
+  Plug 'ujihisa/neco-look'
+  Plug 'fszymanski/deoplete-emoji'
+" --------------------------------
+endif
+" Use deoplete.
+let g:deoplete#enable_at_startup = 1
+"======================================================================
+
+" java-complete
+" https://github.com/artur-shaik/vim-javacomplete2
+Plug 'artur-shaik/vim-javacomplete2'
+
+" 括弧入力補完
+" https://github.com/cohama/lexima.vim
+  Plug 'cohama/lexima.vim'
+
 call plug#end()
 """""""""""""""""""""""""""""
-
 
 " setting
 "文字コードをUFT-8に設定
@@ -153,3 +184,9 @@ nnoremap sB :<C-u>Unite buffer -buffer-name=file<CR>
 
 " キーマップ　neartreeのタグル
 nnoremap s; :<C-u>NERDTreeToggle<CR>
+
+" 括弧の入力補完強化
+" Please add below in your vimrc
+ call lexima#add_rule({'char': '$', 'input_after': '$', 'filetype': 'latex'})
+ call lexima#add_rule({'char': '$', 'at': '\%#\$', 'leave': 1, 'filetype': 'latex'})
+ call lexima#add_rule({'char': '<BS>', 'at': '\$\%#\$', 'delete': 1,'filetype': 'latex'})

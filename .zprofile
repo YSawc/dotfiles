@@ -19,4 +19,7 @@ PATH=$PATH:~/Library/play-2.2.6
 export PATH
 
 #source ~/.bash_profile
-source ~/.zshrc
+#source ~/.zshrc
+
+#XAMPPのパス
+export PATH=$PATH:/Applications/XAMPP/xamppfiles/bin

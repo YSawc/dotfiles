@@ -1,3 +1,20 @@
+#テスト追加
+
+source ~/.zplug/init.zsh
+#ハイライト
+zplug "zsh-users/zsh-syntax-highlighting", defer:2
+#移動強化mod
+zplug "b4b4r07/enhancd", use:"init.sh"
+
+if ! zplug check --verbose; then
+    printf "Install Plugin?[y/N]: "
+    if read -q; then
+        echo; zplug install
+		fi
+fi
+
+zplug load
+
 # --------------------------------------------------
 #  カレントディレクトリ表示（左）
 # --------------------------------------------------
@@ -162,3 +179,12 @@ export PATH="$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init - )"
 #=========================
 
+#alias rails='bin/rails'
+ export JAVA_HOME=`/System/Library/Frameworks/JavaVM.framework/Versions/A/Commands/java_home -v "1.8"`
+ PATH=$JAVA_HOME/bin:$PATH
+
+#=======================
+# 自動閉じ括弧
+#======================
+## カッコの対応などを自動的に補完
+setopt auto_param_keys
