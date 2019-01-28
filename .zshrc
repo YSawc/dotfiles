@@ -188,3 +188,12 @@ eval "$(rbenv init - )"
 #======================
 ## カッコの対応などを自動的に補完
 setopt auto_param_keys
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# nvim設定
+export XDG_CONFIG_HOME=$HOME/dotfiles
+
+# nodebrew PATH
+export PATH=/usr/local/var/nodebrew/current/bin:$PATH
+export PATH=$HOME/.nodebrew/current/bin:$PATH

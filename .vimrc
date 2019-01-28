@@ -1,12 +1,12 @@
 " プラグインのセットアップ (vim-plugセットアップ)
 """"""""""""""""""""""""""""""
 call plug#begin('~/.vim/plugged')
-
 " ファイルオープンを便利に
 Plug 'Shougo/unite.vim'
 " Unite.vimで最近使ったファイルを表示できるようにする
 Plug 'Shougo/neomru.vim'
 " ファイルをtree表示してくれる
+
 Plug 'scrooloose/nerdtree'
 " nerdtreeのタブ機能で拡張
 Plug 'jistr/vim-nerdtree-tabs'
@@ -32,35 +32,71 @@ Plug 'mattn/emmet-vim'
 
 " 入力補完 https://github.com/Shougo/deoplete.nvim
 " ======================================================================
-if has('nvim')
-  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-else
-  Plug 'Shougo/deoplete.nvim'
-  Plug 'roxma/nvim-yarp'
-  Plug 'roxma/vim-hug-neovim-rpc'
+Plug 'Shougo/deoplete.nvim'
+Plug 'roxma/nvim-yarp'
+Plug 'roxma/vim-hug-neovim-rpc'
 
-" 補完用追加プラグイン
+" Neocomplete Settings
+let g:deoplete#enable_at_startup = 1
+
+" 補完用追加プラグイン auto complete
 " --------------------------------
   Plug 'Shougo/neco-vim'
   Plug 'Shougo/neco-syntax'
   Plug 'ujihisa/neco-look'
   Plug 'fszymanski/deoplete-emoji'
 " --------------------------------
-endif
-" Use deoplete.
-let g:deoplete#enable_at_startup = 1
+
+"
 "======================================================================
+
+"=====================================================================
+"python complete
+"====================================================================
+if executable('pyls')
+      au User lsp_setup call lsp#register_server{
+              \ 'name': 'pyls',
+              \ 'cmd': {server_info->['pyls']},
+              \ 'whitelist': ['python'],
+              \ }
+endif
+" ==================================================
 
 " java-complete
 " https://github.com/artur-shaik/vim-javacomplete2
-Plug 'artur-shaik/vim-javacomplete2'
+
+ Plug 'artur-shaik/vim-javacomplete2'
 
 " 括弧入力補完
 " https://github.com/cohama/lexima.vim
   Plug 'cohama/lexima.vim'
 
+" fzf
+  Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all'  }
+  Plug 'junegunn/fzf.vim'
+" LSPサーバー
+  Plug 'autozimu/LanguageClient-neovim', {
+      \ 'branch': 'next',
+      \ 'do': 'bash install.sh',
+      \ }
 call plug#end()
 """""""""""""""""""""""""""""
+
+
+
+" ==========================================================
+" auto complete
+" =========================================================
+Plug 'prabirshrestha/async.vim'
+Plug 'prabirshrestha/vim-lsp'
+
+"Plug 'prabirshrestha/asyncomplete.vim'
+"Plug 'prabirshrestha/asyncomplete-lsp.vim'
+
+
+Plug 'ajh17/vimcompletesme'
+
+" ========================================================
 
 " setting
 "文字コードをUFT-8に設定
@@ -190,3 +226,31 @@ nnoremap s; :<C-u>NERDTreeToggle<CR>
  call lexima#add_rule({'char': '$', 'input_after': '$', 'filetype': 'latex'})
  call lexima#add_rule({'char': '$', 'at': '\%#\$', 'leave': 1, 'filetype': 'latex'})
  call lexima#add_rule({'char': '<BS>', 'at': '\$\%#\$', 'delete': 1,'filetype': 'latex'})
+
+" ======================================================================
+" LanguageClient_serverCommands
+" =======================================================================
+set hidden
+
+" 言語ごとに設定する
+let g:LanguageClient_serverCommands = {
+      \ 'cpp': ['clangd'],
+      \ 'ruby': ['solargraph', 'stdio'],
+      \ 'rust': ['~/.cargo/bin/rustup', 'run', 'stable', 'rls'],
+      \ 'javascript': ['/usr/local/bin/javascript-typescript-stdio'],
+      \ 'javascript.jsx': ['tcp://127.0.0.1:2089'],
+      \ 'python': ['/usr/local/bin/pyls'],
+      \ }
+
+call deoplete#custom#var('omni', 'input_patterns', {
+      \ 'ruby': ['[^. *\t]\.\w*', '[a-zA-Z_]\w*::'],
+    \})
+
+augroup LanguageClient_config
+    autocmd!
+    autocmd User LanguageClientStarted setlocal signcolumn=yes
+    autocmd User LanguageClientStopped setlocal signcolumn=auto
+augroup END
+
+let g:LanguageClient_autoStart = 1
+

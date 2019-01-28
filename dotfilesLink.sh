@@ -7,3 +7,5 @@ ln -sf ~/dotfiles/.zshrc ~/.zshrc
 ln -sf ~/dotfiles/.tmux.conf ~/.tmux.conf
 ln -sf ~/dotfiles/.zprofile ~/.zprofile
 #ln -sf ~/dotfiles/.zplug ~/.zplug
+ln -sf ~/dotfiles/ruby/.rubocop.yml ~/.rubocop.yml
+
