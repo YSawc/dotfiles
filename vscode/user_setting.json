@@ -1,0 +1,36 @@
+
+r.wordWrap": "on",
+    "files.trimTrailingWhitespace": true,
+
+
+
+    //ミニマップをfalse
+    "editor.minimap.enabled": false,
+
+
+
+    //bookmarkをsidebarに表示する
+    "bookmarks.treeview.visible": true,
+
+
+
+    //twigとvueでも有効にします
+    "emmet.includeLanguages": {"twig": "html", "vue-html": "html"},
+
+    // rubyexe path
+    "ruby.rubocop.executePath": "/Users/y-s/.rbenv/shims/",
+    "python.jediEnabled": false,
+
+    // ステータスバーの色変更
+    "workbench.colorCustomizations": {
+        "statusBar.background": "#111111", // 通常のステータスバー
+        "statusBar.noFolderBackground": "#777777", // フォルダ（プロジェクト）を開いていない状態
+        "statusBar.debuggingBackground": "#CA0012" // デバッグ時
+    },
+
+    // マークダウンの時は空白削除をオフ
+    "[markdown]": {
+        "files.trimTrailingWhitespace": false
+    },
+
+}
