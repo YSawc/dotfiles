@@ -1,18 +1,13 @@
+{
 
-r.wordWrap": "on",
+    "editor.wordWrap": "on",
     "files.trimTrailingWhitespace": true,
-
-
 
     //ミニマップをfalse
     "editor.minimap.enabled": false,
 
-
-
     //bookmarkをsidebarに表示する
     "bookmarks.treeview.visible": true,
-
-
 
     //twigとvueでも有効にします
     "emmet.includeLanguages": {"twig": "html", "vue-html": "html"},
@@ -35,4 +30,5 @@ r.wordWrap": "on",
 
     "editor.tabSize": 2,
     "editor.renderWhitespace":"all", // スペースの表示
+
 }
