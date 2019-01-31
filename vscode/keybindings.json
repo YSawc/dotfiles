@@ -1,5 +1,9 @@
-
-rTextFocus"
+// Place your key bindings in this file to override the defaults
+[
+    // terminal shortcuts
+    {
+        "key": "ctrl+;",            "command": "workbench.action.terminal.focus",
+                                    "when": "editorTextFocus"
     },
 
     {
@@ -37,4 +41,11 @@ rTextFocus"
         "command": "workbench.action.toggleMaximizedPanel"
     },
 
+    {
+        "key": "ctrl+m",
+        "command": "acceptSelectedSuggestionOnEnter",
+        "when": "acceptSuggestionOnEnter && suggestWidgetVisible && suggestionMakesTextEdit && textInputFocus"
+    }
+
 ]
+

@@ -33,4 +33,6 @@ r.wordWrap": "on",
         "files.trimTrailingWhitespace": false
     },
 
+    "editor.tabSize": 2,
+    "editor.renderWhitespace":"all", // スペースの表示
 }
