@@ -37,7 +37,7 @@ RedundantReturn:
 DotPosition:
   EnforcedStyle: trailing
 
-style/Documentation:
+Style/Documentation:
    Enabled: false
 
 Style/EmptyMethod:
