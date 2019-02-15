@@ -1,30 +1,31 @@
 # rbenvパス
-export PATH="~/.rbenv/shims:/usr/local/bin:$PATH"
-eval "$(rbenv init -)"
+#export PATH="~/.rbenv/shims:/usr/local/bin:$PATH"
+#eval "$(rbenv init -)"
 
 # Setting PATH for Python 3.7
 # The original version is saved in .bash_profile.pysave
 #PATH="/Library/Frameworks/Python.framework/Versions/3.7/bin:${PATH}"
 
-export PATH
+# export PATH
 
 # Setting PATH for Python 3.7
 # The original version is saved in .bash_profile.pysave
 PATH="/Library/Frameworks/Python.framework/Versions/3.7/bin:${PATH}"
 #PATH="/Users/y-s/.pyenv/shims/python3"
-export PATH
+# export PATH
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
 
 PATH=$PATH:~/Library/play-2.2.6
-export PATH
+# export PATH
 
 #source ~/.bash_profile
-#source ~/.zshrc
 
 #XAMPPのパス
 export PATH=$PATH:/Applications/XAMPP/xamppfiles/bin
 
 # NeoVim起動用
 #export XDG_CONFIG_HOME="$HOME/.config"
+
+source ~/.zshrc

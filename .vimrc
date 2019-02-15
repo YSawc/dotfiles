@@ -1,5 +1,5 @@
 " プラグインのセットアップ (vim-plugセットアップ)
-""""""""""""""""""""""""""""""
+" =============================================
 call plug#begin('~/.vim/plugged')
 " ファイルオープンを便利に
 Plug 'Shougo/unite.vim'
@@ -32,35 +32,26 @@ Plug 'mattn/emmet-vim'
 
 " 入力補完 https://github.com/Shougo/deoplete.nvim
 " ======================================================================
-Plug 'Shougo/deoplete.nvim'
-Plug 'roxma/nvim-yarp'
-Plug 'roxma/vim-hug-neovim-rpc'
+ Plug 'Shougo/deoplete.nvim'
+ Plug 'roxma/nvim-yarp'
+ Plug 'roxma/vim-hug-neovim-rpc'
 
 " Neocomplete Settings
 let g:deoplete#enable_at_startup = 1
 
+let g:LanguageClient_serverCommands = {
+    \ 'ruby': ['solargraph', 'stdio'],
+    \}
+
 " 補完用追加プラグイン auto complete
-" --------------------------------
+" ================================
   Plug 'Shougo/neco-vim'
   Plug 'Shougo/neco-syntax'
   Plug 'ujihisa/neco-look'
   Plug 'fszymanski/deoplete-emoji'
-" --------------------------------
+" ===============================
 
-"
 "======================================================================
-
-"=====================================================================
-"python complete
-"====================================================================
-if executable('pyls')
-      au User lsp_setup call lsp#register_server{
-              \ 'name': 'pyls',
-              \ 'cmd': {server_info->['pyls']},
-              \ 'whitelist': ['python'],
-              \ }
-endif
-" ==================================================
 
 " java-complete
 " https://github.com/artur-shaik/vim-javacomplete2
@@ -74,30 +65,20 @@ endif
 " fzf
   Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all'  }
   Plug 'junegunn/fzf.vim'
-" LSPサーバー
-  Plug 'autozimu/LanguageClient-neovim', {
-      \ 'branch': 'next',
-      \ 'do': 'bash install.sh',
-      \ }
-call plug#end()
-"""""""""""""""""""""""""""""
-
-
 
 " ==========================================================
 " auto complete
 " =========================================================
 Plug 'prabirshrestha/async.vim'
 Plug 'prabirshrestha/vim-lsp'
-
-"Plug 'prabirshrestha/asyncomplete.vim'
-"Plug 'prabirshrestha/asyncomplete-lsp.vim'
-
+Plug 'prabirshrestha/asyncomplete.vim'
+Plug 'prabirshrestha/asyncomplete-lsp.vim'
 
 Plug 'ajh17/vimcompletesme'
-
 " ========================================================
 
+call plug#end()
+" -------------------------------------------------------
 " setting
 "文字コードをUFT-8に設定
 set fenc=utf-8
@@ -111,7 +92,6 @@ set autoread
 set hidden
 " 入力中のコマンドをステータスに表示する
 set showcmd
-
 
 " 見た目系
 " 行番号を表示
@@ -135,7 +115,6 @@ set wildmode=list:longest
 " 折り返し時に表示行単位での移動できるようにする
 nnoremap j gj
 nnoremap k gk
-
 
 " Tab系
 " 不可視文字を可視化(タブが「▸-」と表示される)
@@ -161,6 +140,8 @@ set wrapscan
 set hlsearch
 " ESC連打でハイライト解除
 nmap <Esc><Esc> :nohlsearch<CR><Esc>
+" ヤンクをクリップボードにコピー
+set clipboard+=unnamed
 
 " デフォルトでツリーを表示させる
 autocmd VimEnter * execute 'NERDTree'
@@ -177,17 +158,17 @@ nmap <C-p> <Plug>AirlineSelectPrevTab
 nmap <C-n> <Plug>AirlineSelectNextTab
 let g:airline#extensions#tabline#buffer_idx_mode = 1
 let g:airline#extensions#tabline#buffer_idx_format = {
-	\ '0': '0 ',
-	\ '1': '1 ',
-	\ '2': '2 ',
-	\ '3': '3 ',
-	\ '4': '4 ',
-	\ '5': '5 ',
-	\ '6': '6 ',
-	\ '7': '7 ',
-	\ '8': '8 ',
-	\ '9': '9 '
-	\}
+ \ '0': '0 ',
+ \ '1': '1 ',
+ \ '2': '2 ',
+ \ '3': '3 ',
+ \ '4': '4 ',
+ \ '5': '5 ',
+ \ '6': '6 ',
+ \ '7': '7 ',
+ \ '8': '8 ',
+ \ '9': '9 ',
+ \}
 
 " 画面分割、タブページキーマップ
 " https://qiita.com/tekkoc/items/98adcadfa4bdc8b5a6ca
@@ -241,16 +222,4 @@ let g:LanguageClient_serverCommands = {
       \ 'javascript.jsx': ['tcp://127.0.0.1:2089'],
       \ 'python': ['/usr/local/bin/pyls'],
       \ }
-
-call deoplete#custom#var('omni', 'input_patterns', {
-      \ 'ruby': ['[^. *\t]\.\w*', '[a-zA-Z_]\w*::'],
-    \})
-
-augroup LanguageClient_config
-    autocmd!
-    autocmd User LanguageClientStarted setlocal signcolumn=yes
-    autocmd User LanguageClientStopped setlocal signcolumn=auto
-augroup END
-
-let g:LanguageClient_autoStart = 1
 

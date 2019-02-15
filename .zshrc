@@ -1,5 +1,3 @@
-#テスト追加
-
 source ~/.zplug/init.zsh
 #ハイライト
 zplug "zsh-users/zsh-syntax-highlighting", defer:2
@@ -172,12 +170,6 @@ bindkey '^[word-remove-left' backward-kill-word
 # zsh起動時にtmux起動
 [[ -z "$TMUX" && ! -z "$PS1" ]] && exec tmux
 
-#========================
-# rbenvパス設定
-#=========================
-export PATH="$HOME/.rbenv/bin:$PATH"
-eval "$(rbenv init - )"
-#=========================
 
 #alias rails='bin/rails'
  export JAVA_HOME=`/System/Library/Frameworks/JavaVM.framework/Versions/A/Commands/java_home -v "1.8"`
@@ -197,3 +189,19 @@ export XDG_CONFIG_HOME=$HOME/dotfiles
 # nodebrew PATH
 export PATH=/usr/local/var/nodebrew/current/bin:$PATH
 export PATH=$HOME/.nodebrew/current/bin:$PATH
+
+# dotnetのパス
+PATH="${PATH}:/usr/local/share/dotnet"
+# system-wide environment settings for zsh(1)
+if [ -x /usr/libexec/path_helper  ]; then
+  eval `/usr/libexec/path_helper -s`
+fi
+
+#=========================
+# rbenvパス設定
+#=========================
+# export PATH="$HOME/.rbenv/bin:$PATH"
+eval "$(rbenv init - )"
+#=========================
+
+PATH="${PATH}:/usr/local/bin/dotnet"
