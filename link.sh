@@ -1,4 +1,4 @@
-!/bin/bash
+#!/bin/bash
 
 set -u
 DOT_DIRECTORY="${HOME}/dotfiles"
