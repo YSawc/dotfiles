@@ -1,8 +1,4 @@
 source ~/.zplug/init.zsh
-#ハイライト
-zplug "zsh-users/zsh-syntax-highlighting", defer:2
-#移動強化mod
-zplug "b4b4r07/enhancd", use:"init.sh"
 
 if ! zplug check --verbose; then
     printf "Install Plugin?[y/N]: "
@@ -178,7 +174,7 @@ bindkey '^[word-remove-left' backward-kill-word
 #=======================
 # 自動閉じ括弧
 #======================
-## カッコの対応などを自動的に補完
+# カッコの対応などを自動的に補完
 setopt auto_param_keys
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

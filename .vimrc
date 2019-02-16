@@ -146,9 +146,6 @@ set clipboard+=unnamed
 " デフォルトでツリーを表示させる
 autocmd VimEnter * execute 'NERDTree'
 
-" デフォルトでツリーを表示させる
-let g:nerdtree_tabs_open_on_console_startup=1
-
 " netrtreetabsのキーマップ
 map <Leader>n <plug>NERDTreeTabsToggle<CR>
 
@@ -204,22 +201,6 @@ nnoremap s; :<C-u>NERDTreeToggle<CR>
 
 " 括弧の入力補完強化
 " Please add below in your vimrc
- call lexima#add_rule({'char': '$', 'input_after': '$', 'filetype': 'latex'})
- call lexima#add_rule({'char': '$', 'at': '\%#\$', 'leave': 1, 'filetype': 'latex'})
- call lexima#add_rule({'char': '<BS>', 'at': '\$\%#\$', 'delete': 1,'filetype': 'latex'})
-
-" ======================================================================
-" LanguageClient_serverCommands
-" =======================================================================
-set hidden
-
-" 言語ごとに設定する
-let g:LanguageClient_serverCommands = {
-      \ 'cpp': ['clangd'],
-      \ 'ruby': ['solargraph', 'stdio'],
-      \ 'rust': ['~/.cargo/bin/rustup', 'run', 'stable', 'rls'],
-      \ 'javascript': ['/usr/local/bin/javascript-typescript-stdio'],
-      \ 'javascript.jsx': ['tcp://127.0.0.1:2089'],
-      \ 'python': ['/usr/local/bin/pyls'],
-      \ }
-
+" call lexima#add_rule({'char': '$', 'input_after': '$', 'filetype': 'latex'})
+" call lexima#add_rule({'char': '$', 'at': '\%#\$', 'leave': 1, 'filetype': 'latex'})
+" call lexima#add_rule({'char': '<BS>', 'at': '\$\%#\$', 'delete': 1,'filetype': 'latex'})
