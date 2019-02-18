@@ -1,6 +1,7 @@
 " プラグインのセットアップ (vim-plugセットアップ)
 " =============================================
 call plug#begin('~/.vim/plugged')
+" --------------------------------------------
 " ファイルオープンを便利に
 Plug 'Shougo/unite.vim'
 " Unite.vimで最近使ったファイルを表示できるようにする
@@ -22,6 +23,8 @@ Plug 'Yggdroot/indentLine'
 Plug 'bronson/vim-trailing-whitespace'
 " 色彩表示プラグイン
 Plug 'gorodinskiy/vim-coloresque'
+" zshコマンドの色彩表
+Plug 'zsh-users/zsh-syntax-highlighting'
 
 " airline
 Plug 'vim-airline/vim-airline'
@@ -35,13 +38,6 @@ Plug 'mattn/emmet-vim'
  Plug 'Shougo/deoplete.nvim'
  Plug 'roxma/nvim-yarp'
  Plug 'roxma/vim-hug-neovim-rpc'
-
-" Neocomplete Settings
-let g:deoplete#enable_at_startup = 1
-
-let g:LanguageClient_serverCommands = {
-    \ 'ruby': ['solargraph', 'stdio'],
-    \}
 
 " 補完用追加プラグイン auto complete
 " ================================
@@ -77,6 +73,21 @@ Plug 'prabirshrestha/asyncomplete-lsp.vim'
 Plug 'ajh17/vimcompletesme'
 " ========================================================
 
+" ==========================================================
+" auto complete
+" =========================================================
+
+Plug 'autozimu/LanguageClient-neovim', {
+    \ 'branch': 'next',
+    \ 'do': 'bash install.sh',
+    \ }
+" =========================================================
+
+
+" (Optional) Multi-entry selection UI.
+Plug 'junegunn/fzf'
+
+" ------------------------------------------------------
 call plug#end()
 " -------------------------------------------------------
 " setting
@@ -204,3 +215,13 @@ nnoremap s; :<C-u>NERDTreeToggle<CR>
 " call lexima#add_rule({'char': '$', 'input_after': '$', 'filetype': 'latex'})
 " call lexima#add_rule({'char': '$', 'at': '\%#\$', 'leave': 1, 'filetype': 'latex'})
 " call lexima#add_rule({'char': '<BS>', 'at': '\$\%#\$', 'delete': 1,'filetype': 'latex'})
+"
+" Neocomplete Settings
+let g:deoplete#enable_at_startup = 1
+let g:LanguageClient_serverCommands = {
+    \ 'ruby': ['solargraph', 'stdio'],
+\}
+call deoplete#custom#var('omni', 'input_patterns', {
+    \ 'ruby': ['[^. *\t]\.\w*', '[a-zA-Z_]\w*::'],
+\})
+

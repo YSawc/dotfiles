@@ -1,21 +1,46 @@
-source ~/.zplug/init.zsh
-
-if ! zplug check --verbose; then
-    printf "Install Plugin?[y/N]: "
-    if read -q; then
-        echo; zplug install
-		fi
+# zplugが無ければgitからclone
+if [[ ! -d ~/.zplug ]];then
+  git clone https://github.com/zplug/zplug ~/.zplug
 fi
 
-zplug load
+# zplugを使う
+source ~/.zplug/init.zsh
 
+# ここに使いたいプラグインを書いておく
+
+# ハイライト表示
+zplug 'zsh-users/zsh-syntax-highlighting', defer:2
+# cd移動強化
+zplug 'b4b4r07/enhancd', use:"init.sh"
+# zshコマンド強化
+zplug 'zsh-users/zsh-completions'
+# fzfインタラクティブフィルタ
+zplug 'junegunn/fzf-bin', as:command, from:gh-r
+# tmux用のfzf拡張プラグイン
+zplug 'junegunn/fzf', as:command
+
+# zplug "ユーザー名/リポジトリ名", タグ
+
+# 自分自身をプラグインとして管理
+zplug 'zplug/zplug', hook-build:'zplug --self-manage'
+
+# インストールしてないプラグインはインストール
+if ! zplug check --verbose; then
+    printf "Install? [y/N]: "
+    if read -q; then
+        echo; zplug install
+    fi
+fi
+
+# コマンドをリンクして、PATH に追加し、プラグインは読み込む
+zplug load –verbose
 # --------------------------------------------------
 #  カレントディレクトリ表示（左）
 # --------------------------------------------------
 
 PROMPT='
 %F{green}%(5~,%-1~/.../%2~,%~)%f
-%F{green}%B●%b%f'
+%F{green}%B>> %b%f'
 
 # --------------------------------------------------
 #  git branch状態を表示（右）
@@ -201,3 +226,8 @@ eval "$(rbenv init - )"
 #=========================
 
 PATH="${PATH}:/usr/local/bin/dotnet"
+
+# zshのパスを調べる際に利用する
+function zman() {
+      PAGER="less -g -s '+/^       "$1"'" man zshall
+}
