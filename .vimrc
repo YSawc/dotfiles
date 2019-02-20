@@ -121,3 +121,16 @@ nnoremap <silent> <C-l> :<C-u>nohlsearch<CR><C-l>
 " バッファ移動
 nnoremap <silent> <C-j> :bprev<CR>
 nnoremap <silent> <C-k> :bnext<CR>
+
+
+" vim透明化
+" autocmdという機能を利用していて、カラースキームが読み込まれた際に背景なしの設定に上書きすると行った処理を行なっています。
+" https://sy-base.com/myrobotics/vim/vim-transparent/
+augroup TransparentBG
+  	autocmd!
+	autocmd Colorscheme * highlight Normal ctermbg=none
+	autocmd Colorscheme * highlight NonText ctermbg=none
+	autocmd Colorscheme * highlight LineNr ctermbg=none
+	autocmd Colorscheme * highlight Folded ctermbg=none
+	autocmd Colorscheme * highlight EndOfBuffer ctermbg=none
+augroup END

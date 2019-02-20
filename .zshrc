@@ -35,6 +35,21 @@ zplug load
 # ################################# END Plug Setting ######################## #
 
 
+# 移動系便利コマンド デフォルトの状態から使える（多分
+autoload -U compinit
+compinit
+
+
 PROMPT='
 %F{green}%(5~,%-1~/.../%2~,%~)%f
 %F{green}%B>> %b%f'
+
+
+# ################################  start alias setting #################### #
+
+
+# tmuxが起動していない場合にalias設定を行う
+if [ $SHLVL = 1 ]; then
+    # tmuxにセッションがなかったら新規セッションを立ち上げた際に分割処理設定を読み込む
+    alias tmux="tmux -2 attach || tmux -2 new-session \; source-file ~/.tmux/new-session"
+fi
