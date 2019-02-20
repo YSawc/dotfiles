@@ -1,28 +1,24 @@
-# zplugが無ければgitからclone
-if [[ ! -d ~/.zplug ]];then
-  git clone https://github.com/zplug/zplug ~/.zplug
-fi
+# zplug
 
 # zplugを使う
 source ~/.zplug/init.zsh
-
-# ここに使いたいプラグインを書いておく
-
-# ハイライト表示
-zplug 'zsh-users/zsh-syntax-highlighting', defer:2
-# cd移動強化
-zplug 'b4b4r07/enhancd', use:"init.sh"
-# zshコマンド強化
-zplug 'zsh-users/zsh-completions'
-# fzfインタラクティブフィルタ
-zplug 'junegunn/fzf-bin', as:command, from:gh-r
-# tmux用のfzf拡張プラグイン
-zplug 'junegunn/fzf', as:command
-
-# zplug "ユーザー名/リポジトリ名", タグ
-
 # 自分自身をプラグインとして管理
 zplug 'zplug/zplug', hook-build:'zplug --self-manage'
+
+# 構文のハイライト(https://github.com/zsh-users/zsh-syntax-highlighting)
+zplug "zsh-users/zsh-syntax-highlighting"
+
+# cd移動強化
+zplug 'b4b4r07/enhancd', use:"init.sh"
+
+# history関係
+zplug "zsh-users/zsh-history-substring-search"
+
+# タイプ補完
+zplug "zsh-users/zsh-autosuggestions"
+zplug "zsh-users/zsh-completions"
+zplug "chrissicool/zsh-256color"
+
 
 # インストールしてないプラグインはインストール
 if ! zplug check --verbose; then
@@ -32,202 +28,13 @@ if ! zplug check --verbose; then
     fi
 fi
 
-# コマンドをリンクして、PATH に追加し、プラグインは読み込む
-zplug load –verbose
-# --------------------------------------------------
-#  カレントディレクトリ表示（左）
-# --------------------------------------------------
+# Then, source plugins and add commands to $PATH
+zplug load
+
+
+# ################################# END Plug Setting ######################## #
+
 
 PROMPT='
 %F{green}%(5~,%-1~/.../%2~,%~)%f
 %F{green}%B>> %b%f'
-
-# --------------------------------------------------
-#  git branch状態を表示（右）
-# --------------------------------------------------
-
-autoload -Uz vcs_info
-setopt prompt_subst
-
-# true | false
-# trueで作業ブランチの状態に応じて表示を変える
-zstyle ':vcs_info:*' check-for-changes false
-# addしてない場合の表示
-zstyle ':vcs_info:*' unstagedstr "%F{red}%B＋%b%f"
-# commitしてない場合の表示
-zstyle ':vcs_info:*' stagedstr "%F{yellow}★ %f"
-# デフォルトの状態の表示
-zstyle ':vcs_info:*' formats "%u%c%F{green}【 %b 】%f"
-# コンフリクトが起きたり特別な状態になるとformatsの代わりに表示
-zstyle ':vcs_info:*' actionformats '【%b | %a】'
-
-precmd () { vcs_info }
-
-RPROMPT=$RPROMPT'${vcs_info_msg_0_}'
-
-# --------------------------------------------------
-#  gitコマンド補完機能セット
-# --------------------------------------------------
-
-# autoloadの文より前に記述
-fpath=(~/.zsh/completion $fpath)
-
-# --------------------------------------------------
-#  コマンド入力補完
-# --------------------------------------------------
-
-# 補完機能有効にする
-autoload -U compinit
-compinit -u
-
-# 補完候補に色つける
-autoload -U colors
-colors
-zstyle ':completion:*' list-colors "${LS_COLORS}"
-
-# 単語の入力途中でもTab補完を有効化
-setopt complete_in_word
-# 補完候補をハイライト
-zstyle ':completion:*:default' menu select=1
-# キャッシュの利用による補完の高速化
-zstyle ':completion::complete:*' use-cache true
-# 大文字、小文字を区別せず補完する
-zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
-# 補完リストの表示間隔を狭くする
-setopt list_packed
-
-# コマンドの打ち間違いを指摘してくれる
-# setopt correct
-# SPROMPT="correct: $RED%R$DEFAULT -> $GREEN%r$DEFAULT ? [Yes/No/Abort/Edit] => "
-
-# --------------------------------------------------
-#  $ cd 機能拡張
-# --------------------------------------------------
-
-# cdを使わずにディレクトリを移動できる
-setopt auto_cd
-# $ cd - でTabを押すと、ディレクトリの履歴が見れる
-setopt auto_pushd
-
-# --------------------------------------------------
-#  $ tree でディレクトリ構成表示
-# --------------------------------------------------
-
-alias tree="pwd;find . | sort | sed '1d;s/^\.//;s/\/\([^/]*\)$/|--\1/;s/\/[^/|]*/| /g'"
-
-# --------------------------------------------------
-#  git エイリアス
-# --------------------------------------------------
-
-alias g="git"
-compdef g=git
-
-alias gs='git status --short --branch'
-alias ga='git add -A'
-alias gc='git commit -m'
-alias gps='git push'
-alias gpsu='git push -u origin'
-alias gp='git pull origin'
-alias gf='git fetch'
-
-# logを見やすく
-alias gl='git log --abbrev-commit --no-merges --date=short --date=iso'
-# grep
-alias glg='git log --abbrev-commit --no-merges --date=short --date=iso --grep'
-# ローカルコミットを表示
-alias glc='git log --abbrev-commit --no-merges --date=short --date=iso origin/html..html'
-
-alias gd='git diff'
-alias gco='git checkout'
-alias gcob='git checkout -b'
-alias gb='git branch'
-
-alias gm='git merge'
-alias gr='git reset'
-
-
-# --------------------------------------------------
-#  その他のエイリアス
-# --------------------------------------------------
-
-alias B='php ./build'
-alias CB='cd ./build_company'
-
-alias cw='compass watch --time'
-
-# --------------------------------------------------
-#  bindkey
-# --------------------------------------------------
-
-# bindkeyを任意のキー（commandとかoption）にする設定方法
-# 1. iTerm2の環境設定>Keys>追加（＋）
-# 2. keyboard shortcut → 任意のキー　｜　action → Send Escape Sequence　｜　Esc+ → ●●●●●
-# 3. bindekeyの設定で「bindkey '^[●●●●●' 関数名」にする
-
-# コミット 3行用
-function git_commit() {
-	BUFFER='git commit -m "#'
-	CURSOR=$#BUFFER
-	BUFFER=$BUFFER'" -m "" -m ""'
-}
-zle -N git_commit
-bindkey '^[git_commit' git_commit
-
-# タブに名前を付ける
-function tab_rename() {
-	BUFFER="echo -ne \"\e]1;"
-	CURSOR=$#BUFFER
-	BUFFER=$BUFFER\\a\"
-}
-zle -N tab_rename
-bindkey '^[tab_rename' tab_rename
-
-# 単語単位で削除（前後）
-# 前：option ,
-# 後：option .
-bindkey '^[word-remove-right' kill-word
-bindkey '^[word-remove-left' backward-kill-word
-
-# zsh起動時にtmux起動
-[[ -z "$TMUX" && ! -z "$PS1" ]] && exec tmux
-
-
-#alias rails='bin/rails'
- export JAVA_HOME=`/System/Library/Frameworks/JavaVM.framework/Versions/A/Commands/java_home -v "1.8"`
- PATH=$JAVA_HOME/bin:$PATH
-
-#=======================
-# 自動閉じ括弧
-#======================
-# カッコの対応などを自動的に補完
-setopt auto_param_keys
-
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
-# nvim設定
-export XDG_CONFIG_HOME=$HOME/dotfiles
-
-# nodebrew PATH
-export PATH=/usr/local/var/nodebrew/current/bin:$PATH
-export PATH=$HOME/.nodebrew/current/bin:$PATH
-
-# dotnetのパス
-PATH="${PATH}:/usr/local/share/dotnet"
-# system-wide environment settings for zsh(1)
-if [ -x /usr/libexec/path_helper  ]; then
-  eval `/usr/libexec/path_helper -s`
-fi
-
-#=========================
-# rbenvパス設定
-#=========================
-# export PATH="$HOME/.rbenv/bin:$PATH"
-eval "$(rbenv init - )"
-#=========================
-
-PATH="${PATH}:/usr/local/bin/dotnet"
-
-# zshのパスを調べる際に利用する
-function zman() {
-      PAGER="less -g -s '+/^       "$1"'" man zshall
-}
