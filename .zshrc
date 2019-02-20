@@ -48,8 +48,42 @@ PROMPT='
 # ################################  start alias setting #################### #
 
 
+# ###############################   new-session   ######################### #
 # tmuxが起動していない場合にalias設定を行う
 if [ $SHLVL = 1 ]; then
     # tmuxにセッションがなかったら新規セッションを立ち上げた際に分割処理設定を読み込む
-    alias tmux="tmux -2 attach || tmux -2 new-session \; source-file ~/.tmux/new-session"
+    alias tmux="tmux -2 attach || tmux -2 new-session \; source-file ~/dotfiles/.tmux/new-session"
 fi
+# ##############################   END new-sission ######################## #
+
+
+# --------------------------------------------------
+#  git エイリアス
+# --------------------------------------------------
+
+alias g="git"
+compdef g=git
+
+alias gs='git status --short --branch'
+alias ga='git add -A'
+alias gc='git commit -m'
+alias gps='git push'
+alias gpsu='git push -u origin'
+alias gp='git pull origin'
+alias gf='git fetch'
+
+# logを見やすく
+alias gl='git log --abbrev-commit --no-merges --date=short --date=iso'
+# grep
+alias glg='git log --abbrev-commit --no-merges --date=short --date=iso --grep'
+# ローカルコミットを表示
+alias glc='git log --abbrev-commit --no-merges --date=short --date=iso origin/html..html'
+
+alias gd='git diff'
+alias gco='git checkout'
+alias gcob='git checkout -b'
+alias gb='git branch'
+
+alias gm='git merge'
+alias gr='git reset'
+
