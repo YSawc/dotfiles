@@ -1,0 +1,35 @@
+" 見た目系
+" 行番号を表示
+set number
+" 現在の行を強調表示
+set cursorline
+" 現在の行を強調表示（縦）
+set cursorcolumn
+
+
+" スワップファイルは使わない(ときどき面倒な警告が出るだけで役に立ったことがない)
+set noswapfile
+" エディタウィンドウの末尾から2行目にステータスラインを常時表示させる
+set laststatus=2
+
+
+" Tab系
+" 不可視文字を可視化(タブが「▸-」と表示される)
+set list listchars=tab:\▸\-
+" タブ文字の表示幅
+set tabstop=2
+" Vimが挿入するインデントの幅
+set shiftwidth=2
+
+
+" vim透明化
+" autocmdという機能を利用していて、カラースキームが読み込まれた際に背景なしの設定に上書きすると行った処理を行なっています。
+" https://sy-base.com/myrobotics/vim/vim-transparent/
+augroup TransparentBG
+  	autocmd!
+	autocmd Colorscheme * highlight Normal ctermbg=none
+	autocmd Colorscheme * highlight NonText ctermbg=none
+	autocmd Colorscheme * highlight LineNr ctermbg=none
+	autocmd Colorscheme * highlight Folded ctermbg=none
+	autocmd Colorscheme * highlight EndOfBuffer ctermbg=none
+augroup END

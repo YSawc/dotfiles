@@ -1,0 +1,22 @@
+call plug#begin('~/.vim/plugged')
+
+
+
+" ファイルオープンを便利に
+Plug 'Shougo/unite.vim'
+" Unite.vimで最近使ったファイルを表示できるようにする
+Plug 'Shougo/neomru.vim'
+Plug 'Shougo/neomru.vim'
+" file tree
+Plug 'scrooloose/nerdtree'
+" コメントON/OFFを手軽に実行
+Plug 'tomtom/tcomment_vim'
+" 行末の半角スペースを可視化
+Plug 'bronson/vim-trailing-whitespace'
+
+" Ruby向けにendを自動挿入してくれる
+Plug 'tpope/vim-endwise'
+
+
+
+call plug#end()
