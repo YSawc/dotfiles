@@ -53,6 +53,9 @@ source ~/dotfiles/vim/.vimrc.misc
 "プラグインに依存するアレ
 source ~/dotfiles/vim/.vimrc.plugins_setting
 
+"プラグイン LSP
+source ~/dotfiles/vim/.vimrc.LSP_plugins_setting
+
 
 
 "Vimでgitのログをきれいに表示する - derisの日記
