@@ -132,3 +132,18 @@ setopt prompt_subst
 RPROMPT='`rprompt-git-current-branch`'
 
 # ############################################################# #
+
+
+
+# compinitの初期化
+autoload -U compinit
+compinit
+
+# 色つきの補完
+zstyle ':completion:*' list-colors di=34 fi=0
+
+# 補完候補をカーソルで選択できる
+zstyle ':completion:*:default' menu select=1
+
+#補完リストに8ビットコードを使う
+setopt PRINT_EIGHT_BIT
