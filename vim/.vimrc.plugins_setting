@@ -21,6 +21,8 @@ Plug 'bronson/vim-trailing-whitespace'
 " Ruby向けにendを自動挿入してくれる
 Plug 'tpope/vim-endwise'
 
+" 下のラインにステータスバーを表示する
+Plug 'vim-airline/vim-airline'
 
 " call plug#end()
 
