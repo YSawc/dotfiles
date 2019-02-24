@@ -1,0 +1,32 @@
+# --------------------------------------------------
+#  git エイリアス
+# --------------------------------------------------
+
+alias g="git"
+compdef g=git
+
+alias gs='git status --short --branch'
+alias ga='git add -A'
+alias gc='git commit -m'
+alias gps='git push'
+alias gpsu='git push -u origin'
+alias gp='git pull origin'
+alias gf='git fetch'
+
+# logを見やすく
+alias gl='git log --abbrev-commit --no-merges --date=short --date=iso'
+# grep
+alias glg='git log --abbrev-commit --no-merges --date=short --date=iso --grep'
+# ローカルコミットを表示
+alias glc='git log --abbrev-commit --no-merges --date=short --date=iso origin/html..html'
+
+alias gd='git diff'
+alias gco='git checkout'
+alias gcob='git checkout -b'
+alias gb='git branch'
+
+alias gm='git merge'
+alias gr='git reset'
+
+# --------------------------------------------------
+
