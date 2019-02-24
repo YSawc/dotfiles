@@ -8,13 +8,25 @@ Plug 'w0rp/ale'
 Plug 'Shougo/deoplete.nvim'
 Plug 'roxma/nvim-yarp'
 Plug 'roxma/vim-hug-neovim-rpc'
-" dooplete用の補完用追加プラグイン auto complete
+ dooplete用の補完用追加プラグイン auto complete
 " ================================
 Plug 'Shougo/neco-vim'
 Plug 'Shougo/neco-syntax'
 Plug 'ujihisa/neco-look'
 Plug 'fszymanski/deoplete-emoji'
 " ===============================
+
+" ==========================================================
+" auto complete
+" =========================================================
+"Plug 'prabirshrestha/async.vim'
+"Plug 'prabirshrestha/vim-lsp'
+"Plug 'prabirshrestha/asyncomplete.vim'
+"Plug 'prabirshrestha/asyncomplete-lsp.vim'
+
+"Plug 'ajh17/vimcompletesme'
+" ========================================================
+
 
 
 
@@ -44,7 +56,7 @@ highlight clear ALEWarningSignk
 
 
 "deoplete setting
-
+let g:deoplete#enable_at_startup = 1
 let g:LanguageClient_serverCommands = {
     \ 'ruby': ['solargraph', 'stdio'],
 \}
