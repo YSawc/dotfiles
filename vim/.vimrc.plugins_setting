@@ -24,6 +24,10 @@ Plug 'tpope/vim-endwise'
 " 下のラインにステータスバーを表示する
 Plug 'vim-airline/vim-airline'
 
+" 曖昧に検索できるツールプラグイン
+Plug 'junegunn/fzf'
+
+
+
+
 " call plug#end()
-
-

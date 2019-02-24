@@ -3,6 +3,31 @@
 Plug 'w0rp/ale'
 
 
+" 入力補完 https://github.com/Shougo/deoplete.nvim
+" ======================================================================
+Plug 'Shougo/deoplete.nvim'
+Plug 'roxma/nvim-yarp'
+Plug 'roxma/vim-hug-neovim-rpc'
+" dooplete用の補完用追加プラグイン auto complete
+" ================================
+Plug 'Shougo/neco-vim'
+Plug 'Shougo/neco-syntax'
+Plug 'ujihisa/neco-look'
+Plug 'fszymanski/deoplete-emoji'
+" ===============================
+
+
+
+" 補完用プラグインの利用に必要
+Plug 'autozimu/LanguageClient-neovim', {
+    \ 'branch': 'next',
+    \ 'do': 'bash install.sh',
+    \ }
+
+" (Optional) Multi-entry selection UI.
+Plug 'junegunn/fzf'
+
+
 call plug#end()
 
 
@@ -16,3 +41,14 @@ let g:ale_sign_warning = '=='
 highlight clear ALEErrorSign
 highlight clear ALEWarningSignk
 "----------------------------------------------
+
+
+"deoplete setting
+
+let g:LanguageClient_serverCommands = {
+    \ 'ruby': ['solargraph', 'stdio'],
+\}
+call deoplete#custom#var('omni', 'input_patterns', {
+    \ 'ruby': ['[^. *\t]\.\w*', '[a-zA-Z_]\w*::'],
+\})
+
