@@ -4,6 +4,9 @@ source ~/dotfiles/zsh/.zprofile
 #プラグイン設定
 source ~/dotfiles/zsh/.zshrc.plugins_setting
 
+#起動時自動アタッチ設定
+source ~/dotfiles/zsh/.zshrc.auto_attach
+
 #基本設定
 source ~/dotfiles/zsh/.zshrc.basic
 
@@ -12,3 +15,5 @@ source ~/dotfiles/zsh/.zshrc.alias
 
 #表示設定
 source ~/dotfiles/zsh/.zshrc.apperance
+
+
