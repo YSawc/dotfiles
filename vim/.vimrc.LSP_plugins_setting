@@ -58,7 +58,8 @@ highlight clear ALEWarningSignk
 "deoplete setting
 let g:deoplete#enable_at_startup = 1
 let g:LanguageClient_serverCommands = {
-    \ 'ruby': ['solargraph', 'stdio'],
+		\ 'ruby': ['solargraph', 'stdio'],
+		\ 'haskell': ['hie-wrapper'],
 \}
 call deoplete#custom#var('omni', 'input_patterns', {
     \ 'ruby': ['[^. *\t]\.\w*', '[a-zA-Z_]\w*::'],

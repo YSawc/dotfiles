@@ -33,3 +33,12 @@ augroup TransparentBG
 	autocmd Colorscheme * highlight Folded ctermbg=none
 	autocmd Colorscheme * highlight EndOfBuffer ctermbg=none
 augroup END
+
+
+" airlineの設定
+" タブバーをかっこよく
+let g:airline#extensions#tabline#enabled = 1
+" Lintツールによるエラー、警告を表示(ALEの拡張)
+let g:airline#extensions#ale#enabled = 1
+let g:airline#extensions#ale#error_symbol = 'E:'
+let g:airline#extensions#ale#warning_symbol = 'W:'
