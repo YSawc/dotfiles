@@ -7,10 +7,11 @@ Plug 'Shougo/unite.vim'
 
 " Unite.vimで最近使ったファイルを表示できるようにする
 Plug 'Shougo/neomru.vim'
-Plug 'Shougo/neomru.vim'
 
 " file tree
 Plug 'scrooloose/nerdtree'
+" 変更箇所をNERDTreeで同期できる 機能しないのでoff
+" Plug 'Xuyuanp/nerdtree-git-plugin'
 
 " コメントON/OFFを手軽に実行
 Plug 'tomtom/tcomment_vim'
@@ -26,7 +27,6 @@ Plug 'vim-airline/vim-airline'
 
 " 曖昧に検索できるツールプラグイン
 Plug 'junegunn/fzf'
-
 
 
 
