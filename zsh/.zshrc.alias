@@ -28,6 +28,9 @@ alias gb='git branch'
 alias gm='git merge'
 alias gr='git reset'
 
+# google検索
+alias goo='open https://www.google.co.jp/search\?q\=`pbpaste`'
+
 # --------------------------------------------------
 
 

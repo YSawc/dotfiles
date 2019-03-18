@@ -4,7 +4,7 @@ set number
 " 現在の行を強調表示
 set cursorline
 " 現在の行を強調表示（縦）
-set cursorcolumn
+"set cursorcolumn
 
 
 " スワップファイルは使わない(ときどき面倒な警告が出るだけで役に立ったことがない)
