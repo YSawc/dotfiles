@@ -8,7 +8,7 @@ Plug 'w0rp/ale'
 Plug 'Shougo/deoplete.nvim'
 Plug 'roxma/nvim-yarp'
 Plug 'roxma/vim-hug-neovim-rpc'
- dooplete用の補完用追加プラグイン auto complete
+" dooplete用の補完用追加プラグイン auto complete
 " ================================
 Plug 'Shougo/neco-vim'
 Plug 'Shougo/neco-syntax'
