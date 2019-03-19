@@ -28,6 +28,9 @@ Plug 'vim-airline/vim-airline'
 " 曖昧に検索できるツールプラグイン
 Plug 'junegunn/fzf'
 
+" nerdtree専用のgit表示プラグイン
+Plug 'scrooloose/nerdtree'
+Plug 'Xuyuanp/nerdtree-git-plugin'
 
 
 " call plug#end()
