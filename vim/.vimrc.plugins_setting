@@ -32,5 +32,7 @@ Plug 'junegunn/fzf'
 Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 
+" gitのコマンドをvimで操作できるプラグイン
+Plug 'tpope/vim-fugitive'
 
 " call plug#end()
