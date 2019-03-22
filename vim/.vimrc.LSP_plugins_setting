@@ -48,12 +48,12 @@ call plug#end()
 " -------------- ale　setting ------------------
 let g:ale_sign_column_always = 1
 " シンボルの変更
-" let g:ale_sign_error = '!!'
-" let g:ale_sign_warning = '=='
+let g:ale_sign_error = '!!'
+let g:ale_sign_warning = '=='
 " highlight clear ALEErrorSign
 " highlight clear ALEWarningSignk
-let g:ale_sign_error = "◉"
-let g:ale_sign_warning = "◉"
+" let g:ale_sign_error = "◉"
+" g:ale_sign_warning = "◉"
 highlight ALEErrorSign ctermfg=9 ctermbg=15 guifg=#C30500 guibg=#000000
 highlight ALEWarningSign ctermfg=11 ctermbg=15 guifg=#ED6237 guibg=#000000
 

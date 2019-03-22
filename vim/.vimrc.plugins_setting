@@ -35,4 +35,13 @@ Plug 'Xuyuanp/nerdtree-git-plugin'
 " gitのコマンドをvimで操作できるプラグイン
 Plug 'tpope/vim-fugitive'
 
+" gitの更新状況を表示するプラグイン
+Plug 'airblade/vim-gitgutter'
+" 目印行を常に表示する
+if exists('&signcolumn')  " Vim 7.4.2201
+  set signcolumn=yes
+else
+  let g:gitgutter_sign_column_always = 1
+endif
+
 " call plug#end()

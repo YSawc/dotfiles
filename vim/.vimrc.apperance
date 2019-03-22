@@ -4,8 +4,12 @@ set number
 " 現在の行を強調表示
 set cursorline
 " 現在の行を強調表示（縦）
-"set cursorcolumn
+" set cursorcolumn
+" cursorlineの色をクリア
+hi clear CursorLi
 
+" 分割ラインのカラー変更
+" highlight VertSplit gui=reverse guifg=bg
 
 " スワップファイルは使わない(ときどき面倒な警告が出るだけで役に立ったことがない)
 set noswapfile
@@ -21,6 +25,13 @@ set tabstop=2
 " Vimが挿入するインデントの幅
 set shiftwidth=2
 
+" 画面分割の見た目変更
+set fillchars+=vert:\│
+hi LineNr guibg=bg
+hi foldcolumn guibg=bg
+" hi VertSplit guibg=bg guifg=bg
+" hi VertSplit ctermfg=Black ctermbg=DarkGray
+" hi VertSplit ctermfg=bg
 
 " vim透明化
 " autocmdという機能を利用していて、カラースキームが読み込まれた際に背景なしの設定に上書きすると行った処理を行なっています。
