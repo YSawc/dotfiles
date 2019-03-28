@@ -16,6 +16,7 @@ Plug 'ujihisa/neco-look'
 Plug 'fszymanski/deoplete-emoji'
 " ===============================
 
+
 " ==========================================================
 " auto complete
 " =========================================================
@@ -60,7 +61,7 @@ highlight ALEWarningSign ctermfg=11 ctermbg=15 guifg=#ED6237 guibg=#000000
 "----------------------------------------------
 
 
-"deoplete setting
+" deoplete setting
 let g:deoplete#enable_at_startup = 1
 let g:LanguageClient_serverCommands = {
 		\ 'ruby': ['solargraph', 'stdio'],
