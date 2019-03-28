@@ -44,4 +44,5 @@ else
   let g:gitgutter_sign_column_always = 1
 endif
 
+" vimrc.LSP_plugins_settingの読み込みに続く為、plug#endはコメントアウトしておく
 " call plug#end()
