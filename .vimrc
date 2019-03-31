@@ -1,9 +1,3 @@
-"プラグインに依存するアレ
-source ~/dotfiles/vim/.vimrc.plugins_setting
-
-"プラグイン LSP
-source ~/dotfiles/vim/.vimrc.LSP_plugins_setting
-
 "基本設定
 source ~/dotfiles/vim/.vimrc.basic
 
@@ -55,6 +49,12 @@ source ~/dotfiles/vim/.vimrc.encoding
 "その他
 source ~/dotfiles/vim/.vimrc.misc
 
+
+"プラグイン設定
+source ~/dotfiles/vim/.vimrc.plugins_setting
+
+"プラグイン LSP
+source ~/dotfiles/vim/.vimrc.LSP_plugins_setting
 
 
 

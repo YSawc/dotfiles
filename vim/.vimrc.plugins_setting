@@ -38,6 +38,9 @@ Plug 'tpope/vim-fugitive'
 " gitの更新状況を表示するプラグイン
 Plug 'airblade/vim-gitgutter'
 
+" Colorscheme
+Plug 'jacoborus/tender.vim'
+
 
 " 目印行を常に表示する
 if exists('&signcolumn')  " Vim 7.4.2201
