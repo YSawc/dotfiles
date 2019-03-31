@@ -55,8 +55,8 @@ let g:ale_sign_warning = '=='
 " highlight clear ALEWarningSignk
 " let g:ale_sign_error = "◉"
 " g:ale_sign_warning = "◉"
-highlight ALEErrorSign ctermfg=9 ctermbg=15 guifg=#C30500 guibg=#000000
-highlight ALEWarningSign ctermfg=11 ctermbg=15 guifg=#ED6237 guibg=#000000
+" highlight ALEErrorSign ctermfg=9 ctermbg=15 guifg=#C30500 guibg=#000000
+" highlight ALEWarningSign ctermfg=11 ctermbg=15 guifg=#ED6237 guibg=#000000
 
 "----------------------------------------------
 
