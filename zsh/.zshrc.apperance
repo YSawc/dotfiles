@@ -47,6 +47,7 @@ PROMPT='
 #
 # ############################################################# #
 
+# ### gitのステータスを表示する ###
 autoload -Uz add-zsh-hook
 
 setopt prompt_subst
@@ -93,3 +94,4 @@ function {
   PROMPT="$dir $user($via$host) $rc $git$mark"
   RPROMPT="$now"
 }
+# #############################
