@@ -1,0 +1,8 @@
+" カラープラグイン tenderplus -------
+if (has("termguicolors"))
+ set termguicolors
+endif
+
+syntax enable
+colorscheme tender
+" ------------------------------

@@ -4,46 +4,92 @@ PROMPT='
 
 
 # ######################### ブランチ状況を表示 ################ #
-
-# ブランチ名を色付きで表示させるメソッド
-function rprompt-git-current-branch {
-  local branch_name st branch_status
-
-  if [ ! -e  ".git" ]; then
-    # gitで管理されていないディレクトリは何も返さない
-    return
-  fi
-  branch_name=`git rev-parse --abbrev-ref HEAD 2> /dev/null`
-  st=`git status 2> /dev/null`
-  if [[ -n `echo "$st" | grep "^nothing to"` ]]; then
-    # 全てcommitされてクリーンな状態
-    branch_status="%F{green}"
-  elif [[ -n `echo "$st" | grep "^Untracked files"` ]]; then
-    # gitに管理されていないファイルがある状態
-    branch_status="%F{red}?"
-  elif [[ -n `echo "$st" | grep "^Changes not staged for commit"` ]]; then
-    # git addされていないファイルがある状態
-    branch_status="%F{red}+"
-  elif [[ -n `echo "$st" | grep "^Changes to be committed"` ]]; then
-    # git commitされていないファイルがある状態
-    branch_status="%F{yellow}!"
-  elif [[ -n `echo "$st" | grep "^rebase in progress"` ]]; then
-    # コンフリクトが起こった状態
-    echo "%F{red}!(no branch)"
-    return
-  else
-    # 上記以外の状態の場合は青色で表示させる
-    branch_status="%F{blue}"
-  fi
-  # ブランチ名を色付きで表示する
-  echo "${branch_status}[$branch_name]"
-}
-
-# プロンプトが表示されるたびにプロンプト文字列を評価、置換する
-setopt prompt_subst
-
-# プロンプトの右側(RPROMPT)にメソッドの結果を表示させる
-RPROMPT='`rprompt-git-current-branch`'
-
+#
+## ブランチ名を色付きで表示させるメソッド
+#function rprompt-git-current-branch {
+#  local branch_name st branch_status
+#
+#  if [ ! -e  ".git" ]; then
+#    # gitで管理されていないディレクトリは何も返さない
+#    return
+#  fi
+#  branch_name=`git rev-parse --abbrev-ref HEAD 2> /dev/null`
+#  st=`git status 2> /dev/null`
+#  if [[ -n `echo "$st" | grep "^nothing to"` ]]; then
+#    # 全てcommitされてクリーンな状態
+#    branch_status="%F{green}"
+#  elif [[ -n `echo "$st" | grep "^Untracked files"` ]]; then
+#    # gitに管理されていないファイルがある状態
+#    branch_status="%F{red}?"
+#  elif [[ -n `echo "$st" | grep "^Changes not staged for commit"` ]]; then
+#    # git addされていないファイルがある状態
+#    branch_status="%F{red}+"
+#  elif [[ -n `echo "$st" | grep "^Changes to be committed"` ]]; then
+#    # git commitされていないファイルがある状態
+#    branch_status="%F{yellow}!"
+#  elif [[ -n `echo "$st" | grep "^rebase in progress"` ]]; then
+#    # コンフリクトが起こった状態
+#    echo "%F{red}!(no branch)"
+#    return
+#  else
+#    # 上記以外の状態の場合は青色で表示させる
+#    branch_status="%F{blue}"
+#  fi
+#  # ブランチ名を色付きで表示する
+#  echo "${branch_status}[$branch_name]"
+#}
+#
+## プロンプトが表示されるたびにプロンプト文字列を評価、置換する
+#setopt prompt_subst
+#
+## プロンプトの右側(RPROMPT)にメソッドの結果を表示させる
+#RPROMPT='`rprompt-git-current-branch`'
+#
 # ############################################################# #
 
+autoload -Uz add-zsh-hook
+
+setopt prompt_subst
+
+typeset -A emoji
+emoji[ok]=$'\U2705'
+emoji[error]=$'\U274C'
+emoji[git]=$'\U1F500'
+emoji[git_changed]=$'\U1F37A'
+emoji[git_untracked]=$'\U1F363'
+emoji[git_clean]=$'\U2728'
+emoji[right_arrow]=$'\U2794'
+
+function _vcs_git_indicator () {
+  typeset -A git_info
+  local git_indicator git_status
+  git_status=("${(f)$(git status --porcelain --branch 2> /dev/null)}")
+  (( $? == 0 )) && {
+    git_info[branch]="${${git_status[1]}#\#\# }"
+    shift git_status
+    git_info[changed]=${#git_status:#\?\?*}
+    git_info[untracked]=$(( $#git_status - ${git_info[changed]} ))
+    git_info[clean]=$(( $#git_status == 0 ))
+
+    git_indicator=("${emoji[git]}  %{%F{blue}%}${git_info[branch]}%{%f%}")
+    (( ${git_info[clean]}     )) && git_indicator+=("${emoji[git_clean]}")
+    (( ${git_info[changed]}   )) && git_indicator+=("${emoji[git_changed]}  %{%F{yellow}%}${git_info[changed]} changed%{%f%}")
+    (( ${git_info[untracked]} )) && git_indicator+=("${emoji[git_untracked]}  %{%F{red}%}${git_info[untracked]} untracked%{%f%}")
+  }
+  _vcs_git_indicator="${git_indicator}"
+}
+
+add-zsh-hook precmd _vcs_git_indicator
+
+function {
+  local dir='%{%F{blue}%B%}%~%{%b%f%}'
+  local now='%{%F{yellow}%}%D{%b %e %a %R %Z}%{%f%}'
+  local rc="%(?,${emoji[ok]} ,${emoji[error]}  %{%F{red}%}%?%{%f%})"
+  local user='%{%F{green}%}%n%{%f%}'
+  local host='%{%F{green}%}%m%{%f%}'
+  [ "$SSH_CLIENT" ] && local via="${${=SSH_CLIENT}[1]} %{%B%}${emoji[right_arrow]}%{%b%} "
+  local git='$_vcs_git_indicator'
+  local mark=$'\n%# '
+  PROMPT="$dir $user($via$host) $rc $git$mark"
+  RPROMPT="$now"
+}

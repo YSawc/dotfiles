@@ -23,13 +23,3 @@ highlight VertSplit gui=reverse guifg=#555555
 
 " set fillchars+=vert:\
 
-
-" カラープラグイン tenderplus -------
-if (has("termguicolors"))
- set termguicolors
-endif
-
-syntax enable
-colorscheme tender
-
-" ------------------------------
