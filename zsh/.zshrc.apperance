@@ -76,14 +76,14 @@ function _vcs_git_indicator () {
     (( ${git_info[changed]}   )) && git_indicator+=("${emoji[git_changed]}  %{%F{yellow}%}${git_info[changed]} changed%{%f%}")
     (( ${git_info[untracked]} )) && git_indicator+=("${emoji[git_untracked]}  %{%F{red}%}${git_info[untracked]} untracked%{%f%}")
   }
-  _vcs_git_indicator="${git_indicator}"
+   _vcs_git_indicator="${git_indicator}"
 }
 
 add-zsh-hook precmd _vcs_git_indicator
 
 function {
   local dir='%{%F{blue}%B%}%~%{%b%f%}'
-  local now='%{%F{yellow}%}%D{%b %e %a %R %Z}%{%f%}'
+  # local now='%{%F{yellow}%}%D{%b %e %a %R %Z}%{%f%}'  # 現在時刻の表示　zshのステータスバーに表示済みなので、無効化しておく
   local rc="%(?,${emoji[ok]} ,${emoji[error]}  %{%F{red}%}%?%{%f%})"
   local user='%{%F{green}%}%n%{%f%}'
   local host='%{%F{green}%}%m%{%f%}'
