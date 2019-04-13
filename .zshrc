@@ -1,19 +1,20 @@
-#環境設定
+# 環境設定
 source ~/dotfiles/zsh/.zprofile
 
-#プラグイン設定
+# プラグイン設定
 source ~/dotfiles/zsh/.zshrc.plugins_setting
 
-#起動時自動アタッチ設定
+# 起動時自動アタッチ設定
 source ~/dotfiles/zsh/.zshrc.auto_attach
 
-#基本設定
+# 基本設定
 source ~/dotfiles/zsh/.zshrc.basic
 
-#エイリアス設定
+# エイリアス設定
 source ~/dotfiles/zsh/.zshrc.alias
 
-#表示設定
+# 表示設定
 source ~/dotfiles/zsh/.zshrc.apperance
 
-
+# function setting
+source ~/dotfiles/zsh/.zshrc.functions
