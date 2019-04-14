@@ -34,4 +34,3 @@ done
 
 # function setting
 # source ~/dotfiles/zsh/.zshrc.functions
-

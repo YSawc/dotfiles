@@ -1,3 +1,6 @@
+# alias brew="env PATH=${PATH/\/Users\/${USER}\/\.pyenv\/shims:?/} brew"
+# alias brew="env PATH=${PATH/\/usr\/local\/include\.pyenv\/shims:?/} brew"
+
 # --------------------------------------------------
 #  git エイリアス
 # --------------------------------------------------

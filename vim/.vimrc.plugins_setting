@@ -32,6 +32,9 @@ Plug 'junegunn/fzf'
 Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 
+" nerdtree専用のファイルカラーテーマ
+" Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+
 " gitのコマンドをvimで操作できるプラグイン
 Plug 'tpope/vim-fugitive'
 
@@ -40,6 +43,7 @@ Plug 'airblade/vim-gitgutter'
 
 " Colorscheme
 Plug 'jacoborus/tender.vim'
+
 
 
 " 目印行を常に表示する
