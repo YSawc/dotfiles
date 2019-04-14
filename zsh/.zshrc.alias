@@ -77,3 +77,6 @@ function cpp_run() {
 alias -s cpp=cpp_run
 # --------------------------------------------------
 
+
+# lazygit呼び出しエイリアス
+alias lg='lazygit'
