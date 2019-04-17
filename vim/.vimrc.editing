@@ -29,6 +29,34 @@ nnoremap sQ :<C-u>bd<CR>
 nnoremap sb :<C-u>Unite buffer_tab -buffer-name=file<CR>
 nnoremap sB :<C-u>Unite buffer -buffer-name=file<CR>
 
+
+" --- unite_vim ---
+" insert modeで開始
+let g:unite_enable_start_insert = 1
+
+
+" unite grep に ag(The Silver Searcher) を使う
+if executable('ag')
+  let g:unite_source_grep_command = 'ag'
+  let g:unite_source_grep_default_opts = '--nogroup --nocolor --column'
+  let g:unite_source_grep_recursive_opt = ''
+endif
+
+" 大文字小文字を区別しない
+let g:unite_enable_ignore_case = 1
+let g:unite_enable_smart_case = 1
+
+" grep検索
+nnoremap <silent> ,g  :<C-u>Unite grep:. -buffer-name=search-buffer<CR>
+
+" カーソル位置の単語をgrep検索
+" nnoremap <silent> ,cg :<C-u>Unite grep:. -buffer-name=search-buffer<CR><C-R><C-W>
+
+" grep検索結果の再呼出
+nnoremap <silent> ,r  :<C-u>UniteResume search-buffer<CR>
+
+" --- unite---
+
 " 分割画面を寄せるキーマップ "TODO: プラグインsubmodeを導入し、適用する
 " nnoremap s> :<C-w>>
 " nnoremap s< :<C-w><
@@ -55,7 +83,7 @@ nnoremap <silent> <C-k> :bnext<CR>
 
 
 " tagsジャンプの時に複数ある時は一覧表示
-nnoremap <C-]> g<C-]>
+" nnoremap <C-]> g<C-]>
 
 
 " vimgrepによる移動のキーマップ
@@ -69,3 +97,12 @@ nnoremap ]Q :<C-u>clast<CR>  " 最後へ
 autocmd QuickFixCmdPost vimgrep cwindow
 " 下記のとおりにすると:grepや:Ggrepでも自動的にquickfix-windowを開くようになる。
 autocmd QuickFixCmdPost *grep* cwindow
+
+
+" カーソル位置の単語をgrep検索
+nnoremap <silent> ,cg :<C-u>Unite grep:. -buffer-name=search-buffer<CR><C-R><C-W>
+
+
+" カーソル上の単語をsilver-search検索
+cnoremap %%% <cword>
+map ,c :Ag %%%
