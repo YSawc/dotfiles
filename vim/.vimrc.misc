@@ -1,0 +1,2 @@
+" yankした文字をクリップボードにも反映する
+set clipboard+=unnamed

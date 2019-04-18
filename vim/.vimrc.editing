@@ -104,5 +104,4 @@ nnoremap <silent> ,cg :<C-u>Unite grep:. -buffer-name=search-buffer<CR><C-R><C-W
 
 
 " カーソル上の単語をsilver-search検索
-cnoremap %%% <cword>
-map ,c :Ag %%%
+map ,c :Ag <cword>
