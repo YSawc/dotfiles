@@ -14,12 +14,12 @@ set wildmenu
 " set background=dark
 
 
-" let g:gruvbox_vert_split='bg1'
+let g:gruvbox_vert_split='bg1'
 
 set fillchars-=vert:\|
 " highlight VertSplit gui=reverse guifg=bg
 " highlight VertSplit gui=reverse guifg=Black
-highlight VertSplit gui=reverse guifg=#555555
+" highlight VertSplit gui=reverse guifg=#555555
 
 " set fillchars+=vert:\
 

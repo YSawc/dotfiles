@@ -1,4 +1,4 @@
-let s:vim_arryay = [
+let g:vim_arryay = [
 	\'.vimrc.plugins_setting',
 	\'.vimrc.LSP_plugins_setting',
 	\'.vimrc.basic',
@@ -14,9 +14,9 @@ let s:vim_arryay = [
 	\'.vimrc.editing',
 	\'.vimrc.encoding',
 	\'.vimrc.misc',
-	\ ]
+	\]
 
-for vim in s:vim_arryay
+for vim in g:vim_arryay
 	let $CALL_LOCATE = $HOME . '/dotfiles/vim/' . vim
 	source $CALL_LOCATE
 endfor
