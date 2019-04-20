@@ -52,14 +52,14 @@ set shiftwidth=2
 " vim透明化
 " autocmdという機能を利用していて、カラースキームが読み込まれた際に背景なしの設定に上書きすると行った処理を行なっています。
 " https://sy-base.com/myrobotics/vim/vim-transparent/
-augroup TransparentBG
-  	autocmd!
+" augroup TransparentBG
+" 	autocmd!
 "	autocmd Colorscheme * highlight Normal ctermbg=none
 "	autocmd Colorscheme * highlight NonText ctermbg=none
 "autocmd	autocmd Colorscheme * highlight LineNr ctermbg=none
 "	autocmd Colorscheme * highlight Folded ctermbg=none
 "	autocmd Colorscheme * highlight EndOfBuffer ctermbg=none
-augroup END
+" augroup END
 
 
 " airlineの設定

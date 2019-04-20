@@ -22,4 +22,3 @@ setopt PRINT_EIGHT_BIT
 
 # homebrewで必要
 export PATH="/usr/local/sbin:$PATH"
-

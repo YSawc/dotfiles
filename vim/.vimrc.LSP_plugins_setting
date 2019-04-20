@@ -29,6 +29,9 @@ Plug 'fszymanski/deoplete-emoji'
 " ========================================================
 
 
+" python complete
+Plug 'davidhalter/jedi-vim'
+
 
 
 " 補完用プラグインの利用に必要

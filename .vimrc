@@ -1,71 +1,71 @@
-let g:vim_arryay = [
-	\'.vimrc.plugins_setting',
-	\'.vimrc.LSP_plugins_setting',
-	\'.vimrc.basic',
-	\'.vimrc.statusline',
-	\'.vimrc.indent',
-	\'.vimrc.apperance',
-	\'.vimrc.completion',
-	\'.vimrc.tags',
-	\'.vimrc.search',
-	\'.vimrc.moving',
-	\'.vimrc.window',
-	\'.vimrc.colors',
-	\'.vimrc.editing',
-	\'.vimrc.encoding',
-	\'.vimrc.misc',
-	\]
+"let g:vim_arryay = [
+"	\'.vimrc.plugins_setting',
+"	\'.vimrc.LSP_plugins_setting',
+"	\'.vimrc.basic',
+"	\'.vimrc.statusline',
+"	\'.vimrc.indent',
+"	\'.vimrc.apperance',
+"	\'.vimrc.completion',
+"	\'.vimrc.tags',
+"	\'.vimrc.search',
+"	\'.vimrc.moving',
+"	\'.vimrc.window',
+"	\'.vimrc.colors',
+"	\'.vimrc.editing',
+"	\'.vimrc.encoding',
+"	\'.vimrc.misc',
+"	\]
 
-for vim in g:vim_arryay
-	let $CALL_LOCATE = $HOME . '/dotfiles/vim/' . vim
-	source $CALL_LOCATE
-endfor
+"for vim in g:vim_arryay
+"	let $CALL_LOCATE = $HOME . '/dotfiles/vim/' . vim
+"	source $CALL_LOCATE
+"endfor
 
 
 " プラグイン設定
-" source ~/dotfiles/vim/.vimrc.plugins_setting
+source ~/dotfiles/vim/.vimrc.plugins_setting
 
 " プラグイン LSP
-" source ~/dotfiles/vim/.vimrc.LSP_plugins_setting
+source ~/dotfiles/vim/.vimrc.LSP_plugins_setting
 
 " 基本設定
-" source ~/dotfiles/vim/.vimrc.basic
+source ~/dotfiles/vim/.vimrc.basic
 
 " StatusLine設定
-" source ~/dotfiles/vim/.vimrc.statusline
+source ~/dotfiles/vim/.vimrc.statusline
 
 " インデント設定
-" source ~/dotfiles/vim/.vimrc.indent
+source ~/dotfiles/vim/.vimrc.indent
 
 " 表示関連
-" source ~/dotfiles/vim/.vimrc.apperance
+source ~/dotfiles/vim/.vimrc.apperance
 
 " 補完関連
-" source ~/dotfiles/vim/.vimrc.completion
+source ~/dotfiles/vim/.vimrc.completion
 
 " Tags関連
-" source ~/dotfiles/vim/.vimrc.tags
+source ~/dotfiles/vim/.vimrc.tags
 
 " 検索関連
-" source ~/dotfiles/vim/.vimrc.search
+source ~/dotfiles/vim/.vimrc.search
 
 " 移動関連
-" source ~/dotfiles/vim/.vimrc.moving
+source ~/dotfiles/vim/.vimrc.moving
 
 " ウィンドウ関連
-" source ~/dotfiles/vim/.vimrc.window
+source ~/dotfiles/vim/.vimrc.window
 
 " Color関連
-" source ~/dotfiles/vim/.vimrc.colors
+source ~/dotfiles/vim/.vimrc.colors
 
 " 編集関連
-" source ~/dotfiles/vim/.vimrc.editing
+source ~/dotfiles/vim/.vimrc.editing
 
 " エンコーディング関連
-" source ~/dotfiles/vim/.vimrc.encoding
+source ~/dotfiles/vim/.vimrc.encoding
 
 " その他
-" source ~/dotfiles/vim/.vimrc.misc
+source ~/dotfiles/vim/.vimrc.misc
 
 
 
