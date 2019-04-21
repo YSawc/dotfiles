@@ -107,3 +107,12 @@ nnoremap <silent> ,cg :<C-u>Unite grep:. -buffer-name=search-buffer<CR><C-R><C-W
 
 " カーソル上の単語をsilver-search検索
 map ,c :Ag <cword>
+
+
+" easymotionのキーマップ
+" デフォルトのキーマップはオフに
+let g:EasyMotion_do_mapping = 0
+" f + 2文字 で画面全体を検索してジャンプ
+nmap ,f <plug>(easymotion-overwin-f2)
+" 検索時、大文字小文字を区別しない
+let g:EasyMotion_smartcase = 1
