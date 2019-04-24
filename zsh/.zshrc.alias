@@ -1,6 +1,18 @@
 # alias brew="env PATH=${PATH/\/Users\/${USER}\/\.pyenv\/shims:?/} brew"
 # alias brew="env PATH=${PATH/\/usr\/local\/include\.pyenv\/shims:?/} brew"
 
+
+# ------
+# tmux ペインエイリアス
+# ------
+
+# if [ $SHLVL = 1 ]; then
+#     alias tmuxg="tmux attach || tmux new-session \; source-file ~/.tmux/new-session"
+# fi
+
+# ------
+
+
 # --------------------------------------------------
 #  git エイリアス
 # --------------------------------------------------

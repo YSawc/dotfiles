@@ -1,5 +1,3 @@
-source ~/.vimrc
-
 " コマンドライン補完が強力になる
 set wildmenu
 
@@ -14,12 +12,13 @@ set wildmenu
 " set background=dark
 
 
-let g:gruvbox_vert_split='bg1'
+" let g:gruvbox_vert_split='bg1'
 
-set fillchars-=vert:\|
+" set fillchars-=vert:\|
 " highlight VertSplit gui=reverse guifg=bg
 " highlight VertSplit gui=reverse guifg=Black
 " highlight VertSplit gui=reverse guifg=#555555
 
 " set fillchars+=vert:\
 
+source ~/.vimrc
