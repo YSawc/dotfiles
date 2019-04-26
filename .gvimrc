@@ -8,6 +8,7 @@ set wildmenu
 
 " カラースキーム
 " colorscheme koehler
+colorscheme molokai
 " ダーク系のカラースキームを使う
 " set background=dark
 

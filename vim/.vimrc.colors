@@ -1,8 +1,25 @@
-" カラープラグイン tenderplus -------
-if (has("termguicolors"))
- set termguicolors
-endif
 
-syntax enable
-colorscheme tender
+" 行番号の色を設定する
+" autocmd ColorScheme * highlight LineNr ctermfg=239
+highlight LineNr ctermfg=239
+
+
+" カラープラグイン tenderplus -------
+" if (has("termguicolors"))
+"  set termguicolors
+" endif
+"
+" syntax enable
+" colorscheme tender
 " ------------------------------
+
+
+" カラープラグイン molokai -------
+" if (has("molokai"))
+" 	colorscheme molokai
+" endif
+"
+" set t_Co=256
+" syntax enable
+" ------------------------------
+
