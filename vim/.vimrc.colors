@@ -1,7 +1,15 @@
+" 行番号の色を設定
+hi LineNr ctermbg=0 ctermfg=0
+hi CursorLineNr ctermbg=4 ctermfg=0
+" set cursorline
+" hi clear CursorLine
+
+colorscheme molokai
+
 
 " 行番号の色を設定する
 " autocmd ColorScheme * highlight LineNr ctermfg=239
-highlight LineNr ctermfg=239
+ highlight LineNr ctermfg=239
 
 
 " カラープラグイン tenderplus -------
