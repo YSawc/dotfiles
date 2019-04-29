@@ -1,4 +1,6 @@
 " neartreeのトグル
+" p> " プレフィックスキーの変更
+" p> " プレフィックスキーの変更
 nnoremap s; :<C-u>NERDTreeToggle<CR>
 
 " VimFilerのトグル
@@ -18,13 +20,13 @@ nnoremap sp gT
 nnoremap sr <C-w>r
 nnoremap s= <C-w>=
 nnoremap sw <C-w>w
+nnoremap sT <C-w>T
 nnoremap so <C-w>_<C-w>|
 nnoremap sO <C-w>=
 nnoremap sN :<C-u>bn<CR>  " バッファ移動
 nnoremap sP :<C-u>bp<CR>
 nnoremap st :<C-u>tabnew<CR>
 " nnoremap sT :<C-u>Unite tab<CR>
-nnoremap sT :<C-u>T
 nnoremap ss :<C-u>sp<CR>
 nnoremap sv :<C-u>vs<CR>
 nnoremap sq :<C-u>q<CR>
@@ -40,9 +42,9 @@ let g:unite_enable_start_insert = 1
 
 " unite grep に ag(The Silver Searcher) を使う
 if executable('ag')
-  let g:unite_source_grep_command = 'ag'
-  let g:unite_source_grep_default_opts = '--nogroup --nocolor --column'
-  let g:unite_source_grep_recursive_opt = ''
+let g:unite_source_grep_command = 'ag'
+let g:unite_source_grep_default_opts = '--nogroup --nocolor --column'
+let g:unite_source_grep_recursive_opt = ''
 endif
 
 " 大文字小文字を区別しない
