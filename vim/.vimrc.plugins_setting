@@ -5,6 +5,11 @@ call plug#begin('~/.vim/plugged')
 Plug 'itchyny/lightline.vim'    " Dependency: status line
 Plug 'maximbaz/lightline-ale'
 
+" cursorword
+let g:loaded_matchparen = 1
+Plug 'itchyny/vim-parenmatch'
+Plug 'itchyny/vim-cursorword'
+
 
 " カーソル移動を高速にする
 Plug 'Lokaltog/vim-easymotion'

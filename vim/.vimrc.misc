@@ -1,2 +1,8 @@
 " yankした文字をクリップボードにも反映する
 set clipboard+=unnamed
+
+" 改行時のコメントを自動で付けない設定
+au FileType * setlocal formatoptions-=ro
+
+" nerdTreeが最後のバッファの場合、自動で削除する
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
