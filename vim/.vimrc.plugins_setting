@@ -71,20 +71,9 @@ else
   let g:gitgutter_sign_column_always = 1
 endif
 
-
-" nerdtreeのgitを表示するプラグインの設定オプション
-"let g:NERDTreeIndicatorMapCustom = {
-"    \ "Modified"  : "✹",
-"    \ "Staged"    : "✚",
-"    \ "Untracked" : "✭",
-"    \ "Renamed"   : "➜",
-"    \ "Unmerged"  : "═",
-"    \ "Deleted"   : "✖",
-"    \ "Dirty"     : "✗",
-"    \ "Clean"     : "✔︎",
-"    \ 'Ignored'   : '☒',
-"    \ "Unknown"   : "?"
-"    \ }
+" winersizer.vim ウィンドウサイズを簡単に変更できる
+Plug 'simeji/winresizer'
+let g:winresizer_start_key = '<C-T>'
 
 " vimrc.LSP_plugins_settingの読み込みに続く為、plug#endはコメントアウトしておく
 " call plug#end()

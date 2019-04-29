@@ -1,27 +1,3 @@
-"let g:vim_arryay = [
-"	\'.vimrc.plugins_setting',
-"	\'.vimrc.LSP_plugins_setting',
-"	\'.vimrc.basic',
-"	\'.vimrc.statusline',
-"	\'.vimrc.indent',
-"	\'.vimrc.apperance',
-"	\'.vimrc.completion',
-"	\'.vimrc.tags',
-"	\'.vimrc.search',
-"	\'.vimrc.moving',
-"	\'.vimrc.window',
-"	\'.vimrc.colors',
-"	\'.vimrc.editing',
-"	\'.vimrc.encoding',
-"	\'.vimrc.misc',
-"	\]
-
-"for vim in g:vim_arryay
-"	let $CALL_LOCATE = $HOME . '/dotfiles/vim/' . vim
-"	source $CALL_LOCATE
-"endfor
-
-
 " プラグイン設定
 source ~/dotfiles/vim/.vimrc.plugins_setting
 
