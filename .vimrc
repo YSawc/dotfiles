@@ -43,6 +43,9 @@ source ~/dotfiles/vim/.vimrc.encoding
 " その他
 source ~/dotfiles/vim/.vimrc.misc
 
+" カーソルラインの設定
+source ~/dotfiles/vim/.vimrc.cursorline
+
 
 " Vimでgitのログをきれいに表示する - derisの日記
 "  http://deris.hatenablog.jp/entry/2013/05/10/003430

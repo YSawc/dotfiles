@@ -1,6 +1,10 @@
 call plug#begin('~/.vim/plugged')
 
 
+" Plug 'w0rp/ale'                 " Dependency: linter
+Plug 'itchyny/lightline.vim'    " Dependency: status line
+Plug 'maximbaz/lightline-ale'
+
 
 " カーソル移動を高速にする
 Plug 'Lokaltog/vim-easymotion'
@@ -22,11 +26,15 @@ let g:better_whitespace_filetypes_blacklist = ['vimfiler']
 Plug 'scrooloose/nerdtree'
 " 変更箇所をNERDTreeで同期できる
 Plug 'Xuyuanp/nerdtree-git-plugin'
+" コメントアウトを気軽に実行
+Plug 'scrooloose/nerdcommenter'
+filetype on
+let g:NERDSpaceDelims=1 "コメントアウトの後にスペース挿入
 
 Plug 'ctrlpvim/ctrlp.vim'
 
 " コメントON/OFFを手軽に実行
-Plug 'tomtom/tcomment_vim'
+" Plug 'tomtom/tcomment_vim'
 
 " 行末の半角スペースを可視化
 Plug 'bronson/vim-trailing-whitespace'
@@ -35,7 +43,7 @@ Plug 'bronson/vim-trailing-whitespace'
 Plug 'tpope/vim-endwise'
 
 " 下のラインにステータスバーを表示する
-Plug 'vim-airline/vim-airline'
+" Plug 'vim-airline/vim-airline'
 
 " 曖昧に検索できるツールプラグイン
 Plug 'junegunn/fzf'
