@@ -48,4 +48,8 @@ export CPPFLAGS="-I/usr/local/opt/llvm/include"
 # llvm ( LSP c, cpp ) END
 
 
+# go path
+export GOPATH=$HOME/oo
+# go path END
+
 source ~/.zshrc
