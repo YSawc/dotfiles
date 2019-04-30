@@ -5,27 +5,10 @@ call plug#begin('~/.vim/plugged')
 Plug 'itchyny/lightline.vim'    " Dependency: status line
 Plug 'maximbaz/lightline-ale'
 
-" cursorword
-let g:loaded_matchparen = 1
-Plug 'itchyny/vim-parenmatch'
-Plug 'itchyny/vim-cursorword'
 
+" 行末の半角スペースを可視化
+Plug 'bronson/vim-trailing-whitespace'
 
-" カーソル移動を高速にする
-Plug 'Lokaltog/vim-easymotion'
-
-" ファイルオープンを便利に
-Plug 'Shougo/unite.vim'
-let g:better_whitespace_filetypes_blacklist = ['unite']
-
-" Unite.vimで最近使ったファイルを表示できるようにする
-Plug 'Shougo/neomru.vim'
-
-" filerをvimfilerにデフォルト設定する
-Plug 'Shougo/vimfiler.vim'
-let g:vimfiler_enable_auto_cd = 1
-" VimFilerをwhite_spaceの対象から外す
-let g:better_whitespace_filetypes_blacklist = ['vimfiler']
 
 " file tree
 Plug 'scrooloose/nerdtree'
@@ -35,47 +18,80 @@ Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'scrooloose/nerdcommenter'
 filetype on
 let g:NERDSpaceDelims=1 "コメントアウトの後にスペース挿入
+" ホワイトリストを作成する
+let g:extra_whitespace_ignored_filetypes = ['unite', 'vimfiler']
 
-Plug 'ctrlpvim/ctrlp.vim'
+" cursorword
+let g:loaded_matchparen = 1
+Plug 'itchyny/vim-parenmatch'
+Plug 'itchyny/vim-cursorword'
+
+
+" カーソル移動を高速にする
+Plug 'Lokaltog/vim-easymotion'
+
+
+" ファイルオープンを便利に
+Plug 'Shougo/unite.vim'
+" let g:better_whitespace_filetypes_blacklist = ['unite']
+
+
+" Unite.vimで最近使ったファイルを表示できるようにする
+Plug 'Shougo/neomru.vim'
+
+
+" filerをvimfilerにデフォルト設定する
+Plug 'Shougo/vimfiler.vim'
+let g:vimfiler_enable_auto_cd = 1
+" VimFilerをwhite_spaceの対象から外す
+" let g:extra_whitespace_ignored_filetypes = ['vimfiler']
+
+
+" Plug 'ctrlpvim/ctrlp.vim'
+
 
 " コメントON/OFFを手軽に実行
 " Plug 'tomtom/tcomment_vim'
 
-" 行末の半角スペースを可視化
-Plug 'bronson/vim-trailing-whitespace'
+
 
 " Ruby向けにendを自動挿入してくれる
 Plug 'tpope/vim-endwise'
 
+
 " 下のラインにステータスバーを表示する
 " Plug 'vim-airline/vim-airline'
+
 
 " 曖昧に検索できるツールプラグイン
 Plug 'junegunn/fzf'
 
-" nerdtree専用のgit表示プラグイン
-" Plug 'scrooloose/nerdtree'
-" Plug 'Xuyuanp/nerdtree-git-plugin'
 
 " nerdtree専用のファイルカラーテーマ
 " Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 
+
 " gitのコマンドをvimで操作できるプラグイン
 Plug 'tpope/vim-fugitive'
+
 
 " gitの更新状況を表示するプラグイン
 Plug 'airblade/vim-gitgutter'
 
+
 " Colorscheme
 Plug 'jacoborus/tender.vim'
 
+
 " agのvim用
 Plug 'rking/ag.vim'
+
 
 " vimを開いてる時にtagsを追加する
 Plug 'szw/vim-tags'
 " vim-tags追加コマンド: :TagsGenerate 編集中に定義の更新ができる
 au BufNewFile,BufRead *.php let g:vim_tags_project_tags_command = "ctags --languages=php -f ~/php.tags `pwd` 2>/dev/null &"
+
 
 " 目印行を常に表示する
 if exists('&signcolumn')  " Vim 7.4.2201
@@ -84,9 +100,11 @@ else
   let g:gitgutter_sign_column_always = 1
 endif
 
+
 " winersizer.vim ウィンドウサイズを簡単に変更できる
 Plug 'simeji/winresizer'
 let g:winresizer_start_key = '<C-T>'
+
 
 " vimrc.LSP_plugins_settingの読み込みに続く為、plug#endはコメントアウトしておく
 " call plug#end()

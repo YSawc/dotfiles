@@ -31,7 +31,7 @@ source ~/dotfiles/vim/.vimrc.moving
 " ウィンドウ関連
 source ~/dotfiles/vim/.vimrc.window
 
-" Color関連
+" color関連
 source ~/dotfiles/vim/.vimrc.colors
 
 " 編集関連
