@@ -6,3 +6,7 @@ au FileType * setlocal formatoptions-=ro
 
 " nerdTreeが最後のバッファの場合、自動で削除する
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
+" ターミナルを画面下部に表示
+set splitbelow
+set termwinsize=7x0
