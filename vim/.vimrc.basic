@@ -1,3 +1,6 @@
+" スワップファイルを作成しない
+set noswapfile
+
 " start up NERDTree
 autocmd vimenter * NERDTree
 

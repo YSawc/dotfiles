@@ -23,8 +23,6 @@ endif
 " highlight VertSplit gui=reverse guifg=bg
 
 
-" スワップファイルは使わない(ときどき面倒な警告が出るだけで役に立ったことがない)
-set noswapfile
 " エディタウィンドウの末尾から2行目にステータスラインを常時表示させる
 set laststatus=2
 
