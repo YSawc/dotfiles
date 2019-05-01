@@ -92,8 +92,8 @@ Plug 'junegunn/fzf'
 " --- prabirshrestha非同期設定 ---
 Plug 'prabirshrestha/async.vim'
 Plug 'prabirshrestha/vim-lsp'
-Plug 'prabirshrestha/asyncomplete.vim'
-Plug 'prabirshrestha/asyncomplete-lsp.vim'
+" Plug 'prabirshrestha/asyncomplete.vim'
+" Plug 'prabirshrestha/asyncomplete-lsp.vim'
 " Plug 'prabirshrestha/asyncomplete-neosnippet.vim'
 let g:lsp_async_completion = 1
 

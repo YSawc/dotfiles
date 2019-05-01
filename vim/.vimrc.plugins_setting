@@ -9,6 +9,10 @@ Plug 'maximbaz/lightline-ale'
 " 行末の半角スペースを可視化
 Plug 'bronson/vim-trailing-whitespace'
 
+" fzf for vim
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
+
 
 " file tree
 Plug 'scrooloose/nerdtree'
