@@ -10,6 +10,9 @@ source ~/dotfiles/vim/.vimrc.basic
 " StatusLine設定
 source ~/dotfiles/vim/.vimrc.statusline
 
+" grep設定
+source ~/dotfiles/vim/.vimrc.grep
+
 " インデント設定
 source ~/dotfiles/vim/.vimrc.indent
 
