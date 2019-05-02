@@ -110,5 +110,10 @@ Plug 'simeji/winresizer'
 let g:winresizer_start_key = '<C-T>'
 
 
+" markdownプラグイン
+Plug 'tpope/vim-markdown'
+Plug 'kannokanno/previm'
+Plug 'tyru/open-browser.vim'
+
 " vimrc.LSP_plugins_settingの読み込みに続く為、plug#endはコメントアウトしておく
 " call plug#end()

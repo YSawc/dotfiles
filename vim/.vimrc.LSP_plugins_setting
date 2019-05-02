@@ -39,12 +39,12 @@ Plug 'junegunn/fzf'
 
 " Lint ale
 
-" Plug 'w0rp/ale'
+Plug 'w0rp/ale'
 " -------------- ale　setting ------------------
-" let g:ale_sign_column_always = 1
+let g:ale_sign_column_always = 1
 " シンボルの変更
-" let g:ale_sign_error = '!!'
-" let g:ale_sign_warning = '=='
+let g:ale_sign_error = '!!'
+let g:ale_sign_warning = '=='
 " highlight clear ALEErrorSign
 " highlight clear ALEWarningSignk
 " let g:ale_sign_error = "◉"
@@ -52,6 +52,18 @@ Plug 'junegunn/fzf'
 " highlight ALEErrorSign ctermfg=9 ctermbg=15 guifg=#C30500 guibg=#000000
 " highlight ALEWarningSign ctermfg=11 ctermbg=15 guifg=#ED6237 guibg=#000000
 
+" 保存時にだけチェック
+let g:ale_lint_on_save = 1
+let g:ale_lint_on_text_changed = 0
+
+" ファイルオープン時にチェックしたくない場合
+let g:ale_lint_on_enter = 0
+" quickfixで開く
+let g:ale_set_loclist = 0
+let g:ale_set_quickfix = 1
+let g:ale_open_list = 1
+" エラーと警告がなくなっても開いたままにする
+let g:ale_keep_list_window_open = 1
 "----------------------------------------------
 
 
