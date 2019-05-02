@@ -16,14 +16,17 @@ Plug 'junegunn/fzf.vim'
 
 " file tree
 Plug 'scrooloose/nerdtree'
+" ホワイトリストを作成する
+let g:extra_whitespace_ignored_filetypes = ['unite', 'vimfiler']
 " 変更箇所をNERDTreeで同期できる
 Plug 'Xuyuanp/nerdtree-git-plugin'
 " コメントアウトを気軽に実行
 Plug 'scrooloose/nerdcommenter'
 filetype on
 let g:NERDSpaceDelims=1 "コメントアウトの後にスペース挿入
-" ホワイトリストを作成する
-let g:extra_whitespace_ignored_filetypes = ['unite', 'vimfiler']
+let g:NerdCommenter_do_mapping = 0
+" let g:NERDCreateDefaultMappings = 0
+" nnoremap <Space>, <Plug>NERDcommenterToggle
 
 " cursorword
 let g:loaded_matchparen = 1

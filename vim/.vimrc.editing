@@ -110,11 +110,11 @@ autocmd QuickFixCmdPost *grep* cwindow
 
 
 " カーソル位置の単語をgrep検索
-nnoremap <silent> ,cg :<C-u>Unite grep:. -buffer-name=search-buffer<CR><C-R><C-W>
+" nnoremap <silent> ,cg :<C-u>Unite grep:. -buffer-name=search-buffer<CR><C-R><C-W>
 
 
 " カーソル上の単語をsilver-search検索
-map ,c :Ag <cword>
+nnoremap ,c :Rg <cword>
 
 
 " easymotionのキーマップ

@@ -36,7 +36,6 @@ Plug 'junegunn/fzf'
 
 
 
-
 " Lint ale
 
 Plug 'w0rp/ale'
