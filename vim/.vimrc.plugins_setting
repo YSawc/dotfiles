@@ -38,8 +38,7 @@ let g:NerdCommenter_do_mapping = 0
 " cursorWord
 let g:loaded_matchparen = 1
 Plug 'itchyny/vim-parenmatch'
-Plug 'itchyny/vim-cursorword'
-
+" Plug 'itchyny/vim-cursorword' " TODO: トグル化
 
 " カーソル移動をより快適にする
 Plug 'Lokaltog/vim-easymotion'

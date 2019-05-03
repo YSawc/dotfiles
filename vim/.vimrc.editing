@@ -65,7 +65,7 @@ nnoremap <silent> ,g  :<C-u>Unite grep:. -buffer-name=search-buffer<CR>
 " nnoremap <silent> ,cg :<C-u>Unite grep:. -buffer-name=search-buffer<CR><C-R><C-W>
 
 " grep検索結果の再呼出
-nnoremap <silent> ,r  :<C-u>UniteResume search-buffer<CR>
+" nnoremap <silent> ,r  :<C-u>UniteResume search-buffer<CR>
 
 " --- unite---
 
@@ -117,10 +117,8 @@ autocmd QuickFixCmdPost *grep* cwindow
 
 " TODO: change ag to rg
 " カーソル上の単語をsilver-search検索
-" nmap <Space><Space> :Ag <c-r>=expand("<cword>")<cr><cr>
-nmap <Space><Space> :Ag <cword> %<cr><cr>
-" nnoremap ,c :Ag <cword>
-" nnoremap ,c :Rg <cword>
+nnoremap ,c :<C-u>Ag --hidden <cword><CR>
+nnoremap ,r :Rg<Space>
 " nnoremap ,c :Rg .shellescape(<cword>)
 
 
