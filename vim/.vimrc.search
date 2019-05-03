@@ -1,5 +1,11 @@
 " 検索系
 
+" :grep実行時にripgrepを呼び出す
+if executable('rg')
+    let &grepprg = 'rg --vimgrep --hidden'
+    set grepformat=%f:%l:%c:%m
+endif
+
 
 " 検索文字列が小文字の場合は大文字小文字を区別なく検索する
 set ignorecase
