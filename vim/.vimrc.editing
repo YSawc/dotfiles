@@ -115,8 +115,10 @@ autocmd QuickFixCmdPost *grep* cwindow
 " nnoremap <silent> ,cg :<C-u>Unite grep:. -buffer-name=search-buffer<CR><C-R><C-W>
 
 
+" TODO: change ag to rg
 " カーソル上の単語をsilver-search検索
-nmap <Space><Space> :Ag <c-r>=expand("<cword>")<cr><cr>
+" nmap <Space><Space> :Ag <c-r>=expand("<cword>")<cr><cr>
+nmap <Space><Space> :Ag <cword> %<cr><cr>
 " nnoremap ,c :Ag <cword>
 " nnoremap ,c :Rg <cword>
 " nnoremap ,c :Rg .shellescape(<cword>)
