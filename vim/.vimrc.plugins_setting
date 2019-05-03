@@ -16,7 +16,6 @@ Plug 'junegunn/fzf.vim'
 
 " nerdTree
 
-" file tree
 Plug 'scrooloose/nerdtree'
 " nerdtreeを別タブで同期させる
 Plug 'jistr/vim-nerdtree-tabs'
@@ -36,13 +35,13 @@ let g:NerdCommenter_do_mapping = 0
 
 " nerdTree END
 
-" cursorword
+" cursorWord
 let g:loaded_matchparen = 1
 Plug 'itchyny/vim-parenmatch'
 Plug 'itchyny/vim-cursorword'
 
 
-" カーソル移動を高速にする
+" カーソル移動をより快適にする
 Plug 'Lokaltog/vim-easymotion'
 
 
@@ -118,7 +117,7 @@ endif
 
 " winersizer.vim ウィンドウサイズを簡単に変更できる
 Plug 'simeji/winresizer'
-let g:winresizer_start_key = '<C-T>'
+let g:winresizer_start_key = ',<C-T>'
 
 
 " markdownプラグイン
