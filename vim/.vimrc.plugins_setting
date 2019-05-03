@@ -14,8 +14,14 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 
 
+" nerdTree
+
 " file tree
 Plug 'scrooloose/nerdtree'
+" nerdtreeを別タブで同期させる
+Plug 'jistr/vim-nerdtree-tabs'
+" デフォルトでツリーを表示させる
+let g:nerdtree_tabs_open_on_console_startup=1
 " ホワイトリストを作成する
 let g:extra_whitespace_ignored_filetypes = ['unite', 'vimfiler']
 " 変更箇所をNERDTreeで同期できる
@@ -27,6 +33,8 @@ let g:NERDSpaceDelims=1 "コメントアウトの後にスペース挿入
 let g:NerdCommenter_do_mapping = 0
 " let g:NERDCreateDefaultMappings = 0
 " nnoremap <Space>, <Plug>NERDcommenterToggle
+
+" nerdTree END
 
 " cursorword
 let g:loaded_matchparen = 1
