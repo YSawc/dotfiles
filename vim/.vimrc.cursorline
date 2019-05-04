@@ -1,3 +1,4 @@
+" カーソルラインの表示に制限をかけ、軽量化する機構
 augroup vimrc-auto-cursorline
   autocmd!
   autocmd CursorMoved,CursorMovedI * call s:auto_cursorline('CursorMoved')
