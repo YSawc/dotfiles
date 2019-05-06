@@ -3,6 +3,11 @@ let mapleader = ","
 " コロン、セミコロン入れ替え
 nnoremap ; :
 
+" 括弧を自動で閉じるように設定
+inoremap { {}<Left>
+inoremap {<Enter> {}<Left><CR><ESC><S-o>
+inoremap ( ()<ESC>i
+inoremap (<Enter> ()<Left><CR><ESC><S-o>
 
 " スクロール系の挙動を微調整する
 noremap <expr> <C-b> max([winheight(0) - 2, 1]) . "\<C-u>" . (line('.') < 1         + winheight(0) ? 'H' : 'L')
