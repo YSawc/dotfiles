@@ -13,7 +13,7 @@ noremap <expr> <C-e> (line('w$') >= line('$') ? 'j' : "\<C-e>")
 " neartreeのトグル
 " p> " プレフィックスキーの変更
 " p> " プレフィックスキーの変更
-nnoremap s; :<C-u>NERDTreeToggle<CR>
+nnoremap s; :<C-u>NERDTreeTabsToggle<CR>
 
 " VimFilerのトグル
 " nnoremap <silent> s; :VimFilerExplore<CR>
