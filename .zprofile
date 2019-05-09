@@ -1,4 +1,9 @@
 # rbenvパス
+
+
+# 日本語設定
+export LANG=ja_JP.UTF-8
+
 export PATH="~/.rbenv/shims:/usr/local/bin:$PATH"
 eval "$(rbenv init -)"
 
