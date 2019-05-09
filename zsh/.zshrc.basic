@@ -10,6 +10,8 @@
 autoload -U compinit
 compinit
 
+# ESCキーのディレイを減らす
+KEYTIMEOUT=0
 
 # 色つきの補完
 zstyle ':completion:*' list-colors di=34 fi=0
