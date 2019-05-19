@@ -53,4 +53,7 @@ export CPPFLAGS="-I/usr/local/opt/llvm/include"
 # llvm ( LSP c, cpp ) END
 
 
+# yarn
+# export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+
 source ~/.zshrc
