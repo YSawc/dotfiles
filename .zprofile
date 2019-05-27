@@ -56,4 +56,15 @@ export CPPFLAGS="-I/usr/local/opt/llvm/include"
 # yarn
 # export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 
+# rbenvパス
+#export PATH="~/.rbenv/shims:/usr/local/bin:$PATH"
+#eval "$(rbenv init -)"
+
+# Setting PATH for Python 3.7
+# The original version is saved in .bash_profile.pysave
+#PATH="/Library/Frameworks/Python.framework/Versions/3.7/bin:${PATH}"
+
+# export PATH
+
+
 source ~/.zshrc

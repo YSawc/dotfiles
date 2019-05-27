@@ -96,6 +96,7 @@ let g:lsp_diagnostics_enabled = 0  " 警告やエラーの表示をALEに任せ�
 " for asyncomplete.vim log
 " let g:asyncomplete_log_file = expand('~/asyncomplete.log')
 "
+
 " GO
 augroup LspGo
 if executable('bingo')
@@ -106,6 +107,7 @@ if executable('bingo')
         \ })
 endif
 augroup END
+" Go END
 
 " c cpp
 if executable('clangd')
