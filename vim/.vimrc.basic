@@ -18,9 +18,9 @@ set expandtab
 set backspace=indent,eol,start
 
 " スペルチェックを有効にする
-set spell
+" set spell
 "日本語を除外
-set spelllang=en,cjk
+" set spelllang=en,cjk
 
 " mouseScroll on
 set mouse=a
