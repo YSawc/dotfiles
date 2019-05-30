@@ -5,7 +5,7 @@ set noswapfile
 autocmd vimenter * NERDTree
 
 "左右のカーソル移動で行間移動可能にする。
-set whichwrap=b,s,<,>,[,]
+set whichwrap=h,l,b,s,<,>,[,]
 
 
 " vimを立ち上げたときに、自動的にvim-indent-guidesをオンにする vim-indent-guides
