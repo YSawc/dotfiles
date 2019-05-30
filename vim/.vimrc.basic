@@ -17,6 +17,11 @@ set expandtab
 " バックスペースでの削除をいつでも有効にする
 set backspace=indent,eol,start
 
+" スペルチェックを有効にする
+set spell
+"日本語を除外
+set spelllang=en,cjk
+
 " mouseScroll on
 set mouse=a
 set ttymouse=xterm2
