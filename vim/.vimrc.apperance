@@ -30,6 +30,7 @@ set laststatus=2
 " Tab系
 " 不可視文字を可視化(タブが「▸-」と表示される)
 set list listchars=tab:\▸\-
+set expandtab
 " タブ文字の表示幅
 set tabstop=2
 " Vimが挿入するインデントの幅
