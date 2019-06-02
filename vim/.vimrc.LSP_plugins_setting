@@ -74,9 +74,6 @@ Plug 'prabirshrestha/asyncomplete.vim'
 Plug 'prabirshrestha/asyncomplete-lsp.vim'
 Plug 'prabirshrestha/asyncomplete-neosnippet.vim'
 
-" 補完内容の詳細が表示される
-set completeopt=menu,preview
-
 " 非同期補完設定
 let g:lsp_async_completion = 1
 
