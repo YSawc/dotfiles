@@ -1,4 +1,5 @@
-" カーソルラインの表示に制限をかけ、軽量化する機構
+
+" カーソルラインの表示に制限をかけ、軽量化する機構 {{{
 augroup vimrc-auto-cursorline
   autocmd!
   autocmd CursorMoved,CursorMovedI * call s:auto_cursorline('CursorMoved')
@@ -28,3 +29,4 @@ augroup vimrc-auto-cursorline
     endif
   endfunction
 augroup END
+" カーソルラインの軽量化 }}}

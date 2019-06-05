@@ -1,8 +1,10 @@
-" 行番号の色を設定
+" 行番号の色を設定 {{{
 hi LineNr ctermbg=0 ctermfg=0
 hi CursorLineNr ctermbg=4 ctermfg=0
 " set cursorline
 " hi clear CursorLine
+" 行番号の色設定 }}}
+
 
 colorscheme molokai
 
@@ -12,22 +14,22 @@ colorscheme molokai
  highlight LineNr ctermfg=239
 
 
-" カラープラグイン tenderplus -------
+" カラープラグイン tenderplus {{{
 " if (has("termguicolors"))
 "  set termguicolors
 " endif
 "
 " syntax enable
 " colorscheme tender
-" ------------------------------
+" tenderplus }}}
 
 
-" カラープラグイン molokai -------
+" カラープラグイン molokai {{{
 " if (has("molokai"))
 " 	colorscheme molokai
 " endif
 "
 " set t_Co=256
 " syntax enable
-" ------------------------------
+" mololkai}}}
 

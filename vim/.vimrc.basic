@@ -1,6 +1,13 @@
 " スワップファイルを作成しない
 set noswapfile
 
+" モードラインを有効にする {{{
+set modeline
+
+" 3行目までをモードラインとして検索する
+set modelines=3
+" }}}
+
 " start up NERDTree
 autocmd vimenter * NERDTree
 

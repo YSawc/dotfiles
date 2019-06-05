@@ -1,25 +1,151 @@
-" ======================================== other ========================================
+"other {{{
 
 " (Optional) Multi-entry selection UI.
 Plug 'junegunn/fzf'
 
-" ======================================== other END ========================================
+" other END }}}
+
+" coc END {{{
+
+Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
+" Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install()}}
+
+" if hidden is not set, TextEdit might fail.
+set hidden
+
+" Some servers have issues with backup files, see #649
+set nobackup
+set nowritebackup
+
+" Better display for messages
+set cmdheight=2
+
+" Smaller updatetime for CursorHold & CursorHoldI
+set updatetime=300
+
+" don't give |ins-completion-menu| messages.
+set shortmess+=c
+
+" always show signcolumns
+set signcolumn=yes
+
+" Use tab for trigger completion with characters ahead and navigate.
+" Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+" Use <c-space> to trigger completion.
+inoremap <silent><expr> <c-space> coc#refresh()
+
+" Use <cr> to confirm completion, `<C-g>u` means break undo chain at current position.
+" Coc only does snippet and additional edit on confirm.
+inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+
+" Use `[c` and `]c` to navigate diagnostics
+nmap <silent> [c <Plug>(coc-diagnostic-prev)
+nmap <silent> ]c <Plug>(coc-diagnostic-next)
+
+" Remap keys for gotos
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+
+" Use K to show documentation in preview window
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
+
+" Highlight symbol under cursor on CursorHold
+autocmd CursorHold * silent call CocActionAsync('highlight')
+
+" Remap for rename current word
+nmap <leader>rn <Plug>(coc-rename)
+
+" Remap for format selected region
+xmap <leader>f  <Plug>(coc-format-selected)
+nmap <leader>f  <Plug>(coc-format-selected)
+
+augroup mygroup
+  autocmd!
+  " Setup formatexpr specified filetype(s).
+  autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
+  " Update signature help on jump placeholder
+  autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
+augroup end
+
+" Remap for do codeAction of selected region, ex: `<leader>aap` for current paragraph
+xmap <leader>a  <Plug>(coc-codeaction-selected)
+nmap <leader>a  <Plug>(coc-codeaction-selected)
+
+" Remap for do codeAction of current line
+nmap <leader>ac  <Plug>(coc-codeaction)
+" Fix autofix problem of current line
+nmap <leader>qf  <Plug>(coc-fix-current)
+
+" Use `:Format` to format current buffer
+command! -nargs=0 Format :call CocAction('format')
+
+" Use `:Fold` to fold current buffer
+command! -nargs=? Fold :call     CocAction('fold', <f-args>)
 
 
-" ======================================== coc END ========================================
+" Add diagnostic info for https://github.com/itchyny/lightline.vim
+let g:lightline = {
+      \ 'colorscheme': 'wombat',
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ],
+      \             [ 'cocstatus', 'readonly', 'filename', 'modified' ] ]
+      \ },
+      \ 'component_function': {
+      \   'cocstatus': 'coc#status'
+      \ },
+      \ }
+
+
+
+" Using CocList
+" Show all diagnostics
+nnoremap <silent> <space>a  :<C-u>CocList diagnostics<cr>
+" Manage extensions
+nnoremap <silent> <space>e  :<C-u>CocList extensions<cr>
+" Show commands
+nnoremap <silent> <space>c  :<C-u>CocList commands<cr>
+" Find symbol of current document
+nnoremap <silent> <space>o  :<C-u>CocList outline<cr>
+" Search workspace symbols
+nnoremap <silent> <space>s  :<C-u>CocList -I symbols<cr>
+" Do default action for next item.
+nnoremap <silent> <space>j  :<C-u>CocNext<CR>
+" Do default action for previous item.
+nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
+" Resume latest coc list
+nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
+
+"coc END }}}
+
+" vista {{{
 
 " Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
+Plug 'liuchengxu/vista.vim'
 
-" ======================================== coc END ========================================
+" vista END }}}
 
-" ======================================== vista ========================================
-
-" Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
-" Plug 'liuchengxu/vista.vim'
-
-" ======================================== vista END ========================================
-
-" ======================================== vim-go ========================================
+" vim-go {{{
 
 " vim-go
 " Plug 'fatih/vim-go', { 'for': 'go', 'do': ':GoInstallBinaries' }
@@ -28,15 +154,23 @@ Plug 'fatih/vim-go'
 " スニペット
 Plug 'SirVer/ultisnips'
 
+" vim-go settings
 " ファイル保存時go importを実行する
 let g:go_fmt_command = "goimports"
+
+" ファイル保存時、linterを実行する
+let g:go_metalinter_autosave = 1
+
+" linter実行時、go vetのみを実行する
+let g:go_metalinter_autosave_enabled = ['vet']
+
 
 " GoRunやGoTest時の画面分割方法変更
 let g:go_term_mode = 'split'
 
-" ======================================== vim-go END ========================================
+" vim-go END }}}
 
-" ======================================== ale ========================================
+" ale {{{
 
 Plug 'w0rp/ale'
 let g:ale_sign_column_always = 1
@@ -64,26 +198,26 @@ let g:ale_open_list = 1
 " エラーと警告がなくなっても開いたままにする
 let g:ale_keep_list_window_open = 1
 
-" ======================================== ale END ========================================
+" ale END }}}
 
-" ======================================== prabirshrestha ========================================
+" prabirshrestha {{{
 
-Plug 'prabirshrestha/async.vim'
-Plug 'prabirshrestha/vim-lsp'
-Plug 'prabirshrestha/asyncomplete.vim'
-Plug 'prabirshrestha/asyncomplete-lsp.vim'
-Plug 'prabirshrestha/asyncomplete-neosnippet.vim'
+" Plug 'prabirshrestha/async.vim'
+" Plug 'prabirshrestha/vim-lsp'
+" Plug 'prabirshrestha/asyncomplete.vim'
+" Plug 'prabirshrestha/asyncomplete-lsp.vim'
+" Plug 'prabirshrestha/asyncomplete-neosnippet.vim'
 
 " 非同期補完設定
-let g:lsp_async_completion = 1
+" let g:lsp_async_completion = 1
 
 " エラー時、ファイルに出力
-let g:lsp_log_verbose = 1
+" let g:lsp_log_verbose = 1
 " let g:lsp_log_file = expand('~/vim-lsp.log')
 " let g:asyncomplete_log_file = expand('~/asyncomplete.log')
 
 " エラー出力をオフにする
-let g:lsp_diagnostics_enabled = 0  " 警告やエラーの表示をALEに任せるなら0
+" let g:lsp_diagnostics_enabled = 0  " 警告やエラーの表示をALEに任せるなら0
 " エラー時の行出力
 " let g:lsp_signs_error = {'text': '✗'}
 " let g:lsp_signs_warning = {'text': '‼'}
@@ -125,31 +259,23 @@ let g:lsp_diagnostics_enabled = 0  " 警告やエラーの表示をALEに任せ�
 
 " GO
 
-if executable('gopls')
-    au User lsp_setup call lsp#register_server({
-        \ 'name': 'gopls',
-        \ 'cmd': {server_info->['gopls', '-mode', 'stdio']},
-        \ 'whitelist': ['go'],
-        \ })
-    autocmd BufWritePre *.go LspDocumentFormatSync
-endif
+" if executable('gopls')
+"     au User lsp_setup call lsp#register_server({
+"         \ 'name': 'gopls',
+"         \ 'cmd': {server_info->['gopls', '-mode', 'stdio']},
+"         \ 'whitelist': ['go'],
+"         \ })
+"     autocmd BufWritePre *.go LspDocumentFormatSync
+" endif
 
-if executable('go-langserver')
-    au User lsp_setup call lsp#register_server({
-        \ 'name': 'go-langserver',
-        \ 'cmd': {server_info->['go-langserver', '-gocodecompletion']},
-        \ 'whitelist': ['go'],
-        \ })
-    autocmd BufWritePre *.go LspDocumentFormatSync
-endif
-
-if executable('bingo')
-    au User lsp_setup call lsp#register_server({
-        \ 'name': 'bingo',
-        \ 'cmd': {server_info->['bingo', '-mode', 'stdio']},
-        \ 'whitelist': ['go'],
-        \ })
-endif
+" if executable('go-langserver')
+"     au User lsp_setup call lsp#register_server({
+"         \ 'name': 'go-langserver',
+"         \ 'cmd': {server_info->['go-langserver', '-gocodecompletion']},
+"         \ 'whitelist': ['go'],
+"         \ })
+"     autocmd BufWritePre *.go LspDocumentFormatSync
+" endif
 
 " augroup LspGo
 " if executable('bingo')
@@ -167,55 +293,55 @@ endif
 " Go END
 
 " c cpp
-if executable('clangd')
-    au User lsp_setup call lsp#register_server({
-        \ 'name': 'clangd',
-        \ 'cmd': {server_info->['clangd', '-background-index']},
-        \ 'whitelist': ['c', 'cpp', 'objc', 'objcpp'],
-        \ })
-endif
+" if executable('clangd')
+"     au User lsp_setup call lsp#register_server({
+"         \ 'name': 'clangd',
+"         \ 'cmd': {server_info->['clangd', '-background-index']},
+"         \ 'whitelist': ['c', 'cpp', 'objc', 'objcpp'],
+"         \ })
+" endif
 " c cpp END
 
 
-" " ruby
-if executable('solargraph')
-    " gem install solargraph
-    au User lsp_setup call lsp#register_server({
-        \ 'name': 'solargraph',
-        \ 'cmd': {server_info->[&shell, &shellcmdflag, 'solargraph stdio']},
-        \ 'initialization_options': {"diagnostics": "true"},
-        \ 'whitelist': ['ruby'],
-        \ })
-endif
-" ruby END
+" ruby
+" if executable('solargraph')
+"     " gem install solargraph
+"     au User lsp_setup call lsp#register_server({
+"         \ 'name': 'solargraph',
+"         \ 'cmd': {server_info->[&shell, &shellcmdflag, 'solargraph stdio']},
+"         \ 'initialization_options': {"diagnostics": "true"},
+"         \ 'whitelist': ['ruby'],
+"         \ })
+" endif
+" " ruby END
 
-" python
-if executable('pyls')
-    au User lsp_setup call lsp#register_server({
-        \ 'name': 'pyls',
-        \ 'cmd': {server_info->['pyls']},
-        \ 'root_uri':{server_info->lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_file_directory(lsp#utils#get_buffer_path(), 'Pipfile'))},
-        \ 'whitelist': ['python'],
-        \ })
-endif
+" " python
+" if executable('pyls')
+"     au User lsp_setup call lsp#register_server({
+"         \ 'name': 'pyls',
+"         \ 'cmd': {server_info->['pyls']},
+"         \ 'root_uri':{server_info->lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_file_directory(lsp#utils#get_buffer_path(), 'Pipfile'))},
+"         \ 'whitelist': ['python'],
+"         \ })
+" endif
 
-" bash-lang
-if executable('bash-language-server')
-    au User lsp_setup call lsp#register_server({
-        \ 'name': 'bash-language-server',
-        \ 'cmd': {server_info->['bash-language-server', 'start']},
-        \ 'whitelist': ['sh'],
-        \ })
-endif
+" " bash-lang
+" if executable('bash-language-server')
+"     au User lsp_setup call lsp#register_server({
+"         \ 'name': 'bash-language-server',
+"         \ 'cmd': {server_info->['bash-language-server', 'start']},
+"         \ 'whitelist': ['sh'],
+"         \ })
+" endif
 
-" rust
-if executable('rls')
-    au User lsp_setup call lsp#register_server({
-        \ 'name': 'rls',
-        \ 'cmd': {server_info->['rustup', 'run', 'stable', 'rls']},
-        \ 'whitelist': ['rust'],
-        \ })
-endif
+" " rust
+" if executable('rls')
+"     au User lsp_setup call lsp#register_server({
+"         \ 'name': 'rls',
+"         \ 'cmd': {server_info->['rustup', 'run', 'stable', 'rls']},
+"         \ 'whitelist': ['rust'],
+"         \ })
+" endif
 
 " LSP用にマッピング
 "   nnoremap <buffer> <C-]> :<C-u>LspDefinition<CR>
@@ -234,10 +360,9 @@ endif
 
 " autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
 
-" ======================================== prabirshrestha END ========================================
+" prabirshrestha END }}}
 
-
-" ======================================== deoplete ========================================
+" deoplete {{{
 
 " if has('nvim')
 "   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
@@ -247,7 +372,8 @@ endif
 "   Plug 'roxma/vim-hug-neovim-rpc'
 " endif
 " let g:deoplete#enable_at_startup = 1
+" let g:deoplete#auto_completion_start_length = 1
 
-" ======================================== deoplete END ========================================
+" deoplete END }}}
 
 call plug#end()
