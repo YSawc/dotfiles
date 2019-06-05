@@ -8,7 +8,7 @@ Plug 'maximbaz/lightline-ale'
 " 行末の半角スペースを可視化
 Plug 'bronson/vim-trailing-whitespace'
 
-" fzf for vim
+" fzf for vim {{{
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 " fzfでファイルを検索する
@@ -24,8 +24,9 @@ command! -bang -nargs=? -complete=dir Files
 nnoremap <Space><C-h> :HFiles<CR>
 command! -bang -nargs=? -complete=dir HFiles
   \ call fzf#vim#files(<q-args>, {'source': 'ag --hidden --ignore .git -g ""'}, <bang>0)
+" }}}
 
-" nerdTree
+" nerdTree {{{
 
 Plug 'scrooloose/nerdtree'
 " nerdtreeを別タブで同期させる
@@ -45,7 +46,7 @@ let g:NerdCommenter_do_mapping = 0
 " let g:NERDCreateDefaultMappings = 0
 nnoremap <Space>// <Plug>NERDcommenterToggle
 
-" nerdTree END
+" nerdTree END }}}
 
 " cursorWord
 let g:loaded_matchparen = 1
@@ -139,6 +140,8 @@ Plug 'tyru/open-browser.vim'
 " vimrc.LSP_plugins_settingの読み込みに続く為、plug#endはコメントアウトしておく
 " call plug#end()
 
+" translate.vim
+Plug 'skanehira/translate.vim'
 
 " 対応する括弧を自動補完するプラグイン
 Plug 'cohama/lexima.vim'
