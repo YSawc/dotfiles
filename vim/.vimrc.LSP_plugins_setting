@@ -376,4 +376,9 @@ let g:ale_keep_list_window_open = 1
 
 " deoplete END }}}
 
+" neosnippet {{{
+Plug 'Shougo/neosnippet'
+Plug 'Shougo/neosnippet-snippets'
+" neosnippet }}}
+
 call plug#end()
