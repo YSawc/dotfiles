@@ -1,9 +1,13 @@
 " スワップファイルを作成しない
 set noswapfile
 
+" コマンドライン補完設定 {{{
+set wildmenu
+set wildmode=longest:full,full
+" コマンドライン補完設定 }}}
+
 " モードラインを有効にする {{{
 set modeline
-
 " 3行目までをモードラインとして検索する
 set modelines=3
 " }}}
@@ -13,7 +17,6 @@ autocmd vimenter * NERDTree
 
 "左右のカーソル移動で行間移動可能にする。
 set whichwrap=h,l,b,s,<,>,[,]
-
 
 " vimを立ち上げたときに、自動的にvim-indent-guidesをオンにする vim-indent-guides
 let g:indent_guides_enable_on_vim_startup = 1
