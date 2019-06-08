@@ -1,6 +1,6 @@
 " コマンドライン補完が強力になる
 set wildmenu
-" set wildmenu wildmode=list:full
+set wildmode=longest:full,full
 
 " 透明度の変更
 " set transparency=20
