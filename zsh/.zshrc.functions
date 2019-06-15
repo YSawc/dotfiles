@@ -1,41 +1,30 @@
-# ------
-# source ~/.zshrc
-# ------
+# source zsh {{{
 _zrc(){
 	source ~/.zshrc
 }
-# ------
+# }}}
 
-
-# ------
-# source ~/.vimrc
-# ------
+# source ~/.vimrc {{{
 _vim(){
 	source ~/.vimrc
 }
-# ------
+# }}}
 
-# --------------------------------------
-# Google search from terminal
-# --------------------------------------
-google(){
-    if [ $(echo $1 | egrep "^-[cfs]$") ]; then
-        local opt="$1"
-        shift
-    fi
-    local url="https://www.google.co.jp/search?q=${*// /+}"
-    local app="/Applications"
-    local g="${app}/Google Chrome.app"
-    local f="${app}/Firefox.app"
-    local s="${app}/Safari.app"
-    case ${opt} in
-        "-g")   open "${url}" -a "$g";;
-        "-f")   open "${url}" -a "$f";;
-        "-s")   open "${url}" -a "$s";;
-        *)      open "${url}";;
-    esac
+# git checkout with fzf {{{
+gco_fzf() {
+  local branches branch
+  branches=$(git branch -vv) &&
+  branch=$(echo "$branches" | fzf +m) &&
+  git checkout $(echo "$branch" | awk '{print $1}' | sed "s/.* //")
 }
+# }}}
 
-chrome(){ google; }
-
-# chrome end ---
+# git checkout with fzf include remote {{{
+gco_fzf_remote_with() {
+  local branches branch
+  branches=$(git branch --all | grep -v HEAD) &&
+  branch=$(echo "$branches" |
+           fzf-tmux -d $(( 2 + $(wc -l <<< "$branches") )) +m) &&
+  git checkout $(echo "$branch" | sed "s/.* //" | sed "s#remotes/[^/]*/##")
+}
+# }}}
