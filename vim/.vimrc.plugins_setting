@@ -137,3 +137,6 @@ Plug 'jceb/vim-orgmode'
 
 " 対応する括弧を自動補完するプラグイン
 Plug 'cohama/lexima.vim'
+
+" テキストオブジェクト編集拡張プラグイン
+Plug 'tpope/vim-surround'
