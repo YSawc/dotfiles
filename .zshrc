@@ -1,6 +1,5 @@
 # 配列形式で変数宣言
 ZSH_ARRAY=(
-						# .zprofile
 						.zshrc.plugins_setting
 						.zshrc.auto_attach
 						.zshrc.basic
