@@ -7,8 +7,7 @@ ZSH_ARRAY=(
 						.zshrc.alias
 						.zshrc.apperance
 						.zshrc.functions
-            .zshrc.slack
-            Ignore/.zshrc.slac
+            Ignore/.zshrc.slack
 					)
 
 for zsh in "${ZSH_ARRAY[@]}"
