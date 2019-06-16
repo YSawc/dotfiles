@@ -18,18 +18,18 @@ if has('vim_starting')
 	let &t_SR .= "\e[4 q"
 endif
 
-
 " 分割ラインのカラー変更
 " highlight VertSplit gui=reverse guifg=bg
 
-
 " エディタウィンドウの末尾から2行目にステータスラインを常時表示させる
 set laststatus=2
-
+set list
 " Tab系
 " 不可視文字を可視化(タブが「▸-」と表示される)
-set list listchars=tab:\▸\-
-set expandtab
+" set listchars=tab:\▸\-
+set listchars=tab:\¦\ 
+hi SpecialKey guifg=#333333
+" set expandtab
 " タブ文字の表示幅
 set tabstop=2
 " Vimが挿入するインデントの幅
