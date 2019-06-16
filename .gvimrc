@@ -22,4 +22,4 @@ set wildmode=longest:full,full
 
 " set fillchars+=vert:\
 
-source ~/.vimrc
+" source ~/.vimrc
