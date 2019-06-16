@@ -8,5 +8,5 @@ au FileType * setlocal formatoptions-=ro
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 " ターミナルを画面下部に表示
-set splitbelow
-set termwinsize=14x0
+" set splitbelow
+" set termwinsize=14x0
