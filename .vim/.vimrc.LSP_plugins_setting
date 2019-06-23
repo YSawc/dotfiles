@@ -202,14 +202,14 @@ let g:ale_keep_list_window_open = 1
 
 " prabirshrestha {{{
 
-" Plug 'prabirshrestha/async.vim'
-" Plug 'prabirshrestha/vim-lsp'
-" Plug 'prabirshrestha/asyncomplete.vim'
-" Plug 'prabirshrestha/asyncomplete-lsp.vim'
-" Plug 'prabirshrestha/asyncomplete-neosnippet.vim'
+Plug 'prabirshrestha/async.vim'
+Plug 'prabirshrestha/vim-lsp'
+Plug 'prabirshrestha/asyncomplete.vim'
+Plug 'prabirshrestha/asyncomplete-lsp.vim'
+Plug 'prabirshrestha/asyncomplete-neosnippet.vim'
 
 " 非同期補完設定
-" let g:lsp_async_completion = 1
+let g:lsp_async_completion = 1
 
 " エラー時、ファイルに出力
 " let g:lsp_log_verbose = 1
@@ -313,9 +313,9 @@ let g:ale_keep_list_window_open = 1
 "         \ 'whitelist': ['ruby'],
 "         \ })
 " endif
-" " ruby END
+" ruby END
 
-" " python
+" python
 " if executable('pyls')
 "     au User lsp_setup call lsp#register_server({
 "         \ 'name': 'pyls',
@@ -325,7 +325,7 @@ let g:ale_keep_list_window_open = 1
 "         \ })
 " endif
 
-" " bash-lang
+" bash-lang
 " if executable('bash-language-server')
 "     au User lsp_setup call lsp#register_server({
 "         \ 'name': 'bash-language-server',
@@ -364,14 +364,14 @@ let g:ale_keep_list_window_open = 1
 
 " deoplete {{{
 
-if has('nvim')
-  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-else
-  Plug 'Shougo/deoplete.nvim'
-  Plug 'roxma/nvim-yarp'
-  Plug 'roxma/vim-hug-neovim-rpc'
-endif
-let g:deoplete#enable_at_startup = 1
+" if has('nvim')
+"   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+" else
+"   Plug 'Shougo/deoplete.nvim'
+"   Plug 'roxma/nvim-yarp'
+"   Plug 'roxma/vim-hug-neovim-rpc'
+" endif
+" let g:deoplete#enable_at_startup = 1
 " let g:deoplete#auto_completion_start_length = 1
 
 " deoplete END }}}

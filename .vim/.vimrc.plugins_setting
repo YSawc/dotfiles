@@ -140,3 +140,11 @@ Plug 'cohama/lexima.vim'
 
 " テキストオブジェクト編集拡張プラグイン
 Plug 'tpope/vim-surround'
+
+" session切り替え方法を追加するプラグイン
+Plug 'skanehira/vsession'
+
+" mattn_webapi
+Plug 'mattn/webapi-vim'
+" gist_vim
+Plug 'mattn/gist-vim'

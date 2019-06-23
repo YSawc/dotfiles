@@ -1,53 +1,53 @@
 " プラグイン設定
-source ~/dotfiles/vim/.vimrc.plugins_setting
+source ~/dotfiles/.vim/.vimrc.plugins_setting
 
 " プラグイン LSP
-source ~/dotfiles/vim/.vimrc.LSP_plugins_setting
+source ~/dotfiles/.vim/.vimrc.LSP_plugins_setting
 
 " 基本設定
-source ~/dotfiles/vim/.vimrc.basic
+source ~/dotfiles/.vim/.vimrc.basic
 
 " StatusLine設定
-source ~/dotfiles/vim/.vimrc.statusline
+source ~/dotfiles/.vim/.vimrc.statusline
 
 " grep設定
-source ~/dotfiles/vim/.vimrc.grep
+source ~/dotfiles/.vim/.vimrc.grep
 
 " インデント設定
-source ~/dotfiles/vim/.vimrc.indent
+source ~/dotfiles/.vim/.vimrc.indent
 
 " 表示関連
-source ~/dotfiles/vim/.vimrc.apperance
+source ~/dotfiles/.vim/.vimrc.apperance
 
 " 補完関連
-source ~/dotfiles/vim/.vimrc.completion
+source ~/dotfiles/.vim/.vimrc.completion
 
 " Tags関連
-source ~/dotfiles/vim/.vimrc.tags
+source ~/dotfiles/.vim/.vimrc.tags
 
 " 検索関連
-source ~/dotfiles/vim/.vimrc.search
+source ~/dotfiles/.vim/.vimrc.search
 
 " 移動関連
-source ~/dotfiles/vim/.vimrc.moving
+source ~/dotfiles/.vim/.vimrc.moving
 
 " ウィンドウ関連
-source ~/dotfiles/vim/.vimrc.window
+source ~/dotfiles/.vim/.vimrc.window
 
 " color関連
-source ~/dotfiles/vim/.vimrc.colors
+source ~/dotfiles/.vim/.vimrc.colors
 
 " 編集関連
-source ~/dotfiles/vim/.vimrc.editing
+source ~/dotfiles/.vim/.vimrc.editing
 
 " エンコーディング関連
-source ~/dotfiles/vim/.vimrc.encoding
+source ~/dotfiles/.vim/.vimrc.encoding
 
 " その他
-source ~/dotfiles/vim/.vimrc.misc
+source ~/dotfiles/.vim/.vimrc.misc
 
 " カーソルラインの設定
-source ~/dotfiles/vim/.vimrc.cursorline
+source ~/dotfiles/.vim/.vimrc.cursorline
 
 
 " Vimでgitのログをきれいに表示する - derisの日記
