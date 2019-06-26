@@ -1,6 +1,9 @@
 " スワップファイルを作成しない
 set noswapfile
 
+" 文字コード指定
+set encoding=UTF-8
+
 " コマンドライン補完設定 {{{
 set wildmenu
 set wildmode=longest:full,full
