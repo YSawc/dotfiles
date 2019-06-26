@@ -4,8 +4,9 @@ set clipboard+=unnamed
 " 改行時のコメントを自動で付けない設定
 au FileType * setlocal formatoptions-=ro
 
+" TODO 要らなければ削除
 " nerdTreeが最後のバッファの場合、自動で削除する
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+" autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 " ターミナルを画面下部に表示
 " set splitbelow
