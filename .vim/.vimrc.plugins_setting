@@ -127,7 +127,7 @@ Plug 'tyru/open-browser.vim'
 Plug 'skanehira/translate.vim'
 
 " lintの現在行の物をpopup表示するプラグイン
-Plug 'tyru/qfpopup.vim'
+" Plug 'tyru/qfpopup.vim'
 
 " カーソルの構造体をポップアップ表示する
 " Plug 'rbtnn/vim-popup_signature'
