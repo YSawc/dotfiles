@@ -1,8 +1,8 @@
 # rbenvパス
 
 # 日本語設定
-# export LANG=ja_JP.UTF-8
-export LANGUAGE=C
+export LANG=ja_JP.UTF-8
+# export LANGUAGE=C
 
 export PATH="/bin:$PATH"
 
