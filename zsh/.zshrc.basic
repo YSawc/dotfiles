@@ -22,5 +22,10 @@ zstyle ':completion:*:default' menu select=1
 #補完リストに8ビットコードを使う
 setopt PRINT_EIGHT_BIT
 
+# stack(haskell) completion setting
+
+# opam rlwrap ocaml
+alias ocaml="rlwrap ocaml"
+
 # homebrewで必要
 export PATH="/usr/local/sbin:$PATH"
