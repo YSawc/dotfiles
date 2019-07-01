@@ -32,7 +32,9 @@ export LDFLAGS="-L/usr/local/opt/llvm/lib"
 export CPPFLAGS="-I/usr/local/opt/llvm/include"
 
 # stack path
-PATH=$PATH:/Users/y-s/.local/bin
-export PATH
+export PATH=~/.local/bin:$PATH
 
 # source ~/.zshrc
+
+# opam configuration
+test -r /Users/y-s/.opam/opam-init/init.zsh && . /Users/y-s/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
