@@ -91,10 +91,6 @@ let g:unite_enable_smart_case = 1
 
 " --- unite--- }}}
 
-" 分割画面を寄せるキーマップ "TODO: プラグインsubmodeを導入し、適用する
-" nnoremap s> :<C-w>>
-" nnoremap s< :<C-w><
-
 " 行を移動
 nnoremap <C-Up> "zdd<Up>"zP
 nnoremap <C-Down> "zdd"zp
