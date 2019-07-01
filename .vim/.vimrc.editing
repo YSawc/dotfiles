@@ -102,23 +102,18 @@ nnoremap <C-Down> "zdd"zp
 vnoremap <C-Up> "zx<Up>"zP`[V`]
 vnoremap <C-Down> "zx"zp`[V`]
 
-
 " カーソル下の単語をハイライトする
 nnoremap <silent> <Space><Space> "zyiw:let @/ = '\<' . @z . '\>'<CR>:set hlsearch<CR>
 
-
 " ハイライト消去と再描写
 nnoremap <silent> <C-l> :<C-u>nohlsearch<CR><C-l>
-
 
 " バッファ移動
 nnoremap <silent> <C-j> :bprev<CR>
 nnoremap <silent> <C-k> :bnext<CR>
 
-
 " tagsジャンプの時に複数ある時は一覧表示
 " nnoremap <C-]> g<C-]>
-
 
 " vimgrepによる移動のキーマップ
 nnoremap [q :cprevious<CR>   " 前へ
@@ -126,12 +121,10 @@ nnoremap ]q :cnext<CR>       " 次へ
 nnoremap [Q :<C-u>cfirst<CR> " 最初へ
 nnoremap ]Q :<C-u>clast<CR>  " 最後へ
 
-
 " QuickFix系の設定
 autocmd QuickFixCmdPost vimgrep cwindow
 " 下記のとおりにすると:grepや:Ggrepでも自動的にquickfix-windowを開くようになる。
 autocmd QuickFixCmdPost *grep* cwindow
-
 
 " カーソル位置の単語をgrep検索
 " nnoremap <silent> ,cg :<C-u>Unite grep:. -buffer-name=search-buffer<CR><C-R><C-W>
@@ -142,7 +135,6 @@ autocmd QuickFixCmdPost *grep* cwindow
 nnoremap <Space>c :<C-u>Ag --hidden <cword><CR>
 nnoremap <Space>r :Rg<Space>
 " nnoremap ,c :Rg .shellescape(<cword>)
-
 
 " easymotion keymap {{{
 " デフォルトのキーマップはオフに
@@ -163,8 +155,7 @@ let g:EasyMotion_startofline = 0
 
 " easymotionのキーマップ END }}}
 
-
-" vim slash(/) マッチ数の出力
+" vim slash(/) マッチ数の出力 {{{
 nnoremap <expr> / _(":%s/<Cursor>/&/gn")
 
 function! s:move_cursor_pos_mapping(str, ...)
@@ -176,4 +167,4 @@ endfunction
 function! _(str)
     return s:move_cursor_pos_mapping(a:str, "\<Left>")
 endfunction
-" vim slash(/) マッチ数の出力 END
+" vim slash(/) マッチ数の出力 END }}}
