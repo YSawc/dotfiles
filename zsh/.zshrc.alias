@@ -2,20 +2,15 @@
 # alias brew="env PATH=${PATH/\/usr\/local\/include\.pyenv\/shims:?/} brew"
 
 
-# ------
-# tmux ペインエイリアス
-# ------
+# tmux ペインエイリアス {{{
 
 # if [ $SHLVL = 1 ]; then
 #     alias tmuxg="tmux attach || tmux new-session \; source-file ~/.tmux/new-session"
 # fi
 
-# ------
+# }}}
 
-
-# --------------------------------------------------
-#  git エイリアス
-# --------------------------------------------------
+#  git エイリアス {{{
 
 alias g="git"
 compdef g=git
@@ -46,13 +41,9 @@ alias gr='git reset'
 # google検索
 alias goo='open https://www.google.co.jp/search\?q\=`pbpaste`'
 
-# --------------------------------------------------
+# }}}
 
-
-
-# --------------------------------------------------
-#  c言語コンパイルと実行のエイリアス
-# --------------------------------------------------
+#  c言語コンパイルと実行のエイリアス {{{
 
 function with_echo() {
   echo $@
@@ -87,8 +78,7 @@ function cpp_run() {
 }
 
 alias -s cpp=cpp_run
-# --------------------------------------------------
-
+# }}}
 
 # lazygit呼び出しエイリアス
 alias lg='lazygit'
