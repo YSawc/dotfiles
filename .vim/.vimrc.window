@@ -2,7 +2,7 @@
 let i = 1
 while i <= 9
     " execute 'nnoremap <Space>' . i . ' :' . i . 'wincmd w<CR>'
-    execute 'nnoremap ' . i . ' :' . i . 'wincmd w<CR>'
+    execute 'nnoremap <Space>' . i . ' :' . i . 'wincmd w<CR>'
     let i = i + 1
 endwhile
 " ウィンドウ移動をナンバー入力でも可能にする }}}
