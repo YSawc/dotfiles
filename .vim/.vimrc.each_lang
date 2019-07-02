@@ -1,0 +1,4 @@
+autocmd BufRead,BufNewFile *.py setfiletype python
+autocmd BufRead,BufNewFile *.rb setfiletype ruby
+autocmd BufRead,BufNewFile *.vim setfiletype vim
+autocmd BufRead,BufNewFile *.go setfiletype go
