@@ -13,9 +13,6 @@ source ~/dotfiles/.vim/.vimrc.grep
 " 表示関連
 source ~/dotfiles/.vim/.vimrc.apperance
 
-" Tags関連
-source ~/dotfiles/.vim/.vimrc.tags
-
 " 検索関連
 source ~/dotfiles/.vim/.vimrc.search
 
