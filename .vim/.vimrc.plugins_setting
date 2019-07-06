@@ -1,5 +1,7 @@
 call plug#begin('~/.vim/plugged')
 
+" plug vpbuffer
+Plug 'YSawc/vpbuffer'
 
 " Plug 'w0rp/ale'                 " Dependency: linter
 Plug 'itchyny/lightline.vim'    " Dependency: status line
@@ -155,3 +157,9 @@ Plug 'mattn/gist-vim'
 
 " sskk
 Plug 'tyru/eskk.vim'
+
+" weather
+Plug 'skanehira/weather.vim'
+
+" quickrun
+Plug 'thinca/vim-quickrun'
