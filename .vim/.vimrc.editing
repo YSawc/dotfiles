@@ -1,5 +1,8 @@
 let mapleader = ","
 
+" vpbuffer
+nnoremap <silent> <Space>lb :<C-u>LoadBuffer<CR>
+
 inoremap <silent> jk <ESC>
 inoremap <silent> kj <ESC>
 
