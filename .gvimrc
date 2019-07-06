@@ -9,8 +9,10 @@ set wildmode=longest:full,full
 " カラースキーム
 " colorscheme koehler
 " colorscheme molokai
-" ダーク系のカラースキームを使う
-" set background=dark
+" ダーク系のカラースキーム設定
+set background=dark
+" ホワイト系のカラースキーム設定
+" set background=light
 
 
 " let g:gruvbox_vert_split='bg1'
