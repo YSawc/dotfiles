@@ -1,4 +1,16 @@
-autocmd BufRead,BufNewFile *.py setfiletype python
-autocmd BufRead,BufNewFile *.rb setfiletype ruby
-autocmd BufRead,BufNewFile *.vim setfiletype vim
-autocmd BufRead,BufNewFile *.go setfiletype go
+set tabstop=4
+set shiftwidth=4
+set softtabstop=4
+" set expandtab
+set autoindent
+set smartindent
+
+augroup fileTypeIndent
+	autocmd!
+	" autocmd BufRead,BufNewFile *.py
+	autocmd BufRead,BufNewFile *.rb setlocal tabstop=2 shiftwidth=2 softtabstop=2
+	" autocmd BufRead,BufNewFile *.vim setlocal tabstop=4 shiftwidth=4 softtabstop=4
+	autocmd BufRead,BufNewFile *.go setlocal tabstop=2 shiftwidth=2 softtabstop=2
+	autocmd BufRead,BufNewFile *.md setlocal tabstop=2 shiftwidth=2 softtabstop=2
+	autocmd BufNewFile,BufRead *.html setlocal tabstop=2 softtabstop=2 shiftwidth=2
+augroup END
