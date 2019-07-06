@@ -9,6 +9,7 @@ set wildmode=longest:full,full
 " カラースキーム
 " colorscheme koehler
 " colorscheme molokai
+colorscheme gruvbox
 " ダーク系のカラースキーム設定
 set background=dark
 " ホワイト系のカラースキーム設定
