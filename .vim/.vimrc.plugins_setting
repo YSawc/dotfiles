@@ -105,10 +105,10 @@ Plug 'jacoborus/tender.vim'
 " agのvim用
 Plug 'rking/ag.vim'
 
-" vimを開いてる時にtagsを追加する
-Plug 'szw/vim-tags'
+" vimを開いてる時にtagsを追加する TODO: 使わなそうなら削除 190707
+" Plug 'szw/vim-tags'
 " vim-tags追加コマンド: :TagsGenerate 編集中に定義の更新ができる
-au BufNewFile,BufRead *.php let g:vim_tags_project_tags_command = "ctags --languages=php -f ~/php.tags `pwd` 2>/dev/null &"
+" au BufNewFile,BufRead *.php let g:vim_tags_project_tags_command = "ctags --languages=php -f ~/php.tags `pwd` 2>/dev/null &"
 
 " 目印行を常に表示する
 if exists('&signcolumn')  " Vim 7.4.2201
