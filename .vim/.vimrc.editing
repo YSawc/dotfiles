@@ -101,6 +101,10 @@ nnoremap <C-Down> "zdd"zp
 vnoremap <C-Up> "zx<Up>"zP`[V`]
 vnoremap <C-Down> "zx"zp`[V`]
 
+" インサートモードでカーソル移動
+inoremap <C-f> <Right>
+inoremap <C-b> <Left>
+
 " カーソル下の単語をハイライトする
 nnoremap <silent> <Space><Space> "zyiw:let @/ = '\<' . @z . '\>'<CR>:set hlsearch<CR>
 
