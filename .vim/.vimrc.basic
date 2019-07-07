@@ -24,9 +24,6 @@ set whichwrap=h,l,b,s,<,>,[,]
 " vimを立ち上げたときに、自動的にvim-indent-guidesをオンにする vim-indent-guides
 let g:indent_guides_enable_on_vim_startup = 1
 
-" タブの代わりに空白を使う
-" set expandtab
-
 " バックスペースでの削除をいつでも有効にする
 set backspace=indent,eol,start
 

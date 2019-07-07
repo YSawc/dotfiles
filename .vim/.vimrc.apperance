@@ -7,7 +7,7 @@ set cursorline
 " 現在の行を強調表示（縦）
 " set cursorcolumn
 " cursorlineの色をクリア
-hi clear CursorLi
+" hi clear CursorLi
 
 " insertモードの時にカーソルの見た目を縦棒に変更する
 if has('vim_starting')
@@ -47,20 +47,7 @@ hi SpecialKey guifg=#333333
 " hi VertSplit ctermfg=bg
 " highlight VertSplit gui=reverse guifg=Red
 
-
-" vim透明化
-" autocmdという機能を利用していて、カラースキームが読み込まれた際に背景なしの設定に上書きすると行った処理を行なっています。
-" https://sy-base.com/myrobotics/vim/vim-transparent/
-" augroup TransparentBG
-" 	autocmd!
-"	autocmd Colorscheme * highlight Normal ctermbg=none
-"	autocmd Colorscheme * highlight NonText ctermbg=none
-"autocmd	autocmd Colorscheme * highlight LineNr ctermbg=none
-"	autocmd Colorscheme * highlight Folded ctermbg=none
-"	autocmd Colorscheme * highlight EndOfBuffer ctermbg=none
-" augroup END
-
-
 " airlineの設定
 " タブバーをかっこよく
-let g:airline#extensions#tabline#enabled = 1
+
+" let g:airline#extensions#tabline#enabled = 1
