@@ -1,3 +1,11 @@
+snippet     package_init
+options     head
+    package ${1:#:base_type}
+
+    func $1() {
+      $0
+    }
+
 snippet     iferr
 alias       ife
 options     head
