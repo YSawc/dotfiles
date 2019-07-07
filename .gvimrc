@@ -11,7 +11,7 @@ set wildmode=longest:full,full
 " colorscheme molokai
 colorscheme gruvbox
 " ダーク系のカラースキーム設定
-set background=dark
+" set background=dark
 " ホワイト系のカラースキーム設定
 " set background=light
 

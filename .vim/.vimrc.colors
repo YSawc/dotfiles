@@ -5,11 +5,18 @@ hi CursorLineNr ctermbg=4 ctermfg=0
 " hi clear CursorLine
 " 行番号の色設定 }}}
 
-colorscheme molokai
+ " カラースキーム
+" colorscheme koehler
+" colorscheme molokai
+colorscheme gruvbox
+" ダーク系のカラースキーム設定
+" set background=dark
+" ホワイト系のカラースキーム設定
+" set background=light
 
 " 行番号の色を設定する
 " autocmd ColorScheme * highlight LineNr ctermfg=239
- highlight LineNr ctermfg=239
+ " highlight LineNr ctermfg=239
 
 " カラープラグイン tenderplus {{{
 " if (has("termguicolors"))
