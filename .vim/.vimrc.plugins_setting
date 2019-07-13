@@ -21,10 +21,6 @@ command! FZFFileList call fzf#run({
 			\ 'sink': 'e',
 			\ 'down': '30%',
 			\ })
-
-command! -bang -nargs=? -complete=dir Files
-  \ call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
-
 " TODO: call with row hight and back back in the buffer
 nnoremap <Space><C-b> :FZFFileListInBuffer<CR>
 command! FZFFileListInBuffer call fzf#run({
@@ -36,6 +32,9 @@ command! FZFFileListInBuffer call fzf#run({
 nnoremap <Space><C-h> :HFiles<CR>
 command! -bang -nargs=? -complete=dir HFiles
   \ call fzf#vim#files(<q-args>, {'source': 'ag --hidden --ignore .git -g ""'}, <bang>0)
+
+command! -bang -nargs=? -complete=dir Files
+  \ call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
 " }}}
 
 " nerdTree {{{
