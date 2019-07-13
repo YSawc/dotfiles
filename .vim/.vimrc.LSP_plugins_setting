@@ -172,31 +172,31 @@ let g:go_term_mode = 'split'
 
 " ale {{{
 
-Plug 'w0rp/ale'
-let g:ale_sign_column_always = 1
-" シンボルの変更
-let g:ale_sign_error = '!!'
-let g:ale_sign_warning = '=='
+" Plug 'w0rp/ale'
+" let g:ale_sign_column_always = 1
+" " シンボルの変更
+" let g:ale_sign_error = '!!'
+" let g:ale_sign_warning = '=='
 
-" highlight clear ALEErrorSign
-" highlight clear ALEWarningSignk
-" let g:ale_sign_error = "◉"
-" g:ale_sign_warning = "◉"
-" highlight ALEErrorSign ctermfg=9 ctermbg=15 guifg=#C30500 guibg=#000000
-" highlight ALEWarningSign ctermfg=11 ctermbg=15 guifg=#ED6237 guibg=#000000
+" " highlight clear ALEErrorSign
+" " highlight clear ALEWarningSignk
+" " let g:ale_sign_error = "◉"
+" " g:ale_sign_warning = "◉"
+" " highlight ALEErrorSign ctermfg=9 ctermbg=15 guifg=#C30500 guibg=#000000
+" " highlight ALEWarningSign ctermfg=11 ctermbg=15 guifg=#ED6237 guibg=#000000
 
-" 保存時にだけチェック
-let g:ale_lint_on_save = 1
-let g:ale_lint_on_text_changed = 0
+" " 保存時にだけチェック
+" let g:ale_lint_on_save = 1
+" let g:ale_lint_on_text_changed = 0
 
-" ファイルオープン時にチェックしたくない場合
-let g:ale_lint_on_enter = 1
-" quickfixで開く
-let g:ale_set_loclist = 0
-let g:ale_set_quickfix = 1
-let g:ale_open_list = 1
-" エラーと警告がなくなっても開いたままにする
-let g:ale_keep_list_window_open = 1
+" " ファイルオープン時にチェックしたくない場合
+" let g:ale_lint_on_enter = 1
+" " quickfixで開く
+" let g:ale_set_loclist = 0
+" let g:ale_set_quickfix = 1
+" let g:ale_open_list = 1
+" " エラーと警告がなくなっても開いたままにする
+" let g:ale_keep_list_window_open = 1
 
 " ale END }}}
 
