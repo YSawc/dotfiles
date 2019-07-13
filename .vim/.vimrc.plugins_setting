@@ -13,19 +13,19 @@ Plug 'bronson/vim-trailing-whitespace'
 " fzf for vim {{{
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
-" fzfでファイルを検索する
-nnoremap <Space><C-p> :FZFFileList<CR>
-command! FZFFileList call fzf#run({
-            \ 'source': 'find . -type d -name .git -prune -o ! -name .DS_Store',
-            \ 'sink': 'e'})
+" " fzfでファイルを検索する
+" nnoremap <Space><C-p> :FZFFileList<CR>
+" command! FZFFileList call fzf#run({
+"             \ 'source': 'find . -type d -name .git -prune -o ! -name .DS_Store',
+"             \ 'sink': 'e'})
 
-command! -bang -nargs=? -complete=dir Files
-  \ call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
+" command! -bang -nargs=? -complete=dir Files
+"   \ call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
 
 
-nnoremap <Space><C-h> :HFiles<CR>
-command! -bang -nargs=? -complete=dir HFiles
-  \ call fzf#vim#files(<q-args>, {'source': 'ag --hidden --ignore .git -g ""'}, <bang>0)
+" nnoremap <Space><C-h> :HFiles<CR>
+" command! -bang -nargs=? -complete=dir HFiles
+"   \ call fzf#vim#files(<q-args>, {'source': 'ag --hidden --ignore .git -g ""'}, <bang>0)
 " }}}
 
 " nerdTree {{{
@@ -75,7 +75,8 @@ let g:vimfiler_enable_auto_cd = 1
 " VimFilerをwhite_spaceの対象から外す
 " let g:extra_whitespace_ignored_filetypes = ['vimfiler']
 
-" Plug 'ctrlpvim/ctrlp.vim'
+Plug 'ctrlpvim/ctrlp.vim'
+let g:ctrlp_show_hidden=1
 
 " コメントON/OFFを手軽に実行
 " Plug 'tomtom/tcomment_vim'
