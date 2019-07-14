@@ -82,3 +82,6 @@ alias -s cpp=cpp_run
 
 # lazygit呼び出しエイリアス
 alias lg='lazygit'
+
+# pbcopy && pbpaste
+alias _pb_cp='pbcopy && pbpaste'
