@@ -20,7 +20,7 @@ zstyle ':completion:*' list-colors di=34 fi=0
 zstyle ':completion:*:default' menu select=1
 
 #補完リストに8ビットコードを使う
-setopt PRINT_EIGHT_BIT
+# setopt PRINT_EIGHT_BIT
 
 # stack(haskell) completion setting
 
