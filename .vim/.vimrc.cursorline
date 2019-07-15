@@ -1,4 +1,3 @@
-
 " カーソルラインの表示に制限をかけ、軽量化する機構 {{{
 augroup vimrc-auto-cursorline
   autocmd!
@@ -29,4 +28,4 @@ augroup vimrc-auto-cursorline
     endif
   endfunction
 augroup END
-" カーソルラインの軽量化 }}}
+" }}}
