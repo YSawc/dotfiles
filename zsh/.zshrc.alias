@@ -78,6 +78,13 @@ function cpp_run() {
 }
 
 alias -s cpp=cpp_run
+
+alias clang-omp='/usr/local/opt/llvm/bin/clang -fopenmp -L/usr/local/opt/llvm/lib -Wl,-rpath,/usr/local/opt/llvm/lib'
+
+# }}}
+
+# cpp alias {{{
+alias clang-omp++='/usr/local/opt/llvm/bin/clang++ -fopenmp -L/usr/local/opt/llvm/lib -Wl,-rpath,/usr/local/opt/llvm/lib'
 # }}}
 
 # lazygit呼び出しエイリアス
@@ -85,3 +92,5 @@ alias lg='lazygit'
 
 # pbcopy && pbpaste
 alias _pb_cp='pbcopy && pbpaste'
+
+
