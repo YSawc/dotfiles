@@ -126,6 +126,7 @@ endif
 " winersizer.vim ウィンドウサイズを簡単に変更できる
 Plug 'simeji/winresizer'
 let g:winresizer_start_key = '<Space><C-T>'
+let g:winresizer_vert_resize = 5
 
 " markdownプラグイン
 Plug 'tpope/vim-markdown'
