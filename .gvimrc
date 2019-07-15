@@ -5,7 +5,6 @@ set wildmode=longest:full,full
 " 透明度の変更
 " set transparency=20
 
-
 " カラースキーム
 " colorscheme koehler
 " colorscheme molokai
