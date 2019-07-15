@@ -43,3 +43,5 @@ set foldmethod=marker
 " syntax: 構文強調により折畳を定義する
 " diff:   変更されていないテキストを折畳対象とする
 " marker: テキスト中の印で折畳を定義する
+
+set ttimeoutlen=10
