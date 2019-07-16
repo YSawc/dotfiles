@@ -50,6 +50,7 @@ nnoremap sr <C-w>r
 nnoremap s= <C-w>=
 nnoremap sw <C-w>w
 nnoremap <Tab> <C-w>w
+nnoremap <S-Tab> <C-w>W
 nnoremap s0 <C-w>t
 nnoremap sT <C-w>T
 nnoremap so <C-w>_<C-w>|
