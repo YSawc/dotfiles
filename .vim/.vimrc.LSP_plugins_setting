@@ -202,14 +202,14 @@ let g:go_term_mode = 'split'
 
 " prabirshrestha {{{
 
-Plug 'prabirshrestha/async.vim'
-Plug 'prabirshrestha/vim-lsp'
-Plug 'prabirshrestha/asyncomplete.vim'
-Plug 'prabirshrestha/asyncomplete-lsp.vim'
-Plug 'prabirshrestha/asyncomplete-neosnippet.vim'
+" Plug 'prabirshrestha/async.vim'
+" Plug 'prabirshrestha/vim-lsp'
+" Plug 'prabirshrestha/asyncomplete.vim'
+" Plug 'prabirshrestha/asyncomplete-lsp.vim'
+" Plug 'prabirshrestha/asyncomplete-neosnippet.vim'
 
 " 非同期補完設定
-let g:lsp_async_completion = 1
+" let g:lsp_async_completion = 1
 
 " エラー時、ファイルに出力
 " let g:lsp_log_verbose = 1
