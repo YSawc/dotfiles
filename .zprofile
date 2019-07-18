@@ -28,6 +28,9 @@ export PATH=$PATH:/Applications/XAMPP/xamppfiles/bin
 # llvm ( LSP c, cpp )
 export PATH="/usr/local/opt/llvm/bin:$PATH"
 
+# setting java path
+export JAVA_HOME=/Library/Java/Home
+
 export LDFLAGS="-L/usr/local/opt/llvm/lib"
 export CPPFLAGS="-I/usr/local/opt/llvm/include"
 
