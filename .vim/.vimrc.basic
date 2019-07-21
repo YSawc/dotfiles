@@ -45,3 +45,7 @@ set foldmethod=marker
 " marker: テキスト中の印で折畳を定義する
 
 set ttimeoutlen=10
+
+" synmaxcol setting
+" 'synmaxcol' 'smc'	number	(default 3000)
+set synmaxcol=200
