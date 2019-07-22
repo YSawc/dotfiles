@@ -3,6 +3,7 @@
 let g:mapleader = "\<Space>"
 " }}}
 
+
 " vpbuffer
 nnoremap <silent> <Space>lb :<C-u>LoadBuffer<CR>
 
@@ -16,6 +17,9 @@ nnoremap ; :
 nnoremap <Leader>w :w<CR>
 nnoremap <Leader>q :q!<CR>
 " }}}
+
+" numberとrelativenumberのトグル切り替え
+nnoremap <silent> <Leader>rn :set relativenumber!<CR>
 
 " 括弧を自動で閉じるように設定
 inoremap { {}<Left>
@@ -184,3 +188,7 @@ endfunction
 " 上下の空白に移動
 nnoremap <C-j> }
 nnoremap <C-k> {
+
+" vimrcを気軽に編集
+nnoremap <Leader>. :new ~/.vimrc<CR>
+nnoremap <Leader>s :source ~/.vimrc<CR>
