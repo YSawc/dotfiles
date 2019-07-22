@@ -32,6 +32,10 @@ set backspace=indent,eol,start
 "日本語を除外
 " set spelllang=en,cjk
 
+" cursor setting: always set cursor center {{{
+set scrolloff=100
+" }}}
+
 " mouseScroll on
 set mouse=a
 set ttymouse=xterm2
