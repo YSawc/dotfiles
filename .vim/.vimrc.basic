@@ -48,7 +48,7 @@ set ttimeoutlen=10
 
 " synmaxcol setting {{{
 " 'synmaxcol' 'smc'	number	(default 3000)
-set synmaxcol=200
+set synmaxcol=256
 " }}}
 
 " setting save session
