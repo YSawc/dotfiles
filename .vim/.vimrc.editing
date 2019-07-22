@@ -1,4 +1,7 @@
-let mapleader = ","
+" https://vim-jp.org/vimdoc-ja/map.html#mapleader
+" Leaderキーをスペースに設定 {{{
+let g:mapleader = "\<Space>"
+" }}}
 
 " vpbuffer
 nnoremap <silent> <Space>lb :<C-u>LoadBuffer<CR>
