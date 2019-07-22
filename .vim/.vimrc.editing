@@ -113,9 +113,8 @@ nnoremap <silent> <Space><Space> "zyiw:let @/ = '\<' . @z . '\>'<CR>:set hlsearc
 " ハイライト消去と再描写
 nnoremap <silent> <C-l> :<C-u>nohlsearch<CR><C-l>
 
-" バッファ移動
-nnoremap <silent> <C-j> :bprev<CR>
-nnoremap <silent> <C-k> :bnext<CR>
+
+nnoremap <Leader>bf :Buffers<CR>
 
 " tagsジャンプの時に複数ある時は一覧表示
 " nnoremap <C-]> g<C-]>
@@ -173,3 +172,7 @@ function! _(str)
     return s:move_cursor_pos_mapping(a:str, "\<Left>")
 endfunction
 " vim slash(/) マッチ数の出力 END }}}
+
+" 上下の空白に移動
+nnoremap <C-j> }
+nnoremap <C-k> {
