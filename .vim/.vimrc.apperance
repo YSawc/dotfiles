@@ -1,8 +1,8 @@
 " 見た目系
 
 " 行番号設定 {{{
-" set number
 set relativenumber
+set number
 " set nonumber
 " }}}
 
