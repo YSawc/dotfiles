@@ -46,6 +46,7 @@ set foldmethod=marker
 
 set ttimeoutlen=10
 
-" synmaxcol setting
+" synmaxcol setting {{{
 " 'synmaxcol' 'smc'	number	(default 3000)
 set synmaxcol=200
+" }}}
