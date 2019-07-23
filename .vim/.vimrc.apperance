@@ -31,18 +31,7 @@ set laststatus=2
 
 " setting list {{{
 set list
-" Tab系
-" 不可視文字を可視化(タブが「▸-」と表示される)
-" set listchars=tab:\▸\-
 set listchars+=tab:\¦\ ,trail:-,eol:↲
-" set listchars=eol:↲
-
-" hi SpecialKey guifg=#333333
-" set expandtab
-" タブ文字の表示幅
-" set tabstop=4
-" Vimが挿入するインデントの幅
-" set shiftwidth=4
 " }}}
 
 " 画面分割の見た目変更
