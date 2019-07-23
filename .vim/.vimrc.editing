@@ -20,6 +20,7 @@ nnoremap <Leader>q :q!<CR>
 
 " numberとrelativenumberのトグル切り替え
 nnoremap <silent> <Leader>rn :set relativenumber!<CR>
+nnoremap <silent> <Leader>run :set nonumber!<CR>
 
 " 括弧を自動で閉じるように設定
 inoremap { {}<Left>
@@ -34,8 +35,6 @@ noremap <expr> <C-y> (line('w0') <= 1         ? 'k' : "\<C-y>")
 noremap <expr> <C-e> (line('w$') >= line('$') ? 'j' : "\<C-e>")
 
 " neartreeのトグル
-" p> " プレフィックスキーの変更
-" p> " プレフィックスキーの変更
 nnoremap s; :<C-u>NERDTreeTabsToggle<CR>
 
 " VimFilerのトグル
