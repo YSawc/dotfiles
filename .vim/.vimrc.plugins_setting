@@ -170,3 +170,9 @@ Plug 'skanehira/weather.vim'
 
 " quickrun
 Plug 'thinca/vim-quickrun'
+
+" universal_ctags
+Plug 'majutsushi/tagbar'
+set fileformats=unix,dos,mac
+set fileencodings=utf-8,sjis
+nnoremap <silent> <Leader>t :TagbarToggle<CR>
