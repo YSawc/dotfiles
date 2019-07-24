@@ -191,3 +191,6 @@ nnoremap <C-k> {
 " vimrcを気軽に編集
 nnoremap <Leader>. :new ~/.vimrc<CR>
 nnoremap <Leader>s :source ~/.vimrc<CR>
+
+" universal_tags
+nnoremap <silent> <Leader>t :TagbarToggle<CR>
