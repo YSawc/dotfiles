@@ -165,9 +165,6 @@ Plug 'mattn/gist-vim'
 " sskk
 Plug 'tyru/eskk.vim'
 
-" weather
-Plug 'skanehira/weather.vim'
-
 " quickrun
 Plug 'thinca/vim-quickrun'
 
