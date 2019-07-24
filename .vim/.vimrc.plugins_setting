@@ -45,6 +45,8 @@ Plug 'jistr/vim-nerdtree-tabs'
 " デフォルトでツリーを表示させる
 " let g:nerdtree_tabs_open_on_console_startup=1
 " ホワイトリストを作成する
+" start up NERDTree
+" autocmd vimenter * NERDTree
 let g:extra_whitespace_ignored_filetypes = ['unite', 'vimfiler']
 " 変更箇所をNERDTreeで同期できる
 Plug 'Xuyuanp/nerdtree-git-plugin'
