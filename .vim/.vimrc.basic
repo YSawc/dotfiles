@@ -40,6 +40,7 @@ set scrolloff=100
 set mouse=a
 set ttymouse=xterm2
 
+" foftmethod setting {{{
 set foldmethod=marker
 " manual: 手動で折畳を定義する
 " indent: インデントの数を折畳のレベル(深さ)とする
@@ -47,6 +48,7 @@ set foldmethod=marker
 " syntax: 構文強調により折畳を定義する
 " diff:   変更されていないテキストを折畳対象とする
 " marker: テキスト中の印で折畳を定義する
+" }}}
 
 set ttimeoutlen=10
 
