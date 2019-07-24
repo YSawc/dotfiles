@@ -15,8 +15,12 @@ set modeline
 set modelines=3
 " }}}
 
+" hilight in visual mode {{{
+hi Visual cterm=reverse ctermbg=NONE
+" }}}
+
 " selector of short form {{{
-set virtualedit+=bloc
+set virtualedit+=block
 " }}}
 
 " start up NERDTree
