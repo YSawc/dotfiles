@@ -92,5 +92,3 @@ alias lg='lazygit'
 
 # pbcopy && pbpaste
 alias _pb_cp='pbcopy && pbpaste'
-
-
