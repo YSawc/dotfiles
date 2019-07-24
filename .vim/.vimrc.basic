@@ -15,6 +15,10 @@ set modeline
 set modelines=3
 " }}}
 
+" selector of short form {{{
+set virtualedit+=bloc
+" }}}
+
 " start up NERDTree
 autocmd vimenter * NERDTree
 
@@ -27,10 +31,11 @@ let g:indent_guides_enable_on_vim_startup = 1
 " バックスペースでの削除をいつでも有効にする
 set backspace=indent,eol,start
 
-" スペルチェックを有効にする
+" スペルチェックを有効にする {{{
 " set spell
 "日本語を除外
 " set spelllang=en,cjk
+" }}}
 
 " cursor setting: always set cursor center {{{
 set scrolloff=100
