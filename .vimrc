@@ -748,6 +748,37 @@ set listchars+=tab:\¦\ ,trail:-,eol:↲
 " タブバーをかっこよく
 
 " let g:airline#extensions#tabline#enabled = 1
+
+" sideBar {{{
+set showtabsidebar=2
+set tabsidebarcolumns=20
+set tabsidebarwrap
+set tabsidebar=%!TabSideBar()
+function! TabSideBar() abort
+    try
+        let lines = [printf('TabPage:%d', g:actual_curtabpage)]
+        for x in getwininfo()
+            if x.tabnr == g:actual_curtabpage
+                let s = '[No Name]'
+                if x.terminal
+                    let s = '[Terminal]'
+                elseif x.quickfix
+                    let s = '[QuickFix]'
+                elseif x.loclist
+                    let s = '[LocList]'
+                else
+                    let s = fnamemodify(bufname(x.bufnr), ':t')
+                endif
+                let lines += [printf('  %s', s)]
+            endif
+        endfor
+    catch
+        return string(v:exception)
+    endtry
+    return join(lines, "\n")
+endfunction
+" }}}
+
 " }}}
 
 " search {{{
@@ -796,15 +827,6 @@ endfunction
 " }}}
 
 " }}}
-
-" ウィンドウ移動をナンバー入力でも可能にする {{{
-let i = 1
-while i <= 9
-    " execute 'nnoremap <Space>' . i . ' :' . i . 'wincmd w<CR>'
-    execute 'nnoremap <Space>' . i . ' :' . i . 'wincmd w<CR>'
-    let i = i + 1
-endwhile
-" ウィンドウ移動をナンバー入力でも可能にする }}}
 
 " colors {{{
 
@@ -1046,6 +1068,16 @@ nnoremap <Leader>s :source ~/.vimrc<CR>
 
 " universal_tags
 nnoremap <silent> <Leader>t :TagbarToggle<CR>
+
+" window mode with number {{{
+let i = 1
+while i <= 9
+    " execute 'nnoremap <Space>' . i . ' :' . i . 'wincmd w<CR>'
+    execute 'nnoremap <Space>' . i . ' :' . i . 'wincmd w<CR>'
+    let i = i + 1
+endwhile
+" }}}
+
 " }}}
 
 " misc {{{
