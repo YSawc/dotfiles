@@ -175,7 +175,7 @@ Plug 'thinca/vim-quickrun'
 Plug 'majutsushi/tagbar'
 set fileformats=unix,dos,mac
 set fileencodings=utf-8,sjis
-" }}} 1
+" }}}
 
 " LSP_plugins {{{
 
@@ -1158,3 +1158,5 @@ augroup fileTypeIndent
 augroup END
 
 " }}}
+
+" vim: foldmethod=marker
