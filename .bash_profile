@@ -21,3 +21,5 @@ PATH=$PATH:~/Library/play-2.2.6
 export PATH
 
 source ~/.bashrc
+
+export PATH="$HOME/.cargo/bin:$PATH"
