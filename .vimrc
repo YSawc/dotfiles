@@ -1,3 +1,10 @@
+" editting dotfiles {{{
+
+let $VIMRC = $HOME . '/.vimrc'
+nnoremap <silent> <Space>ev :<C-u>edit $VIMRC<CR>
+
+" }}}
+
 " basic plugin {{{
 call plug#begin('~/.vim/plugged')
 
