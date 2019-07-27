@@ -380,13 +380,13 @@ function {
 # functions {{{
 
 # source zsh {{{
-_zrc(){
+zrc(){
 	source ~/.zshrc
 }
 # }}}
 
 # source ~/.vimrc {{{
-_vim(){
+vimrc(){
 	source ~/.vimrc
 }
 # }}}
