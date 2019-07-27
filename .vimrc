@@ -749,34 +749,35 @@ set listchars+=tab:\¦\ ,trail:-,eol:↲
 
 " let g:airline#extensions#tabline#enabled = 1
 
+" TODO: introduce TabsideBar
 " sideBar {{{
-set showtabsidebar=2
-set tabsidebarcolumns=20
-set tabsidebarwrap
-set tabsidebar=%!TabSideBar()
-function! TabSideBar() abort
-    try
-        let lines = [printf('TabPage:%d', g:actual_curtabpage)]
-        for x in getwininfo()
-            if x.tabnr == g:actual_curtabpage
-                let s = '[No Name]'
-                if x.terminal
-                    let s = '[Terminal]'
-                elseif x.quickfix
-                    let s = '[QuickFix]'
-                elseif x.loclist
-                    let s = '[LocList]'
-                else
-                    let s = fnamemodify(bufname(x.bufnr), ':t')
-                endif
-                let lines += [printf('  %s', s)]
-            endif
-        endfor
-    catch
-        return string(v:exception)
-    endtry
-    return join(lines, "\n")
-endfunction
+" set showtabsidebar=2
+" set tabsidebarcolumns=20
+" set tabsidebarwrap
+" set tabsidebar=%!TabSideBar()
+" function! TabSideBar() abort
+"     try
+"         let lines = [printf('TabPage:%d', g:actual_curtabpage)]
+"         for x in getwininfo()
+"             if x.tabnr == g:actual_curtabpage
+"                 let s = '[No Name]'
+"                 if x.terminal
+"                     let s = '[Terminal]'
+"                 elseif x.quickfix
+"                     let s = '[QuickFix]'
+"                 elseif x.loclist
+"                     let s = '[LocList]'
+"                 else
+"                     let s = fnamemodify(bufname(x.bufnr), ':t')
+"                 endif
+"                 let lines += [printf('  %s', s)]
+"             endif
+"         endfor
+"     catch
+"         return string(v:exception)
+"     endtry
+"     return join(lines, "\n")
+" endfunction
 " }}}
 
 " }}}
