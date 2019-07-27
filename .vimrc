@@ -1,9 +1,10 @@
 " initialize {{{
 
 let s:MSWindows = has('win95') + has('win16') + has('win32') + has('win64')
+let $VIM = expand('~/vim/vimdot')
 
 if s:MSWindows
-	let $VIMRC = expand($VIM . '/vimfiles')
+	let $VIMRC = expand($VIM . '/vim/vimfiles')
 else
 	let $VIMRC = expand('~/.vimrc')
 endif
@@ -14,6 +15,9 @@ endif
 
 let $VIMRC = $HOME . '/.vimrc'
 nnoremap <silent> <Space>ev :<C-u>edit $VIMRC<CR>
+
+let $ZSHRC = $HOME . '/.zshrc'
+nnoremap <silent> <Space>ez :<C-u>edit $ZSHRC<CR>
 
 " }}}
 
@@ -696,6 +700,10 @@ set synmaxcol=256
 
 " setting save session
 set sessionoptions=blank,buffers,curdir,folds,help,tabpages,winsize,terminal
+
+" wrap
+set wrap
+set textwidth=80
 " }}}
 
 " grep {{{
@@ -814,31 +822,6 @@ set hlsearch
 
 " ESC二回でハイライト解除
 nnoremap <Esc><Esc> :nohlsearch<CR>
-
-" file reading profile {{{
-function! ProfileCursorMove() abort
-  let profile_file = expand('~/log/vim-profile.log')
-  if filereadable(profile_file)
-    call delete(profile_file)
-  endif
-
-  normal! gg
-  normal! zR
-
-  execute 'profile start ' . profile_file
-  profile func *
-  profile file *
-
-  augroup ProfileCursorMove
-    autocmd!
-    autocmd CursorHold <buffer> profile pause | q
-  augroup END
-
-  for i in range(100)
-    call feedkeys('j')
-  endfor
-endfunction
-" }}}
 
 " }}}
 
@@ -1168,9 +1151,51 @@ augroup fileTypeIndent
 	autocmd BufRead,BufNewFile *.md setlocal tabstop=2 shiftwidth=2 softtabstop=2
 	autocmd BufNewFile,BufRead *.html setlocal tabstop=2 softtabstop=2 shiftwidth=2
 	autocmd BufNewFile,BufRead *.json setlocal tabstop=2 softtabstop=2 shiftwidth=2
+	autocmd BufNewFile,BufRead *.rs setlocal tabstop=4 softtabstop=4 shiftwidth=4
 	autocmd BufNewFile,BufRead *.vim setlocal tabstop=2 softtabstop=2 shiftwidth=2
 augroup END
 
+autocmd
+
+" rust {{{
+let g:rustfmt_autosave = 1
+let g:rustfmt_command = '$HOME/.cargo/bin/rustfmt'
 " }}}
 
+" }}}
+
+" for optimization {{{
+
+" file reading profile {{{
+function! ProfileCursorMove() abort
+  let profile_file = expand('~/log/vim-profile.log')
+  if filereadable(profile_file)
+    call delete(profile_file)
+  endif
+
+  normal! gg
+  normal! zR
+
+  execute 'profile start ' . profile_file
+  profile func *
+  profile file *
+
+  augroup ProfileCursorMove
+    autocmd!
+    autocmd CursorHold <buffer> profile pause | q
+  augroup END
+
+  for i in range(100)
+    call feedkeys('j')
+  endfor
+endfunction
+" }}}
+
+" syntax report time {{{
+" https://stackoverflow.com/questions/19030290/syntax-highlighting-causes-terrible-lag-in-vim
+" set syntime=on
+" syntime report
+" }}}
+
+" }}}
 " vim: foldmethod=marker
