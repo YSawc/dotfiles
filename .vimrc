@@ -1,3 +1,15 @@
+" initialize {{{
+
+let s:MSWindows = has('win95') + has('win16') + has('win32') + has('win64')
+
+if s:MSWindows
+	let $VIMRC = expand($VIM . '/vimfiles')
+else
+	let $VIMRC = expand('~/.vimrc')
+endif
+
+" }}}
+
 " editting dotfiles {{{
 
 let $VIMRC = $HOME . '/.vimrc'
