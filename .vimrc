@@ -939,10 +939,11 @@ nnoremap s; :<C-u>NERDTreeTabsToggle<CR>
 " VimFilerのトグル
 " nnoremap <silent> s; :VimFilerExplore<CR>
 
-" コマンドラインで単語移動
+" moving command line {{{
 cnoremap <c-b> <S-Left>
 cnoremap <c-f> <S-Right>
 cnoremap <c-a> <Home>
+" }}}
 
 " tmux {{{
 nnoremap s <Nop> " プレフィックスキーの変更
