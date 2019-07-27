@@ -597,6 +597,11 @@ call plug#end()
 
 " basic {{{
 
+" light weight setting {{{
+set lazyredraw
+set ttyfast
+" }}}
+
 " スワップファイルを作成しない
 set noswapfile
 
