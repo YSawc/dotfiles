@@ -56,17 +56,8 @@ command! -bang -nargs=? -complete=dir Files
 " nerdTree {{{
 
 Plug 'scrooloose/nerdtree'
-" nerdtreeを別タブで同期させる
+" jnerdtree sync other tabs
 Plug 'jistr/vim-nerdtree-tabs'
-" file icons
-" Plug 'ryanoasis/vim-devicons'
-" nerdtree highlight
-" Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
-" デフォルトでツリーを表示させる
-" let g:nerdtree_tabs_open_on_console_startup=1
-" ホワイトリストを作成する
-" start up NERDTree
-" autocmd vimenter * NERDTree
 let g:extra_whitespace_ignored_filetypes = ['unite', 'vimfiler']
 " 変更箇所をNERDTreeで同期できる
 Plug 'Xuyuanp/nerdtree-git-plugin'
@@ -76,8 +67,6 @@ filetype on
 let g:NERDSpaceDelims=1 " コメントアウトの後にスペース挿入
 let g:NERDDefaultAlign='left' " コメントアウトを左に揃える
 let g:NerdCommenter_do_mapping = 0
-" let g:NERDCreateDefaultMappings = 0
-nnoremap <Space>// <Plug>NERDcommenterToggle
 
 " nerdTree END }}}
 
