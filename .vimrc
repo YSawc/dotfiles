@@ -139,6 +139,9 @@ augroup vimrc-auto-cursorline
   autocmd WinEnter * call s:auto_cursorline('WinEnter')
   autocmd WinLeave * call s:auto_cursorline('WinLeave')
 
+  " TODO: toggle with thinkng about
+  " g:NERDTree.IsOpen()
+
   let s:cursorline_lock = 0
   function! s:auto_cursorline(event)
     if a:event ==# 'WinEnter'
@@ -814,7 +817,6 @@ set cmdheight=2
 set updatetime=300
 
 " don't give |ins-completion-menu| messages.
-set shortmess+=c
 set shortmess+=I
 
 " always show signcolumns
