@@ -660,6 +660,7 @@ command! -bang -nargs=? -complete=dir Files
 " nerdTree {{{
 
 Plug 'scrooloose/nerdtree'
+let g:NERDTreeWinPos = "right"
 " jnerdtree sync other tabs
 Plug 'jistr/vim-nerdtree-tabs'
 let g:extra_whitespace_ignored_filetypes = ['unite', 'vimfiler']
