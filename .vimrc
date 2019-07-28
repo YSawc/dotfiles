@@ -2,14 +2,14 @@
 
 " TODO: call initialize from linux of manjaro
 
-let s:MSWindows = has('win95') + has('win16') + has('win32') + has('win64')
-let $VIM = expand('~/vim/vimdot')
+" let s:MSWindows = has('win95') + has('win16') + has('win32') + has('win64')
+" let $VIM = expand('~/vim/vimdot')
 
-if s:MSWindows
-	let $VIMRC = expand($VIM . '/vim/vimfiles')
-else
-	let $VIMRC = expand('~/.vimrc')
-endif
+" if s:MSWindows
+"     let $VIMRC = expand($VIM . '/vim/vimfiles')
+" else
+	" let $VIMRC = $HOME . '/.vimrc'
+" endif
 
 " }}}
 
@@ -20,6 +20,601 @@ nnoremap <silent> <Space>ev :<C-u>edit $VIMRC<CR>
 
 let $ZSHRC = $HOME . '/.zshrc'
 nnoremap <silent> <Space>ez :<C-u>edit $ZSHRC<CR>
+
+" }}}
+
+" basic {{{
+
+" light weight setting {{{
+set lazyredraw
+set ttyfast
+" }}}
+
+" スワップファイルを作成しない
+set noswapfile
+
+" 文字コード指定
+set encoding=UTF-8
+
+" mute seting {{{
+set t_vb=
+set visualbell
+set noerrorbells
+" }}}
+
+" delete using backspace & ctrl+h {{{
+set backspace=2
+" }}}
+
+" コマンドライン補完設定 {{{
+set wildmenu
+set wildmode=longest:full,full
+" コマンドライン補完設定 }}}
+
+" モードラインを有効にする {{{
+set modeline
+" 3行目までをモードラインとして検索する
+set modelines=3
+" }}}
+
+" hilight in visual mode {{{
+hi Visual cterm=reverse ctermbg=NONE
+" }}}
+
+" selector of short form {{{
+set virtualedit+=block
+" }}}
+
+" netrw {{{
+" prewiew setting
+let g:netrw_preview=1
+" TreeView
+let g:netrw_liststyle = 3
+" date format
+let g:netrw_timefmt='%Y/%m/%d(%a) %H:%M:%S'
+" size format
+let g:netrw_sizestyle="H"
+" }}}
+
+"左右のカーソル移動で行間移動可能にする。
+set whichwrap=h,l,b,s,<,>,[,]
+
+" fast scroll {{{
+set lazyredraw
+set ttyfast
+" }}}
+
+" vimを立ち上げたときに、自動的にvim-indent-guidesをオンにする vim-indent-guides
+let g:indent_guides_enable_on_vim_startup = 1
+
+" バックスペースでの削除をいつでも有効にする
+set backspace=indent,eol,start
+
+" スペルチェックを有効にする {{{
+" set spell
+"日本語を除外
+" set spelllang=en,cjk
+" }}}
+
+" cursor setting: always set cursor center {{{
+set scrolloff=100
+" }}}
+
+" mouseScroll on
+set mouse=a
+set ttymouse=xterm2
+
+" foftmethod setting {{{
+set foldmethod=marker
+" manual: 手動で折畳を定義する
+" indent: インデントの数を折畳のレベル(深さ)とする
+" expr:   折畳を定義する式を指定する
+" syntax: 構文強調により折畳を定義する
+" diff:   変更されていないテキストを折畳対象とする
+" marker: テキスト中の印で折畳を定義する
+" }}}
+
+set ttimeoutlen=10
+
+" synmaxcol setting {{{
+" 'synmaxcol' 'smc'	number	(default 3000)
+set synmaxcol=256
+" }}}
+
+" setting save session
+set sessionoptions=blank,buffers,curdir,folds,help,tabpages,winsize,terminal
+
+" wrap
+set wrap
+set textwidth=80
+" }}}
+
+" cursorline {{{
+
+" カーソルラインの表示に制限をかけ、軽量化する機構 {{{
+augroup vimrc-auto-cursorline
+  autocmd!
+  autocmd CursorMoved,CursorMovedI * call s:auto_cursorline('CursorMoved')
+  autocmd CursorHold,CursorHoldI * call s:auto_cursorline('CursorHold')
+  autocmd WinEnter * call s:auto_cursorline('WinEnter')
+  autocmd WinLeave * call s:auto_cursorline('WinLeave')
+
+  let s:cursorline_lock = 0
+  function! s:auto_cursorline(event)
+    if a:event ==# 'WinEnter'
+      setlocal cursorline
+      let s:cursorline_lock = 2
+    elseif a:event ==# 'WinLeave'
+      setlocal nocursorline
+    elseif a:event ==# 'CursorMoved'
+      if s:cursorline_lock
+        if 1 < s:cursorline_lock
+          let s:cursorline_lock = 1
+        else
+          setlocal nocursorline
+          let s:cursorline_lock = 0
+        endif
+      endif
+    elseif a:event ==# 'CursorHold'
+      setlocal cursorline
+      let s:cursorline_lock = 1
+    endif
+  endfunction
+augroup END
+" }}}
+
+" }}}
+
+" grep {{{
+
+" Rgコマンドで、ファイルをfzf検索 {{{
+command! -bang -nargs=* Rg
+  \ call fzf#vim#grep(
+  \   'rg --column --line-number --hidden --ignore-case --no-heading --color=always '.shellescape(<q-args>), 1,
+  \   <bang>0 ? fzf#vim#with_preview({'options': '--delimiter : --nth 4..'}, 'up:60%')
+  \           : fzf#vim#with_preview({'options': '--delimiter : --nth 4..'}, 'right:50%:hidden', '?'),
+  \   <bang>0)
+" Rg }}}
+
+" }}}
+
+" apperance {{{
+
+" 行番号設定 {{{
+set relativenumber
+set number
+" set nonumber
+" }}}
+
+" 現在の行を強調表示
+set cursorline
+" 現在の行を強調表示（縦）
+" set cursorcolumn
+" cursorlineの色をクリア
+" hi clear CursorLi
+
+" insertモードの時にカーソルの見た目を縦棒に変更する
+if has('vim_starting')
+" 挿入モード時に非点滅の縦棒タイプのカーソル
+	let &t_SI .= "\e[6 q"
+" ノーマルモード時に非点滅のブロックタイプのカーソル
+	let &t_EI .= "\e[2 q"
+" 置換モード時に非点滅の下線タイプのカーソル
+	let &t_SR .= "\e[4 q"
+endif
+
+" 分割ラインのカラー変更
+" highlight VertSplit gui=reverse guifg=bg
+
+" エディタウィンドウの末尾から2行目にステータスラインを常時表示させる
+set laststatus=2
+
+" setting list {{{
+set list
+set listchars+=tab:\¦\ ,trail:-,eol:↲
+" }}}
+
+" 画面分割の見た目変更
+" set fillchars+=vert:\│
+" set fillchars=vert:\|,fold:\  eventignore= helplang=en viewoptions=options,cursor virtualedit=
+" hi LineNr guibg=bg
+" hi foldcolumn guibg=bg
+" hi VertSplit guibg=bg guifg=bg
+" hi VertSplit ctermfg=Black ctermbg=DarkGray
+" hi VertSplit ctermfg=bg
+" highlight VertSplit gui=reverse guifg=Red
+
+" airlineの設定
+" タブバーをかっこよく
+
+" let g:airline#extensions#tabline#enabled = 1
+
+" TODO: introduce TabsideBar
+" sideBar {{{
+" set showtabsidebar=2
+" set tabsidebarcolumns=20
+" set tabsidebarwrap
+" set tabsidebar=%!TabSideBar()
+" function! TabSideBar() abort
+"     try
+"         let lines = [printf('TabPage:%d', g:actual_curtabpage)]
+"         for x in getwininfo()
+"             if x.tabnr == g:actual_curtabpage
+"                 let s = '[No Name]'
+"                 if x.terminal
+"                     let s = '[Terminal]'
+"                 elseif x.quickfix
+"                     let s = '[QuickFix]'
+"                 elseif x.loclist
+"                     let s = '[LocList]'
+"                 else
+"                     let s = fnamemodify(bufname(x.bufnr), ':t')
+"                 endif
+"                 let lines += [printf('  %s', s)]
+"             endif
+"         endfor
+"     catch
+"         return string(v:exception)
+"     endtry
+"     return join(lines, "\n")
+" endfunction
+" }}}
+
+" }}}
+
+" search {{{
+
+" 検索文字列が小文字の場合は大文字小文字を区別なく検索する
+set ignorecase
+
+" 検索文字列に大文字が含まれている場合は区別して検索する
+set smartcase
+
+" 検索文字列入力時に順次対象文字列にヒットさせる
+set incsearch
+
+" 検索時に最後まで行ったら最初に戻る
+set wrapscan
+
+" 検索語をハイライト表示
+set hlsearch
+
+" ESC二回でハイライト解除
+nnoremap <Esc><Esc> :nohlsearch<CR>
+
+" }}}
+
+" colors {{{
+
+" 行番号の色を設定 {{{
+hi LineNr ctermbg=0 ctermfg=0
+hi CursorLineNr ctermbg=4 ctermfg=0
+" set cursorline
+" hi clear CursorLine
+" 行番号の色設定 }}}
+
+ " カラースキーム
+" colorscheme koehler
+" colorscheme molokai
+colorscheme gruvbox
+" ダーク系のカラースキーム設定
+" set background=dark
+" ホワイト系のカラースキーム設定
+" set background=light
+
+" 行番号の色を設定する
+" autocmd ColorScheme * highlight LineNr ctermfg=239
+ " highlight LineNr ctermfg=239
+
+" カラープラグイン tenderplus {{{
+" if (has("termguicolors"))
+"  set termguicolors
+" endif
+"
+" syntax enable
+" colorscheme tender
+" tenderplus }}}
+
+" カラープラグイン molokai {{{
+" if (has("molokai"))
+" 	colorscheme molokai
+" endif
+"
+" set t_Co=256
+" syntax enable
+" mololkai}}}
+
+" }}}
+
+" editing {{{
+
+" https://vim-jp.org/vimdoc-ja/map.html#mapleader
+" Leaderキーをスペースに設定 {{{
+let g:mapleader = "\<Space>"
+" }}}
+
+
+" vpbuffer
+nnoremap <silent> <Space>lb :<C-u>LoadBuffer<CR>
+
+inoremap <silent> jk <ESC>
+inoremap <silent> kj <ESC>
+
+" コロン、セミコロン入れ替え
+nnoremap ; :
+
+" ファイル保存と終了 {{{
+nnoremap <Leader>w :w<CR>
+nnoremap <Leader>q :q!<CR>
+" }}}
+
+" numberとrelativenumberのトグル切り替え
+nnoremap <silent> <Leader>rn :set relativenumber!<CR>
+nnoremap <silent> <Leader>run :set nonumber!<CR>
+
+" 括弧を自動で閉じるように設定
+inoremap { {}<Left>
+inoremap {<Enter> {}<Left><CR><ESC><S-o>
+inoremap ( ()<ESC>i
+inoremap (<Enter> ()<Left><CR><ESC><S-o>
+
+" スクロール系の挙動を微調整する
+noremap <expr> <C-b> max([winheight(0) - 2, 1]) . "\<C-u>" . (line('.') < 1         + winheight(0) ? 'H' : 'L')
+noremap <expr> <C-f> max([winheight(0) - 2, 1]) . "\<C-d>" . (line('.') > line('$') - winheight(0) ? 'L' : 'H')
+noremap <expr> <C-y> (line('w0') <= 1         ? 'k' : "\<C-y>")
+noremap <expr> <C-e> (line('w$') >= line('$') ? 'j' : "\<C-e>")
+
+" neartreeのトグル
+nnoremap s; :<C-u>NERDTreeTabsToggle<CR>
+
+" VimFilerのトグル
+" nnoremap <silent> s; :VimFilerExplore<CR>
+
+" moving command line {{{
+cnoremap <c-b> <S-Left>
+cnoremap <c-f> <S-Right>
+cnoremap <c-a> <Home>
+" }}}
+
+" tmux {{{
+nnoremap s <Nop> " プレフィックスキーの変更
+nnoremap sj <C-w>j " カレントウィンドウの移動
+nnoremap sk <C-w>k
+nnoremap sl <C-w>l
+nnoremap sh <C-w>h
+nnoremap sJ <C-w>J
+nnoremap sK <C-w>K
+nnoremap sL <C-w>L
+nnoremap sH <C-w>H
+nnoremap sn gt
+nnoremap sp gT
+nnoremap sr <C-w>r
+nnoremap s= <C-w>=
+nnoremap sw <C-w>w
+nnoremap <Tab> <C-w>w
+nnoremap <S-Tab> <C-w>W
+nnoremap s0 <C-w>t
+nnoremap sT <C-w>T
+nnoremap so <C-w>_<C-w>|
+nnoremap sO <C-w>=
+nnoremap sN :<C-u>bn<CR>  " バッファ移動
+nnoremap sP :<C-u>bp<CR>
+nnoremap st :<C-u>tabnew<CR>
+nnoremap th :-tabm<CR>
+nnoremap tl :+tabm<CR>
+" nnoremap sT :<C-u>Unite tab<CR>
+nnoremap ss :<C-u>sp<CR>
+nnoremap sv :<C-u>vs<CR>
+nnoremap sq :<C-u>q<CR>
+nnoremap sQ :<C-u>bd<CR>
+nnoremap sb :<C-u>Unite buffer_tab -buffer-name=file<CR>
+nnoremap sB :<C-u>Unite buffer -buffer-name=file<CR>
+" tmux end }}}
+
+" --- unite_vim --- {{{
+" insert modeで開始
+let g:unite_enable_start_insert = 1
+
+
+" unite grep に ag(The Silver Searcher) を使う
+if executable('ag')
+let g:unite_source_grep_command = 'ag'
+let g:unite_source_grep_default_opts = '--nogroup --nocolor --column'
+let g:unite_source_grep_recursive_opt = ''
+endif
+
+" 大文字小文字を区別しない
+let g:unite_enable_ignore_case = 1
+let g:unite_enable_smart_case = 1
+
+" grep検索
+" nnoremap <silent> ,g  :<C-u>Unite grep:. -buffer-name=search-buffer<CR>
+
+" カーソル位置の単語をgrep検索
+" nnoremap <silent> ,cg :<C-u>Unite grep:. -buffer-name=search-buffer<CR><C-R><C-W>
+
+" grep検索結果の再呼出
+" nnoremap <silent> ,r  :<C-u>UniteResume search-buffer<CR>
+
+" --- unite--- }}}
+
+" 行を移動
+nnoremap <C-Up> "zdd<Up>"zP
+nnoremap <C-Down> "zdd"zp
+" 複数行を移動
+vnoremap <C-Up> "zx<Up>"zP`[V`]
+vnoremap <C-Down> "zx"zp`[V`]
+
+" インサートモードでカーソル移動
+inoremap <C-f> <Right>
+inoremap <C-b> <Left>
+
+" カーソル下の単語をハイライトする
+nnoremap <silent> <Space><Space> "zyiw:let @/ = '\<' . @z . '\>'<CR>:set hlsearch<CR>
+
+" ハイライト消去と再描写
+nnoremap <silent> <C-l> :<C-u>nohlsearch<CR><C-l>
+
+
+nnoremap <Leader>bf :Buffers<CR>
+
+" tagsジャンプの時に複数ある時は一覧表示
+" nnoremap <C-]> g<C-]>
+
+" vimgrepによる移動のキーマップ
+nnoremap [q :cprevious<CR>   " 前へ
+nnoremap ]q :cnext<CR>       " 次へ
+nnoremap [Q :<C-u>cfirst<CR> " 最初へ
+nnoremap ]Q :<C-u>clast<CR>  " 最後へ
+
+" QuickFix系の設定
+autocmd QuickFixCmdPost vimgrep cwindow
+" 下記のとおりにすると:grepや:Ggrepでも自動的にquickfix-windowを開くようになる。
+autocmd QuickFixCmdPost *grep* cwindow
+
+" カーソル位置の単語をgrep検索
+" nnoremap <silent> ,cg :<C-u>Unite grep:. -buffer-name=search-buffer<CR><C-R><C-W>
+
+
+" TODO: change ag to rg
+" カーソル上の単語をsilver-search検索
+nnoremap <Space>c :<C-u>Ag --hidden <cword><CR>
+nnoremap <Space>r :Rg<Space>
+" nnoremap ,c :Rg .shellescape(<cword>)
+
+" easymotion keymap {{{
+" デフォルトのキーマップはオフに
+let g:EasyMotion_do_mapping = 0
+" f + 2文字 で画面全体を検索してジャンプ
+map <Space>f <plug>(easymotion-overwin-f2)
+" 検索時、大文字小文字を区別しない
+let g:EasyMotion_smartcase = 1
+
+" =======================================
+" Line Motions
+" =======================================
+" `JK` Motions: Extend line motions
+map <Space>j <Plug>(easymotion-j)
+map <Space>k <Plug>(easymotion-k)
+" keep cursor column with `JK` motions
+let g:EasyMotion_startofline = 0
+
+" easymotionのキーマップ END }}}
+
+" vim slash(/) マッチ数の出力 {{{
+nnoremap <expr> / _(":%s/<Cursor>/&/gn")
+
+function! s:move_cursor_pos_mapping(str, ...)
+    let left = get(a:, 1, "<Left>")
+    let lefts = join(map(split(matchstr(a:str, '.*<Cursor>\zs.*\ze'), '.\zs'), 'left'), "")
+    return substitute(a:str, '<Cursor>', '', '') . lefts
+endfunction
+
+function! _(str)
+    return s:move_cursor_pos_mapping(a:str, "\<Left>")
+endfunction
+" vim slash(/) マッチ数の出力 END }}}
+
+" 上下の空白に移動
+nnoremap <C-j> }
+nnoremap <C-k> {
+
+" vimrcを気軽に編集
+nnoremap <Leader>. :new ~/.vimrc<CR>
+nnoremap <Leader>s :source ~/.vimrc<CR>
+
+" universal_tags
+nnoremap <silent> <Leader>t :TagbarToggle<CR>
+
+" window mode with number {{{
+let i = 1
+while i <= 9
+    " execute 'nnoremap <Space>' . i . ' :' . i . 'wincmd w<CR>'
+    execute 'nnoremap <Space>' . i . ' :' . i . 'wincmd w<CR>'
+    let i = i + 1
+endwhile
+" }}}
+
+" }}}
+
+" misc {{{
+
+" yankした文字をクリップボードにも反映する
+set clipboard+=unnamed
+
+" 改行時のコメントを自動で付けない設定
+au FileType * setlocal formatoptions-=ro
+
+" TODO 要らなければ削除
+" nerdTreeが最後のバッファの場合、自動で削除する
+" autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
+" ターミナルを画面下部に表示
+" set splitbelow
+" set termwinsize=14x0
+
+" }}}
+
+" each_lang {{{
+
+set tabstop=4
+set shiftwidth=4
+set softtabstop=4
+" set expandtab
+set autoindent
+set smartindent
+
+augroup fileTypeIndent
+	autocmd!
+	" autocmd BufRead,BufNewFile *.py
+	autocmd BufRead,BufNewFile *.go setlocal tabstop=2 shiftwidth=2 softtabstop=2
+	autocmd BufRead,BufNewFile *.rb setlocal tabstop=2 shiftwidth=2 softtabstop=2
+	autocmd BufNewFile,BufRead *.c setlocal tabstop=2 softtabstop=2 shiftwidth=2
+	autocmd BufRead,BufNewFile *.md setlocal tabstop=2 shiftwidth=2 softtabstop=2
+	autocmd BufNewFile,BufRead *.html setlocal tabstop=2 softtabstop=2 shiftwidth=2
+	autocmd BufNewFile,BufRead *.json setlocal tabstop=2 softtabstop=2 shiftwidth=2
+	autocmd BufNewFile,BufRead *.rs setlocal tabstop=4 softtabstop=4 shiftwidth=4
+augroup END
+
+" rust {{{
+let g:rustfmt_autosave = 1
+let g:rustfmt_command = '$HOME/.cargo/bin/rustfmt'
+" }}}
+
+" }}}
+
+" for optimization {{{
+
+" file reading profile {{{
+" function! ProfileCursorMove() abort
+"   let profile_file = expand('~/log/vim-profile.log')
+"   if filereadable(profile_file)
+"     call delete(profile_file)
+"   endif
+
+"   normal! gg
+"   normal! zR
+
+"   execute 'profile start ' . profile_file
+"   profile func *
+"   profile file *
+
+"   augroup ProfileCursorMove
+"     autocmd!
+"     autocmd CursorHold <buffer> profile pause | q
+"   augroup END
+
+"   for i in range(100)
+"     call feedkeys('j')
+"   endfor
+" endfunction
+" }}}
+
+" syntax report time {{{
+" https://stackoverflow.com/questions/19030290/syntax-highlighting-causes-terrible-lag-in-vim
+" set syntime=on
+" syntime report
+" }}}
 
 " }}}
 
@@ -600,605 +1195,6 @@ let g:neosnippet#snippets_directory='~/dotfiles/neosnippet-snippets/snippets/'
 " neosnippet }}}
 
 call plug#end()
-" }}}
-
-" basic {{{
-
-" light weight setting {{{
-set lazyredraw
-set ttyfast
-" }}}
-
-" スワップファイルを作成しない
-set noswapfile
-
-" 文字コード指定
-set encoding=UTF-8
-
-" mute seting {{{
-set t_vb=
-set visualbell
-set noerrorbells
-" }}}
-
-" delete using backspace & ctrl+h {{{
-set backspace=2
-" }}}
-
-" コマンドライン補完設定 {{{
-set wildmenu
-set wildmode=longest:full,full
-" コマンドライン補完設定 }}}
-
-" モードラインを有効にする {{{
-set modeline
-" 3行目までをモードラインとして検索する
-set modelines=3
-" }}}
-
-" hilight in visual mode {{{
-hi Visual cterm=reverse ctermbg=NONE
-" }}}
-
-" selector of short form {{{
-set virtualedit+=block
-" }}}
-
-" netrw {{{
-" prewiew setting
-let g:netrw_preview=1
-" TreeView
-let g:netrw_liststyle = 3
-" date format
-let g:netrw_timefmt='%Y/%m/%d(%a) %H:%M:%S'
-" size format
-let g:netrw_sizestyle="H"
-" }}}
-
-"左右のカーソル移動で行間移動可能にする。
-set whichwrap=h,l,b,s,<,>,[,]
-
-" fast scroll {{{
-set lazyredraw
-set ttyfast
-" }}}
-
-" vimを立ち上げたときに、自動的にvim-indent-guidesをオンにする vim-indent-guides
-let g:indent_guides_enable_on_vim_startup = 1
-
-" バックスペースでの削除をいつでも有効にする
-set backspace=indent,eol,start
-
-" スペルチェックを有効にする {{{
-" set spell
-"日本語を除外
-" set spelllang=en,cjk
-" }}}
-
-" cursor setting: always set cursor center {{{
-set scrolloff=100
-" }}}
-
-" mouseScroll on
-set mouse=a
-set ttymouse=xterm2
-
-" foftmethod setting {{{
-set foldmethod=marker
-" manual: 手動で折畳を定義する
-" indent: インデントの数を折畳のレベル(深さ)とする
-" expr:   折畳を定義する式を指定する
-" syntax: 構文強調により折畳を定義する
-" diff:   変更されていないテキストを折畳対象とする
-" marker: テキスト中の印で折畳を定義する
-" }}}
-
-set ttimeoutlen=10
-
-" synmaxcol setting {{{
-" 'synmaxcol' 'smc'	number	(default 3000)
-set synmaxcol=256
-" }}}
-
-" setting save session
-set sessionoptions=blank,buffers,curdir,folds,help,tabpages,winsize,terminal
-
-" wrap
-set wrap
-set textwidth=80
-" }}}
-
-" grep {{{
-
-" Rgコマンドで、ファイルをfzf検索 {{{
-command! -bang -nargs=* Rg
-  \ call fzf#vim#grep(
-  \   'rg --column --line-number --hidden --ignore-case --no-heading --color=always '.shellescape(<q-args>), 1,
-  \   <bang>0 ? fzf#vim#with_preview({'options': '--delimiter : --nth 4..'}, 'up:60%')
-  \           : fzf#vim#with_preview({'options': '--delimiter : --nth 4..'}, 'right:50%:hidden', '?'),
-  \   <bang>0)
-" Rg }}}
-
-" }}}
-
-" apperance {{{
-
-" 行番号設定 {{{
-set relativenumber
-set number
-" set nonumber
-" }}}
-
-" 現在の行を強調表示
-set cursorline
-" 現在の行を強調表示（縦）
-" set cursorcolumn
-" cursorlineの色をクリア
-" hi clear CursorLi
-
-" insertモードの時にカーソルの見た目を縦棒に変更する
-if has('vim_starting')
-" 挿入モード時に非点滅の縦棒タイプのカーソル
-	let &t_SI .= "\e[6 q"
-" ノーマルモード時に非点滅のブロックタイプのカーソル
-	let &t_EI .= "\e[2 q"
-" 置換モード時に非点滅の下線タイプのカーソル
-	let &t_SR .= "\e[4 q"
-endif
-
-" 分割ラインのカラー変更
-" highlight VertSplit gui=reverse guifg=bg
-
-" エディタウィンドウの末尾から2行目にステータスラインを常時表示させる
-set laststatus=2
-
-" setting list {{{
-set list
-set listchars+=tab:\¦\ ,trail:-,eol:↲
-" }}}
-
-" 画面分割の見た目変更
-" set fillchars+=vert:\│
-" set fillchars=vert:\|,fold:\  eventignore= helplang=en viewoptions=options,cursor virtualedit=
-" hi LineNr guibg=bg
-" hi foldcolumn guibg=bg
-" hi VertSplit guibg=bg guifg=bg
-" hi VertSplit ctermfg=Black ctermbg=DarkGray
-" hi VertSplit ctermfg=bg
-" highlight VertSplit gui=reverse guifg=Red
-
-" airlineの設定
-" タブバーをかっこよく
-
-" let g:airline#extensions#tabline#enabled = 1
-
-" TODO: introduce TabsideBar
-" sideBar {{{
-" set showtabsidebar=2
-" set tabsidebarcolumns=20
-" set tabsidebarwrap
-" set tabsidebar=%!TabSideBar()
-" function! TabSideBar() abort
-"     try
-"         let lines = [printf('TabPage:%d', g:actual_curtabpage)]
-"         for x in getwininfo()
-"             if x.tabnr == g:actual_curtabpage
-"                 let s = '[No Name]'
-"                 if x.terminal
-"                     let s = '[Terminal]'
-"                 elseif x.quickfix
-"                     let s = '[QuickFix]'
-"                 elseif x.loclist
-"                     let s = '[LocList]'
-"                 else
-"                     let s = fnamemodify(bufname(x.bufnr), ':t')
-"                 endif
-"                 let lines += [printf('  %s', s)]
-"             endif
-"         endfor
-"     catch
-"         return string(v:exception)
-"     endtry
-"     return join(lines, "\n")
-" endfunction
-" }}}
-
-" }}}
-
-" search {{{
-
-" 検索文字列が小文字の場合は大文字小文字を区別なく検索する
-set ignorecase
-
-" 検索文字列に大文字が含まれている場合は区別して検索する
-set smartcase
-
-" 検索文字列入力時に順次対象文字列にヒットさせる
-set incsearch
-
-" 検索時に最後まで行ったら最初に戻る
-set wrapscan
-
-" 検索語をハイライト表示
-set hlsearch
-
-" ESC二回でハイライト解除
-nnoremap <Esc><Esc> :nohlsearch<CR>
-
-" }}}
-
-" colors {{{
-
-" 行番号の色を設定 {{{
-hi LineNr ctermbg=0 ctermfg=0
-hi CursorLineNr ctermbg=4 ctermfg=0
-" set cursorline
-" hi clear CursorLine
-" 行番号の色設定 }}}
-
- " カラースキーム
-" colorscheme koehler
-" colorscheme molokai
-colorscheme gruvbox
-" ダーク系のカラースキーム設定
-" set background=dark
-" ホワイト系のカラースキーム設定
-" set background=light
-
-" 行番号の色を設定する
-" autocmd ColorScheme * highlight LineNr ctermfg=239
- " highlight LineNr ctermfg=239
-
-" カラープラグイン tenderplus {{{
-" if (has("termguicolors"))
-"  set termguicolors
-" endif
-"
-" syntax enable
-" colorscheme tender
-" tenderplus }}}
-
-" カラープラグイン molokai {{{
-" if (has("molokai"))
-" 	colorscheme molokai
-" endif
-"
-" set t_Co=256
-" syntax enable
-" mololkai}}}
-
-" }}}
-
-" editing {{{
-
-" https://vim-jp.org/vimdoc-ja/map.html#mapleader
-" Leaderキーをスペースに設定 {{{
-let g:mapleader = "\<Space>"
-" }}}
-
-
-" vpbuffer
-nnoremap <silent> <Space>lb :<C-u>LoadBuffer<CR>
-
-inoremap <silent> jk <ESC>
-inoremap <silent> kj <ESC>
-
-" コロン、セミコロン入れ替え
-nnoremap ; :
-
-" ファイル保存と終了 {{{
-nnoremap <Leader>w :w<CR>
-nnoremap <Leader>q :q!<CR>
-" }}}
-
-" numberとrelativenumberのトグル切り替え
-nnoremap <silent> <Leader>rn :set relativenumber!<CR>
-nnoremap <silent> <Leader>run :set nonumber!<CR>
-
-" 括弧を自動で閉じるように設定
-inoremap { {}<Left>
-inoremap {<Enter> {}<Left><CR><ESC><S-o>
-inoremap ( ()<ESC>i
-inoremap (<Enter> ()<Left><CR><ESC><S-o>
-
-" スクロール系の挙動を微調整する
-noremap <expr> <C-b> max([winheight(0) - 2, 1]) . "\<C-u>" . (line('.') < 1         + winheight(0) ? 'H' : 'L')
-noremap <expr> <C-f> max([winheight(0) - 2, 1]) . "\<C-d>" . (line('.') > line('$') - winheight(0) ? 'L' : 'H')
-noremap <expr> <C-y> (line('w0') <= 1         ? 'k' : "\<C-y>")
-noremap <expr> <C-e> (line('w$') >= line('$') ? 'j' : "\<C-e>")
-
-" neartreeのトグル
-nnoremap s; :<C-u>NERDTreeTabsToggle<CR>
-
-" VimFilerのトグル
-" nnoremap <silent> s; :VimFilerExplore<CR>
-
-" moving command line {{{
-cnoremap <c-b> <S-Left>
-cnoremap <c-f> <S-Right>
-cnoremap <c-a> <Home>
-" }}}
-
-" tmux {{{
-nnoremap s <Nop> " プレフィックスキーの変更
-nnoremap sj <C-w>j " カレントウィンドウの移動
-nnoremap sk <C-w>k
-nnoremap sl <C-w>l
-nnoremap sh <C-w>h
-nnoremap sJ <C-w>J
-nnoremap sK <C-w>K
-nnoremap sL <C-w>L
-nnoremap sH <C-w>H
-nnoremap sn gt
-nnoremap sp gT
-nnoremap sr <C-w>r
-nnoremap s= <C-w>=
-nnoremap sw <C-w>w
-nnoremap <Tab> <C-w>w
-nnoremap <S-Tab> <C-w>W
-nnoremap s0 <C-w>t
-nnoremap sT <C-w>T
-nnoremap so <C-w>_<C-w>|
-nnoremap sO <C-w>=
-nnoremap sN :<C-u>bn<CR>  " バッファ移動
-nnoremap sP :<C-u>bp<CR>
-nnoremap st :<C-u>tabnew<CR>
-nnoremap th :-tabm<CR>
-nnoremap tl :+tabm<CR>
-" nnoremap sT :<C-u>Unite tab<CR>
-nnoremap ss :<C-u>sp<CR>
-nnoremap sv :<C-u>vs<CR>
-nnoremap sq :<C-u>q<CR>
-nnoremap sQ :<C-u>bd<CR>
-nnoremap sb :<C-u>Unite buffer_tab -buffer-name=file<CR>
-nnoremap sB :<C-u>Unite buffer -buffer-name=file<CR>
-" tmux end }}}
-
-" --- unite_vim --- {{{
-" insert modeで開始
-let g:unite_enable_start_insert = 1
-
-
-" unite grep に ag(The Silver Searcher) を使う
-if executable('ag')
-let g:unite_source_grep_command = 'ag'
-let g:unite_source_grep_default_opts = '--nogroup --nocolor --column'
-let g:unite_source_grep_recursive_opt = ''
-endif
-
-" 大文字小文字を区別しない
-let g:unite_enable_ignore_case = 1
-let g:unite_enable_smart_case = 1
-
-" grep検索
-" nnoremap <silent> ,g  :<C-u>Unite grep:. -buffer-name=search-buffer<CR>
-
-" カーソル位置の単語をgrep検索
-" nnoremap <silent> ,cg :<C-u>Unite grep:. -buffer-name=search-buffer<CR><C-R><C-W>
-
-" grep検索結果の再呼出
-" nnoremap <silent> ,r  :<C-u>UniteResume search-buffer<CR>
-
-" --- unite--- }}}
-
-" 行を移動
-nnoremap <C-Up> "zdd<Up>"zP
-nnoremap <C-Down> "zdd"zp
-" 複数行を移動
-vnoremap <C-Up> "zx<Up>"zP`[V`]
-vnoremap <C-Down> "zx"zp`[V`]
-
-" インサートモードでカーソル移動
-inoremap <C-f> <Right>
-inoremap <C-b> <Left>
-
-" カーソル下の単語をハイライトする
-nnoremap <silent> <Space><Space> "zyiw:let @/ = '\<' . @z . '\>'<CR>:set hlsearch<CR>
-
-" ハイライト消去と再描写
-nnoremap <silent> <C-l> :<C-u>nohlsearch<CR><C-l>
-
-
-nnoremap <Leader>bf :Buffers<CR>
-
-" tagsジャンプの時に複数ある時は一覧表示
-" nnoremap <C-]> g<C-]>
-
-" vimgrepによる移動のキーマップ
-nnoremap [q :cprevious<CR>   " 前へ
-nnoremap ]q :cnext<CR>       " 次へ
-nnoremap [Q :<C-u>cfirst<CR> " 最初へ
-nnoremap ]Q :<C-u>clast<CR>  " 最後へ
-
-" QuickFix系の設定
-autocmd QuickFixCmdPost vimgrep cwindow
-" 下記のとおりにすると:grepや:Ggrepでも自動的にquickfix-windowを開くようになる。
-autocmd QuickFixCmdPost *grep* cwindow
-
-" カーソル位置の単語をgrep検索
-" nnoremap <silent> ,cg :<C-u>Unite grep:. -buffer-name=search-buffer<CR><C-R><C-W>
-
-
-" TODO: change ag to rg
-" カーソル上の単語をsilver-search検索
-nnoremap <Space>c :<C-u>Ag --hidden <cword><CR>
-nnoremap <Space>r :Rg<Space>
-" nnoremap ,c :Rg .shellescape(<cword>)
-
-" easymotion keymap {{{
-" デフォルトのキーマップはオフに
-let g:EasyMotion_do_mapping = 0
-" f + 2文字 で画面全体を検索してジャンプ
-map <Space>f <plug>(easymotion-overwin-f2)
-" 検索時、大文字小文字を区別しない
-let g:EasyMotion_smartcase = 1
-
-" =======================================
-" Line Motions
-" =======================================
-" `JK` Motions: Extend line motions
-map <Space>j <Plug>(easymotion-j)
-map <Space>k <Plug>(easymotion-k)
-" keep cursor column with `JK` motions
-let g:EasyMotion_startofline = 0
-
-" easymotionのキーマップ END }}}
-
-" vim slash(/) マッチ数の出力 {{{
-nnoremap <expr> / _(":%s/<Cursor>/&/gn")
-
-function! s:move_cursor_pos_mapping(str, ...)
-    let left = get(a:, 1, "<Left>")
-    let lefts = join(map(split(matchstr(a:str, '.*<Cursor>\zs.*\ze'), '.\zs'), 'left'), "")
-    return substitute(a:str, '<Cursor>', '', '') . lefts
-endfunction
-
-function! _(str)
-    return s:move_cursor_pos_mapping(a:str, "\<Left>")
-endfunction
-" vim slash(/) マッチ数の出力 END }}}
-
-" 上下の空白に移動
-nnoremap <C-j> }
-nnoremap <C-k> {
-
-" vimrcを気軽に編集
-nnoremap <Leader>. :new ~/.vimrc<CR>
-nnoremap <Leader>s :source ~/.vimrc<CR>
-
-" universal_tags
-nnoremap <silent> <Leader>t :TagbarToggle<CR>
-
-" window mode with number {{{
-let i = 1
-while i <= 9
-    " execute 'nnoremap <Space>' . i . ' :' . i . 'wincmd w<CR>'
-    execute 'nnoremap <Space>' . i . ' :' . i . 'wincmd w<CR>'
-    let i = i + 1
-endwhile
-" }}}
-
-" }}}
-
-" misc {{{
-
-" yankした文字をクリップボードにも反映する
-set clipboard+=unnamed
-
-" 改行時のコメントを自動で付けない設定
-au FileType * setlocal formatoptions-=ro
-
-" TODO 要らなければ削除
-" nerdTreeが最後のバッファの場合、自動で削除する
-" autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-
-" ターミナルを画面下部に表示
-" set splitbelow
-" set termwinsize=14x0
-
-" }}}
-
-" cursorline {{{
-
-" カーソルラインの表示に制限をかけ、軽量化する機構 {{{
-augroup vimrc-auto-cursorline
-  autocmd!
-  autocmd CursorMoved,CursorMovedI * call s:auto_cursorline('CursorMoved')
-  autocmd CursorHold,CursorHoldI * call s:auto_cursorline('CursorHold')
-  autocmd WinEnter * call s:auto_cursorline('WinEnter')
-  autocmd WinLeave * call s:auto_cursorline('WinLeave')
-
-  let s:cursorline_lock = 0
-  function! s:auto_cursorline(event)
-    if a:event ==# 'WinEnter'
-      setlocal cursorline
-      let s:cursorline_lock = 2
-    elseif a:event ==# 'WinLeave'
-      setlocal nocursorline
-    elseif a:event ==# 'CursorMoved'
-      if s:cursorline_lock
-        if 1 < s:cursorline_lock
-          let s:cursorline_lock = 1
-        else
-          setlocal nocursorline
-          let s:cursorline_lock = 0
-        endif
-      endif
-    elseif a:event ==# 'CursorHold'
-      setlocal cursorline
-      let s:cursorline_lock = 1
-    endif
-  endfunction
-augroup END
-" }}}
-
-" }}}
-
-" each_lang {{{
-
-set tabstop=4
-set shiftwidth=4
-set softtabstop=4
-" set expandtab
-set autoindent
-set smartindent
-
-augroup fileTypeIndent
-	autocmd!
-	" autocmd BufRead,BufNewFile *.py
-	autocmd BufRead,BufNewFile *.go setlocal tabstop=2 shiftwidth=2 softtabstop=2
-	autocmd BufRead,BufNewFile *.rb setlocal tabstop=2 shiftwidth=2 softtabstop=2
-	" autocmd BufRead,BufNewFile *.vim setlocal tabstop=4 shiftwidth=4 softtabstop=4
-	autocmd BufNewFile,BufRead *.c setlocal tabstop=2 softtabstop=2 shiftwidth=2
-	autocmd BufRead,BufNewFile *.md setlocal tabstop=2 shiftwidth=2 softtabstop=2
-	autocmd BufNewFile,BufRead *.html setlocal tabstop=2 softtabstop=2 shiftwidth=2
-	autocmd BufNewFile,BufRead *.json setlocal tabstop=2 softtabstop=2 shiftwidth=2
-	autocmd BufNewFile,BufRead *.rs setlocal tabstop=4 softtabstop=4 shiftwidth=4
-	autocmd BufNewFile,BufRead *.vim setlocal tabstop=2 softtabstop=2 shiftwidth=2
-augroup END
-
-autocmd
-
-" rust {{{
-let g:rustfmt_autosave = 1
-let g:rustfmt_command = '$HOME/.cargo/bin/rustfmt'
-" }}}
-
-" }}}
-
-" for optimization {{{
-
-" file reading profile {{{
-function! ProfileCursorMove() abort
-  let profile_file = expand('~/log/vim-profile.log')
-  if filereadable(profile_file)
-    call delete(profile_file)
-  endif
-
-  normal! gg
-  normal! zR
-
-  execute 'profile start ' . profile_file
-  profile func *
-  profile file *
-
-  augroup ProfileCursorMove
-    autocmd!
-    autocmd CursorHold <buffer> profile pause | q
-  augroup END
-
-  for i in range(100)
-    call feedkeys('j')
-  endfor
-endfunction
-" }}}
-
-" syntax report time {{{
-" https://stackoverflow.com/questions/19030290/syntax-highlighting-causes-terrible-lag-in-vim
-" set syntime=on
-" syntime report
-" }}}
-
 " }}}
 
 " vim: foldmethod=marker
