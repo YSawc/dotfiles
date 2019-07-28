@@ -815,6 +815,7 @@ set updatetime=300
 
 " don't give |ins-completion-menu| messages.
 set shortmess+=c
+set shortmess+=I
 
 " always show signcolumns
 set signcolumn=yes
