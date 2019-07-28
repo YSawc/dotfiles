@@ -1,5 +1,7 @@
 " initialize {{{
 
+" TODO: call initialize from linux of manjaro
+
 let s:MSWindows = has('win95') + has('win16') + has('win32') + has('win64')
 let $VIM = expand('~/vim/vimdot')
 
@@ -1198,4 +1200,5 @@ endfunction
 " }}}
 
 " }}}
+
 " vim: foldmethod=marker
