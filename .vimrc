@@ -90,12 +90,6 @@ let g:indent_guides_enable_on_vim_startup = 1
 " バックスペースでの削除をいつでも有効にする
 set backspace=indent,eol,start
 
-" スペルチェックを有効にする {{{
-" set spell
-"日本語を除外
-" set spelllang=en,cjk
-" }}}
-
 " cursor setting: always set cursor center {{{
 set scrolloff=100
 " }}}
@@ -117,7 +111,6 @@ set foldmethod=marker
 set ttimeoutlen=10
 
 " synmaxcol setting {{{
-" 'synmaxcol' 'smc'	number	(default 3000)
 set synmaxcol=256
 " }}}
 
@@ -177,7 +170,7 @@ command! -bang -nargs=* Rg
   \   <bang>0 ? fzf#vim#with_preview({'options': '--delimiter : --nth 4..'}, 'up:60%')
   \           : fzf#vim#with_preview({'options': '--delimiter : --nth 4..'}, 'right:50%:hidden', '?'),
   \   <bang>0)
-" Rg }}}
+" }}}
 
 " }}}
 
@@ -186,15 +179,9 @@ command! -bang -nargs=* Rg
 " 行番号設定 {{{
 set relativenumber
 set number
-" set nonumber
 " }}}
 
-" 現在の行を強調表示
 set cursorline
-" 現在の行を強調表示（縦）
-" set cursorcolumn
-" cursorlineの色をクリア
-" hi clear CursorLi
 
 " insertモードの時にカーソルの見た目を縦棒に変更する
 if has('vim_starting')
@@ -206,61 +193,12 @@ if has('vim_starting')
 	let &t_SR .= "\e[4 q"
 endif
 
-" 分割ラインのカラー変更
-" highlight VertSplit gui=reverse guifg=bg
-
 " エディタウィンドウの末尾から2行目にステータスラインを常時表示させる
 set laststatus=2
 
 " setting list {{{
 set list
 set listchars+=tab:\¦\ ,trail:-,eol:↲
-" }}}
-
-" 画面分割の見た目変更
-" set fillchars+=vert:\│
-" set fillchars=vert:\|,fold:\  eventignore= helplang=en viewoptions=options,cursor virtualedit=
-" hi LineNr guibg=bg
-" hi foldcolumn guibg=bg
-" hi VertSplit guibg=bg guifg=bg
-" hi VertSplit ctermfg=Black ctermbg=DarkGray
-" hi VertSplit ctermfg=bg
-" highlight VertSplit gui=reverse guifg=Red
-
-" airlineの設定
-" タブバーをかっこよく
-
-" let g:airline#extensions#tabline#enabled = 1
-
-" TODO: introduce TabsideBar
-" sideBar {{{
-" set showtabsidebar=2
-" set tabsidebarcolumns=20
-" set tabsidebarwrap
-" set tabsidebar=%!TabSideBar()
-" function! TabSideBar() abort
-"     try
-"         let lines = [printf('TabPage:%d', g:actual_curtabpage)]
-"         for x in getwininfo()
-"             if x.tabnr == g:actual_curtabpage
-"                 let s = '[No Name]'
-"                 if x.terminal
-"                     let s = '[Terminal]'
-"                 elseif x.quickfix
-"                     let s = '[QuickFix]'
-"                 elseif x.loclist
-"                     let s = '[LocList]'
-"                 else
-"                     let s = fnamemodify(bufname(x.bufnr), ':t')
-"                 endif
-"                 let lines += [printf('  %s', s)]
-"             endif
-"         endfor
-"     catch
-"         return string(v:exception)
-"     endtry
-"     return join(lines, "\n")
-" endfunction
 " }}}
 
 " }}}
@@ -292,48 +230,19 @@ nnoremap <Esc><Esc> :nohlsearch<CR>
 " 行番号の色を設定 {{{
 hi LineNr ctermbg=0 ctermfg=0
 hi CursorLineNr ctermbg=4 ctermfg=0
-" set cursorline
-" hi clear CursorLine
-" 行番号の色設定 }}}
 
- " カラースキーム
-" colorscheme koehler
-" colorscheme molokai
 colorscheme gruvbox
-" ダーク系のカラースキーム設定
+
 " set background=dark
-" ホワイト系のカラースキーム設定
 " set background=light
-
-" 行番号の色を設定する
-" autocmd ColorScheme * highlight LineNr ctermfg=239
- " highlight LineNr ctermfg=239
-
-" カラープラグイン tenderplus {{{
-" if (has("termguicolors"))
-"  set termguicolors
-" endif
-"
-" syntax enable
-" colorscheme tender
-" tenderplus }}}
-
-" カラープラグイン molokai {{{
-" if (has("molokai"))
-" 	colorscheme molokai
-" endif
-"
-" set t_Co=256
-" syntax enable
-" mololkai}}}
 
 " }}}
 
 " editing {{{
 
 " https://vim-jp.org/vimdoc-ja/map.html#mapleader
-" Leaderキーをスペースに設定 {{{
 let g:mapleader = "\<Space>"
+
 " }}}
 
 
@@ -343,7 +252,6 @@ nnoremap <silent> <Space>lb :<C-u>LoadBuffer<CR>
 inoremap <silent> jk <ESC>
 inoremap <silent> kj <ESC>
 
-" コロン、セミコロン入れ替え
 nnoremap ; :
 
 " ファイル保存と終了 {{{
@@ -369,9 +277,6 @@ noremap <expr> <C-e> (line('w$') >= line('$') ? 'j' : "\<C-e>")
 
 " neartreeのトグル
 nnoremap s; :<C-u>NERDTreeTabsToggle<CR>
-
-" VimFilerのトグル
-" nnoremap <silent> s; :VimFilerExplore<CR>
 
 " moving command line {{{
 cnoremap <c-b> <S-Left>
@@ -405,7 +310,6 @@ nnoremap sP :<C-u>bp<CR>
 nnoremap st :<C-u>tabnew<CR>
 nnoremap th :-tabm<CR>
 nnoremap tl :+tabm<CR>
-" nnoremap sT :<C-u>Unite tab<CR>
 nnoremap ss :<C-u>sp<CR>
 nnoremap sv :<C-u>vs<CR>
 nnoremap sq :<C-u>q<CR>
@@ -414,10 +318,9 @@ nnoremap sb :<C-u>Unite buffer_tab -buffer-name=file<CR>
 nnoremap sB :<C-u>Unite buffer -buffer-name=file<CR>
 " tmux end }}}
 
-" --- unite_vim --- {{{
+" unite_vim {{{
 " insert modeで開始
 let g:unite_enable_start_insert = 1
-
 
 " unite grep に ag(The Silver Searcher) を使う
 if executable('ag')
@@ -430,16 +333,7 @@ endif
 let g:unite_enable_ignore_case = 1
 let g:unite_enable_smart_case = 1
 
-" grep検索
-" nnoremap <silent> ,g  :<C-u>Unite grep:. -buffer-name=search-buffer<CR>
-
-" カーソル位置の単語をgrep検索
-" nnoremap <silent> ,cg :<C-u>Unite grep:. -buffer-name=search-buffer<CR><C-R><C-W>
-
-" grep検索結果の再呼出
-" nnoremap <silent> ,r  :<C-u>UniteResume search-buffer<CR>
-
-" --- unite--- }}}
+" unite }}}
 
 " 行を移動
 nnoremap <C-Up> "zdd<Up>"zP
@@ -458,11 +352,7 @@ nnoremap <silent> <Space><Space> "zyiw:let @/ = '\<' . @z . '\>'<CR>:set hlsearc
 " ハイライト消去と再描写
 nnoremap <silent> <C-l> :<C-u>nohlsearch<CR><C-l>
 
-
 nnoremap <Leader>bf :Buffers<CR>
-
-" tagsジャンプの時に複数ある時は一覧表示
-" nnoremap <C-]> g<C-]>
 
 " vimgrepによる移動のキーマップ
 nnoremap [q :cprevious<CR>   " 前へ
@@ -475,15 +365,10 @@ autocmd QuickFixCmdPost vimgrep cwindow
 " 下記のとおりにすると:grepや:Ggrepでも自動的にquickfix-windowを開くようになる。
 autocmd QuickFixCmdPost *grep* cwindow
 
-" カーソル位置の単語をgrep検索
-" nnoremap <silent> ,cg :<C-u>Unite grep:. -buffer-name=search-buffer<CR><C-R><C-W>
-
-
 " TODO: change ag to rg
 " カーソル上の単語をsilver-search検索
 nnoremap <Space>c :<C-u>Ag --hidden <cword><CR>
 nnoremap <Space>r :Rg<Space>
-" nnoremap ,c :Rg .shellescape(<cword>)
 
 " easymotion keymap {{{
 " デフォルトのキーマップはオフに
@@ -492,17 +377,13 @@ let g:EasyMotion_do_mapping = 0
 map <Space>f <plug>(easymotion-overwin-f2)
 " 検索時、大文字小文字を区別しない
 let g:EasyMotion_smartcase = 1
-
-" =======================================
-" Line Motions
-" =======================================
 " `JK` Motions: Extend line motions
 map <Space>j <Plug>(easymotion-j)
 map <Space>k <Plug>(easymotion-k)
 " keep cursor column with `JK` motions
 let g:EasyMotion_startofline = 0
 
-" easymotionのキーマップ END }}}
+" }}}
 
 " vim slash(/) マッチ数の出力 {{{
 nnoremap <expr> / _(":%s/<Cursor>/&/gn")
@@ -548,14 +429,6 @@ set clipboard+=unnamed
 " 改行時のコメントを自動で付けない設定
 au FileType * setlocal formatoptions-=ro
 
-" TODO 要らなければ削除
-" nerdTreeが最後のバッファの場合、自動で削除する
-" autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-
-" ターミナルを画面下部に表示
-" set splitbelow
-" set termwinsize=14x0
-
 " }}}
 
 " each_lang {{{
@@ -563,13 +436,11 @@ au FileType * setlocal formatoptions-=ro
 set tabstop=4
 set shiftwidth=4
 set softtabstop=4
-" set expandtab
 set autoindent
 set smartindent
 
 augroup fileTypeIndent
 	autocmd!
-	" autocmd BufRead,BufNewFile *.py
 	autocmd BufRead,BufNewFile *.go setlocal tabstop=2 shiftwidth=2 softtabstop=2
 	autocmd BufRead,BufNewFile *.rb setlocal tabstop=2 shiftwidth=2 softtabstop=2
 	autocmd BufNewFile,BufRead *.c setlocal tabstop=2 softtabstop=2 shiftwidth=2
@@ -680,6 +551,9 @@ let g:loaded_matchparen = 1
 Plug 'itchyny/vim-parenmatch'
 " Plug 'itchyny/vim-cursorword' " TODO: トグル化
 
+Plug 'itchyny/vim-cursorword'
+let g:cursorword = 0 " TODO: toggle
+
 " カーソル移動をより快適にする
 Plug 'Lokaltog/vim-easymotion'
 
@@ -699,21 +573,11 @@ let g:vimfiler_enable_auto_cd = 1
 Plug 'ctrlpvim/ctrlp.vim'
 let g:ctrlp_show_hidden=1
 
-" コメントON/OFFを手軽に実行
-" Plug 'tomtom/tcomment_vim'
-
-
 " Ruby向けにendを自動挿入してくれる
 Plug 'tpope/vim-endwise'
 
-" 下のラインにステータスバーを表示する
-" Plug 'vim-airline/vim-airline'
-
 " 曖昧に検索できるツールプラグイン
 Plug 'junegunn/fzf'
-
-" nerdtree専用のファイルカラーテーマ
-" Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 
 " gitのコマンドをvimで操作できるプラグイン
 Plug 'tpope/vim-fugitive'
@@ -726,11 +590,6 @@ Plug 'jacoborus/tender.vim'
 
 " agのvim用
 Plug 'rking/ag.vim'
-
-" vimを開いてる時にtagsを追加する TODO: 使わなそうなら削除 190707
-" Plug 'szw/vim-tags'
-" vim-tags追加コマンド: :TagsGenerate 編集中に定義の更新ができる
-" au BufNewFile,BufRead *.php let g:vim_tags_project_tags_command = "ctags --languages=php -f ~/php.tags `pwd` 2>/dev/null &"
 
 " 目印行を常に表示する
 if exists('&signcolumn')  " Vim 7.4.2201
@@ -749,17 +608,8 @@ Plug 'tpope/vim-markdown'
 Plug 'kannokanno/previm'
 Plug 'tyru/open-browser.vim'
 
-" vimrc.LSP_plugins_settingの読み込みに続く為、plug#endはコメントアウトしておく
-" call plug#end()
-
 " translate.vim
 Plug 'skanehira/translate.vim'
-
-" lintの現在行の物をpopup表示するプラグイン
-" Plug 'tyru/qfpopup.vim'
-
-" カーソルの構造体をポップアップ表示する
-" Plug 'rbtnn/vim-popup_signature'
 
 " OrgMode
 Plug 'jceb/vim-orgmode'
