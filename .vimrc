@@ -649,7 +649,7 @@ Plug 'junegunn/fzf'
 
 " other END }}}
 
-" coc END {{{
+" coc {{{
 
 Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
 " Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install()}}
