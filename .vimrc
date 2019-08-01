@@ -813,6 +813,11 @@ let g:go_metalinter_autosave_enabled = ['vet']
 let g:go_term_mode = 'split'
 
 " vim-go END }}}
+"
+" rust {{{
+Plug 'rust-lang/rust.vim'
+let g:rustfmt_autosave = 1
+" }}}
 
 " neosnippet {{{
 Plug 'Shougo/neosnippet'
