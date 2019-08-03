@@ -493,27 +493,6 @@ call plug#begin('~/.vim/plugged')
 " plug vpbuffer
 Plug 'YSawc/vpbuffer'
 
-Plug 'w0rp/ale'                 " Dependency: linter {{{
-let g:ale_linters = {
-	\   'python': ['pylint'],
-	\}
-}
-let g:ale_sign_error = 'X'
-let g:ale_sign_warning = 'W'
-let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
-let g:ale_lint_on_enter = 1
-let g:ale_lint_on_save = 1
-let g:ale_lint_on_text_changed = 'never'
-
-" not use quickfix
-let g:ale_set_loclist = 0
-let g:ale_set_quickfix = 0
-let g:ale_open_list = 0
-let g:ale_keep_list_window_open = 0
-
-" }}}
-
-
 Plug 'itchyny/lightline.vim'    " Dependency: status line
 Plug 'maximbaz/lightline-ale'
 
