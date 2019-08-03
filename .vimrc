@@ -832,6 +832,19 @@ let g:go_term_mode = 'split'
 " rust {{{
 Plug 'rust-lang/rust.vim'
 let g:rustfmt_autosave = 1
+let g:rustfmt_command = '$HOME/.cargo/bin/rustfmt'
+" let g:syntastic_rust_checkers = ['cargo']
+
+Plug 'racer-rust/vim-racer'
+set hidden
+let g:racer_cmd = '~/.cargo/bin/racer'
+let g:racer_experimental_completer = 1
+
+au FileType rust nmap gd <Plug>(rust-def)
+au FileType rust nmap gs <Plug>(rust-def-split)
+au FileType rust nmap gx <Plug>(rust-def-vertical)
+au FileType rust nmap <leader>gd <Plug>(rust-doc)
+
 " }}}
 
 " neosnippet {{{
