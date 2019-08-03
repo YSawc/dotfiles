@@ -450,11 +450,6 @@ augroup fileTypeIndent
 	autocmd BufNewFile,BufRead *.rs setlocal tabstop=4 softtabstop=4 shiftwidth=4
 augroup END
 
-" rust {{{
-let g:rustfmt_autosave = 1
-let g:rustfmt_command = '$HOME/.cargo/bin/rustfmt'
-" }}}
-
 " }}}
 
 " for optimization {{{
