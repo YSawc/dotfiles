@@ -376,8 +376,6 @@ endwhile
 " yank with copy
 set clipboard+=unnamed
 
-" TODO: reset
-au FileType * setlocal formatoptions-=ro
 
 " }}}
 
