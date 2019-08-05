@@ -98,6 +98,9 @@ set textwidth=80
 
 set signcolumn=yes
 
+" https://vim-jp.org/vimdoc-ja/change.html#fo-table
+set formatoptions-=cro
+
 " }}}
 
 " cursorline {{{
