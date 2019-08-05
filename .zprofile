@@ -1,31 +1,25 @@
 # rbenvパス
 
-# 日本語設定
 export LANG=ja_JP.UTF-8
-# export LANGUAGE=C
 
 export PATH="/bin:$PATH"
 
 export PATH="~/.rbenv/shims:/usr/local/bin:$PATH"
 eval "$(rbenv init -)"
 
-# Setting PATH for Python 3.7
+# python
 PATH="/Library/Frameworks/Python.framework/Versions/3.7/bin:${PATH}"
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
 
+# playFramewor
 PATH=$PATH:~/Library/play-2.2.6
 
-#XAMPPのパス
+# xampp
 export PATH=$PATH:/Applications/XAMPP/xamppfiles/bin
 
-# NeoVim起動用
-#export XDG_CONFIG_HOME="$HOME/.config"
-
-# export GOPATH=$HOME/go
-
-# llvm ( LSP c, cpp )
+# llvm
 export PATH="/usr/local/opt/llvm/bin:$PATH"
 
 # setting java path
@@ -37,9 +31,8 @@ export CPPFLAGS="-I/usr/local/opt/llvm/include"
 # stack path
 export PATH=~/.local/bin:$PATH
 
-# source ~/.zshrc
-
 # opam configuration
 test -r /Users/y-s/.opam/opam-init/init.zsh && . /Users/y-s/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
 
+# rust
 export PATH="$HOME/.cargo/bin:$PATH"
