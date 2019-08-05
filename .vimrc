@@ -483,9 +483,6 @@ let g:loaded_matchparen = 1
 Plug 'itchyny/vim-parenmatch'
 " Plug 'itchyny/vim-cursorword' " TODO: toggle
 
-Plug 'itchyny/vim-cursorword'
-let g:cursorword = 0 " TODO: toggle
-
 Plug 'Lokaltog/vim-easymotion'
 
 Plug 'Shougo/unite.vim'
