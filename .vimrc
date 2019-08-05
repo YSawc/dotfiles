@@ -227,14 +227,12 @@ nnoremap <Esc><Esc> :nohlsearch<CR>
 
 " colors {{{
 
-" 行番号の色を設定 {{{
+" color lines {{{
+"
 hi LineNr ctermbg=0 ctermfg=0
 hi CursorLineNr ctermbg=4 ctermfg=0
 
 colorscheme gruvbox
-
-" set background=dark
-" set background=light
 
 " }}}
 
