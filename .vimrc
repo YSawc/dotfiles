@@ -257,23 +257,21 @@ nnoremap <Leader>w :w<CR>
 nnoremap <Leader>q :q!<CR>
 " }}}
 
-" numberとrelativenumberのトグル切り替え
 nnoremap <silent> <Leader>rn :set relativenumber!<CR>
 nnoremap <silent> <Leader>run :set nonumber!<CR>
 
-" 括弧を自動で閉じるように設定
 inoremap { {}<Left>
 inoremap {<Enter> {}<Left><CR><ESC><S-o>
 inoremap ( ()<ESC>i
 inoremap (<Enter> ()<Left><CR><ESC><S-o>
 
-" スクロール系の挙動を微調整する
+" TODO: reset
 noremap <expr> <C-b> max([winheight(0) - 2, 1]) . "\<C-u>" . (line('.') < 1         + winheight(0) ? 'H' : 'L')
 noremap <expr> <C-f> max([winheight(0) - 2, 1]) . "\<C-d>" . (line('.') > line('$') - winheight(0) ? 'L' : 'H')
 noremap <expr> <C-y> (line('w0') <= 1         ? 'k' : "\<C-y>")
 noremap <expr> <C-e> (line('w$') >= line('$') ? 'j' : "\<C-e>")
 
-" neartreeのトグル
+" TODO: move
 nnoremap s; :<C-u>NERDTreeTabsToggle<CR>
 
 " moving command line {{{
