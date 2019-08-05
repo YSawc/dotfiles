@@ -176,7 +176,7 @@ command! -bang -nargs=* Rg
 
 " apperance {{{
 
-" 行番号設定 {{{
+" setting line_num {{{
 set relativenumber
 set number
 " }}}
