@@ -610,13 +610,10 @@ function! s:show_documentation()
   endif
 endfunction
 
-" Highlight symbol under cursor on CursorHold
 autocmd CursorHold * silent call CocActionAsync('highlight')
 
-" Remap for rename current word
 nnoremap <leader>rn <Plug>(coc-rename)
 
-" Remap for format selected region
 xmap <leader>cf  <Plug>(coc-format-selected)
 nnoremap <leader>cf  <Plug>(coc-format-selected)
 
