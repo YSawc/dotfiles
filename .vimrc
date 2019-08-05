@@ -500,10 +500,10 @@ Plug 'maximbaz/lightline-ale'
 Plug 'bronson/vim-trailing-whitespace'
 
 " fzf for vim {{{
+"
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 
-" " fzfでファイルを検索する
 nnoremap <Space><C-p> :FZFFileList<CR>
 command! FZFFileList call fzf#run({
 			\ 'source': 'find . -type d -name .git -prune -o ! -name .DS_Store',
@@ -520,6 +520,7 @@ command! FZFFileListInBuffer call fzf#run({
 
 command! -bang -nargs=? -complete=dir Files
   \ call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
+
 " }}}
 
 " nerdTree {{{
@@ -753,8 +754,6 @@ let g:lightline = {
       \   'cocstatus': 'coc#status'
       \ },
       \ }
-
-
 
 " Using CocList
 " Show all diagnostics
