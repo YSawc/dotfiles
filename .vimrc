@@ -481,12 +481,10 @@ nnoremap s; :<C-u>NERDTreeTabsToggle<CR>
 " cursorWord
 let g:loaded_matchparen = 1
 Plug 'itchyny/vim-parenmatch'
-" Plug 'itchyny/vim-cursorword' " TODO: toggle
 
 Plug 'Lokaltog/vim-easymotion'
 
 Plug 'Shougo/unite.vim'
-" let g:better_whitespace_filetypes_blacklist = ['unite']
 Plug 'Shougo/neomru.vim'
 
 Plug 'ctrlpvim/ctrlp.vim'
