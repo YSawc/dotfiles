@@ -124,7 +124,7 @@ set textwidth=80
 
 " cursorline {{{
 
-" カーソルラインの表示に制限をかけ、軽量化する機構 {{{
+" refactor of cursorLine {{{
 augroup vimrc-auto-cursorline
   autocmd!
   autocmd CursorMoved,CursorMovedI * call s:auto_cursorline('CursorMoved')
@@ -163,7 +163,7 @@ augroup END
 
 " grep {{{
 
-" Rgコマンドで、ファイルをfzf検索 {{{
+" fzfSearch {{{
 command! -bang -nargs=* Rg
   \ call fzf#vim#grep(
   \   'rg --column --line-number --hidden --ignore-case --no-heading --color=always '.shellescape(<q-args>), 1,
