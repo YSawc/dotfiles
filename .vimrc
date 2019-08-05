@@ -501,11 +501,6 @@ Plug 'Shougo/unite.vim'
 " let g:better_whitespace_filetypes_blacklist = ['unite']
 Plug 'Shougo/neomru.vim'
 
-" TODO: reset
-Plug 'Shougo/vimfiler.vim'
-let g:vimfiler_enable_auto_cd = 1
-" let g:extra_whitespace_ignored_filetypes = ['vimfiler']
-
 Plug 'ctrlpvim/ctrlp.vim'
 let g:ctrlp_show_hidden=1
 
