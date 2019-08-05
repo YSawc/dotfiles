@@ -105,6 +105,9 @@ set sessionoptions=blank,buffers,curdir,folds,help,tabpages,winsize,terminal
 " wrap
 set wrap
 set textwidth=80
+
+set signcolumn=yes
+
 " }}}
 
 " cursorline {{{
@@ -513,13 +516,6 @@ Plug 'airblade/vim-gitgutter'
 " ag for vim
 Plug 'rking/ag.vim'
 
-" TODO: reset
-if exists('&signcolumn')  " Vim 7.4.2201
-  set signcolumn=yes
-else
-  let g:gitgutter_sign_column_always = 1
-endif
-
 " resize
 Plug 'simeji/winresizer'
 let g:winresizer_start_key = '<Space><C-T>'
@@ -592,9 +588,6 @@ set updatetime=300
 
 " don't give |ins-completion-menu| messages.
 set shortmess+=I
-
-" always show signcolumns
-set signcolumn=yes
 
 " Use tab for trigger completion with characters ahead and navigate.
 " Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
