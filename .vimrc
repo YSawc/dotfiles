@@ -331,34 +331,29 @@ let g:unite_enable_smart_case = 1
 
 " unite }}}
 
-" 行を移動
+" move line
 nnoremap <C-Up> "zdd<Up>"zP
 nnoremap <C-Down> "zdd"zp
-" 複数行を移動
 vnoremap <C-Up> "zx<Up>"zP`[V`]
 vnoremap <C-Down> "zx"zp`[V`]
 
-" インサートモードでカーソル移動
+" move in insert
 inoremap <C-f> <Right>
 inoremap <C-b> <Left>
 
-" カーソル下の単語をハイライトする
+" toggle hilight
 nnoremap <silent> <Space><Space> "zyiw:let @/ = '\<' . @z . '\>'<CR>:set hlsearch<CR>
-
-" ハイライト消去と再描写
 nnoremap <silent> <C-l> :<C-u>nohlsearch<CR><C-l>
 
 nnoremap <Leader>bf :Buffers<CR>
 
-" vimgrepによる移動のキーマップ
-nnoremap [q :cprevious<CR>   " 前へ
-nnoremap ]q :cnext<CR>       " 次へ
-nnoremap [Q :<C-u>cfirst<CR> " 最初へ
-nnoremap ]Q :<C-u>clast<CR>  " 最後へ
+" move in QuickFix
+nnoremap [q :cprevious<CR>
+nnoremap ]q :cnext<CR>
+nnoremap [Q :<C-u>cfirst<CR>
+nnoremap ]Q :<C-u>clast<CR>
 
-" QuickFix系の設定
 autocmd QuickFixCmdPost vimgrep cwindow
-" 下記のとおりにすると:grepや:Ggrepでも自動的にquickfix-windowを開くようになる。
 autocmd QuickFixCmdPost *grep* cwindow
 
 " TODO: change ag to rg
