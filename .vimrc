@@ -560,6 +560,7 @@ Plug 'thinca/vim-quickrun'
 Plug 'majutsushi/tagbar'
 set fileformats=unix,dos,mac
 set fileencodings=utf-8,sjis
+
 " }}}
 
 " LSP_plugins {{{
