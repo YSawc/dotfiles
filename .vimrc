@@ -81,9 +81,6 @@ set lazyredraw
 set ttyfast
 " }}}
 
-" TODO: reset
-let g:indent_guides_enable_on_vim_startup = 1
-
 " TODO: delete ok ??
 set backspace=indent,eol,start
 
