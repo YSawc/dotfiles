@@ -798,7 +798,7 @@ let g:go_fmt_command = "goimports"
 let g:go_metalinter_autosave = 1
 let g:go_metalinter_autosave_enabled = ['vet']
 
-" GoRunやGoTest時の画面分割方法変更
+" setting how to split
 let g:go_term_mode = 'split'
 
 " vim-go END }}}
