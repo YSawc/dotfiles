@@ -785,23 +785,18 @@ Plug 'liuchengxu/vista.vim'
 
 " vim-go {{{
 
-" vim-go
-" Plug 'fatih/vim-go', { 'for': 'go', 'do': ':GoInstallBinaries' }
 Plug 'fatih/vim-go'
 
-" スニペット
+" TODO: select snippets usefull
 Plug 'SirVer/ultisnips'
 
 " vim-go settings
-" ファイル保存時go importを実行する
+" auto format
 let g:go_fmt_command = "goimports"
 
-" ファイル保存時、linterを実行する
+" auto linter in save
 let g:go_metalinter_autosave = 1
-
-" linter実行時、go vetのみを実行する
 let g:go_metalinter_autosave_enabled = ['vet']
-
 
 " GoRunやGoTest時の画面分割方法変更
 let g:go_term_mode = 'split'
