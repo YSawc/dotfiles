@@ -34,33 +34,27 @@ set noswapfile
 
 set encoding=UTF-8
 
-" mute seting {{{
+" mute seting
 set t_vb=
 set visualbell
 set noerrorbells
-" }}}
 
-" delete using backspace & ctrl+h {{{
+" delete using backspace & ctrl+h
 set backspace=2
-" }}}
 
-" completion in comandLine {{{
+" completion in comandLine
 set wildmenu
 set wildmode=longest:full,full
-" }}}
 
-" enable modeline {{{
+" enable modeline
 set modeline
 set modelines=3
-" }}}
 
-" hilight in visual mode {{{
+" hilight in visual mode
 hi Visual cterm=reverse ctermbg=NONE
-" }}}
 
-" selector of short form {{{
+" selector of short form
 set virtualedit+=block
-" }}}
 
 " netrw {{{
 " prewiew setting
@@ -76,28 +70,24 @@ let g:netrw_sizestyle="H"
 " moving wrap
 set whichwrap=h,l,b,s,<,>,[,]
 
-" fast scroll {{{
+" fast scroll
 set lazyredraw
 set ttyfast
-" }}}
 
-" cursor setting: always set cursor center {{{
+" cursor setting: always set cursor center
 set scrolloff=100
-" }}}
 
 " mouseScroll on
 set mouse=a
 set ttymouse=xterm2
 
-" foftmethod setting {{{
+" foftmethod setting
 set foldmethod=marker
-" }}}
 
 set ttimeoutlen=10
 
-" synmaxcol setting {{{
+" synmaxcol setting
 set synmaxcol=256
-" }}}
 
 " setting save session
 set sessionoptions=blank,buffers,curdir,folds,help,tabpages,winsize,terminal
@@ -151,23 +141,21 @@ augroup END
 
 " grep {{{
 
-" fzfSearch {{{
+" fzfSearch
 command! -bang -nargs=* Rg
   \ call fzf#vim#grep(
   \   'rg --column --line-number --hidden --ignore-case --no-heading --color=always '.shellescape(<q-args>), 1,
   \   <bang>0 ? fzf#vim#with_preview({'options': '--delimiter : --nth 4..'}, 'up:60%')
   \           : fzf#vim#with_preview({'options': '--delimiter : --nth 4..'}, 'right:50%:hidden', '?'),
   \   <bang>0)
-" }}}
 
 " }}}
 
 " apperance {{{
 
-" setting line_num {{{
+" setting line_num
 set relativenumber
 set number
-" }}}
 
 set cursorline
 
@@ -180,10 +168,9 @@ endif
 " set for statusLine
 set laststatus=2
 
-" setting list {{{
+" setting list
 set list
 set listchars+=tab:\¦\ ,trail:-,eol:↲
-" }}}
 
 " }}}
 
@@ -404,7 +391,7 @@ augroup END
 
 " for optimization {{{
 
-" file reading profile {{{
+" file reading profile
 " function! ProfileCursorMove() abort
 "   let profile_file = expand('~/log/vim-profile.log')
 "   if filereadable(profile_file)
@@ -427,13 +414,11 @@ augroup END
 "     call feedkeys('j')
 "   endfor
 " endfunction
-" }}}
 
-" syntax report time {{{
+" syntax report time
 " https://stackoverflow.com/questions/19030290/syntax-highlighting-causes-terrible-lag-in-vim
 " set syntime=on
 " syntime report
-" }}}
 
 " }}}
 
