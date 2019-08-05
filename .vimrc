@@ -205,23 +205,11 @@ set listchars+=tab:\¦\ ,trail:-,eol:↲
 
 "  search in command_line {{{
 
-" 検索文字列が小文字の場合は大文字小文字を区別なく検索する
 set ignorecase
-
-" 検索文字列に大文字が含まれている場合は区別して検索する
 set smartcase
-
-" 検索文字列入力時に順次対象文字列にヒットさせる
 set incsearch
-
-" 検索時に最後まで行ったら最初に戻る
 set wrapscan
-
-" 検索語をハイライト表示
 set hlsearch
-
-" ESC二回でハイライト解除
-nnoremap <Esc><Esc> :nohlsearch<CR>
 
 " }}}
 
@@ -343,7 +331,7 @@ inoremap <C-b> <Left>
 
 " toggle hilight
 nnoremap <silent> <Space><Space> "zyiw:let @/ = '\<' . @z . '\>'<CR>:set hlsearch<CR>
-nnoremap <silent> <C-l> :<C-u>nohlsearch<CR><C-l>
+nnoremap <Esc><Esc> :nohlsearch<CR>
 
 nnoremap <Leader>bf :Buffers<CR>
 
@@ -393,12 +381,14 @@ nnoremap <C-k> {
 nnoremap <silent> <Leader>t :TagbarToggle<CR>
 
 " window mode with number {{{
+
 let i = 1
 while i <= 9
     " execute 'nnoremap <Space>' . i . ' :' . i . 'wincmd w<CR>'
     execute 'nnoremap <Space>' . i . ' :' . i . 'wincmd w<CR>'
     let i = i + 1
 endwhile
+
 " }}}
 
 " }}}
