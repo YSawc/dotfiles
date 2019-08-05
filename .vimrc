@@ -30,10 +30,8 @@ set lazyredraw
 set ttyfast
 " }}}
 
-" スワップファイルを作成しない
 set noswapfile
 
-" 文字コード指定
 set encoding=UTF-8
 
 " mute seting {{{
@@ -46,14 +44,13 @@ set noerrorbells
 set backspace=2
 " }}}
 
-" コマンドライン補完設定 {{{
+" completion in comandLine {{{
 set wildmenu
 set wildmode=longest:full,full
-" コマンドライン補完設定 }}}
+" }}}
 
-" モードラインを有効にする {{{
+" enable modeline {{{
 set modeline
-" 3行目までをモードラインとして検索する
 set modelines=3
 " }}}
 
@@ -76,7 +73,7 @@ let g:netrw_timefmt='%Y/%m/%d(%a) %H:%M:%S'
 let g:netrw_sizestyle="H"
 " }}}
 
-"左右のカーソル移動で行間移動可能にする。
+" moving wrap
 set whichwrap=h,l,b,s,<,>,[,]
 
 " fast scroll {{{
@@ -84,10 +81,10 @@ set lazyredraw
 set ttyfast
 " }}}
 
-" vimを立ち上げたときに、自動的にvim-indent-guidesをオンにする vim-indent-guides
+" TODO: reset
 let g:indent_guides_enable_on_vim_startup = 1
 
-" バックスペースでの削除をいつでも有効にする
+" TODO: delete ok ??
 set backspace=indent,eol,start
 
 " cursor setting: always set cursor center {{{
@@ -100,12 +97,6 @@ set ttymouse=xterm2
 
 " foftmethod setting {{{
 set foldmethod=marker
-" manual: 手動で折畳を定義する
-" indent: インデントの数を折畳のレベル(深さ)とする
-" expr:   折畳を定義する式を指定する
-" syntax: 構文強調により折畳を定義する
-" diff:   変更されていないテキストを折畳対象とする
-" marker: テキスト中の印で折畳を定義する
 " }}}
 
 set ttimeoutlen=10
@@ -465,7 +456,6 @@ Plug 'YSawc/vpbuffer'
 Plug 'itchyny/lightline.vim'    " Dependency: status line
 Plug 'maximbaz/lightline-ale'
 
-" 行末の半角スペースを可視化
 Plug 'bronson/vim-trailing-whitespace'
 
 " fzf for vim {{{
@@ -499,13 +489,11 @@ let g:NERDTreeWinPos = "right"
 " jnerdtree sync other tabs
 Plug 'jistr/vim-nerdtree-tabs'
 let g:extra_whitespace_ignored_filetypes = ['unite', 'vimfiler']
-" 変更箇所をNERDTreeで同期できる
 Plug 'Xuyuanp/nerdtree-git-plugin'
-" コメントアウトを気軽に実行
 Plug 'scrooloose/nerdcommenter'
 filetype on
-let g:NERDSpaceDelims=1 " コメントアウトの後にスペース挿入
-let g:NERDDefaultAlign='left' " コメントアウトを左に揃える
+let g:NERDSpaceDelims=1
+let g:NERDDefaultAlign='left'
 let g:NerdCommenter_do_mapping = 0
 
 " nerdTree END }}}
@@ -513,61 +501,47 @@ let g:NerdCommenter_do_mapping = 0
 " cursorWord
 let g:loaded_matchparen = 1
 Plug 'itchyny/vim-parenmatch'
-" Plug 'itchyny/vim-cursorword' " TODO: トグル化
+" Plug 'itchyny/vim-cursorword' " TODO: toggle
 
 Plug 'itchyny/vim-cursorword'
 let g:cursorword = 0 " TODO: toggle
 
-" カーソル移動をより快適にする
 Plug 'Lokaltog/vim-easymotion'
 
-" ファイルオープンを便利に
 Plug 'Shougo/unite.vim'
 " let g:better_whitespace_filetypes_blacklist = ['unite']
-
-" Unite.vimで最近使ったファイルを表示できるようにする
 Plug 'Shougo/neomru.vim'
 
-" filerをvimfilerにデフォルト設定する
+" TODO: reset
 Plug 'Shougo/vimfiler.vim'
 let g:vimfiler_enable_auto_cd = 1
-" VimFilerをwhite_spaceの対象から外す
 " let g:extra_whitespace_ignored_filetypes = ['vimfiler']
 
 Plug 'ctrlpvim/ctrlp.vim'
 let g:ctrlp_show_hidden=1
 
-" Ruby向けにendを自動挿入してくれる
-Plug 'tpope/vim-endwise'
-
-" 曖昧に検索できるツールプラグイン
 Plug 'junegunn/fzf'
 
-" gitのコマンドをvimで操作できるプラグイン
 Plug 'tpope/vim-fugitive'
 
-" gitの更新状況を表示するプラグイン
 Plug 'airblade/vim-gitgutter'
 
-" Colorscheme
-Plug 'jacoborus/tender.vim'
-
-" agのvim用
+" ag for vim
 Plug 'rking/ag.vim'
 
-" 目印行を常に表示する
+" TODO: reset
 if exists('&signcolumn')  " Vim 7.4.2201
   set signcolumn=yes
 else
   let g:gitgutter_sign_column_always = 1
 endif
 
-" winersizer.vim ウィンドウサイズを簡単に変更できる
+" resize
 Plug 'simeji/winresizer'
 let g:winresizer_start_key = '<Space><C-T>'
 let g:winresizer_vert_resize = 5
 
-" markdownプラグイン
+" markdown
 Plug 'tpope/vim-markdown'
 Plug 'kannokanno/previm'
 Plug 'tyru/open-browser.vim'
@@ -578,13 +552,13 @@ Plug 'skanehira/translate.vim'
 " OrgMode
 Plug 'jceb/vim-orgmode'
 
-" 対応する括弧を自動補完するプラグイン
+" auto brackets
 Plug 'cohama/lexima.vim'
 
-" テキストオブジェクト編集拡張プラグイン
+" textObj
 Plug 'tpope/vim-surround'
 
-" session切り替え方法を追加するプラグイン
+" easy Session
 Plug 'skanehira/vsession'
 
 " mattn_webapi
