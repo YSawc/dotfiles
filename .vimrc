@@ -234,7 +234,7 @@ inoremap {<Enter> {}<Left><CR><ESC><S-o>
 inoremap ( ()<ESC>i
 inoremap (<Enter> ()<Left><CR><ESC><S-o>
 
-" TODO: reset
+" TODO: custom
 noremap <expr> <C-b> max([winheight(0) - 2, 1]) . "\<C-u>" . (line('.') < 1         + winheight(0) ? 'H' : 'L')
 noremap <expr> <C-f> max([winheight(0) - 2, 1]) . "\<C-d>" . (line('.') > line('$') - winheight(0) ? 'L' : 'H')
 noremap <expr> <C-y> (line('w0') <= 1         ? 'k' : "\<C-y>")
@@ -375,7 +375,6 @@ endwhile
 
 " yank with copy
 set clipboard+=unnamed
-
 
 " }}}
 
