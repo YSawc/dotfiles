@@ -81,9 +81,6 @@ set lazyredraw
 set ttyfast
 " }}}
 
-" TODO: delete ok ??
-set backspace=indent,eol,start
-
 " cursor setting: always set cursor center {{{
 set scrolloff=100
 " }}}
@@ -171,12 +168,11 @@ set number
 
 set cursorline
 
-" TODO: reset
 if has('vim_starting')
-	let &t_SI .= "\e[6 q"
-	let &t_EI .= "\e[2 q"
-	let &t_SR .= "\e[4 q"
-endif
+	let &t_SI .= "\e[5 q"
+	let &t_EI .= "\e[3 q"
+	let &t_SR .= "\e[1 q"
+" endif
 
 " set for statusLine
 set laststatus=2
