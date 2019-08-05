@@ -356,8 +356,6 @@ nnoremap ]Q :<C-u>clast<CR>
 autocmd QuickFixCmdPost vimgrep cwindow
 autocmd QuickFixCmdPost *grep* cwindow
 
-" TODO: change ag to rg
-" カーソル上の単語をsilver-search検索
 nnoremap <Space>c :<C-u>Ag --hidden <cword><CR>
 nnoremap <Space>r :Rg<Space>
 
