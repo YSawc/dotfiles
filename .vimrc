@@ -360,11 +360,9 @@ nnoremap <Space>c :<C-u>Ag --hidden <cword><CR>
 nnoremap <Space>r :Rg<Space>
 
 " easymotion keymap {{{
-" デフォルトのキーマップはオフに
+
 let g:EasyMotion_do_mapping = 0
-" f + 2文字 で画面全体を検索してジャンプ
 map <Space>f <plug>(easymotion-overwin-f2)
-" 検索時、大文字小文字を区別しない
 let g:EasyMotion_smartcase = 1
 " `JK` Motions: Extend line motions
 map <Space>j <Plug>(easymotion-j)
@@ -374,7 +372,7 @@ let g:EasyMotion_startofline = 0
 
 " }}}
 
-" vim slash(/) マッチ数の出力 {{{
+" vim slash(/) with match_num {{{
 nnoremap <expr> / _(":%s/<Cursor>/&/gn")
 
 function! s:move_cursor_pos_mapping(str, ...)
@@ -386,15 +384,10 @@ endfunction
 function! _(str)
     return s:move_cursor_pos_mapping(a:str, "\<Left>")
 endfunction
-" vim slash(/) マッチ数の出力 END }}}
+" }}}
 
-" 上下の空白に移動
 nnoremap <C-j> }
 nnoremap <C-k> {
-
-" vimrcを気軽に編集
-nnoremap <Leader>. :new ~/.vimrc<CR>
-nnoremap <Leader>s :source ~/.vimrc<CR>
 
 " universal_tags
 nnoremap <silent> <Leader>t :TagbarToggle<CR>
