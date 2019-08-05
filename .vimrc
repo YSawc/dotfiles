@@ -554,7 +554,6 @@ Plug 'junegunn/fzf'
 " coc {{{
 
 Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
-" Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install()}}
 
 " if hidden is not set, TextEdit might fail.
 set hidden
