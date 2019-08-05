@@ -423,10 +423,10 @@ endwhile
 
 " misc {{{
 
-" yankした文字をクリップボードにも反映する
+" yank with copy
 set clipboard+=unnamed
 
-" 改行時のコメントを自動で付けない設定
+" TODO: reset
 au FileType * setlocal formatoptions-=ro
 
 " }}}
