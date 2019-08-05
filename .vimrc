@@ -790,7 +790,6 @@ Plug 'fatih/vim-go'
 " TODO: select snippets usefull
 Plug 'SirVer/ultisnips'
 
-" vim-go settings
 " auto format
 let g:go_fmt_command = "goimports"
 
