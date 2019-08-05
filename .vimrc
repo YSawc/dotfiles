@@ -778,6 +778,7 @@ nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
 
 " vista {{{
 
+" TODO: vista setting or ..
 " Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
 Plug 'liuchengxu/vista.vim'
 
