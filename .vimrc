@@ -172,7 +172,7 @@ if has('vim_starting')
 	let &t_SI .= "\e[5 q"
 	let &t_EI .= "\e[3 q"
 	let &t_SR .= "\e[1 q"
-" endif
+endif
 
 " set for statusLine
 set laststatus=2
@@ -239,9 +239,6 @@ noremap <expr> <C-b> max([winheight(0) - 2, 1]) . "\<C-u>" . (line('.') < 1     
 noremap <expr> <C-f> max([winheight(0) - 2, 1]) . "\<C-d>" . (line('.') > line('$') - winheight(0) ? 'L' : 'H')
 noremap <expr> <C-y> (line('w0') <= 1         ? 'k' : "\<C-y>")
 noremap <expr> <C-e> (line('w$') >= line('$') ? 'j' : "\<C-e>")
-
-" TODO: move
-nnoremap s; :<C-u>NERDTreeTabsToggle<CR>
 
 " moving command line {{{
 cnoremap <c-b> <S-Left>
@@ -488,6 +485,8 @@ filetype on
 let g:NERDSpaceDelims=1
 let g:NERDDefaultAlign='left'
 let g:NerdCommenter_do_mapping = 0
+
+nnoremap s; :<C-u>NERDTreeTabsToggle<CR>
 
 " nerdTree END }}}
 
