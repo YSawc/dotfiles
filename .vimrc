@@ -555,26 +555,19 @@ Plug 'junegunn/fzf'
 
 Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
 
-" if hidden is not set, TextEdit might fail.
+" need
 set hidden
-
-" Some servers have issues with backup files, see #649
 set nobackup
 set nowritebackup
 
-" Better display for messages
 set cmdheight=2
 
-" Smaller updatetime for CursorHold & CursorHoldI
 set updatetime=300
 
-" don't give |ins-completion-menu| messages.
 set shortmess+=I
 
 " TODO: reset
 "
-" Use tab for trigger completion with characters ahead and navigate.
-" Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
 inoremap <silent><expr> <TAB>
       \ pumvisible() ? "\<C-n>" :
       \ <SID>check_back_space() ? "\<TAB>" :
@@ -588,6 +581,7 @@ endfunction
 nnoremap <silent> [c <Plug>(coc-diagnostic-prev)
 nnoremap <silent> ]c <Plug>(coc-diagnostic-next)
 
+" Jump def and ref
 nnoremap <silent> gd <Plug>(coc-definition)
 nnoremap <silent> gy <Plug>(coc-type-definition)
 nnoremap <silent> gi <Plug>(coc-implementation)
