@@ -38,6 +38,11 @@ done
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 export PATH=~/.local/bin:$PATH
 
+# stack completion (haskell)
+autoload -U +X compinit && compinit
+autoload -U +X bashcompinit && bashcompinit
+eval "$(stack --bash-completion-script stack)"
+
 # zplug {{{
 
 # zplugを使う
