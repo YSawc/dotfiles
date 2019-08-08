@@ -540,6 +540,9 @@ Plug 'majutsushi/tagbar'
 set fileformats=unix,dos,mac
 set fileencodings=utf-8,sjis
 
+" sandwitch vital_import
+Plug 'machakann/vim-sandwich'
+
 " }}}
 
 " LSP_plugins {{{
@@ -650,6 +653,9 @@ let g:go_metalinter_autosave_enabled = ['vet']
 
 " setting how to split
 let g:go_term_mode = 'split'
+
+" error list
+let g:go_list_type = "quickfix"
 
 " vim-go END }}}
 "
