@@ -175,8 +175,7 @@ set laststatus=2
 
 " setting list
 set list
-set listchars+=tab:\¦\ ,trail:-,eol:↲
-
+set listchars+=tab:\¦\ ,trail:-,eol:\ 
 " }}}
 
 "  search in command_line {{{
@@ -216,10 +215,8 @@ inoremap <silent> kj <ESC>
 
 nnoremap ; :
 
-" ファイル保存と終了 {{{
 nnoremap <Leader>w :w<CR>
 nnoremap <Leader>q :q!<CR>
-" }}}
 
 nnoremap <silent> <Leader>rn :set relativenumber!<CR>
 nnoremap <silent> <Leader>run :set nonumber!<CR>
@@ -242,8 +239,8 @@ cnoremap <c-a> <Home>
 " }}}
 
 " tmux {{{
-nnoremap s <Nop> " プレフィックスキーの変更
-nnoremap sj <C-w>j " カレントウィンドウの移動
+nnoremap s <Nop>
+nnoremap sj <C-w>j
 nnoremap sk <C-w>k
 nnoremap sl <C-w>l
 nnoremap sh <C-w>h
@@ -262,7 +259,7 @@ nnoremap s0 <C-w>t
 nnoremap sT <C-w>T
 nnoremap so <C-w>_<C-w>|
 nnoremap sO <C-w>=
-nnoremap sN :<C-u>bn<CR>  " バッファ移動
+nnoremap sN :<C-u>bn<CR>
 nnoremap sP :<C-u>bp<CR>
 nnoremap st :<C-u>tabnew<CR>
 nnoremap th :-tabm<CR>
@@ -276,17 +273,14 @@ nnoremap sB :<C-u>Unite buffer -buffer-name=file<CR>
 " tmux end }}}
 
 " unite_vim {{{
-" insert modeで開始
 let g:unite_enable_start_insert = 1
 
-" unite grep に ag(The Silver Searcher) を使う
 if executable('ag')
 let g:unite_source_grep_command = 'ag'
 let g:unite_source_grep_default_opts = '--nogroup --nocolor --column'
 let g:unite_source_grep_recursive_opt = ''
 endif
 
-" 大文字小文字を区別しない
 let g:unite_enable_ignore_case = 1
 let g:unite_enable_smart_case = 1
 
@@ -630,7 +624,7 @@ let g:lightline = {
       \ },
       \ }
 
-"coc END }}}
+"}}}
 
 " vista {{{
 
