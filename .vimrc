@@ -101,6 +101,8 @@ set signcolumn=yes
 " https://vim-jp.org/vimdoc-ja/change.html#fo-table
 set formatoptions-=cro
 
+set completeopt=preview
+
 " }}}
 
 " cursorline {{{
@@ -523,6 +525,7 @@ Plug 'tpope/vim-surround'
 
 " easy Session
 Plug 'skanehira/vsession'
+let g:vsession_use_fzf = 1
 
 " mattn_webapi
 Plug 'mattn/webapi-vim'
