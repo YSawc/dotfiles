@@ -44,7 +44,7 @@ set backspace=2
 
 " completion in comandLine
 set wildmenu
-set wildmode=longest:full,wildignorecase
+set wildmode=longest:full, wildignorecase
 
 " enable modeline
 set modeline
