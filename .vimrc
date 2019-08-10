@@ -101,7 +101,7 @@ set signcolumn=yes
 " https://vim-jp.org/vimdoc-ja/change.html#fo-table
 set formatoptions-=cro
 
-set completeopt=preview
+set completeopt-=preview
 
 " }}}
 
