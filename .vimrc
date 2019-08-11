@@ -698,4 +698,8 @@ let g:neosnippet#snippets_directory='~/dotfiles/neosnippet-snippets/snippets/'
 call plug#end()
 " }}}
 
+" alias in commandline {{{
+command Gsp Git push
+" }}}
+
 " vim: foldmethod=marker
