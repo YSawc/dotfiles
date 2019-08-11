@@ -210,8 +210,7 @@ let g:mapleader = "\<Space>"
 " vpbuffer
 nnoremap <silent> <Space>lb :<C-u>LoadBuffer<CR>
 
-inoremap <silent> jk <ESC>
-inoremap <silent> kj <ESC>
+inoremap <silent> jj <ESC>
 
 nnoremap ; :
 
