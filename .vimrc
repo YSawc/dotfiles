@@ -581,10 +581,10 @@ nnoremap <silent> [c <Plug>(coc-diagnostic-prev)
 nnoremap <silent> ]c <Plug>(coc-diagnostic-next)
 
 " Jump def and ref
-nnoremap <silent> gd <Plug>(coc-definition)
-nnoremap <silent> gy <Plug>(coc-type-definition)
-nnoremap <silent> gi <Plug>(coc-implementation)
-nnoremap <silent> gr <Plug>(coc-references)
+nnoremap <silent> cgd <Plug>(coc-definition)
+nnoremap <silent> cgy <Plug>(coc-type-definition)
+nnoremap <silent> cgi <Plug>(coc-implementation)
+nnoremap <silent> cgr <Plug>(coc-references)
 
 nnoremap <silent> K :call <SID>show_documentation()<CR>
 function! s:show_documentation()
