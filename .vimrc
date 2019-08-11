@@ -115,7 +115,7 @@ augroup vimrc-auto-cursorline
   autocmd WinEnter * call s:auto_cursorline('WinEnter')
   autocmd WinLeave * call s:auto_cursorline('WinLeave')
 
-  " TODO: toggle with thinkng about
+  " TODO: toggle over nerdTree_open
   " g:NERDTree.IsOpen()
 
   let s:cursorline_lock = 0
