@@ -19,12 +19,11 @@ export PATH=$PATH:/Applications/XAMPP/xamppfiles/bin
 
 # llvm
 export PATH="/usr/local/opt/llvm/bin:$PATH"
+export LDFLAGS="-L/usr/local/opt/llvm/lib"
+export CPPFLAGS="-I/usr/local/opt/llvm/include"
 
 # setting java path
 export JAVA_HOME=/Library/Java/Home
-
-export LDFLAGS="-L/usr/local/opt/llvm/lib"
-export CPPFLAGS="-I/usr/local/opt/llvm/include"
 
 # stack path
 export PATH=~/.local/bin:$PATH
