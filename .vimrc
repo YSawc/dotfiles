@@ -699,7 +699,7 @@ call plug#end()
 " }}}
 
 " alias in commandline {{{
-command Gsp Git push
+command Gps Git push
 " }}}
 
 " vim: foldmethod=marker
