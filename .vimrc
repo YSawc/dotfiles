@@ -166,7 +166,7 @@ set cursorline
 
 if has('vim_starting')
 	let &t_SI .= "\e[5 q"
-	let &t_EI .= "\e[3 q"
+	let &t_EI .= "\e[2 q"
 	let &t_SR .= "\e[1 q"
 endif
 
