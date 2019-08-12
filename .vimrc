@@ -695,6 +695,10 @@ let g:neosnippet#snippets_directory='~/dotfiles/neosnippet-snippets/snippets/'
 
 " neosnippet }}}
 
+" copl {{{
+Plug 'ymyzk/vim-copl'
+" }}}
+
 call plug#end()
 " }}}
 
