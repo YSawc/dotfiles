@@ -541,6 +541,9 @@ set fileencodings=utf-8,sjis
 " sandwitch vital_import
 Plug 'machakann/vim-sandwich'
 
+" textObj
+Plug 'machakann/vim-swap'
+
 " }}}
 
 " LSP_plugins {{{1
