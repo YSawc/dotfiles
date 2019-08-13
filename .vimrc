@@ -1,4 +1,4 @@
-" initialize {{{
+" initialize {{{1
 
 " TODO: call initialize from linux of manjaro
 
@@ -13,7 +13,7 @@
 
 " }}}
 
-" editting dotfiles {{{
+" editting dotfiles {{{1
 
 let $VIMRC = $HOME . '/.vimrc'
 nnoremap <silent> <Space>ev :<C-u>edit $VIMRC<CR>
@@ -23,9 +23,9 @@ nnoremap <silent> <Space>ez :<C-u>edit $ZSHRC<CR>
 
 " }}}
 
-" basic {{{
+" basic {{{1
 
-" light weight setting {{{
+" light weight setting {{{2
 set lazyredraw
 set ttyfast
 " }}}
@@ -106,9 +106,9 @@ set completeopt-=preview
 
 " }}}
 
-" cursorline {{{
+" cursorline {{{1
 
-" refactor of cursorLine {{{
+" refactor of cursorLine {{{2
 augroup vimrc-auto-cursorline
   autocmd!
   autocmd CursorMoved,CursorMovedI * call s:auto_cursorline('CursorMoved')
@@ -145,7 +145,7 @@ augroup END
 
 " }}}
 
-" grep {{{
+" grep {{{1
 
 " fzfSearch
 command! -bang -nargs=* Rg
@@ -157,7 +157,7 @@ command! -bang -nargs=* Rg
 
 " }}}
 
-" apperance {{{
+" apperance {{{1
 
 " setting line_num
 set relativenumber
@@ -179,7 +179,7 @@ set list
 set listchars+=tab:\¦\ ,trail:-,eol:\ 
 " }}}
 
-"  search in command_line {{{
+"  search in command_line {{{1
 
 set ignorecase
 set smartcase
@@ -189,9 +189,9 @@ set hlsearch
 
 " }}}
 
-" colors {{{
+" colors {{{1
 
-" color lines {{{
+" color lines {{{2
 "
 hi LineNr ctermbg=0 ctermfg=0
 hi CursorLineNr ctermbg=4 ctermfg=0
@@ -200,7 +200,7 @@ colorscheme gruvbox
 
 " }}}
 
-" editing {{{
+" editing {{{2
 
 " https://vim-jp.org/vimdoc-ja/map.html#mapleader
 let g:mapleader = "\<Space>"
@@ -270,7 +270,7 @@ nnoremap sq :<C-u>q<CR>
 nnoremap sQ :<C-u>bd<CR>
 nnoremap sb :<C-u>Unite buffer_tab -buffer-name=file<CR>
 nnoremap sB :<C-u>Unite buffer -buffer-name=file<CR>
-" tmux end }}}
+" }}}
 
 " unite_vim {{{
 let g:unite_enable_start_insert = 1
@@ -284,7 +284,7 @@ endif
 let g:unite_enable_ignore_case = 1
 let g:unite_enable_smart_case = 1
 
-" unite }}}
+" }}}
 
 " move line
 nnoremap <C-Up> "zdd<Up>"zP
@@ -360,14 +360,14 @@ endwhile
 
 " }}}
 
-" misc {{{
+" misc {{{1
 
 " yank with copy
 set clipboard+=unnamed
 
 " }}}
 
-" each_lang {{{
+" each_lang {{{1
 
 set tabstop=4
 set shiftwidth=4
@@ -389,7 +389,7 @@ augroup END
 
 " }}}
 
-" for optimization {{{
+" for optimization {{{1
 
 " file reading profile
 " function! ProfileCursorMove() abort
@@ -422,7 +422,7 @@ augroup END
 
 " }}}
 
-" basic plugin {{{
+" basic plugin {{{1
 call plug#begin('~/.vim/plugged')
 
 " plug vpbuffer
@@ -433,7 +433,7 @@ Plug 'maximbaz/lightline-ale'
 
 Plug 'bronson/vim-trailing-whitespace'
 
-" fzf for vim {{{
+" fzf for vim {{{2
 "
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
@@ -457,7 +457,7 @@ command! -bang -nargs=? -complete=dir Files
 
 " }}}
 
-" nerdTree {{{
+" nerdTree {{{2
 
 Plug 'scrooloose/nerdtree'
 let g:NERDTreeWinPos = "right"
@@ -473,7 +473,7 @@ let g:NerdCommenter_do_mapping = 0
 
 nnoremap s; :<C-u>NERDTreeTabsToggle<CR>
 
-" nerdTree END }}}
+" }}}
 
 " cursorWord
 let g:loaded_matchparen = 1
@@ -543,16 +543,16 @@ Plug 'machakann/vim-sandwich'
 
 " }}}
 
-" LSP_plugins {{{
+" LSP_plugins {{{1
 
-"other {{{
+"other {{{2
 
 " (Optional) Multi-entry selection UI.
 Plug 'junegunn/fzf'
 
-" other END }}}
+" }}}
 
-" coc {{{
+" coc {{{2
 
 Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
 
@@ -625,17 +625,17 @@ let g:lightline = {
       \ },
       \ }
 
-"}}}
+" }}}
 
-" vista {{{
+" vista {{{2
 
 " TODO: vista setting or ..
 " Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
 Plug 'liuchengxu/vista.vim'
 
-" vista END }}}
+" }}}
 
-" vim-go {{{
+" vim-go {{{2
 
 Plug 'fatih/vim-go'
 
@@ -655,9 +655,9 @@ let g:go_term_mode = 'split'
 " error list
 let g:go_list_type = "quickfix"
 
-" vim-go END }}}
+" }}}
 "
-" rust {{{
+" rust {{{2
 Plug 'rust-lang/rust.vim'
 let g:rustfmt_autosave = 1
 let g:rustfmt_command = '$HOME/.cargo/bin/rustfmt'
@@ -675,7 +675,7 @@ au FileType rust nmap <leader>gd <Plug>(rust-doc)
 
 " }}}
 
-" neosnippet {{{
+" neosnippet {{{2
 Plug 'Shougo/neosnippet'
 Plug 'Shougo/neosnippet-snippets'
 
@@ -695,16 +695,16 @@ endif
 
 let g:neosnippet#snippets_directory='~/dotfiles/neosnippet-snippets/snippets/'
 
-" neosnippet }}}
+" }}}
 
-" copl {{{
+" copl {{{2
 Plug 'ymyzk/vim-copl'
 " }}}
 
 call plug#end()
 " }}}
 
-" alias in commandline {{{
+" alias in commandline {{{1
 command Gps Git push
 " }}}
 
