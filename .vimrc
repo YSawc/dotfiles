@@ -56,7 +56,7 @@ hi Visual cterm=reverse ctermbg=NONE
 " selector of short form
 set virtualedit+=block
 
-" netrw {{{
+" netrw {{{2
 " prewiew setting
 let g:netrw_banner=0
 let g:netrw_preview=1
@@ -232,13 +232,13 @@ noremap <expr> <C-f> max([winheight(0) - 2, 1]) . "\<C-d>" . (line('.') > line('
 noremap <expr> <C-y> (line('w0') <= 1         ? 'k' : "\<C-y>")
 noremap <expr> <C-e> (line('w$') >= line('$') ? 'j' : "\<C-e>")
 
-" moving command line {{{
+" moving command line {{{2
 cnoremap <c-b> <S-Left>
 cnoremap <c-f> <S-Right>
 cnoremap <c-a> <Home>
 " }}}
 
-" tmux {{{
+" tmux {{{2
 nnoremap s <Nop>
 nnoremap sj <C-w>j
 nnoremap sk <C-w>k
@@ -272,7 +272,7 @@ nnoremap sb :<C-u>Unite buffer_tab -buffer-name=file<CR>
 nnoremap sB :<C-u>Unite buffer -buffer-name=file<CR>
 " }}}
 
-" unite_vim {{{
+" unite_vim {{{2
 let g:unite_enable_start_insert = 1
 
 if executable('ag')
@@ -314,7 +314,7 @@ autocmd QuickFixCmdPost *grep* cwindow
 nnoremap <Space>c :<C-u>Ag --hidden <cword><CR>
 nnoremap <Space>r :Rg<Space>
 
-" easymotion keymap {{{
+" easymotion keymap {{{2
 
 let g:EasyMotion_do_mapping = 0
 map <Space>f <plug>(easymotion-overwin-f2)
@@ -327,7 +327,7 @@ let g:EasyMotion_startofline = 0
 
 " }}}
 
-" vim slash(/) with match_num {{{
+" vim slash(/) with match_num {{{2
 nnoremap <expr> / _(":%s/<Cursor>/&/gn")
 
 function! s:move_cursor_pos_mapping(str, ...)
@@ -347,7 +347,7 @@ nnoremap <C-k> {
 " universal_tags
 nnoremap <silent> <Leader>t :TagbarToggle<CR>
 
-" window mode with number {{{
+" window mode with number {{{2
 
 let i = 1
 while i <= 9
