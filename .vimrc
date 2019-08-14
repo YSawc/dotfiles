@@ -548,6 +548,8 @@ Plug 'machakann/vim-swap'
 
 "other {{{2
 
+" }}}
+
 " coc {{{2
 
 Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
