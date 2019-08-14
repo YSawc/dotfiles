@@ -1,0 +1,7 @@
+snippet     fn_rl
+options     head
+    fn rl() -> String {
+        let mut s = String::new();
+        std::io::stdin().read_line(&mut s).unwrap();
+        s.trim_right().to_owned()
+    }
