@@ -104,6 +104,12 @@ set formatoptions-=cro
 
 set completeopt-=preview
 
+" help closeer
+augroup helpMapping
+	au!
+	au FileType help nnoremap <buffer> <silent> q :q<CR>
+augroup END
+
 " }}}
 
 " cursorline {{{1
@@ -236,6 +242,7 @@ noremap <expr> <C-e> (line('w$') >= line('$') ? 'j' : "\<C-e>")
 cnoremap <c-b> <S-Left>
 cnoremap <c-f> <S-Right>
 cnoremap <c-a> <Home>
+cnoremap <C-a> <Home>
 " }}}
 
 " tmux {{{2
