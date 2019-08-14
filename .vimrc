@@ -487,8 +487,6 @@ Plug 'Shougo/neomru.vim'
 Plug 'ctrlpvim/ctrlp.vim'
 let g:ctrlp_show_hidden=1
 
-Plug 'junegunn/fzf'
-
 Plug 'tpope/vim-fugitive'
 
 Plug 'airblade/vim-gitgutter'
@@ -549,11 +547,6 @@ Plug 'machakann/vim-swap'
 " LSP_plugins {{{1
 
 "other {{{2
-
-" (Optional) Multi-entry selection UI.
-Plug 'junegunn/fzf'
-
-" }}}
 
 " coc {{{2
 
