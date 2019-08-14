@@ -227,6 +227,7 @@ nnoremap <Leader>q :q!<CR>
 nnoremap <silent> <Leader>rn :set relativenumber!<CR>
 nnoremap <silent> <Leader>run :set nonumber!<CR>
 
+" TODO: reset
 inoremap { {}<Left>
 inoremap {<Enter> {}<Left><CR><ESC><S-o>
 inoremap ( ()<ESC>i
@@ -239,9 +240,8 @@ noremap <expr> <C-y> (line('w0') <= 1         ? 'k' : "\<C-y>")
 noremap <expr> <C-e> (line('w$') >= line('$') ? 'j' : "\<C-e>")
 
 " moving command line {{{2
-cnoremap <c-b> <S-Left>
-cnoremap <c-f> <S-Right>
-cnoremap <c-a> <Home>
+cnoremap <C-b> <S-Left>
+cnoremap <C-f> <S-Right>
 cnoremap <C-a> <Home>
 " }}}
 
