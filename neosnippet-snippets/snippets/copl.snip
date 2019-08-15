@@ -49,3 +49,10 @@ snippet     by_E_Const
 options     head
     ${1} evalto $1 by E-Const {};$0
 
+snippet     by_E_Plus
+options     head
+    ${1} + ${2} evalto ${3} by E-Plus {
+      $1 evalto $1 by E-Const {};
+      $2 evalto $2 by E-Const {};
+      $1 plus $2 is $3 $0
+    };
