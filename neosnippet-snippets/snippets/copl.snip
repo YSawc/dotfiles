@@ -62,13 +62,12 @@ options     head
       $2 evalto $2 by E-Const {};
       $1 plus $2 is $3 $0
     };
-
-snippet     by_E_Times_street
+snippet     by_E_Plus_street
 options     head
-    ${1} * ${2} evalto ${3} by E-Times {
+    ${1} + ${2} evalto ${3} by E-Plus {
       $1 evalto $1 by E-Const {};
       $2 evalto $2 by E-Const {};
-      $1 times $2 is $3 $0
+      $1 plus $2 is $3 $0
     };
 
 snippet     by_E_Times
@@ -78,5 +77,13 @@ options     head
       };
       $2 evalto ${5} by E-Const {
       };
+      $1 times $2 is $3 $0
+    };
+
+snippet     by_E_Times_street
+options     head
+    ${1} * ${2} evalto ${3} by E-Times {
+      $1 evalto $1 by E-Const {};
+      $2 evalto $2 by E-Const {};
       $1 times $2 is $3 $0
     };
