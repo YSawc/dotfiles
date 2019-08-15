@@ -280,6 +280,7 @@ nnoremap sB :<C-u>Unite buffer -buffer-name=file<CR>
 " }}}
 
 " unite_vim {{{2
+"
 let g:unite_enable_start_insert = 1
 
 if executable('ag')
@@ -321,18 +322,13 @@ autocmd QuickFixCmdPost *grep* cwindow
 nnoremap <Space>c :<C-u>Ag --hidden <cword><CR>
 nnoremap <Space>r :Rg<Space>
 
-" easymotion keymap {{{2
-
+" easymotion keymap
 let g:EasyMotion_do_mapping = 0
 map <Space>f <plug>(easymotion-overwin-f2)
 let g:EasyMotion_smartcase = 1
-" `JK` Motions: Extend line motions
 map <Space>j <Plug>(easymotion-j)
 map <Space>k <Plug>(easymotion-k)
-" keep cursor column with `JK` motions
 let g:EasyMotion_startofline = 0
-
-" }}}
 
 " vim slash(/) with match_num {{{2
 nnoremap <expr> / _(":%s/<Cursor>/&/gn")
