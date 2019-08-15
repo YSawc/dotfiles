@@ -123,6 +123,7 @@ augroup vimrc-auto-cursorline
   autocmd WinLeave * call s:auto_cursorline('WinLeave')
 
   " TODO: toggle over nerdTree_open
+  " TIP:
   " g:NERDTree.IsOpen()
 
   let s:cursorline_lock = 0
@@ -198,10 +199,9 @@ set hlsearch
 " colors {{{1
 
 " color lines {{{2
-"
+
 hi LineNr ctermbg=0 ctermfg=0
 hi CursorLineNr ctermbg=4 ctermfg=0
-
 colorscheme gruvbox
 
 " }}}
