@@ -206,14 +206,9 @@ colorscheme gruvbox
 
 " }}}
 
-" editing {{{2
-
-" https://vim-jp.org/vimdoc-ja/map.html#mapleader
 " define usermap {{{2
 let g:mapleader = "\<Space>"
-
 " }}}
-
 
 " vpbuffer
 nnoremap <silent> <Space>lb :<C-u>LoadBuffer<CR>
@@ -240,11 +235,10 @@ noremap <expr> <C-f> max([winheight(0) - 2, 1]) . "\<C-d>" . (line('.') > line('
 noremap <expr> <C-y> (line('w0') <= 1         ? 'k' : "\<C-y>")
 noremap <expr> <C-e> (line('w$') >= line('$') ? 'j' : "\<C-e>")
 
-" moving command line {{{2
+" moving command line
 cnoremap <C-b> <S-Left>
 cnoremap <C-f> <S-Right>
 cnoremap <C-a> <Home>
-" }}}
 
 " tmux {{{2
 nnoremap s <Nop>
