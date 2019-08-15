@@ -209,6 +209,7 @@ colorscheme gruvbox
 " editing {{{2
 
 " https://vim-jp.org/vimdoc-ja/map.html#mapleader
+" define usermap {{{2
 let g:mapleader = "\<Space>"
 
 " }}}
