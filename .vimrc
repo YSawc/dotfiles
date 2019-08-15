@@ -354,16 +354,12 @@ nnoremap <C-k> {
 " universal_tags
 nnoremap <silent> <Leader>t :TagbarToggle<CR>
 
-" window mode with number {{{2
-
+" window mode with number
 let i = 1
 while i <= 9
-    " execute 'nnoremap <Space>' . i . ' :' . i . 'wincmd w<CR>'
     execute 'nnoremap <Space>' . i . ' :' . i . 'wincmd w<CR>'
     let i = i + 1
 endwhile
-
-" }}}
 
 " }}}
 
