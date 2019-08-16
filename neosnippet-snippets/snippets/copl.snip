@@ -2,13 +2,13 @@ snippet     by_P-Zero
 options     head
     Z plus ${1} is ${2} by P-Zero {};
 
-snippet     by_P_Succ
+snippet     by_P-Succ
 options     head
     S(${1}) plus ${2} is S(${3}) by P-Succ{
       $1 plus $2 is $3 $0
     };
 
-snippet     by_L_Trans
+snippet     by_L-Trans
 options     head
     ${1} plus ${2} is ${3} by P-Succ {
       $0
@@ -24,38 +24,38 @@ options     head
       $0
     };
 
-snippet     by_L_Succ
+snippet     by_L-Succ
 options     head
     ${1} is less than ${2} by L-Succ {};
 
-snippet     by_L_Trans
+snippet     by_L-Trans
 options     head
     ${1} is less than ${2} by L-Trans {
       ${3} is less than ${4}
       ${5} is less than ${6}
     };
 
-snippet     by_L_Zero
+snippet     by_L-Zero
 options     head
     Z is less than ${1} by L-Zero {};
 
-snippet     by_L_SuccSucc
+snippet     by_L-SuccSucc
 options     head
     ${1} is less than ${2} by L-SuccSucc {
       ${3} is less than ${4} $0
     };
 
-snippet     by_L_SuccR
+snippet     by_L-SuccR
 options     head
     ${1} is less than S(${2}) by L-SuccR {
       $1 is less than $2 ${0}
     };
 
-snippet     by_E_Const
+snippet     by_E-Const
 options     head
     ${1} evalto $1 by E-Const {};$0
 
-snippet     by_E_Plus
+snippet     by_E-Plus
 options     head
     ${1} + ${2} evalto ${3} by E-Plus {
       $1 evalto ${4} by ${5} {
@@ -65,7 +65,7 @@ options     head
       $4 plus $5 is $3 $0
     };
 
-snippet     by_E_Plus_street
+snippet     by_E-Plus:street
 options     head
     ${1} + ${2} evalto ${3} by E-Plus {
       $1 evalto $1 by E-Const {};
@@ -73,7 +73,7 @@ options     head
       $1 plus $2 is $3 $0
     };
 
-snippet     by_E_Times
+snippet     by_E-Times
 options     head
     ${1} * ${2} evalto ${3} by E-Times {
       $1 evalto ${4} by ${5} {
@@ -83,7 +83,7 @@ options     head
       $4 times $5 is $3 $0
     };
 
-snippet     by_E_Times_street
+snippet     by_E-Times_street
 options     head
     ${1} * ${2} evalto ${3} by E-Times {
       $1 evalto $1 by E-Const {};
