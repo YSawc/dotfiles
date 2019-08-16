@@ -110,6 +110,14 @@ augroup helpMapping
 	au FileType help nnoremap <buffer> <silent> q :q<CR>
 augroup END
 
+" setting for undo
+if has('persistent_undo')
+	augroup vimrc-undofile
+		set undodir='~/.cache/vim/undo'
+		set undofile
+	augroup END
+endif
+
 " }}}
 
 " cursorline {{{1
@@ -520,7 +528,7 @@ Plug 'mattn/webapi-vim'
 Plug 'mattn/gist-vim'
 
 " sskk
-Plug 'tyru/eskk.vim'
+" Plug 'tyru/eskk.vim'
 
 " quickrun
 Plug 'thinca/vim-quickrun'
@@ -546,76 +554,76 @@ Plug 'machakann/vim-swap'
 
 " coc {{{2
 
-Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
+" Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
 
-" need
-set hidden
-set nobackup
-set nowritebackup
+" " need
+" set hidden
+" set nobackup
+" set nowritebackup
 
-set cmdheight=2
+" set cmdheight=2
 
-set updatetime=300
+" set updatetime=300
 
-set shortmess+=I
+" set shortmess+=I
 
-" TODO: reset
-"
-inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
-      \ coc#refresh()
+" " TODO: reset
+" "
+" inoremap <silent><expr> <TAB>
+"       \ pumvisible() ? "\<C-n>" :
+"       \ <SID>check_back_space() ? "\<TAB>" :
+"       \ coc#refresh()
 
-function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
-endfunction
+" function! s:check_back_space() abort
+"   let col = col('.') - 1
+"   return !col || getline('.')[col - 1]  =~# '\s'
+" endfunction
 
-nnoremap <silent> [c <Plug>(coc-diagnostic-prev)
-nnoremap <silent> ]c <Plug>(coc-diagnostic-next)
+" nnoremap <silent> [c <Plug>(coc-diagnostic-prev)
+" nnoremap <silent> ]c <Plug>(coc-diagnostic-next)
 
-" Jump def and ref
-nnoremap <silent> cgd <Plug>(coc-definition)
-nnoremap <silent> cgy <Plug>(coc-type-definition)
-nnoremap <silent> cgi <Plug>(coc-implementation)
-nnoremap <silent> cgr <Plug>(coc-references)
+" " Jump def and ref
+" nnoremap <silent> cgd <Plug>(coc-definition)
+" nnoremap <silent> cgy <Plug>(coc-type-definition)
+" nnoremap <silent> cgi <Plug>(coc-implementation)
+" nnoremap <silent> cgr <Plug>(coc-references)
 
-nnoremap <silent> K :call <SID>show_documentation()<CR>
-function! s:show_documentation()
-  if (index(['vim','help'], &filetype) >= 0)
-    execute 'h '.expand('<cword>')
-  else
-    call CocAction('doHover')
-  endif
-endfunction
+" nnoremap <silent> K :call <SID>show_documentation()<CR>
+" function! s:show_documentation()
+"   if (index(['vim','help'], &filetype) >= 0)
+"     execute 'h '.expand('<cword>')
+"   else
+"     call CocAction('doHover')
+"   endif
+" endfunction
 
-autocmd CursorHold * silent call CocActionAsync('highlight')
+" autocmd CursorHold * silent call CocActionAsync('highlight')
 
-augroup mygroup
-  autocmd!
-  " Setup formatexpr specified filetype(s).
-  autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
-  " Update signature help on jump placeholder
-  autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
-augroup end
+" augroup mygroup
+"   autocmd!
+"   " Setup formatexpr specified filetype(s).
+"   autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
+"   " Update signature help on jump placeholder
+"   autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
+" augroup end
 
-" Use `:Format` to format current buffer
-command! -nargs=0 Format :call CocAction('format')
+" " Use `:Format` to format current buffer
+" command! -nargs=0 Format :call CocAction('format')
 
-" Use `:Fold` to fold current buffer
-command! -nargs=? Fold :call     CocAction('fold', <f-args>)
+" " Use `:Fold` to fold current buffer
+" command! -nargs=? Fold :call     CocAction('fold', <f-args>)
 
-" Add diagnostic info for https://github.com/itchyny/lightline.vim
-let g:lightline = {
-      \ 'colorscheme': 'wombat',
-      \ 'active': {
-      \   'left': [ [ 'mode', 'paste' ],
-      \             [ 'cocstatus', 'readonly', 'filename', 'modified' ] ]
-      \ },
-      \ 'component_function': {
-      \   'cocstatus': 'coc#status'
-      \ },
-      \ }
+" " Add diagnostic info for https://github.com/itchyny/lightline.vim
+" let g:lightline = {
+      " \ 'colorscheme': 'wombat',
+      " \ 'active': {
+      " \   'left': [ [ 'mode', 'paste' ],
+      " \             [ 'cocstatus', 'readonly', 'filename', 'modified' ] ]
+      " \ },
+      " \ 'component_function': {
+      " \   'cocstatus': 'coc#status'
+      " \ },
+      " \ }
 
 " }}}
 
