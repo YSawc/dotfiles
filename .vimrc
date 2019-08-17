@@ -547,6 +547,12 @@ Plug 'machakann/vim-sandwich'
 " textObj
 Plug 'machakann/vim-swap'
 
+Plug 'mbbill/undotree'
+if has("persistent_undo")
+    set undodir=$HOME."/.cache/.undodir"
+    set undofile
+endif
+
 " }}}
 
 " LSP_plugins {{{1
