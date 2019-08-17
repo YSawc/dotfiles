@@ -191,7 +191,7 @@ set laststatus=2
 
 " setting list
 set list
-set listchars+=tab:\¦\ ,trail:-,eol:\ 
+set listchars+=tab:\¦\ ,eol:\ ,trail:-
 " }}}
 
 "  search in command_line {{{1
