@@ -556,6 +556,7 @@ Plug 'machakann/vim-swap'
 " async
 Plug 'prabirshrestha/async.vim'
 Plug 'prabirshrestha/vim-lsp'
+Plug 'prabirshrestha/asyncomplete.vim'
 
 nmap <silent> <Leader>ad :LspDefinition<CR>
 nmap <silent> <Leader>ap :LspHover<CR>
