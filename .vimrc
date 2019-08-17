@@ -528,6 +528,7 @@ Plug 'mattn/webapi-vim'
 " gist_vim
 Plug 'mattn/gist-vim'
 
+" reset
 " sskk
 " Plug 'tyru/eskk.vim'
 
