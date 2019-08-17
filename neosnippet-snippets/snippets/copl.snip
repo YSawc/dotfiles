@@ -97,6 +97,22 @@ options     head
       $1 -d-> $3 by DR-Plus {};
     };
 
+snippet     by_DR-PlusL:+
+options     head
+    ${1} + ${2} + ${3} -d-> ${4} + $3 by DR-PlusL {
+      $1 + $2 -d-> $3 by DR-Plus {
+        $1 plus $2 is $3 by P-Plus$0
+      };
+    };
+
+snippet     by_DR-PlusR:+
+options     head
+    ${1} + ${2} + ${3} -d-> $2 + ${4} by DR-PlusL {
+      $2 + $3 -d-> $4 by DR-Plus {
+        $2 plus $3 is $4 by P-Plus$0
+      };
+    };
+
 snippet     by_DR-PlusL:*
 options     head
     ${1} * ${2} + ${3} -d-> ${4} + $3 by DR-PlusL {
