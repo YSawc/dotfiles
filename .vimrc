@@ -559,7 +559,10 @@ Plug 'machakann/vim-swap'
 Plug 'mbbill/undotree'
 if has("persistent_undo")
     set undodir=$HOME."/.cache/.undodir"
-    set undofile
+	augroup vimrc-undofile
+		autocmd!
+		autocmd BufReadPre ~/* setlocal undofile
+	augroup END
 endif
 
 " TODO: select snippets usefull
