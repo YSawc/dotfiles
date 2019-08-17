@@ -13,6 +13,15 @@
 
 " }}}
 
+" basic {{{1
+
+" encoding
+set encoding=UTF-8
+" set fileencodings=utf-8,sjis
+set fileencodings=utf-8,iso-2022-jp,euc-jp,sjis
+set fileformats=unix,dos,mac
+scriptencoding utf-8
+
 " editting dotfiles {{{1
 
 let $VIMRC = $HOME . '/.vimrc'
@@ -23,20 +32,12 @@ nnoremap <silent> <Space>ez :<C-u>edit $ZSHRC<CR>
 
 " }}}
 
-" basic {{{1
-
 " light weight setting {{{2
 set lazyredraw
 set ttyfast
 " }}}
 
 set noswapfile
-
-" encoding
-set encoding=utft-8
-" set fileencodings=utf-8,sjis
-set fileencodings=utf-8,iso-2022-jp,euc-jp,sjis
-set fileformats=unix,dos,mac
 
 " mute seting
 set t_vb=
