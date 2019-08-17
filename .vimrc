@@ -1,4 +1,4 @@
-" initialize {{{1
+"initialize {{{1
 
 " TODO: call initialize from linux of manjaro
 
@@ -555,113 +555,137 @@ Plug 'machakann/vim-swap'
 
 " async {{{2
 
-Plug 'prabirshrestha/async.vim'
-Plug 'prabirshrestha/vim-lsp'
-Plug 'prabirshrestha/asyncomplete.vim'
+" Plug 'prabirshrestha/async.vim'
+" Plug 'prabirshrestha/vim-lsp'
+" " Plug 'prabirshrestha/asyncomplete.vim'
+" " Plug 'prabirshrestha/asyncomplete-lsp.vim'
+" let g:lsp_diagnostics_enabled = 0
 
-let g:asyncomplete_enable_for_all = 0
-autocmd vimrc FileType autohotkey,autoit,cfg,git,go,groovy,java,javascript,python,snippet,toml,vim,vb,xsl call asyncomplete#enable_for_buffer()
+" let g:lsp_log_verbose=1
+" let g:lsp_log_file = expand('~/.cache/tmp/vim-lsp.log')
 
-let g:lsp_signs_enabled = 1
-let g:lsp_diagnostics_echo_cursor = 1
-let g:lsp_signs_error = {'text': 'E'}
-let g:lsp_signs_warning = {'text': 'w'}
 
-nmap <silent> <Leader>ad :LspDefinition<CR>
-nmap <silent> <Leader>ap :LspHover<CR>
-nmap <silent> <Leader>ar :LspReferences<CR>
-nmap <silent> <Leader>ai :LspImplementation<CR>
-nmap <silent> <Leader>as :split \| :LspDefinition <CR>
-nmap <silent> <Leader>av :vsplit \| :LspDefinition <CR>
+" inoremap <expr> <C-j> pumvisible() ? "\<C-n>" : "\<Tab>"
+" inoremap <expr> <C-k> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+" inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<cr>"
 
-Plug 'Shougo/neosnippet.vim'
-Plug 'Shougo/neosnippet-snippets'
-Plug 'prabirshrestha/asyncomplete-neosnippet.vim'
+" let g:lsp_signs_enabled = 1
+" let g:lsp_diagnostics_echo_cursor = 1
+" let g:lsp_signs_error = {'text': 'E'}
+" let g:lsp_signs_warning = {'text': 'w'}
 
-call asyncomplete#register_source(asyncomplete#sources#neosnippet#get_source_options({
-    \ 'name': 'neosnippet',
-    \ 'whitelist': ['*'],
-    \ 'completor': function('asyncomplete#sources#neosnippet#completor'),
-    \ }))
-imap <C-k>     <Plug>(neosnippet_expand_or_jump)
-smap <C-k>     <Plug>(neosnippet_expand_or_jump)
-xmap <C-k>     <Plug>(neosnippet_expand_target)
+" if executable('rls')
+"     au User lsp_setup call lsp#register_server({
+"         \ 'name': 'rls',
+"         \ 'cmd': {server_info->['rustup', 'run', 'nightly', 'rls']},
+"         \ 'whitelist': ['rust'],
+"         \ })
+" endif
 
+" if executable('gopls')
+"     au User lsp_setup call lsp#register_server({
+"         \ 'name': 'gopls',
+"         \ 'cmd': {server_info->['gopls', '-mode', 'stdio']},
+"         \ 'whitelist': ['go'],
+"         \ })
+"     autocmd BufWritePre *.go LspDocumentFormatSync
+" endif
+
+" nmap <silent> <Leader>ad :LspDefinition<CR>
+" nmap <silent> <Leader>ap :LspHover<CR>
+" nmap <silent> <Leader>ar :LspReferences<CR>
+" nmap <silent> <Leader>ai :LspImplementation<CR>
+" nmap <silent> <Leader>as :split \| :LspDefinition <CR>
+" nmap <silent> <Leader>av :vsplit \| :LspDefinition <CR>
+
+" Plug 'Shougo/neosnippet.vim'
+" Plug 'Shougo/neosnippet-snippets'
+" Plug 'prabirshrestha/asyncomplete-neosnippet.vim'
+
+" " call asyncomplete#register_source(asyncomplete#sources#neosnippet#get_source_options({
+" "     \ 'name': 'neosnippet',
+" "     \ 'whitelist': ['*'],
+" "     \ 'completor': function('asyncomplete#sources#neosnippet#completor'),
+" "     \ }))
+
+" imap <C-k>     <Plug>(neosnippet_expand_or_jump)
+" smap <C-k>     <Plug>(neosnippet_expand_or_jump)
+" xmap <C-k>     <Plug>(neosnippet_expand_target)
 
 " }}}
 
 " coc {{{2
 
-" Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
+Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
 
-" " need
-" set hidden
-" set nobackup
-" set nowritebackup
+" need
+set hidden
+set nobackup
+set nowritebackup
 
-" set cmdheight=2
+set cmdheight=2
 
-" set updatetime=300
+set updatetime=300
 
-" set shortmess+=I
+set shortmess+=I
 
-" " TODO: reset
-" "
-" inoremap <silent><expr> <TAB>
-"       \ pumvisible() ? "\<C-n>" :
-"       \ <SID>check_back_space() ? "\<TAB>" :
-"       \ coc#refresh()
+" TODO: reset
+"
+inoremap <silent><expr> <TAB>
+	  \ pumvisible() ? "\<C-n>" :
+	  \ <SID>check_back_space() ? "\<TAB>" :
+	  \ coc#refresh()
 
-" function! s:check_back_space() abort
-"   let col = col('.') - 1
-"   return !col || getline('.')[col - 1]  =~# '\s'
-" endfunction
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
 
-" nnoremap <silent> [c <Plug>(coc-diagnostic-prev)
-" nnoremap <silent> ]c <Plug>(coc-diagnostic-next)
+nnoremap <silent> [c <Plug>(coc-diagnostic-prev)
+nnoremap <silent> ]c <Plug>(coc-diagnostic-next)
 
-" " Jump def and ref
-" nnoremap <silent> cgd <Plug>(coc-definition)
-" nnoremap <silent> cgy <Plug>(coc-type-definition)
-" nnoremap <silent> cgi <Plug>(coc-implementation)
-" nnoremap <silent> cgr <Plug>(coc-references)
+" Jump def and ref
+nnoremap <silent> cgd <Plug>(coc-definition)
+nnoremap <silent> cgy <Plug>(coc-type-definition)
+nnoremap <silent> cgi <Plug>(coc-implementation)
+nnoremap <silent> cgr <Plug>(coc-references)
 
-" nnoremap <silent> K :call <SID>show_documentation()<CR>
-" function! s:show_documentation()
-"   if (index(['vim','help'], &filetype) >= 0)
-"     execute 'h '.expand('<cword>')
-"   else
-"     call CocAction('doHover')
-"   endif
-" endfunction
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+	execute 'h '.expand('<cword>')
+  else
+	call CocAction('doHover')
+  endif
+endfunction
 
-" autocmd CursorHold * silent call CocActionAsync('highlight')
+autocmd CursorHold * silent call CocActionAsync('highlight')
 
-" augroup mygroup
-"   autocmd!
-"   " Setup formatexpr specified filetype(s).
-"   autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
-"   " Update signature help on jump placeholder
-"   autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
-" augroup end
+augroup mygroup
+  autocmd!
+  " Setup formatexpr specified filetype(s).
+  autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
+  " Update signature help on jump placeholder
+  autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
+augroup end
 
-" " Use `:Format` to format current buffer
-" command! -nargs=0 Format :call CocAction('format')
+" Use `:Format` to format current buffer
+command! -nargs=0 Format :call CocAction('format')
 
-" " Use `:Fold` to fold current buffer
-" command! -nargs=? Fold :call     CocAction('fold', <f-args>)
+" Use `:Fold` to fold current buffer
+command! -nargs=? Fold :call     CocAction('fold', <f-args>)
 
-" " Add diagnostic info for https://github.com/itchyny/lightline.vim
-" let g:lightline = {
-      " \ 'colorscheme': 'wombat',
-      " \ 'active': {
-      " \   'left': [ [ 'mode', 'paste' ],
-      " \             [ 'cocstatus', 'readonly', 'filename', 'modified' ] ]
-      " \ },
-      " \ 'component_function': {
-      " \   'cocstatus': 'coc#status'
-      " \ },
-      " \ }
+" Add diagnostic info for https://github.com/itchyny/lightline.vim
+let g:lightline = {
+	  \ 'colorscheme': 'wombat',
+	  \ 'active': {
+	  \   'left': [ [ 'mode', 'paste' ],
+	  \             [ 'cocstatus', 'readonly', 'filename', 'modified' ] ]
+	  \ },
+	  \ 'component_function': {
+	  \   'cocstatus': 'coc#status'
+	  \ },
+	  \ }
 
 " }}}
 
