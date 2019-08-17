@@ -90,3 +90,9 @@ options     head
       $2 evalto $2 by E-Const {};
       $1 times $2 is $3 $0
     };
+
+snippet     by_DR-PlusL
+options     head
+    ${1} + ${2} -d->${3} + $2 by DR-PlusL {
+      $1 -d-> $3 by DR-PlusL {};
+    };
