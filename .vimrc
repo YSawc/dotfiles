@@ -32,7 +32,10 @@ set ttyfast
 
 set noswapfile
 
-set encoding=UTF-8
+" encoding
+set encoding=utft-8
+set fileencodings=utf-8,sjis
+set fileformats=unix,dos,mac
 
 " mute seting
 set t_vb=
@@ -538,8 +541,6 @@ Plug 'thinca/vim-quickrun'
 
 " universal_ctags
 Plug 'majutsushi/tagbar'
-set fileformats=unix,dos,mac
-set fileencodings=utf-8,sjis
 
 " sandwitch vital_import
 Plug 'machakann/vim-sandwich'
