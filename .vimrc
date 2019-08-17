@@ -112,10 +112,10 @@ augroup END
 
 " setting for undo
 if has('persistent_undo')
-	set undodir='~/.cache/vim/undo'
+	set undodir=~/.cache/vim/undo
 	augroup vimrc-undofile
 		autocmd!
-		autocmd BufReadPre ~/* set undofile
+		autocmd BufReadPre ~/* setlocal undofile
 	augroup END
 endif
 
