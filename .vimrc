@@ -228,6 +228,8 @@ nnoremap <silent> <Space>ez :<C-u>edit $ZSHRC<CR>
 
 " }}}
 
+nnoremap <silent> <Space>en :<C-u>NeoSnippetEdit<CR>
+
 " vpbuffer
 nnoremap <silent> <Space>lb :<C-u>LoadBuffer<CR>
 
