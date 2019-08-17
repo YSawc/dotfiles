@@ -22,7 +22,7 @@ set fileencodings=utf-8,iso-2022-jp,euc-jp,sjis
 set fileformats=unix,dos,mac
 scriptencoding utf-8
 
-" editting dotfiles {{{1
+" editting dotfiles {{{2
 
 let $VIMRC = $HOME . '/.vimrc'
 nnoremap <silent> <Space>ev :<C-u>edit $VIMRC<CR>
@@ -210,15 +210,15 @@ set hlsearch
 
 " }}}
 
-" colors {{{1
-
-" color lines {{{2
+" color lines {{{1
 
 hi LineNr ctermbg=0 ctermfg=0
 hi CursorLineNr ctermbg=4 ctermfg=0
 colorscheme gruvbox
 
 " }}}
+
+" map {{{1
 
 " define usermap {{{2
 let g:mapleader = "\<Space>"
