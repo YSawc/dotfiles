@@ -115,6 +115,9 @@ if has('persistent_undo')
 	augroup END
 endif
 
+" delete whitespace preBufWeite
+autocmd BufWritePre * :silent keeppatterns %s/\s\+$//ge
+
 " }}}
 
 " cursorline {{{1
