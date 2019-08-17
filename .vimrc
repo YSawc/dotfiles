@@ -34,7 +34,8 @@ set noswapfile
 
 " encoding
 set encoding=utft-8
-set fileencodings=utf-8,sjis
+" set fileencodings=utf-8,sjis
+set fileencodings=utf-8,iso-2022-jp,euc-jp,sjis
 set fileformats=unix,dos,mac
 
 " mute seting
@@ -554,6 +555,31 @@ if has("persistent_undo")
     set undofile
 endif
 
+" TODO: select snippets usefull
+Plug 'SirVer/ultisnips'
+
+" neosnippet {{{2
+Plug 'Shougo/neosnippet'
+Plug 'Shougo/neosnippet-snippets'
+
+" Plugin key-mappings.
+" Note: It must be "imap" and "smap".  It uses <Plug> mappings.
+imap <C-k>     <Plug>(neosnippet_expand_or_jump)
+smap <C-k>     <Plug>(neosnippet_expand_or_jump)
+xmap <C-k>     <Plug>(neosnippet_expand_target)
+
+snoremap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+\ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+
+" For conceal markers.
+if has('conceal')
+  set conceallevel=2 concealcursor=niv
+endif
+
+let g:neosnippet#snippets_directory='~/dotfiles/neosnippet-snippets/snippets/'
+
+" }}}
+
 " }}}
 
 " LSP_plugins {{{1
@@ -710,9 +736,6 @@ Plug 'liuchengxu/vista.vim'
 
 Plug 'fatih/vim-go'
 
-" TODO: select snippets usefull
-Plug 'SirVer/ultisnips'
-
 " auto format
 let g:go_fmt_command = "goimports"
 
@@ -743,28 +766,6 @@ au FileType rust nmap gd <Plug>(rust-def)
 au FileType rust nmap gs <Plug>(rust-def-split)
 au FileType rust nmap gx <Plug>(rust-def-vertical)
 au FileType rust nmap <leader>gd <Plug>(rust-doc)
-
-" }}}
-
-" neosnippet {{{2
-Plug 'Shougo/neosnippet'
-Plug 'Shougo/neosnippet-snippets'
-
-" Plugin key-mappings.
-" Note: It must be "imap" and "smap".  It uses <Plug> mappings.
-imap <C-k>     <Plug>(neosnippet_expand_or_jump)
-smap <C-k>     <Plug>(neosnippet_expand_or_jump)
-xmap <C-k>     <Plug>(neosnippet_expand_target)
-
-snoremap <expr><TAB> neosnippet#expandable_or_jumpable() ?
-\ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
-
-" For conceal markers.
-if has('conceal')
-  set conceallevel=2 concealcursor=niv
-endif
-
-let g:neosnippet#snippets_directory='~/dotfiles/neosnippet-snippets/snippets/'
 
 " }}}
 
