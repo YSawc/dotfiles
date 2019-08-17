@@ -148,3 +148,20 @@ options     head
         $2 times $3 is $4 by $0
       };
     };
+
+snippet     by_R-PlusL:+
+options     head
+    ${1} +  ${2} + ${3} ---> ${4} + $3 by R-PlusL {
+      $1 + $2 ---> $4 by R-Plus {
+        $1 plus $2 is $4 by $0
+      };
+    };
+
+snippet     by_R-PlusR:+
+options     head
+    ${1} +  ${2} + ${3} ---> $1 + ${4} by R-PlusL {
+      $2 + $3 ---> $4 by R-Times {
+        $2 times $3 is $4 by $0
+      };
+    };
+
