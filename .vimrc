@@ -571,6 +571,20 @@ nmap <silent> <Leader>ai :LspImplementation<CR>
 nmap <silent> <Leader>as :split \| :LspDefinition <CR>
 nmap <silent> <Leader>av :vsplit \| :LspDefinition <CR>
 
+Plug 'Shougo/neosnippet.vim'
+Plug 'Shougo/neosnippet-snippets'
+Plug 'prabirshrestha/asyncomplete-neosnippet.vim'
+
+call asyncomplete#register_source(asyncomplete#sources#neosnippet#get_source_options({
+    \ 'name': 'neosnippet',
+    \ 'whitelist': ['*'],
+    \ 'completor': function('asyncomplete#sources#neosnippet#completor'),
+    \ }))
+imap <C-k>     <Plug>(neosnippet_expand_or_jump)
+smap <C-k>     <Plug>(neosnippet_expand_or_jump)
+xmap <C-k>     <Plug>(neosnippet_expand_target)
+
+
 " }}}
 
 " coc {{{2
