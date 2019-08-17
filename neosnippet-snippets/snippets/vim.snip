@@ -1,3 +1,10 @@
 snippet     todo_refactorring
 options     head
     " TODO: $0
+
+snippet     augroup
+options     head
+    augroup ${1}
+      autocmd!
+      autocmd $0
+    augroup END
