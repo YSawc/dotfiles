@@ -22,16 +22,6 @@ set fileencodings=utf-8,iso-2022-jp,euc-jp,sjis
 set fileformats=unix,dos,mac
 scriptencoding utf-8
 
-" editting dotfiles {{{2
-
-let $VIMRC = $HOME . '/.vimrc'
-nnoremap <silent> <Space>ev :<C-u>edit $VIMRC<CR>
-
-let $ZSHRC = $HOME . '/.zshrc'
-nnoremap <silent> <Space>ez :<C-u>edit $ZSHRC<CR>
-
-" }}}
-
 " light weight setting {{{2
 set lazyredraw
 set ttyfast
@@ -222,6 +212,16 @@ colorscheme gruvbox
 
 " define usermap {{{2
 let g:mapleader = "\<Space>"
+" }}}
+
+" editting dotfiles {{{2
+
+let $VIMRC = $HOME . '/.vimrc'
+nnoremap <silent> <Space>ev :<C-u>edit $VIMRC<CR>
+
+let $ZSHRC = $HOME . '/.zshrc'
+nnoremap <silent> <Space>ez :<C-u>edit $ZSHRC<CR>
+
 " }}}
 
 " vpbuffer
