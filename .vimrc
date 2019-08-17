@@ -553,7 +553,8 @@ Plug 'machakann/vim-swap'
 
 " }}}
 
-" async
+" async {{{2
+
 Plug 'prabirshrestha/async.vim'
 Plug 'prabirshrestha/vim-lsp'
 Plug 'prabirshrestha/asyncomplete.vim'
@@ -564,6 +565,8 @@ nmap <silent> <Leader>ar :LspReferences<CR>
 nmap <silent> <Leader>ai :LspImplementation<CR>
 nmap <silent> <Leader>as :split \| :LspDefinition <CR>
 nmap <silent> <Leader>av :vsplit \| :LspDefinition <CR>
+
+" }}}
 
 " coc {{{2
 
