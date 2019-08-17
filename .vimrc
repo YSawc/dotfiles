@@ -553,6 +553,17 @@ Plug 'machakann/vim-swap'
 
 " }}}
 
+" async
+Plug 'prabirshrestha/async.vim'
+Plug 'prabirshrestha/vim-lsp'
+
+nmap <silent> <Leader>ad :LspDefinition<CR>
+nmap <silent> <Leader>ap :LspHover<CR>
+nmap <silent> <Leader>ar :LspReferences<CR>
+nmap <silent> <Leader>ai :LspImplementation<CR>
+nmap <silent> <Leader>as :split \| :LspDefinition <CR>
+nmap <silent> <Leader>av :vsplit \| :LspDefinition <CR>
+
 " coc {{{2
 
 " Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
