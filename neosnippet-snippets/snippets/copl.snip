@@ -93,6 +93,12 @@ options     head
 
 snippet     by_DR-PlusL
 options     head
+    ${1} + ${2} -d-> ${3} + $2 by DR-PlusL {
+      $1 -d-> $3 by DR-PlusL {};
+    };
+
+snippet     by_DR-PlusL
+options     head
     ${1} + ${2} -d->${3} + $2 by DR-PlusL {
       $1 -d-> $3 by DR-PlusL {};
     };
