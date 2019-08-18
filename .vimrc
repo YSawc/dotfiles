@@ -237,6 +237,8 @@ inoremap <silent> jj <ESC>
 
 nnoremap ; :
 
+nnoremap <silent> yY :<C-u>%y<CR>
+
 nnoremap <Leader>w :w<CR>
 nnoremap <Leader>q :q!<CR>
 
