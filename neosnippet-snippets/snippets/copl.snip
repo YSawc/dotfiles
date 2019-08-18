@@ -219,14 +219,14 @@ snippet     by_B-LT
 options     head
     ${1} less than ${2} is ${3} by B-LT {};$0
 
-snippet     by_E-Plus
+snippet     by_E-Plus:+
 options     head
     ${1} + ${2} evalto ${3} by E-Minus {
       $1 evalto ${4} by ${5} {$0};
       $2 evalto ${6} by ${7} {};
       $4 Plus $5 is $3 by E-Plus {};
     };
-snippet     by_E-Minus
+snippet     by_E-Minus:-
 options     head
     ${1} - ${2} evalto ${3} by E-Minus {
       $1 evalto ${4} by ${5} {$0};
