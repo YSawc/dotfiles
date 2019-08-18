@@ -234,3 +234,10 @@ options     head
       $4 minus $6 is $3 by E-Minus {};
     };
 
+snippet     by_E-LT
+options     head
+    ${1} < ${2} evalto ${3} by E-LT {
+      $1 evalto ${4} by ${5} {$0};
+      $2 evalto ${6} by ${7} {};
+      $4 less than $6 is $3 by B-LT
+    };
