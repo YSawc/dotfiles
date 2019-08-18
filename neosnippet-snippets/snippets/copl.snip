@@ -189,3 +189,10 @@ snippet     by_E-Bool
 options     head
     ${1} evalto ${2} by E-Bool {};$0
 
+snippet     by_E-IfT
+options     head
+    if ${1} then ${2} else ${3} evalto ${4} by IfT {
+      $1 evalto true by E-Bool {};
+      $2 evalto $4 by E-Int {};$0
+    };
+
