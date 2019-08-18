@@ -33,3 +33,6 @@ test -r /Users/y-s/.opam/opam-init/init.zsh && . /Users/y-s/.opam/opam-init/init
 
 # rust
 export PATH="$HOME/.cargo/bin:$PATH"
+
+# for hdl
+export PATH=$PATH:~/workspace/Row_layer/nand2tetris/tools
