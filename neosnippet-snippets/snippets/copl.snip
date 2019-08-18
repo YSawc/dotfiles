@@ -196,3 +196,9 @@ options     head
       $2 evalto $4 by E-Int {};$0
     };
 
+snippet     by_E-IfF
+options     head
+    if ${1} then ${2} else ${3} evalto ${4} by IfF {
+      $1 evalto false by E-Bool {};
+      $2 evalto $4 by E-Int {};$0
+    };
