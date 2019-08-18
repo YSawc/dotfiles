@@ -180,3 +180,8 @@ options     head
       $3 -*-> $2 by MR-One {
       };
     };
+
+snippet     by_Int
+options     head
+    ${1} evalto $1 by E-Inf {};$0
+
