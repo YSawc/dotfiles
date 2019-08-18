@@ -241,3 +241,11 @@ options     head
       $2 evalto ${6} by ${7} {};
       $4 less than $6 is $3 by B-LT
     };
+
+snippet     by_E-Times:*
+options     head
+    ${1} * ${2} evalto ${3} by E-Times {
+      $1 evalto ${4} by ${5} {$0};
+      ${6} evalto ${7} by ${8} {};
+      $4 times $7 is $3 by ${9} {};
+    };
