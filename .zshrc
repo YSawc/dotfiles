@@ -227,6 +227,10 @@ alias gr='git reset'
 # google検索
 alias goo='open https://www.google.co.jp/search\?q\=`pbpaste`'
 
+# vim with LANG_C
+alias vim='LANG=C vim'
+alias vi='LANG=C vim'
+
 # }}}
 
 #  c言語コンパイルと実行のエイリアス {{{
