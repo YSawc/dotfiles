@@ -543,9 +543,9 @@ Plug 'skanehira/vsession'
 let g:vsession_use_fzf = 1
 
 " mattn_webapi
-Plug 'mattn/webapi-vim'
+" Plug 'mattn/webapi-vim'
 " gist_vim
-Plug 'mattn/gist-vim'
+" Plug 'mattn/gist-vim'
 
 " reset
 " sskk
