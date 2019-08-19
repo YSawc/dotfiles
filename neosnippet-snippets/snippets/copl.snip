@@ -254,3 +254,16 @@ snippet     by_B-LT
 options     head
     ${1} less than ${2} is ${3} by B-LT {};$0
 
+snippet     by_E-IfT
+options     word
+    if ${1} then ${2} else ${3} evalto ${4} by E-IfT {
+      $1 evalto true by E-Bool {};
+      $2 evalto $4 by E-Int {};
+    };
+
+snippet     by_E-IfF
+options     word
+    if ${1} then ${2} else ${3} evalto ${4} by E-IfT {
+      $1 evalto false by E-Bool {};
+      $2 evalto $4 by E-Int {};
+    };
