@@ -566,7 +566,7 @@ Plug 'machakann/vim-swap'
 Plug 'mbbill/undotree'
 
 " TODO: select snippets usefull
-Plug 'SirVer/ultisnips'
+" Plug 'SirVer/ultisnips'
 
 " neosnippet {{{2
 Plug 'Shougo/neosnippet'
