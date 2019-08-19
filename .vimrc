@@ -451,7 +451,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'YSawc/vpbuffer'
 
 Plug 'itchyny/lightline.vim'    " Dependency: status line
-Plug 'maximbaz/lightline-ale'
+" Plug 'maximbaz/lightline-ale'
 
 Plug 'bronson/vim-trailing-whitespace'
 
