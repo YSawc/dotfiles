@@ -491,7 +491,7 @@ nnoremap s; :<C-u>NERDTreeTabsToggle<CR>
 
 " }}}
 
-" cursorWord
+" light cursorWord
 let g:loaded_matchparen = 1
 Plug 'itchyny/vim-parenmatch'
 
