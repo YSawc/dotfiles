@@ -120,7 +120,7 @@ autocmd BufWritePre * :silent keeppatterns %s/\s\+$//ge
 " limit of highlight
 augroup vimrc-highlight
   autocmd!
-  autocmd Syntax ruby if 10000 < line('$') | syntax sync minlines=100 | endif
+  autocmd Syntax * if 10000 < line('$') | syntax sync minlines=100 | endif
 augroup END
 
 " }}}
