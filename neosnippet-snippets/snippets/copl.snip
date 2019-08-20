@@ -298,3 +298,15 @@ options     head
     ${1} - ${2} evalto error by E-MinusBoolR {
       $2 evalto ${3} by E-Bool {};
     };
+
+snippet     by_E-TimesBoolL
+options     head
+    ${1} * ${2} evalto error by E-times
+      $1 evalto ${3} by E-Bool {};
+    };
+
+snippet     by_E-TimesBoolR
+options     head
+    ${1} * ${2} evalto error by E-times
+      $2 evalto ${3} by E-Bool {};
+    };
