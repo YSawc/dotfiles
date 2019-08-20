@@ -239,7 +239,7 @@ options     head
     ${1} < ${2} evalto ${3} by E-LT {
       $1 evalto ${4} by ${5} {$0};
       $2 evalto ${6} by ${7} {};
-      $4 less than $6 is $3 by B-LT
+      $4 less than $6 is $3 by B-LT {};
     };
 
 snippet     by_E-Times:*
@@ -258,12 +258,12 @@ snippet     by_E-IfT
 options     head
     if ${1} then ${2} else ${3} evalto ${4} by E-IfT {
       $1 evalto true by E-${5} {};
-      $2 evalto $4 by E-Int {};
+      $2 evalto $4 by E-${6} {};
     };
 
 snippet     by_E-IfF
 options     head
     if ${1} then ${2} else ${3} evalto ${4} by E-IfT {
       $1 evalto false by E-${5} {};
-      $2 evalto $4 by E-Int {};
+      $2 evalto $4 by E-${6} {};
     };
