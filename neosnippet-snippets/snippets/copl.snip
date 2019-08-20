@@ -267,3 +267,8 @@ options     head
       $1 evalto false by E-${5} {};
       $2 evalto $4 by E-${6} {};
     };
+
+snippet     by_E-PlusBoolR
+    ${1} + ${2} evalto error by E-PlusBoolR {
+      $2 evalto ${3} by E-Bool {};
+    };
