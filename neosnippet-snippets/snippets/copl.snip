@@ -268,7 +268,20 @@ options     head
       $2 evalto $4 by E-${6} {};
     };
 
+snippet     by_E-PlusErrorL
+options     head
+    ${1} + ${2} evalto error by E-PlusErrorL {
+      $1 evalto error by $0 {};
+    };
+
+snippet     by_E-PlusErrorR
+options     head
+    ${1} + ${2} evalto error by E-PlusErrorL {
+      $2 evalto error by $0 {};
+    };
+
 snippet     by_E-PlusBoolL
+
 options     head
     ${1} + ${2} evalto error by E-PlusBoolR {
       $1 evalto ${3} E-Bool {};
