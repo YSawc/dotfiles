@@ -273,3 +273,9 @@ options     head
     ${1} + ${2} evalto error by E-PlusBoolR {
       $2 evalto ${3} by E-Bool {};
     };
+
+snippet     by_E-IfInt
+options     head
+    if ${1} then ${2} else ${3} evalto error by E-IfInt {
+      $1 evalto ${4} by E-${5} {$0};
+    };
