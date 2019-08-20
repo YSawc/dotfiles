@@ -286,3 +286,15 @@ options     head
     if ${1} then ${2} else ${3} evalto error by E-IfInt {
       $1 evalto ${4} by E-${5} {$0};
     };
+
+snippet     by_E-MinusBoolL
+options     head
+    ${1} - ${2} evalto error by E-MinusBoolL {
+      $1 evalto ${3} by E-Bool {};
+    };
+
+snippet     by_E-MinusBoolR
+options     head
+    ${1} - ${2} evalto error by E-MinusBoolR {
+      $2 evalto ${3} by E-Bool {};
+    };
