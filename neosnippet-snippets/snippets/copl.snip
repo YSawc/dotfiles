@@ -332,18 +332,6 @@ options     head
       $1 evalto ${4} by ${5} {};
     };
 
-snippet     by_E-MinusBoolL
-options     head
-    ${1} - ${2} evalto error by E-MinusBoolL {
-      $1 evalto ${3} by E-Bool {};
-    };
-
-snippet     by_E-MinusBoolR
-options     head
-    ${1} - ${2} evalto error by E-MinusBoolR {
-      $2 evalto ${3} by E-Bool {};
-    };
-
 snippet     by_E-timesBoolL
 options     head
     ${1} * ${2} evalto error by E-TimesBoolL {
