@@ -266,6 +266,12 @@ options     head
       $2 evalto $4 by E-${6} {};
     };
 
+snippet     by_E-IfError
+options     head
+    if ${1} then ${2} else ${3} evalto error by E-IfError {
+      $1 evalto error by ${4} {};
+    };
+
 snippet     by_E-PlusErrorL
 options     head
     ${1} + ${2} evalto error by E-PlusErrorL {
