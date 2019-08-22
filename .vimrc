@@ -29,7 +29,7 @@ set ttyfast
 
 set noswapfile
 
-" auto reroad when branch changed
+" auto reload when branch changed
 set autoread
 
 " mute seting
