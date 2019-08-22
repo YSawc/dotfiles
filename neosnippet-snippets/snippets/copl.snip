@@ -326,3 +326,16 @@ options     head
     if ${1} then ${2} else ${3} evalto error by E-Ifint {
       $1 evalto ${4} by ${5} {};
     };
+
+snippet     by_E-PlusBoolL
+options     head
+    ${1} + ${2} evalto error by E-PlusBoolL {
+      $1 evalto ${3} by E-Bool {};
+    };
+
+snippet     by_E-PlusBoolR
+options     head
+    ${1} + ${2} evalto error by E-PlusBoolR {
+      $2 evalto ${3} by E-Bool {};
+    };
+
