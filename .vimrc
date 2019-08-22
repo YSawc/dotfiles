@@ -29,6 +29,9 @@ set ttyfast
 
 set noswapfile
 
+" auto reroad when branch changed
+set autoread
+
 " mute seting
 set t_vb=
 set visualbell
