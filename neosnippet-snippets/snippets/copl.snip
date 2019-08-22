@@ -320,3 +320,9 @@ options     head
     ${1} * ${2} evalto error by E-times
       $2 evalto ${3} by E-Bool {};
     };
+
+snippet     E-IfInt
+options     head
+    if ${1} then ${2} else ${3} evalto error by E-Ifint {
+      $1 evalto ${4} by ${5} {};
+    };
