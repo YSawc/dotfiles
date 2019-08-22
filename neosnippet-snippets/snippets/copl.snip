@@ -362,3 +362,15 @@ options     head
     ${1} * ${2} evalto error by E-TimesBoolR {
       $1 evalto ${3} by E-Bool {};
     };
+
+snippet     by_E-LtBoolL
+options     head
+    ${1} < ${2} evalto error by E-LtBoolL {
+      $1 evalto ${3} by E-Bool {};
+    };
+
+snippet     by_E-LtBoolR
+options     head
+    ${1} < ${2} evalto error by E-LtBoolR {
+      $2 evalto ${3} by E-Bool {};
+    };
