@@ -355,3 +355,7 @@ options     head
     ${1} < ${2} evalto error by E-LtBoolR {
       $2 evalto ${3} by E-Bool {};
     };
+
+snippet     ML2::E-Int
+options     head
+    ${1} |- ${2} evalto $2 by E-Int {};$0
