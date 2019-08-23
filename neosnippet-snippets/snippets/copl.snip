@@ -367,3 +367,15 @@ options     head
 snippet     ML2::E-Var1
 options     head
     ${1} = ${2} |- $1 evalto $2 by E-Var1 {};
+
+snippet     ML2::E-Var2:1
+options     head
+    ${1} = ${2}, ${3} = ${4} |- ${5} evalto ${6} by E-Var2 {
+      $1 = $2 |- $1 evalto $2
+    };
+
+snippet     ML2::E-Var2:2
+options     head
+    ${1} = ${2}, ${3} = ${4} |- ${5} evalto ${6} by E-Var2 {
+      $3 = $4 |- $3 evalto $4
+    };
