@@ -356,25 +356,25 @@ options     head
       $2 evalto ${3} by E-Bool {};
     };
 
-snippet     ML2::E-Int
+snippet     by_ML2::E-Int
 options     head
     ${1} |- ${2} evalto $2 by E-Int {};$0
 
-snippet     ML2::E-Bool
+snippet     by_ML2::E-Bool
 options     head
     ${1} |- ${2} evalto $2 by E-Bool {};$0
 
-snippet     ML2::E-Var1
+snippet     by_ML2::E-Var1
 options     head
     ${1} = ${2} |- $1 evalto $2 by E-Var1 {};
 
-snippet     ML2::E-Var2:1
+snippet     by_ML2::E-Var2:1
 options     head
     ${1} = ${2}, ${3} = ${4} |- ${5} evalto ${6} by E-Var2 {
       $1 = $2 |- $1 evalto $2
     };
 
-snippet     ML2::E-Var2:2
+snippet     by_ML2::E-Var2:2
 options     head
     ${1} = ${2}, ${3} = ${4} |- ${5} evalto ${6} by E-Var2 {
       $3 = $4 |- $3 evalto $4
