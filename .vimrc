@@ -512,7 +512,7 @@ Plug 'Shougo/neomru.vim'
 Plug 'ctrlpvim/ctrlp.vim'
 let g:ctrlp_show_hidden=1
 
-Plug 'tpope/vim-fugitive'
+Plug 'lambdalisue/gina.vim'
 
 Plug 'airblade/vim-gitgutter'
 
