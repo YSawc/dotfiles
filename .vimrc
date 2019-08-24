@@ -118,7 +118,7 @@ if has('persistent_undo')
 endif
 
 " delete whitespace preBufWeite
-autocmd BufWritePre * :silent keeppatterns %s/\s\+$//ge
+" autocmd BufWritePre * :silent keeppatterns %s/\s\+$//ge
 
 " limit of highlight
 augroup vimrc-highlight
