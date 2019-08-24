@@ -380,3 +380,10 @@ options     head
       $1 |- $3 evalto ${7} by ${8} {};
       $5 plus $7 is $4 by ${9} {};
     };
+
+snippet     by_ML2::E-Let
+options     head
+    ${1} |- let ${2} = ${3} in ${4} evalto ${5} by E=Let {
+      $1 |- $3 evalto ${6} by ${7} {};
+      ${8} |- $4 evalto $5 by ${10} {};
+    };
