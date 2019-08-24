@@ -183,8 +183,8 @@ command! -bang -nargs=* Rg
 " apperance {{{1
 
 " setting line_num
-set relativenumber
-set number
+" set relativenumber
+" set number
 
 set cursorline
 
