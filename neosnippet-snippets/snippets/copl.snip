@@ -182,41 +182,41 @@ options     head
       };
     };
 
-snippet     by_E-Int
+snippet     by_ML1::E-Int
 options     head
     ${1} evalto $1 by E-Int {};$0
 
-snippet     by_E-Bool
+snippet     by_ML1::E-Bool
 options     head
     ${1} evalto ${2} by E-Bool {};$0
 
-snippet     by_E-IfT
+snippet     by_ML1::E-IfT
 options     head
     if ${1} then ${2} else ${3} evalto ${4} by IfT {
       $1 evalto true by E-Bool {};
       $2 evalto $4 by E-Int {};$0
     };
 
-snippet     by_E-IfF
+snippet     by_ML1::E-IfF
 options     head
     if ${1} then ${2} else ${3} evalto ${4} by IfF {
       $1 evalto false by E-Bool {};
       $2 evalto $4 by E-Int {};$0
     };
 
-snippet     by_B-Plus
+snippet     by_ML1::B-Plus
 options     head
     ${1} plus ${2} is ${3} by P-$0 {};
 
-snippet     by_B-Minus
+snippet     by_ML1::B-Minus
 options     head
     $1 minus ${2} is ${3} by B-Minus {};$0
 
-snippet     by_B-Times
+snippet     by_ML1::B-Times
 options     head
     ${1} times ${2} is ${3} by B-Times {};$0
 
-snippet     by_B-LT
+snippet     by_ML1::B-LT
 options     head
     ${1} less than ${2} is ${3} by B-LT {};$0
 
@@ -235,7 +235,7 @@ options     head
       $4 minus $6 is $3 by E-Minus {};
     };
 
-snippet     by_E-Lt
+snippet     by_ML1::E-Lt
 options     head
     ${1} < ${2} evalto ${3} by E-LT {
       $1 evalto ${4} by ${5} {$0};
@@ -243,7 +243,7 @@ options     head
       $4 less than $6 is $3 by B-LT {};
     };
 
-snippet     by_E-Times:*
+snippet     by_ML1::E-Times:*
 options     head
     ${1} * ${2} evalto ${3} by E-Times {
       $1 evalto ${4} by ${5} {$0};
@@ -251,109 +251,103 @@ options     head
       $4 times $7 is $3 by ${9} {};
     };
 
-snippet     by_B-Lt
+snippet     by_ML1::B-Lt
 options     head
     ${1} less than ${2} is ${3} by B-Lt {};$0
 
-snippet     by_E-IfT:true
+snippet     by_ML1::E-IfT:true
 options     head
     if ${1} then ${2} else ${3} evalto ${4} by E-IfT {
       $1 evalto true by E-${5} {};
       $2 evalto $4 by E-${6} {};
     };
 
-snippet     by_E-IfF:false
+snippet     by_ML1::E-IfF:false
 options     head
     if ${1} then ${2} else ${3} evalto ${4} by E-IfT {
       $1 evalto false by E-${5} {};
       $2 evalto $4 by E-${6} {};
     };
 
-snippet     by_E-IfError
+snippet     by_ML1::E-IfError
 options     head
     if ${1} then ${2} else ${3} evalto error by E-IfError {
       $1 evalto error by ${4} {};
     };
 
-snippet     by_E-PlusErrorL
+snippet     by_ML1::E-PlusErrorL
 options     head
     ${1} + ${2} evalto error by E-PlusErrorL {
       $1 evalto error by $0 {};
     };
 
-snippet     by_E-PlusErrorR
+snippet     by_ML1::E-PlusErrorR
 options     head
     ${1} + ${2} evalto error by E-PlusErrorL {
       $2 evalto error by $0 {};
     };
 
-snippet     by_E-PlusBoolL
+snippet     by_ML1::E-PlusBoolL
 options     head
     ${1} + ${2} evalto error by E-PlusBoolR {
       $1 evalto ${3} E-Bool {};
     };
 
-snippet     by_E-PlusBoolR
+snippet     by_ML1::E-PlusBoolR
 options     head
     ${1} + ${2} evalto error by E-PlusBoolR {
       $2 evalto ${3} by E-Bool {};
     };
 
-snippet     by_E-IfInt
+snippet     by_ML1::E-IfInt
 options     head
     if ${1} then ${2} else ${3} evalto error by E-IfInt {
       $1 evalto ${4} by E-${5} {$0};
     };
 
-snippet     by_E-MinusBoolL
+snippet     by_ML1::E-MinusBoolL
 options     head
     ${1} - ${2} evalto error by E-MinusBoolL {
       $1 evalto ${3} by E-Bool {};
     };
 
-snippet     by_E-MinusBoolR
+snippet     by_ML1::E-MinusBoolR
 options     head
     ${1} - ${2} evalto error by E-MinusBoolR {
       $2 evalto ${3} by E-Bool {};
     };
 
-snippet     by_E-TimesBoolL
+snippet     by_ML1::E-TimesBoolL
 options     head
     ${1} * ${2} evalto error by E-times
       $1 evalto ${3} by E-Bool {};
     };
 
-snippet     by_E-TimesBoolR
+snippet     by_ML1::E-TimesBoolR
 options     head
     ${1} * ${2} evalto error by E-times
       $2 evalto ${3} by E-Bool {};
     };
 
-snippet     E-IfInt
-options     head
-    if ${1} then ${2} else ${3} evalto error by E-Ifint {
-      $1 evalto ${4} by ${5} {};
-    };
-
-snippet     by_E-timesBoolL
+snippet     by_ML1::E-timesBoolL
 options     head
     ${1} * ${2} evalto error by E-TimesBoolL {
       $1 evalto ${3} by E-Bool {};
     };
 
-snippet     by_E-timesBoolR
+snippet     by_ML1::E-timesBoolR
 options     head
     ${1} * ${2} evalto error by E-TimesBoolR {
       $1 evalto ${3} by E-Bool {};
     };
 
-snippet     by_E-LtBoolL
+snippet     by_ML1::E-LtBoolL
 options     head
     ${1} < ${2} evalto error by E-LtBoolL {
       $1 evalto ${3} by E-Bool {};
     };
 
-snippet     by_E-LtBoolR
+snippet     by_ML1::E-LtBoolR
 options     head
     ${1} < ${2} evalto error by E-LtBoolR {
       $2 evalto ${3} by E-Bool {};
