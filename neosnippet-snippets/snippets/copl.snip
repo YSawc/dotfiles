@@ -394,6 +394,6 @@ snippet     by_ML3::E-App
 options     head
     ${1} |- ${2} ${3} evalto ${4} by E-App {
       $1 |- $2 evalto  (${5})[fun ${6} -> ${7}] by ${8} {$0};
-      $1 |- $2 evalto ${9} by ${10} {};
+      $1 |- $3 evalto ${9} by ${10} {};
       ${11: equal $9} |- $7 evalto $4 by ${11} {};
     };
