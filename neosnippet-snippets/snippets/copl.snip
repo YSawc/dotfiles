@@ -365,6 +365,10 @@ snippet     by_ML2::E-Var1
 options     head
     ${1} = ${2} |- $1 evalto $2 by E-Var1 {};$0
 
+snippet     by_ML2::E-Var1:env
+options     head
+     ${1}, ${2} = ${3} |- $2 evalto $3 by E-Var1 {};$0
+
 snippet     by_ML2::E-Var2
 options     head
     ${1} |- ${2} evalto ${3} by E-Var2 {
