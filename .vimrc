@@ -511,6 +511,7 @@ Plug 'itchyny/vim-parenmatch'
 Plug 'Lokaltog/vim-easymotion'
 
 Plug 'Shougo/unite.vim'
+let g:unite_enable_start_insert=1
 Plug 'Shougo/neomru.vim'
 
 Plug 'ctrlpvim/ctrlp.vim'
