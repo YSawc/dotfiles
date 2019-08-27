@@ -126,6 +126,9 @@ augroup vimrc-highlight
   autocmd Syntax * if 10000 < line('$') | syntax sync minlines=100 | endif
 augroup END
 
+" Quick toggle options.
+nnoremap <silent> <Space>ow :<C-u>setlocal wrap! wrap?<CR>
+
 " }}}
 
 " cursorline {{{1
