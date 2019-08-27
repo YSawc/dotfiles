@@ -92,8 +92,8 @@ set synmaxcol=256
 set sessionoptions=blank,buffers,curdir,folds,help,tabpages,winsize,terminal
 
 " wrap
-set wrap
-set textwidth=80
+" set wrap
+" set textwidth=80
 
 set signcolumn=yes
 
