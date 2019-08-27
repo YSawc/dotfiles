@@ -127,6 +127,7 @@ augroup vimrc-highlight
 augroup END
 
 " Quick toggle options.
+nnoremap <silent> <Space>on :<C-u>setlocal number! number?<CR>
 nnoremap <silent> <Space>ow :<C-u>setlocal wrap! wrap?<CR>
 
 " }}}
