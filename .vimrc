@@ -308,21 +308,6 @@ nnoremap sb :<C-u>Unite buffer_tab -buffer-name=file<CR>
 nnoremap sB :<C-u>Unite buffer -buffer-name=file<CR>
 " }}}
 
-" unite_vim {{{2
-"
-let g:unite_enable_start_insert = 1
-
-if executable('ag')
-let g:unite_source_grep_command = 'ag'
-let g:unite_source_grep_default_opts = '--nogroup --nocolor --column'
-let g:unite_source_grep_recursive_opt = ''
-endif
-
-let g:unite_enable_ignore_case = 1
-let g:unite_enable_smart_case = 1
-
-" }}}
-
 " move line
 nnoremap <C-Up> "zdd<Up>"zP
 nnoremap <C-Down> "zdd"zp
@@ -511,6 +496,21 @@ Plug 'itchyny/vim-parenmatch'
 Plug 'Lokaltog/vim-easymotion'
 
 Plug 'Shougo/unite.vim'
+" unite_vim {{{2
+
+let g:unite_enable_start_insert = 1
+
+if executable('ag')
+let g:unite_source_grep_command = 'ag'
+let g:unite_source_grep_default_opts = '--nogroup --nocolor --column'
+let g:unite_source_grep_recursive_opt = ''
+endif
+
+let g:unite_enable_ignore_case = 1
+let g:unite_enable_smart_case = 1
+
+" }}}
+
 Plug 'Shougo/neomru.vim'
 
 Plug 'ctrlpvim/ctrlp.vim'
