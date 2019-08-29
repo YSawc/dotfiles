@@ -127,6 +127,7 @@ augroup vimrc-highlight
 augroup END
 
 " Quick toggle options.
+nnoremap <silent> <Space>or :<C-u>setlocal relativenumber! relativenumber?<CR>
 nnoremap <silent> <Space>on :<C-u>setlocal number! number?<CR>
 nnoremap <silent> <Space>ow :<C-u>setlocal wrap! wrap?<CR>
 
@@ -253,9 +254,6 @@ nnoremap <silent> yY :<C-u>%y<CR>
 
 nnoremap <Leader>w :w<CR>
 nnoremap <Leader>q :q!<CR>
-
-nnoremap <silent> <Leader>rn :set relativenumber!<CR>
-nnoremap <silent> <Leader>run :set nonumber!<CR>
 
 " TODO: reset
 inoremap { {}<Left>
