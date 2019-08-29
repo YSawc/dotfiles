@@ -379,8 +379,8 @@ options     head
 
 snippet     by_ML2::E-Var2
 options     head
-    ${1} |- ${2} evalto ${3} by E-Var2 {
-      $0
+    ${1}, ${2} |- ${3} evalto ${4} by E-Var2 {
+      $1 |- $3 evalto $4 by E-Var1 {};
     };
 
 snippet     by_ML2::E-Plus
