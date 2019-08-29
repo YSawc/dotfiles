@@ -394,7 +394,7 @@ options     head
 snippet     by_ML2::E-Let
 options     head
     ${1} |- let ${2} = ${3} in ${4} evalto ${5} by E-Let {
-      $1 |- $3 evalto ${6} by ${7} {};
+      $1 |- $3 evalto ${6} by ${7} {$0};
       ${8} |- $4 evalto $5 by ${10} {};
     };
 
