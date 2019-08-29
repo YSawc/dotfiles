@@ -102,12 +102,6 @@ set formatoptions-=cro
 
 set completeopt-=preview
 
-" help closeer
-augroup helpMapping
-	au!
-	au FileType help nnoremap <buffer> <silent> q :q<CR>
-augroup END
-
 " setting for undo
 if has('persistent_undo')
 	set undodir=~/.cache/vim/undo
@@ -125,11 +119,6 @@ augroup vimrc-highlight
   autocmd!
   autocmd Syntax * if 10000 < line('$') | syntax sync minlines=100 | endif
 augroup END
-
-" Quick toggle options.
-nnoremap <silent> <Space>or :<C-u>setlocal relativenumber! relativenumber?<CR>
-nnoremap <silent> <Space>on :<C-u>setlocal number! number?<CR>
-nnoremap <silent> <Space>ow :<C-u>setlocal wrap! wrap?<CR>
 
 " }}}
 
@@ -368,6 +357,17 @@ while i <= 9
     execute 'nnoremap <Space>' . i . ' :' . i . 'wincmd w<CR>'
     let i = i + 1
 endwhile
+
+" help closeer
+augroup helpMapping
+	au!
+	au FileType help nnoremap <buffer> <silent> q :q<CR>
+augroup END
+
+" Quick toggle options.
+nnoremap <silent> <Space>or :<C-u>setlocal relativenumber! relativenumber?<CR>
+nnoremap <silent> <Space>on :<C-u>setlocal number! number?<CR>
+nnoremap <silent> <Space>ow :<C-u>setlocal wrap! wrap?<CR>
 
 " }}}
 
