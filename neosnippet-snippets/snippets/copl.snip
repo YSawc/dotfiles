@@ -447,6 +447,13 @@ options     head
       $1 |- $3 ==> $5 by ${7} {};
     };
 
+snippet     by_NML3::Tr-Lt
+options     head
+    ${1} |- ${2} < ${3} ==> ${4} < ${5} by Tr-Lt {
+      $1 |- $2 ==> $4 by ${6} {};
+      $1 |- $3 ==> $5 by ${7} {};
+    };
+
 snippet     by_NML3::Tr-Var1
 options     head
     ${1} |- ${2} ==> #1 by Tr-Var1 {};$0
