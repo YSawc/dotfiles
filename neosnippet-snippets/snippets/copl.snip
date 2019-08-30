@@ -471,6 +471,12 @@ options     head
       $1$0 ${8} |- $4 ==> $6 by ${8} {};
     };
 
+snippet     by_NML3::Tr-Fun
+options     head
+    ${1} |- fun ${2} evalto ${3} ==> fun . = evalto ${4} by Tr-Fun {
+      $1$0 ${5} |- $3 ==> $4 by ${6} {};
+    };
+
 snippet     by_NML3::E-Int
 options     head
     ${1} |- ${2} evalto $2 by E-Int {};
