@@ -548,3 +548,10 @@ options     head
 snippet     by_NML3::E-Var
 options     head
     ${1} |- #${2} evalto ${3} by E-Var {};
+
+snippet     by_NML3::E-Let
+options     head
+    ${1} |- let . = ${2} in ${3} evalto ${4} by E-Let {
+      $1 |- $2 evalto ${5} by ${6} {};
+      $1, $2 = $5 |- $3 evalto ${8} by ${9} {};
+    };
