@@ -555,3 +555,7 @@ options     head
       $1 |- $2 evalto ${5} by ${6} {};
       $1, $2 = $5 |- $3 evalto ${8} by ${9} {};
     };
+
+snippet     by_NML3::E-Fun
+options     head
+    ${1} fun . ==> ${2} evalto ($1)[fun . ==> $2] by E-Fun {$0};
