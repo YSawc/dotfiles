@@ -414,6 +414,10 @@ snippet     by_NML3::Tr-Int
 options     head
     ${1} |- ${2} ==> ${2} by Tr-Int {};
 
+snippet     by_NML3::Tr-Bool
+options     head
+    ${1} |- ${2} ==> ${2} by Tr-Int {};
+
 snippet     by_NML3::Tr-If
 options     head
     ${1} |- if ${2} then ${3} else ${4} ==> if ${5} then ${6} else ${7} by E-Tr-If {
