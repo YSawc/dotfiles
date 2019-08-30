@@ -559,3 +559,9 @@ options     head
 snippet     by_NML3::E-Fun
 options     head
     ${1} fun . ==> ${2} evalto ($1)[fun . ==> $2] by E-Fun {$0};
+
+snippet     by_NML3::E-LetRec
+options     head
+    ${1} |- let rec . = fun . ==> ${2} in ${3} evalto ${4} by E-LetRec {
+      $1, $0($1)[rec . = fun . ==>  $2] |- $3 evalto $4 by ${5} {};
+    };
