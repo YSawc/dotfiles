@@ -410,24 +410,23 @@ options     head
       ${11}, $6 = $9 |- $7 evalto $4 by ${12} {};
     };
 
-
 snippet     by_NML3::Tr-Int
 options     head
-    ${1} |- ${2} evalto ${2} by Tr-Int {};
+    ${1} |- ${2} ==> ${2} by Tr-Int {};
 
 snippet     by_NML3::Tr-If
 options     head
-    ${1} |- if ${2} then ${3} else ${4} evalto if ${5} then ${6} else ${7} by E-Tr-If {
-      $1 |- $2 evalto $5 by ${8} {$0};
-      $1 |- $3 evalto $6 by ${9} {};
-      $1 |- $4 evalto $7 by ${10} {};
+    ${1} |- if ${2} then ${3} else ${4} ==> if ${5} then ${6} else ${7} by E-Tr-If {
+      $1 |- $2 ==> $5 by ${8} {$0};
+      $1 |- $3 ==> $6 by ${9} {};
+      $1 |- $4 ==> $7 by ${10} {};
     };
 
 snippet     by_NML3::Tr-Plus
 options     head
-    ${1} |- ${2} + ${3} evalto ${4} + ${5} by Tr-Plus {
-      $1 |- $2 evalto $4 by ${6} {};
-      $1 |- $3 evalto $5 by ${7} {};
+    ${1} |- ${2} + ${3} ==> ${4} + ${5} by Tr-Plus {
+      $1 |- $2 ==> $4 by ${6} {};
+      $1 |- $3 ==> $5 by ${7} {};
     };
 
 snippet     by_NML3::Tr-Var1
