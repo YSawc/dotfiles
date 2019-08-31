@@ -553,7 +553,7 @@ snippet     by_NML3::E-Let
 options     head
     ${1} |- let . = ${2} in ${3} evalto ${4} by E-Let {
       $1 |- $2 evalto ${5} by ${6} {};
-      $1, $2 = $5 |- $3 evalto ${8} by ${9} {};
+      $1, $5 |- $3 evalto ${8} by ${9} {};
     };
 
 snippet     by_NML3::E-Fun
@@ -565,3 +565,7 @@ options     head
     ${1} |- let rec . = fun . ==> ${2} in ${3} evalto ${4} by E-LetRec {
       $1, $0($1)[rec . = fun . ==>  $2] |- $3 evalto $4 by ${5} {};
     };
+
+snippet     by_ML4::E-Nil
+options     head
+    |- [] evalto [] by E-Nil {};$0
