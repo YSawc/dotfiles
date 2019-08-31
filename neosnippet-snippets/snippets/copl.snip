@@ -569,3 +569,10 @@ options     head
 snippet     by_ML4::E-Nil
 options     head
     |- [] evalto [] by E-Nil {};$0
+
+snippet     by-ML4::E-Cons
+options     head
+    |- ${1} :: ${2} evalto ${3} :: ${4} by E-Cons {
+      |- $1 evalto $3 by ${5} {};
+      |- $2 evalto $4 by ${6} {};
+    };
