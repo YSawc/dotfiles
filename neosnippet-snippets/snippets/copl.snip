@@ -579,14 +579,14 @@ options     head
 
 snippet     by_ML4::E-MatchNil
 options     head
-    ${1} |- match ${2} with [] ==> ${3} | ${4} :: ${5} ==> ${6} evalto ${7} by E-MatchNil {
+    ${1} |- match ${2} with [] -> ${3} | ${4} :: ${5} -> ${6} evalto ${7} by E-MatchNil {
       $1 |- $2 evalto [] by ${8} {};
       $1 |- $3 evalto $7 by ${9} {};
     };
 
 snippet     by_ML4::E-MatchCons
 options     head
-    ${1} |- match ${2} with [] ==> ${3} | ${4} :: ${5} ==> ${6} evalto ${7} by E-MatchNil {
+    ${1} |- match ${2} with [] -> ${3} | ${4} :: ${5} -> ${6} evalto ${7} by E-MatchNil {
       $1 |- $2 evalto ${8} :: ${9} by ${10} {};
       $1, $4 = $8, $5 = $9 |- $6 evalto $7 by ${11} {};
     };
