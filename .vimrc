@@ -739,14 +739,6 @@ let g:lightline = {
 
 " }}}
 
-" vista {{{2
-
-" TODO: vista setting or ..
-" Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
-Plug 'liuchengxu/vista.vim'
-
-" }}}
-
 " vim-go {{{2
 
 Plug 'fatih/vim-go'
