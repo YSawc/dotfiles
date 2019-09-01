@@ -615,9 +615,9 @@ let g:neosnippet#snippets_directory='~/dotfiles/neosnippet-snippets/snippets/'
 " let g:lsp_log_file = expand('~/.cache/tmp/vim-lsp.log')
 
 
-" inoremap <expr> <C-j> pumvisible() ? "\<C-n>" : "\<Tab>"
-" inoremap <expr> <C-k> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-" inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<cr>"
+" inoremap <expr> <C-j> pumvisible() ? '<C-n>' : '<Tab>'
+" inoremap <expr> <C-k> pumvisible() ? '<C-p>' : '<S-Tab>'
+" inoremap <expr> <CR> pumvisible() ? '<C-y>' : '<cr>'
 
 " let g:lsp_signs_enabled = 1
 " let g:lsp_diagnostics_echo_cursor = 1
@@ -682,8 +682,8 @@ set shortmess+=I
 " TODO: reset
 "
 inoremap <silent><expr> <TAB>
-	  \ pumvisible() ? "\<C-n>" :
-	  \ <SID>check_back_space() ? "\<TAB>" :
+	  \ pumvisible() ? '<C-n>' :
+	  \ <SID>check_back_space() ? '<TAB>' :
 	  \ coc#refresh()
 
 function! s:check_back_space() abort
