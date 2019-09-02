@@ -410,6 +410,12 @@ options     head
       ${11}, $6 = $9 |- $7 evalto $4 by ${12} {};
     };
 
+snippet     by_ML3::E-LetRec
+options     head
+    ${1} |- let rec ${2} = fun ${3} evalto ${4} in ${5} evalto ${6} by E-LetRec {
+     $1, ($1)[rec $2 = fun $3 evalto $4] |- $5 evalto $6 by ${7} {$0};
+    };
+
 snippet     by_NML3::Tr-Int
 options     head
     ${1} |- ${2} ==> ${2} by Tr-Int {};
