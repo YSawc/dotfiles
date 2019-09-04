@@ -260,8 +260,8 @@ noremap <expr> <C-y> (line('w0') <= 1         ? 'k' : "\<C-y>")
 noremap <expr> <C-e> (line('w$') >= line('$') ? 'j' : "\<C-e>")
 
 " moving command line
-cnoremap <C-b> <S-Left>
-cnoremap <C-f> <S-Right>
+cnoremap <C-b> <Left>
+cnoremap <C-f> <Right>
 cnoremap <C-a> <Home>
 
 " tmux {{{2
