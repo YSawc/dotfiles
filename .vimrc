@@ -210,7 +210,8 @@ set hlsearch
 
 hi LineNr ctermbg=0 ctermfg=0
 hi CursorLineNr ctermbg=4 ctermfg=0
-colorscheme gruvbox
+" colorscheme gruvbox
+colorscheme skeletor
 
 " }}}
 
