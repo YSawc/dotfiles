@@ -211,7 +211,9 @@ set hlsearch
 hi LineNr ctermbg=0 ctermfg=0
 hi CursorLineNr ctermbg=4 ctermfg=0
 " colorscheme gruvbox
-colorscheme skeletor
+" colorscheme skeletor
+colorscheme shades_of_purple
+
 
 " }}}
 
