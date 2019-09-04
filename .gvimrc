@@ -1,3 +1,3 @@
 " colorscheme {{{
-colorscheme gruvbox
+" colorscheme gruvbox
 " }}}
