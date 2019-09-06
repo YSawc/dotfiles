@@ -613,20 +613,49 @@ Plug 'prabirshrestha/async.vim'
 Plug 'prabirshrestha/vim-lsp'
 Plug 'prabirshrestha/asyncomplete.vim'
 Plug 'prabirshrestha/asyncomplete-lsp.vim'
-let g:lsp_diagnostics_enabled = 0
+Plug 'prabirshrestha/asyncomplete-neosnippet.vim'
+Plug 'prabirshrestha/asyncomplete-necosyntax.vim'
+imap <c-space> <Plug>(asyncomplete_force_refresh)
+Plug 'yami-beta/asyncomplete-omni.vim'
 
-" let g:lsp_log_verbose=1
-" let g:lsp_log_file = expand('~/.cache/tmp/vim-lsp.log')
+" set nocompatible
 
+autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
+imap <c-space> <Plug>(asyncomplete_force_refresh)
+inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+inoremap <expr> <cr> pumvisible() ? "\<C-y>\<cr>" : "\<cr>"
+autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
 
-" inoremap <expr> <C-j> pumvisible() ? '<C-n>' : '<Tab>'
-" inoremap <expr> <C-k> pumvisible() ? '<C-p>' : '<S-Tab>'
-" inoremap <expr> <CR> pumvisible() ? '<C-y>' : '<cr>'
+" startup {{{3
+au User asyncomplete_setup call asyncomplete#register_source(asyncomplete#sources#omni#get_source_options({
+    \ 'name': 'omni',
+    \ 'whitelist': ['*'],
+    \ 'completor': function('asyncomplete#sources#omni#completor'),
+    \ }))
+au User asyncomplete_setup call asyncomplete#register_source(asyncomplete#sources#necosyntax#get_source_options({
+    \ 'name': 'necosyntax',
+    \ 'whitelist': ['*'],
+    \ 'completor': function('asyncomplete#sources#necosyntax#completor'),
+    \ }))
+" }}}
+"
+let g:lsp_diagnostics_enabled = v:false
+let g:lsp_async_completion = v:true
+" Plug 'natebosch/vim-lsc'
+let g:lsp_async_completion = 1
+" let g:lsc_auto_map = v:true
 
-"let g:lsp_signs_enabled = 1
-" let g:lsp_diagnostics_echo_cursor = 1
-" let g:lsp_signs_error = {'text': 'E'}
-" let g:lsp_signs_warning = {'text': 'w'}
+" let g:lsp_diagnostics_enabled = 0
+" " debug
+" let g:lsp_log_verbose = 1
+" let g:lsp_log_file = expand('~/vim-lsp.log')
+" let g:asyncomplete_log_file = expand('~/asyncomplete.log')
+
+" "let g:lsp_signs_enabled = 1
+" " let g:lsp_diagnostics_echo_cursor = 1
+" " let g:lsp_signs_error = {'text': 'E'}
+" " let g:lsp_signs_warning = {'text': 'w'}
 
 Plug 'ryanolsonx/vim-lsp-javascript'
 if executable('typescript-language-server')
