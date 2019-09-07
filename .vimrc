@@ -628,7 +628,7 @@ au User asyncomplete_setup call asyncomplete#register_source(asyncomplete#source
 
 " asyn_buffer {{{3
 Plug 'prabirshrestha/asyncomplete-buffer.vim'
-call asyncomplete#register_source(asyncomplete#sources#buffer#get_source_options({
+au User asyncomplete_setup call asyncomplete#register_source(asyncomplete#sources#buffer#get_source_options({
     \ 'name': 'buffer',
     \ 'whitelist': ['*'],
     \ 'blacklist': ['go'],
