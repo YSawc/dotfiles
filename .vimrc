@@ -625,13 +625,14 @@ au User asyncomplete_setup call asyncomplete#register_source(asyncomplete#source
     \ }))
 " }}}
 
-" asyn__neosnippet
+" asyn__neosnippet{{{3
 Plug 'prabirshrestha/asyncomplete-neosnippet.vim'
 au User asyncomplete_setup call asyncomplete#register_source(asyncomplete#sources#neosnippet#get_source_options({
     \ 'name': 'neosnippet',
     \ 'whitelist': ['*'],
     \ 'completor': function('asyncomplete#sources#neosnippet#completor'),
     \ }))
+" }}}
 
 " asyn_buffer {{{3
 Plug 'prabirshrestha/asyncomplete-buffer.vim'
