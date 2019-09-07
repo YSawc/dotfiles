@@ -647,6 +647,16 @@ au User asyncomplete_setup call asyncomplete#register_source(asyncomplete#source
     \ }))
 " }}}
 
+" asyn_file {{{3
+Plug 'prabirshrestha/asyncomplete-file.vim'
+au User asyncomplete_setup call asyncomplete#register_source(asyncomplete#sources#file#get_source_options({
+    \ 'name': 'file',
+    \ 'whitelist': ['*'],
+    \ 'priority': 10,
+    \ 'completor': function('asyncomplete#sources#file#completor')
+    \ }))
+" }}}
+
 autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
 imap <c-space> <Plug>(asyncomplete_force_refresh)
 inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
