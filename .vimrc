@@ -614,6 +614,7 @@ Plug 'prabirshrestha/vim-lsp'
 Plug 'prabirshrestha/asyncomplete.vim'
 Plug 'prabirshrestha/asyncomplete-lsp.vim'
 Plug 'prabirshrestha/asyncomplete-necosyntax.vim'
+Plug 'Shougo/neco-syntax'
 imap <c-space> <Plug>(asyncomplete_force_refresh)
 
 " asyn__omni {{{3
@@ -654,6 +655,15 @@ au User asyncomplete_setup call asyncomplete#register_source(asyncomplete#source
     \ 'whitelist': ['*'],
     \ 'priority': 10,
     \ 'completor': function('asyncomplete#sources#file#completor')
+    \ }))
+" }}}
+
+" asyn__vim {{{3
+Plug 'prabirshrestha/asyncomplete-necosyntax.vim'
+au User asyncomplete_setup call asyncomplete#register_source(asyncomplete#sources#necosyntax#get_source_options({
+    \ 'name': 'necosyntax',
+    \ 'whitelist': ['*'],
+    \ 'completor': function('asyncomplete#sources#necosyntax#completor'),
     \ }))
 " }}}
 
