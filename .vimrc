@@ -613,7 +613,6 @@ Plug 'prabirshrestha/async.vim'
 Plug 'prabirshrestha/vim-lsp'
 Plug 'prabirshrestha/asyncomplete.vim'
 Plug 'prabirshrestha/asyncomplete-lsp.vim'
-Plug 'prabirshrestha/asyncomplete-neosnippet.vim'
 Plug 'prabirshrestha/asyncomplete-necosyntax.vim'
 imap <c-space> <Plug>(asyncomplete_force_refresh)
 
@@ -625,6 +624,14 @@ au User asyncomplete_setup call asyncomplete#register_source(asyncomplete#source
     \ 'completor': function('asyncomplete#sources#omni#completor'),
     \ }))
 " }}}
+
+" asyn__neosnippet
+Plug 'prabirshrestha/asyncomplete-neosnippet.vim'
+au User asyncomplete_setup call asyncomplete#register_source(asyncomplete#sources#neosnippet#get_source_options({
+    \ 'name': 'neosnippet',
+    \ 'whitelist': ['*'],
+    \ 'completor': function('asyncomplete#sources#neosnippet#completor'),
+    \ }))
 
 " asyn_buffer {{{3
 Plug 'prabirshrestha/asyncomplete-buffer.vim'
