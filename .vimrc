@@ -767,7 +767,7 @@ let g:go_term_mode = 'split'
 let g:go_list_type = "quickfix"
 
 " }}}
-"
+
 " rust {{{2
 Plug 'rust-lang/rust.vim'
 let g:rustfmt_autosave = 1
