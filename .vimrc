@@ -616,9 +616,28 @@ Plug 'prabirshrestha/asyncomplete-lsp.vim'
 Plug 'prabirshrestha/asyncomplete-neosnippet.vim'
 Plug 'prabirshrestha/asyncomplete-necosyntax.vim'
 imap <c-space> <Plug>(asyncomplete_force_refresh)
-Plug 'yami-beta/asyncomplete-omni.vim'
 
-" set nocompatible
+" asyn__omni {{{3
+Plug 'yami-beta/asyncomplete-omni.vim'
+au User asyncomplete_setup call asyncomplete#register_source(asyncomplete#sources#omni#get_source_options({
+    \ 'name': 'omni',
+    \ 'whitelist': ['*'],
+    \ 'completor': function('asyncomplete#sources#omni#completor'),
+    \ }))
+" }}}
+
+" asyn_buffer {{{3
+Plug 'prabirshrestha/asyncomplete-buffer.vim'
+call asyncomplete#register_source(asyncomplete#sources#buffer#get_source_options({
+    \ 'name': 'buffer',
+    \ 'whitelist': ['*'],
+    \ 'blacklist': ['go'],
+    \ 'completor': function('asyncomplete#sources#buffer#completor'),
+    \ 'config': {
+    \    'max_buffer_size': 5000000,
+    \  },
+    \ }))
+" }}}
 
 autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
 imap <c-space> <Plug>(asyncomplete_force_refresh)
@@ -628,11 +647,6 @@ inoremap <expr> <cr> pumvisible() ? "\<C-y>\<cr>" : "\<cr>"
 autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
 
 " startup {{{3
-au User asyncomplete_setup call asyncomplete#register_source(asyncomplete#sources#omni#get_source_options({
-    \ 'name': 'omni',
-    \ 'whitelist': ['*'],
-    \ 'completor': function('asyncomplete#sources#omni#completor'),
-    \ }))
 au User asyncomplete_setup call asyncomplete#register_source(asyncomplete#sources#necosyntax#get_source_options({
     \ 'name': 'necosyntax',
     \ 'whitelist': ['*'],
