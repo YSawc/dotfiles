@@ -532,7 +532,8 @@ let g:winresizer_vert_resize = 5
 " markdown
 Plug 'tpope/vim-markdown'
 Plug 'previm/previm'
-let g:previm_open_cmd =  'open -a Chrome'
+" let g:previm_open_cmd =  'open -a Chrome'
+au BufRead,BufNewFile *.md set filetype=markdown
 Plug 'tyru/open-browser.vim'
 
 " translate.vim
