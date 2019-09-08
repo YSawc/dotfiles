@@ -724,7 +724,7 @@ endif
 
 " vim-lsp map {{{3
 nmap <silent> <Leader>ld :LspDefinition<CR>
-nmap <silent> <Leader>lp :LspHover<CR>
+nmap <silent> <Leader>lh :LspHover<CR>
 nmap <silent> <Leader>lr :LspReferences<CR>
 nmap <silent> <Leader>li :LspImplementation<CR>
 nmap <silent> <Leader>ls :split \| :LspDefinition <CR>
