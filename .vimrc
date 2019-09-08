@@ -667,13 +667,6 @@ au User asyncomplete_setup call asyncomplete#register_source(asyncomplete#source
     \ }))
 " }}}
 
-autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
-imap <c-space> <Plug>(asyncomplete_force_refresh)
-inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
-inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-inoremap <expr> <cr> pumvisible() ? "\<C-y>\<cr>" : "\<cr>"
-autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
-
 " startup {{{3
 au User asyncomplete_setup call asyncomplete#register_source(asyncomplete#sources#necosyntax#get_source_options({
     \ 'name': 'necosyntax',
