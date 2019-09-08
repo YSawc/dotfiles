@@ -635,6 +635,7 @@ au User asyncomplete_setup call asyncomplete#register_source(asyncomplete#source
     \ }))
 " }}}
 
+" aryn_neosyntax {{{3
 " asyn_buffer {{{3
 Plug 'prabirshrestha/asyncomplete-buffer.vim'
 au User asyncomplete_setup call asyncomplete#register_source(asyncomplete#sources#buffer#get_source_options({
@@ -667,7 +668,6 @@ au User asyncomplete_setup call asyncomplete#register_source(asyncomplete#source
     \ }))
 " }}}
 
-" startup {{{3
 au User asyncomplete_setup call asyncomplete#register_source(asyncomplete#sources#necosyntax#get_source_options({
     \ 'name': 'necosyntax',
     \ 'whitelist': ['*'],
