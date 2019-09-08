@@ -578,6 +578,8 @@ Plug 'mbbill/undotree'
 " TODO: select snippets usefull
 " Plug 'SirVer/ultisnips'
 
+Plug 'junegunn/vim-emoji'
+
 " neosnippet {{{2
 Plug 'Shougo/neosnippet'
 Plug 'Shougo/neosnippet-snippets'
