@@ -722,27 +722,15 @@ endif
 "     autocmd BufWritePre *.go LspDocumentFormatSync
 " endif
 
-" nmap <silent> <Leader>ad :LspDefinition<CR>
-" nmap <silent> <Leader>ap :LspHover<CR>
-" nmap <silent> <Leader>ar :LspReferences<CR>
-" nmap <silent> <Leader>ai :LspImplementation<CR>
-" nmap <silent> <Leader>as :split \| :LspDefinition <CR>
-" nmap <silent> <Leader>av :vsplit \| :LspDefinition <CR>
-
-" Plug 'Shougo/neosnippet.vim'
-" Plug 'Shougo/neosnippet-snippets'
-" Plug 'prabirshrestha/asyncomplete-neosnippet.vim'
-
-" " call asyncomplete#register_source(asyncomplete#sources#neosnippet#get_source_options({
-" "     \ 'name': 'neosnippet',
-" "     \ 'whitelist': ['*'],
-" "     \ 'completor': function('asyncomplete#sources#neosnippet#completor'),
-" "     \ }))
-
-" imap <C-k>     <Plug>(neosnippet_expand_or_jump)
-" smap <C-k>     <Plug>(neosnippet_expand_or_jump)
-" xmap <C-k>     <Plug>(neosnippet_expand_target)
-
+" vim-lsp map {{{3
+nmap <silent> <Leader>ld :LspDefinition<CR>
+nmap <silent> <Leader>lp :LspHover<CR>
+nmap <silent> <Leader>lr :LspReferences<CR>
+nmap <silent> <Leader>li :LspImplementation<CR>
+nmap <silent> <Leader>ls :split \| :LspDefinition <CR>
+nmap <silent> <Leader>lv :vsplit \| :LspDefinition <CR>
+" }}}
+"
 " }}}
 
 " vim-go {{{2
