@@ -675,7 +675,6 @@ au User asyncomplete_setup call asyncomplete#register_source(asyncomplete#source
     \ }))
 " }}}
 
-"
 let g:lsp_diagnostics_enabled = v:false
 let g:lsp_async_completion = v:true
 " Plug 'natebosch/vim-lsc'
