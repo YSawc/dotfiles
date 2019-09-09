@@ -722,6 +722,14 @@ endif
 "     autocmd BufWritePre *.go LspDocumentFormatSync
 " endif
 
+if executable('ocaml-language-server')
+  au User lsp_setup call lsp#register_server({
+        \ 'name': 'ocaml-language-server',
+        \ 'cmd': {server_info->[&shell, &shellcmdflag, 'ocaml-language-server --stdio']},
+        \ 'whitelist': ['reason', 'ocaml'],
+        \ })
+endif
+
 " vim-lsp map {{{3
 nmap <silent> <Leader>ld :LspDefinition<CR>
 nmap <silent> <Leader>lh :LspHover<CR>
