@@ -610,7 +610,7 @@ let g:neosnippet#snippets_directory='~/dotfiles/neosnippet-snippets/snippets/'
 
 " }}}
 
-" async {{{2
+" vim-lsp {{{2
 
 Plug 'prabirshrestha/async.vim'
 Plug 'prabirshrestha/vim-lsp'
