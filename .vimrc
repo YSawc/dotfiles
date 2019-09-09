@@ -580,6 +580,8 @@ Plug 'mbbill/undotree'
 
 Plug 'junegunn/vim-emoji'
 
+Plug 'mattn/gist-vim'
+
 " neosnippet {{{2
 Plug 'Shougo/neosnippet'
 Plug 'Shougo/neosnippet-snippets'
@@ -679,7 +681,6 @@ au User asyncomplete_setup call asyncomplete#register_source(asyncomplete#source
 " }}}
 
 let g:lsp_diagnostics_enabled = v:false
-let g:lsp_async_completion = v:true
 " Plug 'natebosch/vim-lsc'
 let g:lsp_async_completion = 1
 " let g:lsc_auto_map = v:true
@@ -690,10 +691,10 @@ let g:lsp_async_completion = 1
 " let g:lsp_log_file = expand('~/vim-lsp.log')
 " let g:asyncomplete_log_file = expand('~/asyncomplete.log')
 
-" "let g:lsp_signs_enabled = 1
-" " let g:lsp_diagnostics_echo_cursor = 1
-" " let g:lsp_signs_error = {'text': 'E'}
-" " let g:lsp_signs_warning = {'text': 'w'}
+let g:lsp_signs_enabled = 1
+let g:lsp_diagnostics_echo_cursor = 1
+let g:lsp_signs_error = {'text': 'E'}
+let g:lsp_signs_warning = {'text': 'w'}
 
 Plug 'ryanolsonx/vim-lsp-javascript'
 if executable('typescript-language-server')
