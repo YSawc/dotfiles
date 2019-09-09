@@ -581,6 +581,7 @@ Plug 'mbbill/undotree'
 Plug 'junegunn/vim-emoji'
 
 Plug 'mattn/gist-vim'
+Plug 'mattn/webapi-vim'
 
 " neosnippet {{{2
 Plug 'Shougo/neosnippet'
