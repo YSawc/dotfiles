@@ -394,6 +394,12 @@ zrc(){
 }
 # }}}
 
+# source zprofile {{{
+zprofile(){
+	source ~/.zprofile
+}
+# }}}
+
 # source ~/.vimrc {{{
 vimrc(){
 	source ~/.vimrc
