@@ -783,10 +783,10 @@ Plug 'ymyzk/vim-copl'
 
 " js{{{2
 
-Plugin 'pangloss/vim-javascript'
+Plug 'pangloss/vim-javascript'
 
 " jsx {{{3
-Plugin 'mxw/vim-jsx'
+Plug 'mxw/vim-jsx'
 " }}}
 
 " }}}
