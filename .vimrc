@@ -405,6 +405,12 @@ augroup fileTypeIndent
 augroup END
 " }}}
 
+" SyntaxSettings {{{2
+augroup SyntaxSettings
+    autocmd!
+augroup END
+" }}}
+
 " }}}
 
 " for optimization {{{1
