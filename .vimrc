@@ -781,6 +781,18 @@ au FileType rust nmap <leader>gd <Plug>(rust-doc)
 Plug 'ymyzk/vim-copl'
 " }}}
 
+" js{{{2
+
+Plugin 'pangloss/vim-javascript'
+
+" jsx {{{3
+Plugin 'mxw/vim-jsx'
+" }}}
+
+" }}}
+
+
+
 call plug#end()
 " }}}
 
