@@ -795,6 +795,10 @@ Plug 'ymyzk/vim-copl'
 
 Plug 'pangloss/vim-javascript'
 
+Plug 'leafgarland/typescript-vim'
+autocmd QuickFixCmdPost [^l]* nested cwindow
+autocmd QuickFixCmdPost    l* nested lwindow
+
 " jsx {{{3
 Plug 'mxw/vim-jsx'
 " }}}
