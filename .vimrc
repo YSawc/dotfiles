@@ -500,7 +500,7 @@ Plug 'Lokaltog/vim-easymotion'
 Plug 'Shougo/unite.vim'
 " unite_vim {{{2
 
-nnoremap <Space><Space> :<C-u>Unite file<CR>
+nnoremap <Space><uf> :<C-u>Unite file<CR>
 
 let g:unite_enable_start_insert = 1
 
