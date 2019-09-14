@@ -36,3 +36,9 @@ export PATH="$HOME/.cargo/bin:$PATH"
 
 # for hdl
 export PATH=$PATH:~/workspace/Row_layer/nand2tetris/tools
+
+# nodenv
+export PATH="/usr/local/opt/openssl@1.1/bin:$PATH"
+export NODELDFLAGS="-L/usr/local/opt/openssl@1.1/lib"
+export NODECPPFLAGS="-I/usr/local/opt/openssl@1.1/include"
+export PKG_CONFIG_PATH="/usr/local/opt/openssl@1.1/lib/pkgconfig"
