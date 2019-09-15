@@ -810,8 +810,6 @@ Plug 'mxw/vim-jsx'
 
 " }}}
 
-
-
 call plug#end()
 " }}}
 
