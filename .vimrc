@@ -412,7 +412,6 @@ augroup fileTypeIndent
 	autocmd BufRead,BufNewFile *.asm setlocal tabstop=2 softtabstop=2 shiftwidth=2
 augroup END
 " }}}
-
 " SyntaxSettings {{{2
 augroup SyntaxSettings
     autocmd!
@@ -807,7 +806,7 @@ autocmd QuickFixCmdPost [^l]* nested cwindow
 autocmd QuickFixCmdPost    l* nested lwindow
 
 " jsx {{{3
-Plug 'mxw/vim-jsx'
+" Plug 'mxw/vim-jsx', { 'for': ['javascript', 'javascript.jsx'] }
 " }}}
 
 " }}}
