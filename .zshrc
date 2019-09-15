@@ -435,3 +435,7 @@ fd() {
 # }}}
 
 # }}}
+
+# TODO:
+# contcoll ubuntu
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
