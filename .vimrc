@@ -416,7 +416,7 @@ augroup END
 " SyntaxSettings {{{2
 augroup SyntaxSettings
     autocmd!
-    autocmd BufNewFile,BufRead *.tsx set filetype=typescript
+	" autocmd BufNewFile,BufRead *.tsx set filetype=typescript
 augroup END
 " }}}
 
