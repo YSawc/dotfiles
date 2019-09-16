@@ -818,6 +818,11 @@ autocmd QuickFixCmdPost    l* nested lwindow
 " Plug 'mxw/vim-jsx', { 'for': ['javascript', 'javascript.jsx'] }
 " }}}
 
+" fsharp {{{
+Plug 'fsharp/vim-fsharp', {
+      \ 'for': 'fsharp',
+      \ 'do':  'make fsautocomplete',
+      \}
 " }}}
 
 call plug#end()
