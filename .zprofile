@@ -43,5 +43,5 @@ export NODELDFLAGS="-L/usr/local/opt/openssl@1.1/lib"
 export NODECPPFLAGS="-I/usr/local/opt/openssl@1.1/include"
 export PKG_CONFIG_PATH="/usr/local/opt/openssl@1.1/lib/pkgconfig"
 
-# fshapr
+# fsharp
 export MONO_GAC_PREFIX="/usr/local"
