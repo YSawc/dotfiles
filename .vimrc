@@ -813,6 +813,9 @@ Plug 'ymyzk/vim-copl'
 Plug 'pangloss/vim-javascript'
 
 Plug 'leafgarland/typescript-vim'
+Plug 'peitalin/vim-jsx-typescript'
+" jsx change to tsx
+autocmd BufNewFile,BufRead *.tsx,*.jsx set filetype=typescript.tsx
 
 " jsx {{{3
 " Plug 'mxw/vim-jsx', { 'for': ['javascript', 'javascript.jsx'] }
