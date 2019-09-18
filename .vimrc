@@ -412,11 +412,12 @@ augroup fileTypeIndent
 	autocmd BufRead,BufNewFile *.asm setlocal tabstop=2 softtabstop=2 shiftwidth=2
 augroup END
 " }}}
+
 " SyntaxSettings {{{2
-augroup SyntaxSettings
-    autocmd!
-	" autocmd BufNewFile,BufRead *.tsx set filetype=typescript
-augroup END
+" augroup SyntaxSettings
+"     autocmd!
+"     " autocmd BufNewFile,BufRead *.jsx set filetype=javascriptreact
+" augroup END
 " }}}
 
 " }}}
