@@ -771,6 +771,11 @@ nmap <silent> <Leader>lv :vsplit \| :LspDefinition <CR>
 
 Plug 'fatih/vim-go'
 
+augroup vimGo
+	autocmd!
+	au FileType go nnoremap <silent> <Leader>gc :GoDoc<CR>
+augroup END
+
 " auto format
 let g:go_fmt_command = "goimports"
 
