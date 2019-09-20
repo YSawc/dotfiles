@@ -827,9 +827,8 @@ autocmd BufNewFile,BufRead *.tsx,*.jsx set filetype=typescript.tsx
 
 " }}}
 
-" fsharp {{{
-Plug 'fsharp/vim-fsharp', {
-      \ 'for': 'fsharp',
+" fsharp {{{2
+Plug 'ionide/Ionide-vim', {
       \ 'do':  'make fsautocomplete',
       \}
 " }}}
