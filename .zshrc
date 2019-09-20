@@ -55,7 +55,7 @@ zplug "zsh-users/zsh-syntax-highlighting"
 
 # enhancd
 zplug 'b4b4r07/enhancd', use:"init.sh"
-export ENHANCD_HYPHEN_NUM="${ENHANCD_HYPHEN_NUM:-20}"
+export ENHANCD_HYPHEN_NUM="${ENHANCD_HYPHEN_NUM:-30}"
 # default "cd -" list number chagne to 20
 # export ENHANCD_HYPHEN_NUM -n 20
 
