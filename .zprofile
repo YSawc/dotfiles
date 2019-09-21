@@ -32,6 +32,8 @@ export PATH=~/.local/bin:$PATH
 test -r /Users/y-s/.opam/opam-init/init.zsh && . /Users/y-s/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
 # x11
 export PKG_CONFIG_PATH="/opt/X11/lib/pkgconfig"
+# expat
+export PKG_CONFIG_PATH="/usr/local/opt/expat/lib/pkgconfig"
 
 # rust
 export PATH="$HOME/.cargo/bin:$PATH"
