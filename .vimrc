@@ -378,7 +378,7 @@ nnoremap <silent> <Space>on :<C-u>setlocal number! number?<CR>
 nnoremap <silent> <Space>ow :<C-u>setlocal wrap! wrap?<CR>
 
 " print current buffer path
-nnoremap <silent> <Space>p :<C-u>echo expand('%')<CR>
+nnoremap <silent> <Space>pp :<C-u>echo expand('%')<CR>
 
 " }}}
 
