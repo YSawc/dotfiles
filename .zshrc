@@ -277,12 +277,15 @@ alias clang-omp='/usr/local/opt/llvm/bin/clang -fopenmp -L/usr/local/opt/llvm/li
 alias clang-omp++='/usr/local/opt/llvm/bin/clang++ -fopenmp -L/usr/local/opt/llvm/lib -Wl,-rpath,/usr/local/opt/llvm/lib'
 # }}}
 
+# alias__go {{{
+alias _go_run_fzf='go run `find * -type f | fzf`'
+# }}}
+
 # lazygit呼び出しエイリアス
 alias lg='lazygit'
 
 # pbcopy && pbpaste
 alias _pb_cp='pbcopy && pbpaste'
-
 # }}}
 
 # apperance {{{
