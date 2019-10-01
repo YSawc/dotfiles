@@ -331,6 +331,9 @@ autocmd QuickFixCmdPost *grep* cwindow
 nnoremap <Space>c :<C-u>Ag --hidden <cword><CR>
 nnoremap <Space>r :Rg<Space>
 
+" register map
+nnoremap <Space>rcb :<C-u>let @* = expand('%')<CR>
+
 " easymotion keymap
 let g:EasyMotion_do_mapping = 0
 map <Space>f <plug>(easymotion-overwin-f2)
