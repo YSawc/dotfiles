@@ -403,7 +403,7 @@ set smartindent
 " fileTypeIndent{{{2
 augroup fileTypeIndent
 	autocmd!
-	autocmd BufRead,BufNewFile Makefile setlocal tabstop=4 shiftwidth=4 softtabstop=4
+	autocmd BufRead,BufNewFile *.make setlocal tabstop=4 shiftwidth=4 softtabstop=4
 	autocmd BufRead,BufNewFile *.go setlocal tabstop=2 shiftwidth=2 softtabstop=2
 	autocmd BufRead,BufNewFile *.rs setlocal tabstop=4 softtabstop=4 shiftwidth=4
 	autocmd BufRead,BufNewFile *.copl setlocal tabstop=2 softtabstop=2 shiftwidth=2
