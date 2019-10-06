@@ -418,6 +418,7 @@ augroup fileTypeIndent
 	autocmd BufRead,BufNewFile *.html setlocal tabstop=2 softtabstop=2 shiftwidth=2
 	autocmd BufRead,BufNewFile *.asm setlocal tabstop=2 softtabstop=2 shiftwidth=2
 	autocmd BufRead,BufNewFile *.fs setlocal tabstop=2 softtabstop=2 shiftwidth=2
+	autocmd BufRead,BufNewFile *.ml setlocal tabstop=4 softtabstop=4 shiftwidth=4
 augroup END
 " }}}
 
