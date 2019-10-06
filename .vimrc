@@ -849,8 +849,11 @@ autocmd BufNewFile,BufRead *.tsx,*.jsx set filetype=typescript.tsx
 " ocaml {{{1
 " merlin {{{2
 let g:syntastic_ocaml_checkers = ['merlin']
-let g:opamshare = substitute(system('opam config var share'),'\n$','','''')
-execute 'set rtp+=' . g:opamshare . '/merlin/vim'
+if executable('ocamlmerlin') && has('python')
+  let s:ocamlmerlin = substitute(system('opam config var share'), '\n$', '', '''') . "/merlin"
+  execute "set rtp+=".s:ocamlmerlin."/vim"
+  execute "set rtp+=".s:ocamlmerlin."/vimbufsync"
+endif
 " }}}
 " ocp-indent {{{2
 execute 'set rtp^=' . g:opamshare . '/ocp-indent/vim'
