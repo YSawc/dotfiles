@@ -49,3 +49,6 @@ export PKG_CONFIG_PATH="/usr/local/opt/openssl@1.1/lib/pkgconfig"
 
 # fsharp
 export MONO_GAC_PREFIX="/usr/local"
+
+# golang
+export PATH="$HOME/go/bin/:$PATH"
