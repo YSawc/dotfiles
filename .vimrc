@@ -606,6 +606,8 @@ Plug 'junegunn/vim-emoji'
 Plug 'mattn/gist-vim'
 Plug 'mattn/webapi-vim'
 
+Plug 'tpope/vim-fugitive'
+
 " neosnippet {{{2
 Plug 'Shougo/neosnippet'
 Plug 'Shougo/neosnippet-snippets'
