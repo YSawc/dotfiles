@@ -787,18 +787,19 @@ augroup vimGo
 	au FileType go nnoremap <silent> <Leader>gc :GoDoc<CR>
 augroup END
 
+" TODO:
 " auto format
 let g:go_fmt_command = "goimports"
 
 " auto linter in save
-let g:go_metalinter_autosave = 1
-let g:go_metalinter_autosave_enabled = ['vet']
+" let g:go_metalinter_autosave = 1
+" let g:go_metalinter_autosave_enabled = ['vet']
 
 " setting how to split
-let g:go_term_mode = 'split'
+" let g:go_term_mode = 'split'
 
 " error list
-let g:go_list_type = "quickfix"
+" let g:go_list_type = "quickfix"
 
 let g:go_doc_popup_window = 1
 
