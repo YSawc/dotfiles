@@ -914,4 +914,4 @@ call plug#end()
 command Gps Git push
 " }}}
 
-vim: foldmethod=marker
+" vim: foldmethod=marker
