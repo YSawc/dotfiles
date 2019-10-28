@@ -11,6 +11,11 @@
 	" let $VIMRC = $HOME . '/.vimrc'
 " endif
 
+" finish when user have sudo
+if exists('$SUDO_USER')
+  finish
+endif
+
 if has("unix")
 	set rtp+=/home/linuxbrew/.linuxbrew/opt/fzf
 end
