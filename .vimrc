@@ -11,8 +11,7 @@
 	" let $VIMRC = $HOME . '/.vimrc'
 " endif
 
-if has("mac")
-elseif has("unix")
+if has("unix")
 	set rtp+=/home/linuxbrew/.linuxbrew/opt/fzf
 end
 
