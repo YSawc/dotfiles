@@ -336,7 +336,12 @@ nnoremap <Space>c :<C-u>Ag --hidden <cword><CR>
 nnoremap <Space>r :Rg<Space>
 
 " register map
-nnoremap <Space>rcb :<C-u>let @* = expand('%')<CR>
+" nnoremap <Space>rcb :<C-u>let @* = expand('%')<CR>
+function! s:_registerCurrentFileDir()
+	let @* = expand('%')
+	echo '[' @* '] <- copied fileDir'
+endfunction
+nnoremap <Space>rcb :<C-u>call <SID>_registerCurrentFileDir()<CR>
 
 " easymotion keymap
 let g:EasyMotion_do_mapping = 0
