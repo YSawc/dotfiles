@@ -647,9 +647,10 @@ let g:ale_set_loclist = 0
 let g:ale_set_quickfix = 1
 " }}}
 
+
+" }}}
+
 " LSP_plugins {{{1
-
-
 
 "other {{{2
 
