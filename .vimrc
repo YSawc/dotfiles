@@ -639,11 +639,17 @@ let g:neosnippet#snippets_directory='~/dotfiles/neosnippet-snippets/snippets/'
 
 " }}}
 
+" ale {{{
+Plug 'dense-analysis/ale'
+
+" error display qucickfix
+let g:ale_set_loclist = 0
+let g:ale_set_quickfix = 1
 " }}}
 
 " LSP_plugins {{{1
 
-Plug 'w0rp/ale'
+
 
 "other {{{2
 
