@@ -647,6 +647,11 @@ let g:ale_set_loclist = 0
 let g:ale_set_quickfix = 1
 " }}}
 
+" prettier {{{
+Plug 'prettier/vim-prettier', {
+  \ 'do': 'yarn install',
+  \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'yaml', 'html'] }
+" }}}
 
 " }}}
 
