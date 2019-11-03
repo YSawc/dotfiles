@@ -643,6 +643,8 @@ let g:neosnippet#snippets_directory='~/dotfiles/neosnippet-snippets/snippets/'
 
 " LSP_plugins {{{1
 
+Plug 'w0rp/ale'
+
 "other {{{2
 
 " }}}
