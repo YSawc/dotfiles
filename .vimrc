@@ -918,6 +918,23 @@ endif
 
 " }}}
 
+" react {{{
+Plug 'pangloss/vim-javascript'
+Plug 'maxmellon/vim-jsx-pretty'
+
+Plug 'scrooloose/syntastic'
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_javascript_checkers = ['eslint']
+" only check with map
+let g:syntastic_check_on_open = 0
+let g:syntastic_check_on_wq = 0
+nnoremap <C-C> :w<CR>:SyntasticCheck<CR>
+" }}}
+
 call plug#end()
 " }}}
 

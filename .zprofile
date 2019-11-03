@@ -52,3 +52,7 @@ export MONO_GAC_PREFIX="/usr/local"
 
 # golang
 export PATH="$HOME/go/bin/:$PATH"
+
+# react
+# prettier
+export PATH=$PATH:./node_modules/.bin
