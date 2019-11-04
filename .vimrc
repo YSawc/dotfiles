@@ -843,18 +843,6 @@ au FileType rust nmap <leader>gd <Plug>(rust-doc)
 Plug 'ymyzk/vim-copl'
 " }}}
 
-" js{{{2
-
-Plug 'pangloss/vim-javascript'
-Plug 'MaxMEllon/vim-jsx-pretty'
-
-Plug 'leafgarland/typescript-vim'
-Plug 'peitalin/vim-jsx-typescript'
-" jsx change to tsx
-autocmd BufNewFile,BufRead *.tsx,*.jsx set filetype=typescript.tsx
-
-" }}}
-
 " fsharp {{{2
 " Plug 'fsharp/vim-fsharp', {
 "       \ 'for': 'fsharp',
