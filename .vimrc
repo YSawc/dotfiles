@@ -875,9 +875,6 @@ let g:syntastic_ocaml_checkers = ['merlin']
 let g:opamshare = substitute(system('opam config var share'),'\n$','','''')
 execute 'set rtp+=' . g:opamshare . '/merlin/vim'
 
-" syntax
-Plug 'scrooloose/syntastic'
-
 " OCP-INDENT
 function! s:ocaml_format()
 	let now_line = line('.')
@@ -936,7 +933,6 @@ endif
 Plug 'pangloss/vim-javascript'
 Plug 'maxmellon/vim-jsx-pretty'
 
-Plug 'scrooloose/syntastic'
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
