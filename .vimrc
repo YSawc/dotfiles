@@ -641,12 +641,16 @@ let g:neosnippet#snippets_directory='~/dotfiles/neosnippet-snippets/snippets/'
 
 " }}}
 
-" ale {{{
+" ale {{{2
 Plug 'dense-analysis/ale'
 
 " error display qucickfix
 let g:ale_set_loclist = 0
 let g:ale_set_quickfix = 1
+let g:ale_linters = {
+	\'cpp': ['']
+	\}
+
 " }}}
 
 " prettier {{{
