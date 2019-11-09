@@ -757,6 +757,14 @@ let g:lsp_signs_warning = {'text': 'w'}
 "       \ })
 " endif
 
+if executable('clangd')
+    au User lsp_setup call lsp#register_server({
+        \ 'name': 'clangd',
+        \ 'cmd': {server_info->['clangd', '-background-index']},
+        \ 'whitelist': ['c', 'cpp', 'objc', 'objcpp'],
+        \ })
+endif
+
 Plug 'ryanolsonx/vim-lsp-typescript'
 if executable('typescript-language-server')
     au User lsp_setup call lsp#register_server({
