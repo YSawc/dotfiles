@@ -659,6 +659,23 @@ Plug 'prettier/vim-prettier', {
   \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'yaml', 'html'] }
 " }}}
 
+" syntax 2 {{{
+Plug 'scrooloose/syntastic'
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+nnoremap <C-C> :w<CR>:SyntasticCheck<CR>
+let g:syntastic_mode_map = {
+    \ 'mode': 'passive',
+    \ 'active_filetypes': ['']
+    \}
+" }}}
+
 " }}}
 
 " LSP_plugins {{{1
