@@ -17,6 +17,10 @@ PATH=$PATH:~/Library/play-2.2.6
 # xampp
 export PATH=$PATH:/Applications/XAMPP/xamppfiles/bin
 
+# cpp
+# export CPATH="/usr/local/Cellar/opencv/4.1.2/include/opencv4"
+export CPATH="/usr/local/include/opencv4"
+
 # llvm
 export PATH="/usr/local/opt/llvm/bin:$PATH"
 export LDFLAGS="-L/usr/local/opt/llvm/lib"
