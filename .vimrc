@@ -221,7 +221,8 @@ hi LineNr ctermbg=0 ctermfg=0
 hi CursorLineNr ctermbg=4 ctermfg=0
 " colorscheme gruvbox
 " colorscheme skeletor
-colorscheme shades_of_purple
+" colorscheme shades_of_purple
+colorscheme molokai
 
 
 " }}}
@@ -336,7 +337,6 @@ nnoremap <Space>c :<C-u>Ag --hidden <cword><CR>
 nnoremap <Space>r :Rg<Space>
 
 " register map
-" nnoremap <Space>rcb :<C-u>let @* = expand('%')<CR>
 function! s:_registerCurrentFileDir()
 	let @* = expand('%')
 	echo '[' @* '] <- copied fileDir'
@@ -596,6 +596,7 @@ let g:vsession_use_fzf = 1
 " quickrun
 Plug 'thinca/vim-quickrun'
 
+
 " universal_ctags
 Plug 'majutsushi/tagbar'
 
@@ -659,7 +660,7 @@ Plug 'prettier/vim-prettier', {
   \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'yaml', 'html'] }
 " }}}
 
-" syntax 2 {{{
+" syntax {{{2
 Plug 'scrooloose/syntastic'
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
