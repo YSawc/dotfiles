@@ -446,4 +446,7 @@ fd() {
 # opam configuration
 test -r /Users/y-s/.opam/opam-init/init.zsh && . /Users/y-s/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
 
+# haskell
+eval "$(stack --bash-completion-script stack)"
+
 source $HOME/.zprofile

@@ -415,6 +415,8 @@ augroup fileTypeIndent
 	autocmd BufRead,BufNewFile *.make setlocal tabstop=4 shiftwidth=4 softtabstop=4
 	autocmd BufRead,BufNewFile *.go setlocal tabstop=2 shiftwidth=2 softtabstop=2
 	autocmd BufRead,BufNewFile *.rs setlocal tabstop=4 softtabstop=4 shiftwidth=4
+	autocmd BufRead,BufNewFile *.hs setlocal tabstop=4 softtabstop=4 shiftwidth=4 expandtab
+	autocmd BufRead,BufNewFile *.cabal setlocal tabstop=4 softtabstop=4 shiftwidth=4 expandtab
 	autocmd BufRead,BufNewFile *.copl setlocal tabstop=2 softtabstop=2 shiftwidth=2
 	autocmd BufRead,BufNewFile *.rb setlocal tabstop=2 shiftwidth=2 softtabstop=2
 	autocmd BufRead,BufNewFile *.c setlocal tabstop=2 softtabstop=2 shiftwidth=2
@@ -653,7 +655,6 @@ let g:ale_linters = {
 	\'cpp': [''],
 	\'haskell': ['hie'],
 	\}
-" let g:ale_linters = {'haskell': ['hie']}
 
 " }}}
 
