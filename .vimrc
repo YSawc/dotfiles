@@ -650,8 +650,10 @@ Plug 'dense-analysis/ale'
 let g:ale_set_loclist = 0
 let g:ale_set_quickfix = 1
 let g:ale_linters = {
-	\'cpp': ['']
+	\'cpp': [''],
+	\'haskell': ['hie'],
 	\}
+" let g:ale_linters = {'haskell': ['hie']}
 
 " }}}
 
@@ -676,6 +678,9 @@ let g:syntastic_mode_map = {
     \ 'mode': 'passive',
     \ 'active_filetypes': ['']
     \}
+
+let g:syntastic_javascript_checkers = ['lynt']
+
 " }}}
 
 " }}}
@@ -796,6 +801,14 @@ if executable('typescript-language-server')
         \ 'root_uri':{server_info->lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_file_directory(lsp#utils#get_buffer_path(), 'tsconfig.json'))},
         \ 'whitelist': ['typescript', 'typescript.tsx'],
         \ })
+endif
+
+if executable('hie')
+    au User lsp_setup call lsp#register_server({
+      \ 'name': 'hie',
+      \ 'cmd': {server_info->['hie']},
+      \ 'whitelist': ['haskell'],
+      \ })
 endif
 
 " if executable('rls')
