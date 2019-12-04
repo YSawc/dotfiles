@@ -45,32 +45,20 @@ eval "$(stack --bash-completion-script stack)"
 
 # zplug {{{
 
-# zplugを使う
 source ~/.zplug/init.zsh
-# 自分自身をプラグインとして管理
 zplug 'zplug/zplug', hook-build:'zplug --self-manage'
 
-# 構文のハイライト(https://github.com/zsh-users/zsh-syntax-highlighting)
 zplug "zsh-users/zsh-syntax-highlighting"
 
-# enhancd
 zplug 'b4b4r07/enhancd', use:"init.sh"
-export ENHANCD_HYPHEN_NUM="${ENHANCD_HYPHEN_NUM:-30}"
-# default "cd -" list number chagne to 20
-# export ENHANCD_HYPHEN_NUM -n 20
+export ENHANCD_HYPHEN_NUM="${ENHANCD_HYPHEN_NUM:-30}" # default "cd -" list number chagne to 20
 
-# history関係
 zplug "zsh-users/zsh-history-substring-search"
 
-# タイプ補完
 zplug "zsh-users/zsh-autosuggestions"
 zplug "zsh-users/zsh-completions"
 zplug "chrissicool/zsh-256color"
 
-# gomi
-zplug "b4b4r07/zsh-gomi"
-
-# インストールしてないプラグインはインストール
 if ! zplug check --verbose; then
     printf "Install? [y/N]: "
     if read -q; then
@@ -78,7 +66,6 @@ if ! zplug check --verbose; then
     fi
 fi
 
-# Then, source plugins and add commands to $PATH
 zplug load
 
 # }}}
