@@ -420,7 +420,7 @@ augroup fileTypeIndent
 	autocmd BufRead,BufNewFile *.copl setlocal tabstop=2 softtabstop=2 shiftwidth=2
 	autocmd BufRead,BufNewFile *.rb setlocal tabstop=2 shiftwidth=2 softtabstop=2
 	autocmd BufRead,BufNewFile *.c setlocal tabstop=2 softtabstop=2 shiftwidth=2
-	autocmd BufRead,BufNewFile *.md setlocal tabstop=2 shiftwidth=2 softtabstop=2
+	autocmd BufRead,BufNewFile *.md setlocal tabstop=2 shiftwidth=2 softtabstop=2 expandtab
 	autocmd BufRead,BufNewFile *.js setlocal tabstop=2 softtabstop=2 shiftwidth=2
 	autocmd BufRead,BufNewFile *.ts setlocal tabstop=2 softtabstop=2 shiftwidth=2
 	autocmd BufRead,BufNewFile *.jsx setlocal tabstop=2 softtabstop=2 shiftwidth=2
