@@ -207,7 +207,7 @@ set list
 set listchars+=tab:\¦\ ,eol:\ ,trail:\ 
 " }}}
 
-"  search in command_line {{{1
+" search in command_line {{{1
 
 set ignorecase
 set smartcase

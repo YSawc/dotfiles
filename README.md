@@ -8,4 +8,5 @@ list of dependencies
 ---
 
 * [tmux](https://github.com/tmux/tmux)
-* [zplug](https://github.com/zplug/zplug)
+* [vim-plug](https://github.com/junegunn/vim-plug)
+* [Ag](https://github.com/ggreer/the_silver_searcher)
