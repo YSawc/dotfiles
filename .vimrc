@@ -98,7 +98,9 @@ set ttimeoutlen=10
 set synmaxcol=256
 
 " setting save session
-set sessionoptions=blank,buffers,curdir,folds,help,tabpages,winsize,terminal
+if has("mac")
+	set sessionoptions=blank,buffers,curdir,folds,help,tabpages,winsize,terminal
+endif
 
 " wrap
 " set wrap
