@@ -155,7 +155,7 @@ function _vcs_git_indicator () {
     git_info[clean]=$(( $#git_status == 0 ))
 
     git_indicator=(" %{%F{blue}%}${git_info[branch]}%{%f%}")
-	(( ${git_info[clean]}     )) && git_indicator
+	(( ${git_info[clean]}     )) && git_indicator+=("%{%F{green}%}clean%{%f%}")
     (( ${git_info[changed]}   )) && git_indicator+=("%{%F{yellow}%}${git_info[changed]} changed%{%f%}")
     (( ${git_info[untracked]} )) && git_indicator+=("%{%F{red}%}${git_info[untracked]} untracked%{%f%}")
   }
