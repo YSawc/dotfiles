@@ -1,17 +1,3 @@
-# call local {{{
-
-ZSH_ARRAY=(
-            Ignore/.zshrc.slack
-		)
-
-for zsh in "${ZSH_ARRAY[@]}"
-do
-	source ~/dotfiles/zsh/"$zsh"
-done
-
-# }}}
-
-export PATH=~/.local/bin:$PATH
 
 # stack completion (haskell)
 autoload -U +X compinit && compinit
@@ -126,9 +112,6 @@ zstyle ':completion:*:default' menu select=1
 
 # stack(haskell) completion setting
 
-# opam rlwrap ocaml
-alias ocaml="rlwrap ocaml"
-
 # homebrew
 export PATH="/usr/local/sbin:$PATH"
 
@@ -159,47 +142,6 @@ alias gcob='git checkout -b'
 alias gb='git branch'
 alias gm='git merge'
 alias gr='git reset'
-
-# vim with LANG_C
-alias vim='LANG=C vim'
-alias vi='LANG=C vim'
-
-# cpp
-alias clang-omp++='/usr/local/opt/llvm/bin/clang++ -fopenmp -L/usr/local/opt/llvm/lib -Wl,-rpath,/usr/local/opt/llvm/lib'
-
-# }}}
-
-# cpp {{{1
-function cpp_compile() {
- # with_echo g++ -std=c++14 -g -O0 -o $1 $2
- with_echo g++ -std=c++2a -g -O0 -o $1 $2
-}
-
-function cpp_run() {
-  cpp_file=$1
-  exe_file=${cpp_file:0:-4}
-  shift
-
-  if [ -s $cpp_file ]; then
-    if [ ! -f $exe_file ]; then
-      cpp_compile $exe_file $cpp_file && ./$exe_file $@
-    else
-      cpp_date=`date -r $cpp_file +%s`
-      exe_date=`date -r $exe_file +%s`
-      if [ $cpp_date -gt $exe_date ]; then
-        cpp_compile $exe_file $cpp_file && ./$exe_file $@
-      else
-        ./$exe_file $@
-      fi
-    fi
-  else
-    echo $cpp_file is empty
-  fi
-}
-
-alias -s cpp=cpp_run
-
-alias clang-omp='/usr/local/opt/llvm/bin/clang -fopenmp -L/usr/local/opt/llvm/lib -Wl,-rpath,/usr/local/opt/llvm/lib'
 
 # }}}
 
@@ -267,15 +209,8 @@ fd() {
 }
 # }}}
 
-
 # TODO:
 # contcoll ubuntu
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
-# opam configuration
-test -r /Users/y-s/.opam/opam-init/init.zsh && . /Users/y-s/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
-
-# haskell
-eval "$(stack --bash-completion-script stack)"
 
 source $HOME/.zprofile
