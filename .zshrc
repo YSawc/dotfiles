@@ -1,6 +1,5 @@
 # call local {{{
 
-# 配列形式で変数宣言
 ZSH_ARRAY=(
             Ignore/.zshrc.slack
 		)
@@ -12,30 +11,6 @@ done
 
 # }}}
 
-# {{{
-# 環境設定
-# source ~/dotfiles/zsh/.zprofile
-
-# プラグイン設定
-# source ~/dotfiles/zsh/.zshrc.plugins_setting
-
-# 起動時自動アタッチ設定
-# source ~/dotfiles/zsh/.zshrc.auto_attach
-
-# 基本設定
-# source ~/dotfiles/zsh/.zshrc.basic
-
-# エイリアス設定
-# source ~/dotfiles/zsh/.zshrc.alias
-
-# 表示設定
-# source ~/dotfiles/zsh/.zshrc.apperance
-
-# function setting
-# source ~/dotfiles/zsh/.zshrc.functions
-# }}}
-
-export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 export PATH=~/.local/bin:$PATH
 
 # stack completion (haskell)
@@ -43,11 +18,9 @@ autoload -U +X compinit && compinit
 autoload -U +X bashcompinit && bashcompinit
 eval "$(stack --bash-completion-script stack)"
 
-# tmux
+# tmux{{{1
 
-# auto attach{{{
-
-# attach {{{
+# attach {{{2
 function is_exists() { type "$1" >/dev/null 2>&1; return $?; }
 function is_osx() { [[ $OSTYPE == darwin* ]]; }
 function is_screen_running() { [ ! -z "$STY" ]; }
@@ -140,26 +113,15 @@ zplug load
 
 [[ -z "$TMUX" && ! -z "$PS1" ]] && exec tmux
 
-# tmuxが起動していない場合にalias設定を行う
-#if [ $SHLVL = 1 ]; then
-#    # tmuxにセッションがなかったら新規セッションを立ち上げた際に分割処理設定を読み込む
-#    alias tmux="tmux -2 attach || tmux -2 new-session \; source-file ~/dotfiles/.tmux/new-session"
-#fi
-
-# 移動系便利コマンド デフォルトの状態から使える（多分
 autoload -U compinit
 compinit
 
-# ESCキーのディレイを減らす
 KEYTIMEOUT=0
 
-# 色つきの補完
 zstyle ':completion:*' list-colors di=34 fi=0
 
-# 補完候補をカーソルで選択できる
 zstyle ':completion:*:default' menu select=1
 
-#補完リストに8ビットコードを使う
 # setopt PRINT_EIGHT_BIT
 
 # stack(haskell) completion setting
@@ -167,29 +129,20 @@ zstyle ':completion:*:default' menu select=1
 # opam rlwrap ocaml
 alias ocaml="rlwrap ocaml"
 
-# homebrewで必要
+# homebrew
 export PATH="/usr/local/sbin:$PATH"
 
 # }}}
 
 # alias {{{
 
-# alias brew="env PATH=${PATH/\/Users\/${USER}\/\.pyenv\/shims:?/} brew"
-# alias brew="env PATH=${PATH/\/usr\/local\/include\.pyenv\/shims:?/} brew"
+alias lg='lazygit'
 
-# tmux ペインエイリアス {{{
+alias _pb_cp='pbcopy && pbpaste'
 
-# if [ $SHLVL = 1 ]; then
-#     alias tmuxg="tmux attach || tmux new-session \; source-file ~/.tmux/new-session"
-# fi
-
-# }}}
-
-#  git エイリアス {{{
-
+# git
 alias g="git"
 compdef g=git
-
 alias gs='git status --short --branch'
 alias ga='git add -A'
 alias gc='git commit -m'
@@ -197,38 +150,26 @@ alias gps='git push'
 alias gpsu='git push -u'
 alias gp='git pull origin'
 alias gf='git fetch'
-
-# logを見やすく
 alias gl='git log --abbrev-commit --no-merges --date=short --date=iso'
-# grep
 alias glg='git log --abbrev-commit --no-merges --date=short --date=iso --grep'
-# ローカルコミットを表示
 alias glc='git log --abbrev-commit --no-merges --date=short --date=iso origin/html..html'
-
 alias gd='git diff'
 alias gco='git checkout'
 alias gcob='git checkout -b'
 alias gb='git branch'
-
 alias gm='git merge'
 alias gr='git reset'
-
-# google検索
-alias goo='open https://www.google.co.jp/search\?q\=`pbpaste`'
 
 # vim with LANG_C
 alias vim='LANG=C vim'
 alias vi='LANG=C vim'
 
+# cpp
+alias clang-omp++='/usr/local/opt/llvm/bin/clang++ -fopenmp -L/usr/local/opt/llvm/lib -Wl,-rpath,/usr/local/opt/llvm/lib'
+
 # }}}
 
-#  c言語コンパイルと実行のエイリアス {{{
-
-function with_echo() {
-  echo $@
-  $@
-}
-
+# cpp {{{1
 function cpp_compile() {
  # with_echo g++ -std=c++14 -g -O0 -o $1 $2
  with_echo g++ -std=c++2a -g -O0 -o $1 $2
@@ -262,73 +203,8 @@ alias clang-omp='/usr/local/opt/llvm/bin/clang -fopenmp -L/usr/local/opt/llvm/li
 
 # }}}
 
-# cpp alias {{{
-alias clang-omp++='/usr/local/opt/llvm/bin/clang++ -fopenmp -L/usr/local/opt/llvm/lib -Wl,-rpath,/usr/local/opt/llvm/lib'
-# }}}
-
-# alias__go {{{
-alias _go_run_fzf='go run `find * -type f | fzf`'
-# }}}
-
-# lazygit呼び出しエイリアス
-alias lg='lazygit'
-
-# pbcopy && pbpaste
-alias _pb_cp='pbcopy && pbpaste'
-# }}}
-
-# apperance {{{
-# PROMPT='
-# %F{green}%(5~,%-1~/.../%2~,%~)%f
-# %F{green}%B>> %b%f'
-
-
-# ######################### ブランチ状況を表示 ################ #
-#
-## ブランチ名を色付きで表示させるメソッド
-#function rprompt-git-current-branch {
-#  local branch_name st branch_status
-#
-#  if [ ! -e  ".git" ]; then
-#    # gitで管理されていないディレクトリは何も返さない
-#    return
-#  fi
-#  branch_name=`git rev-parse --abbrev-ref HEAD 2> /dev/null`
-#  st=`git status 2> /dev/null`
-#  if [[ -n `echo "$st" | grep "^nothing to"` ]]; then
-#    # 全てcommitされてクリーンな状態
-#    branch_status="%F{green}"
-#  elif [[ -n `echo "$st" | grep "^Untracked files"` ]]; then
-#    # gitに管理されていないファイルがある状態
-#    branch_status="%F{red}?"
-#  elif [[ -n `echo "$st" | grep "^Changes not staged for commit"` ]]; then
-#    # git addされていないファイルがある状態
-#    branch_status="%F{red}+"
-#  elif [[ -n `echo "$st" | grep "^Changes to be committed"` ]]; then
-#    # git commitされていないファイルがある状態
-#    branch_status="%F{yellow}!"
-#  elif [[ -n `echo "$st" | grep "^rebase in progress"` ]]; then
-#    # コンフリクトが起こった状態
-#    echo "%F{red}!(no branch)"
-#    return
-#  else
-#    # 上記以外の状態の場合は青色で表示させる
-#    branch_status="%F{blue}"
-#  fi
-#  # ブランチ名を色付きで表示する
-#  echo "${branch_status}[$branch_name]"
-#}
-#
-## プロンプトが表示されるたびにプロンプト文字列を評価、置換する
-#setopt prompt_subst
-#
-## プロンプトの右側(RPROMPT)にメソッドの結果を表示させる
-#RPROMPT='`rprompt-git-current-branch`'
-#
-# ############################################################# #
-# }}}
-
-# git status {{{1
+# appearrance {{{1
+# git status {{{2
 autoload -Uz add-zsh-hook
 setopt prompt_subst
 function _vcs_git_indicator () {
@@ -357,37 +233,25 @@ local git='$_vcs_git_indicator'
 PROMPT="%F{cyan}%n%f:%F{yellow}%~%f$git %F{blue}"$'\n'"%%%f "
 }
 # }}}
+# }}}
 
 # functions {{{
 
-# source zsh {{{
 zrc(){
 	source ~/.zshrc
 }
-# }}}
-
-# source zprofile {{{
 zprofile(){
 	source ~/.zprofile
 }
-# }}}
-
-# source ~/.vimrc {{{
 vimrc(){
 	source ~/.vimrc
 }
-# }}}
-
-# git checkout with fzf {{{
 gco_fzf() {
   local branches branch
   branches=$(git branch -vv) &&
   branch=$(echo "$branches" | fzf +m) &&
   git checkout $(echo "$branch" | awk '{print $1}' | sed "s/.* //")
 }
-# }}}
-
-# git checkout with fzf include remote {{{
 gco_fzf_remote_with() {
   local branches branch
   branches=$(git branch --all | grep -v HEAD) &&
@@ -395,9 +259,6 @@ gco_fzf_remote_with() {
            fzf-tmux -d $(( 2 + $(wc -l <<< "$branches") )) +m) &&
   git checkout $(echo "$branch" | sed "s/.* //" | sed "s#remotes/[^/]*/##")
 }
-# }}}
-
-# fzf cd {{{
 fd() {
   local dir
   dir=$(find ${1:-.} -path '*/\.*' -prune \
@@ -406,7 +267,6 @@ fd() {
 }
 # }}}
 
-# }}}
 
 # TODO:
 # contcoll ubuntu
