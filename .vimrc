@@ -399,8 +399,12 @@ nnoremap <silent> <Space>pp :<C-u>echo expand('%')<CR>
 " misc {{{1
 
 " yank with copy
-set clipboard+=unnamed
-
+" need +clickboard
+if has('linux')
+	" set clipboard+=unnamedplus
+elseif has('mac')
+	set clipboard+=unnamed
+endif
 " }}}
 
 " each_lang {{{1
