@@ -961,9 +961,14 @@ for tool in s:opam_packages
 endfor
 " ## end of OPAM user-setup addition for vim / base ## keep this line
 " ## added by OPAM user-setup for vim / ocp-indent ## efd7faf005e7393450ce54472e04eed9 ## you can edit, but keep this line
-if count(s:opam_available_tools,"ocp-indent") == 0
-  source "/Users/y-s/.opam/default/share/ocp-indent/vim/indent/ocaml.vim"
-endif
+augroup opamocp
+	autocmd!
+	autocmd BufRead,BufNewFile *.ml silent!
+		if count(s:opam_available_tools,"ocp-indent") == 0
+		  "if error this line, fix this to your path
+		  source "/Users/y-s/.opam/default/share/ocp-indent/vim/indent/ocaml.vim"
+		endif
+augroup END
 " ## end of OPAM user-setup addition for vim / ocp-indent ## keep this line
 " }}}
 
