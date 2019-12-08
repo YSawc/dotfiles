@@ -62,33 +62,6 @@ tmux_automatically_attach_session
 
 # }}}
 
-# zplug {{{
-
-# source ~/.zplug/init.zsh
-# zplug 'zplug/zplug', hook-build:'zplug --self-manage'
-
-# zplug "zsh-users/zsh-syntax-highlighting"
-
-# zplug 'b4b4r07/enhancd', use:"init.sh"
-# export ENHANCD_HYPHEN_NUM="${ENHANCD_HYPHEN_NUM:-30}" # default "cd -" list number chagne to 20
-
-# zplug "zsh-users/zsh-history-substring-search"
-
-# zplug "zsh-users/zsh-autosuggestions"
-# zplug "zsh-users/zsh-completions"
-# zplug "chrissicool/zsh-256color"
-
-# if ! zplug check --verbose; then
-#     printf "Install? [y/N]: "
-#     if read -q; then
-#         echo; zplug install
-#     fi
-# fi
-
-# zplug load
-
-# }}}
-
 # basic {{{
 
 [[ -z "$TMUX" && ! -z "$PS1" ]] && exec tmux
@@ -209,6 +182,7 @@ fd() {
 
 source $HOME/.zprofile
 
+# Zplugin {{{
 ### Added by Zplugin's installer
 source "$HOME/.zplugin/bin/zplugin.zsh"
 autoload -Uz _zplugin
@@ -220,3 +194,4 @@ zplugin light zsh-users/zsh-autosuggestions
 zplugin ice wait lucid; zplugin light zsh-users/zsh-syntax-highlighting
 zplugin ice wait lucid; zplugin light b4b4r07/enhancd
 export ENHANCD_HYPHEN_NUM="${ENHANCD_HYPHEN_NUM:-30}" # default "cd -" list number chagne to 20
+# }}}
