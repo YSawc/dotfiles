@@ -217,4 +217,6 @@ autoload -Uz _zplugin
 zplugin light chrissicool/zsh-256color
 zplugin light zsh-users/zsh-completions
 zplugin light zsh-users/zsh-autosuggestions
+zplugin ice wait lucid; zplugin light zsh-users/zsh-syntax-highlighting
+zplugin ice wait lucid; zplugin light b4b4r07/enhancd
 export ENHANCD_HYPHEN_NUM="${ENHANCD_HYPHEN_NUM:-30}" # default "cd -" list number chagne to 20
