@@ -1,8 +1,7 @@
 #!/bin/bash
 
-DOT_DIRECTORY="${HOME}/dotfiles"
+DOT_DIRECTORY="/home/${USER}/dotfiles"
 echo "link home directory dotfiles"
-cd ${DOT_DIRECTORY}
 for f in .??*
 do
     [ "$f" = ".git" ] && continue
