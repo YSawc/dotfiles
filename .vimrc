@@ -18,7 +18,7 @@ endif
 
 if has("unix")
 	set rtp+=/home/linuxbrew/.linuxbrew/opt/fzf
-end
+endif
 
 " }}}
 
@@ -438,6 +438,7 @@ augroup fileTypeIndent
 	autocmd BufRead,BufNewFile *.ml setlocal tabstop=4 softtabstop=4 shiftwidth=4
 	autocmd BufRead,BufNewFile *.yaml setlocal tabstop=2 softtabstop=2 shiftwidth=2 expandtab
 	autocmd BufRead,BufNewFile *.dockerfile setlocal tabstop=2 softtabstop=2 shiftwidth=2 expandtab
+	autocmd BufRead,BufNewFile Dockerfile setlocal tabstop=2 softtabstop=2 shiftwidth=2 expandtab
 augroup END
 " }}}
 
@@ -966,7 +967,7 @@ augroup opamocp
 	autocmd BufRead,BufNewFile *.ml silent!
 		if count(s:opam_available_tools,"ocp-indent") == 0
 		  "if error this line, fix this to your path
-		  source "/Users/y-s/.opam/default/share/ocp-indent/vim/indent/ocaml.vim"
+		  " source "/Users/y-s/.opam/default/share/ocp-indent/vim/indent/ocaml.vim"
 		endif
 augroup END
 " ## end of OPAM user-setup addition for vim / ocp-indent ## keep this line
