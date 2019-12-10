@@ -418,7 +418,6 @@ set smartindent
 " fileTypeIndent{{{2
 augroup fileTypeIndent
 	autocmd!
-	autocmd BufRead,BufNewFile *.make setlocal tabstop=4 shiftwidth=4 softtabstop=4
 	autocmd BufRead,BufNewFile *.go setlocal tabstop=2 shiftwidth=2 softtabstop=2
 	autocmd BufRead,BufNewFile *.rs setlocal tabstop=4 softtabstop=4 shiftwidth=4
 	autocmd BufRead,BufNewFile *.hs setlocal tabstop=4 softtabstop=4 shiftwidth=4 expandtab
@@ -437,6 +436,8 @@ augroup fileTypeIndent
 	autocmd BufRead,BufNewFile *.fs setlocal tabstop=2 softtabstop=2 shiftwidth=2
 	autocmd BufRead,BufNewFile *.ml setlocal tabstop=4 softtabstop=4 shiftwidth=4
 	autocmd BufRead,BufNewFile *.yaml setlocal tabstop=2 softtabstop=2 shiftwidth=2 expandtab
+	autocmd BufRead,BufNewFile Makefile setlocal tabstop=8 shiftwidth=8 softtabstop=8
+	autocmd BufRead,BufNewFile *.make setlocal tabstop=4 shiftwidth=4 softtabstop=4
 	autocmd BufRead,BufNewFile *.dockerfile setlocal tabstop=2 softtabstop=2 shiftwidth=2 expandtab
 	autocmd BufRead,BufNewFile Dockerfile setlocal tabstop=2 softtabstop=2 shiftwidth=2 expandtab
 augroup END
