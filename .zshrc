@@ -1,5 +1,7 @@
 # tmux{{{1
 
+export TERM=xterm-256color
+
 # attach {{{2
 function is_exists() { type "$1" >/dev/null 2>&1; return $?; }
 function is_osx() { [[ $OSTYPE == darwin* ]]; }
