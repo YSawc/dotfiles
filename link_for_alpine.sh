@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/ash
 
 DOT_DIRECTORY="/home/${USER}/dotfiles"
 echo "link home directory dotfiles"
