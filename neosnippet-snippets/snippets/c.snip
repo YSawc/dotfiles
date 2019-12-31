@@ -9,4 +9,16 @@ abbr #ifndef ... #define ... #endif
 
     #endif${0}
 
-
+snippet     strtoalpha
+options     head
+    static char *strtoalpha(char *s) {
+      char *strArr = malloc(24);
+      for (int i = 0; s[i]!='\0'; i++) {
+        if (isalpha(s[i])) {
+          strArr[i] = s[i];
+        } else {
+          break;
+        }
+      }
+      return strArr;
+    }
