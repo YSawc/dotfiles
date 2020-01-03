@@ -252,6 +252,11 @@ nnoremap <silent> <Space>lb :<C-u>LoadBuffer<CR>
 
 inoremap <silent> jj <ESC>
 
+map <C-a> <ESC>^
+imap <C-a> <ESC>I
+map <C-e> <ESC>$
+imap <C-e> <ESC>A
+
 nnoremap ; :
 
 nnoremap <silent> yY :<C-u>%y<CR>
@@ -265,11 +270,8 @@ inoremap {<Enter> {}<Left><CR><ESC><S-o>
 inoremap ( ()<ESC>i
 inoremap (<Enter> ()<Left><CR><ESC><S-o>
 
-" TODO: custom
 noremap <expr> <C-b> max([winheight(0) - 2, 1]) . "\<C-u>" . (line('.') < 1         + winheight(0) ? 'H' : 'L')
 noremap <expr> <C-f> max([winheight(0) - 2, 1]) . "\<C-d>" . (line('.') > line('$') - winheight(0) ? 'L' : 'H')
-noremap <expr> <C-y> (line('w0') <= 1         ? 'k' : "\<C-y>")
-noremap <expr> <C-e> (line('w$') >= line('$') ? 'j' : "\<C-e>")
 
 " moving command line
 cnoremap <C-b> <Left>
@@ -524,20 +526,24 @@ command! -bang -nargs=? -complete=dir Files
 
 " nerdTree {{{2
 
-Plug 'scrooloose/nerdtree'
-let g:NERDTreeWinPos = "right"
-" jnerdtree sync other tabs
-Plug 'jistr/vim-nerdtree-tabs'
-let g:extra_whitespace_ignored_filetypes = ['unite', 'vimfiler']
-Plug 'Xuyuanp/nerdtree-git-plugin'
-Plug 'scrooloose/nerdcommenter'
-filetype on
-let g:NERDSpaceDelims=1
-let g:NERDDefaultAlign='left'
-let g:NerdCommenter_do_mapping = 0
+" Plug 'scrooloose/nerdtree'
+" let g:NERDTreeWinPos = "right"
+" " jnerdtree sync other tabs
+" Plug 'jistr/vim-nerdtree-tabs'
+" let g:extra_whitespace_ignored_filetypes = ['unite', 'vimfiler']
+" Plug 'Xuyuanp/nerdtree-git-plugin'
+" Plug 'scrooloose/nerdcommenter'
+" filetype on
+" let g:NERDSpaceDelims=1
+" let g:NERDDefaultAlign='left'
+" let g:NerdCommenter_do_mapping = 0
 
-nnoremap s; :<C-u>NERDTreeTabsToggle<CR>
+" nnoremap s; :<C-u>NERDTreeTabsToggle<CR>
 
+" }}}
+
+" {{{2
+Plug 'cocopon/vaffle.vim'
 " }}}
 
 " light cursorWord
