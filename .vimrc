@@ -231,6 +231,8 @@ colorscheme molokai
 
 " map {{{1
 
+nnoremap x "_x
+
 " define usermap {{{2
 let g:mapleader = "\<Space>"
 " }}}
