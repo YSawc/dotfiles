@@ -398,6 +398,8 @@ nnoremap <silent> <Space>ow :<C-u>setlocal wrap! wrap?<CR>
 " print current buffer path
 nnoremap <silent> <Space>pp :<C-u>echo expand('%')<CR>
 
+nnoremap <Space>pl :<C-u>call append(expand('.'), '')<CR>
+
 " }}}
 
 " misc {{{1
