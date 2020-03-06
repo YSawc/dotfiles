@@ -186,7 +186,7 @@ source $HOME/.zprofile
 
 # Zplugin {{{
 ### Added by Zplugin's installer
-source "$HOME/.zplugin/bin/zplugin.zsh"
+source "$HOME/.zinit/bin/zplugin.zsh"
 autoload -Uz _zplugin
 (( ${+_comps} )) && _comps[zplugin]=_zplugin
 ### End of Zplugin installer's chunk
