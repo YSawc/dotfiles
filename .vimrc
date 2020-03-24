@@ -26,8 +26,8 @@ endif
 
 " encoding
 set encoding=utf-8
-" set fileencodings=utf-8,iso-2022-jp,euc-jp,sjis
-set fileformats=unix,dos,mac
+set fileencodings=utf-8,iso-2022-jp,euc-jp,sjis
+" set fileformats=unix,dos,mac
 " set after setting for 'encoding'
 scriptencoding utf-8
 
@@ -98,7 +98,7 @@ set ttimeoutlen=10
 set synmaxcol=256
 
 " setting save session
-if has("mac")
+if has('mac')
 	set sessionoptions=blank,buffers,curdir,folds,help,tabpages,winsize,terminal
 endif
 
@@ -344,8 +344,13 @@ nnoremap <Space>r :Rg<Space>
 
 " register map
 function! s:_registerCurrentFileDir()
-	let @* = expand('%')
-	echo '[' @* '] <- copied fileDir'
+	if has('mac')
+		let @* = expand('%')
+		echo '[' @* '] <- copied fileDir'
+	elseif has('unix')
+		echo expand('%')
+	endif
+	echo expand('%')
 endfunction
 nnoremap <Space>rcb :<C-u>call <SID>_registerCurrentFileDir()<CR>
 
@@ -406,7 +411,7 @@ nnoremap <Space>pl :<C-u>call append(expand('.'), '')<CR>
 
 " yank with copy
 " need +clickboard
-if has('linux')
+if has('unix')
 	" set clipboard+=unnamedplus
 elseif has('mac')
 	set clipboard+=unnamed
