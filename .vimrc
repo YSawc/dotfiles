@@ -1,16 +1,5 @@
 "initialize {{{1
 
-" TODO: call initialize from linux of manjaro
-
-" let s:MSWindows = has('win95') + has('win16') + has('win32') + has('win64')
-" let $VIM = expand('~/vim/vimdot')
-
-" if s:MSWindows
-"     let $VIMRC = expand($VIM . '/vim/vimfiles')
-" else
-	" let $VIMRC = $HOME . '/.vimrc'
-" endif
-
 " finish when user have sudo
 if exists('$SUDO_USER')
   finish
@@ -32,8 +21,10 @@ set fileencodings=utf-8,iso-2022-jp,euc-jp,sjis
 scriptencoding utf-8
 
 " light weight setting {{{2
-set lazyredraw
-set ttyfast
+if 0
+	set lazyredraw
+	set ttyfast
+endif
 " }}}
 
 set noswapfile
@@ -468,34 +459,37 @@ augroup END
 
 " for optimization {{{1
 
-" file reading profile
-" function! ProfileCursorMove() abort
-"   let profile_file = expand('~/log/vim-profile.log')
-"   if filereadable(profile_file)
-"     call delete(profile_file)
-"   endif
+if 0
+	echo 'test'
+	file reading profile
+	function! ProfileCursorMove() abort
+	  let profile_file = expand('~/log/vim-profile.log')
+	  if filereadable(profile_file)
+	    call delete(profile_file)
+	  endif
 
-"   normal! gg
-"   normal! zR
+	  normal! gg
+	  normal! zR
 
-"   execute 'profile start ' . profile_file
-"   profile func *
-"   profile file *
+	  execute 'profile start ' . profile_file
+	  profile func *
+	  profile file *
 
-"   augroup ProfileCursorMove
-"     autocmd!
-"     autocmd CursorHold <buffer> profile pause | q
-"   augroup END
+	  augroup ProfileCursorMove
+	    autocmd!
+	    autocmd CursorHold <buffer> profile pause | q
+	  augroup END
 
-"   for i in range(100)
-"     call feedkeys('j')
-"   endfor
-" endfunction
+	  for i in range(100)
+	    call feedkeys('j')
+	  endfor
+	endfunction
 
-" syntax report time
-" https://stackoverflow.com/questions/19030290/syntax-highlighting-causes-terrible-lag-in-vim
-" set syntime=on
-" syntime report
+	syntax report time
+	https://stackoverflow.com/questions/19030290/syntax-highlighting-causes-terrible-lag-in-vim
+	set syntime=on
+	syntime report
+endif
 
 " }}}
 
