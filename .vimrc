@@ -645,6 +645,20 @@ Plug 'tpope/vim-fugitive'
 
 Plug 'mattn/emmet-vim'
 
+Plug 'haya14busa/vim-edgemotion'
+map [d <Plug>(edgemotion-k)
+map ]d <Plug>(edgemotion-j)
+
+Plug 'rhysd/clever-f.vim'
+let g:clever_f_across_no_line = 1
+let g:clever_f_timeout_ms = 2000
+let g:clever_f_use_migemo = 1
+
+Plug 'kana/vim-smartword'
+nmap w <Plug>(smartword-w)
+nmap b <Plug>(smartword-b)
+nmap e <Plug>(smartword-e)
+
 " neosnippet {{{2
 Plug 'Shougo/neosnippet'
 Plug 'Shougo/neosnippet-snippets'
