@@ -173,7 +173,6 @@ command! -bang -nargs=* Rg
   \   <bang>0 ? fzf#vim#with_preview({'options': '--delimiter : --nth 4..'}, 'up:60%')
   \           : fzf#vim#with_preview({'options': '--delimiter : --nth 4..'}, 'right:50%:hidden', '?'),
   \   <bang>0)
-
 " }}}
 
 " apperance {{{1
@@ -344,14 +343,6 @@ function! s:_registerCurrentFileDir()
 	echo expand('%')
 endfunction
 nnoremap <Space>rcb :<C-u>call <SID>_registerCurrentFileDir()<CR>
-
-" easymotion keymap
-let g:EasyMotion_do_mapping = 0
-map <Space>f <plug>(easymotion-overwin-f2)
-let g:EasyMotion_smartcase = 1
-map <Space>j <Plug>(easymotion-j)
-map <Space>k <Plug>(easymotion-k)
-let g:EasyMotion_startofline = 0
 
 " vim slash(/) with match_num {{{2
 nnoremap <expr> / _(":%s/<Cursor>/&/gn")
@@ -556,6 +547,14 @@ let g:loaded_matchparen = 1
 Plug 'itchyny/vim-parenmatch'
 
 Plug 'Lokaltog/vim-easymotion'
+let g:EasyMotion_do_mapping = 0
+map <Space>f <plug>(easymotion-overwin-f2)
+map <Space>j <Plug>(easymotion-j)
+map <Space>k <Plug>(easymotion-k)
+let g:EasyMotion_smartcase = 1
+let g:EasyMotion_startofline = 0
+let g:EasyMotion_skipfoldedline = 0
+let g:EasyMotion_cmigemo = 1
 
 Plug 'Shougo/unite.vim'
 " unite_vim {{{2
