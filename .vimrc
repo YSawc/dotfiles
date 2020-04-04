@@ -522,10 +522,12 @@ command! -bang -nargs=? -complete=dir Files
 
 " nerdTree {{{2
 
-" Plug 'scrooloose/nerdtree'
-" let g:NERDTreeWinPos = "right"
-" " jnerdtree sync other tabs
-" Plug 'jistr/vim-nerdtree-tabs'
+Plug 'scrooloose/nerdtree'
+let g:NERDTreeWinPos = "right"
+" nnoremap <space>; :<C-u>NERDTreeToggle<CR>
+" jnerdtree sync other tabs
+Plug 'jistr/vim-nerdtree-tabs'
+nnoremap <space>; :<C-u>NERDTreeTabsToggle<CR>
 " let g:extra_whitespace_ignored_filetypes = ['unite', 'vimfiler']
 " Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'scrooloose/nerdcommenter'
@@ -533,8 +535,6 @@ filetype on
 let g:NERDSpaceDelims=1
 let g:NERDDefaultAlign='left'
 let g:NerdCommenter_do_mapping = 0
-
-" nnoremap s; :<C-u>NERDTreeTabsToggle<CR>
 
 " }}}
 
