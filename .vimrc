@@ -535,12 +535,18 @@ command! -bang -nargs=? -complete=dir Files
 
 Plug 'scrooloose/nerdtree'
 let g:NERDTreeWinPos = "right"
-" nnoremap <space>; :<C-u>NERDTreeToggle<CR>
-" jnerdtree sync other tabs
+" nerdtree sync other tabs
 Plug 'jistr/vim-nerdtree-tabs'
-nnoremap <space>; :<C-u>NERDTreeTabsToggle<CR>
-" let g:extra_whitespace_ignored_filetypes = ['unite', 'vimfiler']
-" Plug 'Xuyuanp/nerdtree-git-plugin'
+if 0
+	nnoremap <space>; :<C-u>NERDTreeToggle<CR>
+else
+	nnoremap <space>; :<C-u>NERDTreeTabsToggle<CR>
+endif
+nnoremap <space>n :<C-u>let NERDTreeIgnore = ['\.']<LEFT><LEFT>
+let g:extra_whitespace_ignored_filetypes = ['unite']
+Plug 'Xuyuanp/nerdtree-git-plugin'
+
+" easy togle of comment
 Plug 'scrooloose/nerdcommenter'
 filetype on
 let g:NERDSpaceDelims=1
@@ -626,7 +632,6 @@ Plug 'tpope/vim-surround'
 Plug 'skanehira/vsession'
 let g:vsession_use_fzf = 1
 
-" reset
 " Plug 'tyru/eskk.vim'
 
 " quickrun
