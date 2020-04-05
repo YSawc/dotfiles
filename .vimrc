@@ -488,10 +488,19 @@ endif
 " basic plugin {{{1
 call plug#begin('~/.vim/plugged')
 
-" plug vpbuffer
-Plug 'YSawc/vpbuffer'
-
 Plug 'itchyny/lightline.vim'    " Dependency: status line
+" dependencied: ale
+let g:lightline = {
+	\'active': {
+	\  'left': [
+	\    ['mode', 'paste'],
+	\    ['readonly', 'filename', 'modified', 'ale'],
+	\  ]
+	\},
+	\'component_function': {
+	\  'ale': 'ALEGetStatusLine'
+	\}
+\ }
 " Plug 'maximbaz/lightline-ale'
 
 Plug 'bronson/vim-trailing-whitespace'
