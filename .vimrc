@@ -640,6 +640,8 @@ Plug 'thinca/vim-quickrun'
 
 " universal_ctags
 Plug 'majutsushi/tagbar'
+Plug 'szw/vim-tags'
+nnoremap <C-]> g<C-]>
 
 " sandwitch vital_import
 Plug 'machakann/vim-sandwich'
