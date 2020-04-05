@@ -118,6 +118,9 @@ augroup vimrc-highlight
   autocmd Syntax * if 10000 < line('$') | syntax sync minlines=100 | endif
 augroup END
 
+" Search the word nearest to the cursor in new window.
+nnoremap <C-w>*  <C-w>s*
+
 " }}}
 
 " cursorline {{{1
@@ -380,7 +383,12 @@ nnoremap <silent> <Space>ow :<C-u>setlocal wrap! wrap?<CR>
 " print current buffer path
 nnoremap <silent> <Space>pp :<C-u>echo expand('%')<CR>
 
+" Insert the line to the next line.
 nnoremap <Space>pl :<C-u>call append(expand('.'), '')<CR>
+
+" Very magic by default.
+nnoremap / /\v
+nnoremap ? ?\v
 
 " }}}
 
