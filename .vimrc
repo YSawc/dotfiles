@@ -16,8 +16,6 @@ endif
 " encoding
 set encoding=utf-8
 set fileencodings=utf-8,iso-2022-jp,euc-jp,sjis
-" set fileformats=unix,dos,mac
-" set after setting for 'encoding'
 scriptencoding utf-8
 
 " light weight setting {{{2
@@ -55,15 +53,17 @@ hi Visual cterm=reverse ctermbg=NONE
 set virtualedit+=block
 
 " netrw {{{2
-" prewiew setting
-let g:netrw_banner=0
-let g:netrw_preview=1
-" TreeView
-let g:netrw_liststyle = 3
-" date format
-let g:netrw_timefmt='%Y/%m/%d(%a) %H:%M:%S'
-" size format
-let g:netrw_sizestyle="H"
+if 1
+	" prewiew setting
+	let g:netrw_banner=0
+	let g:netrw_preview=1
+	" TreeView
+	let g:netrw_liststyle = 3
+	" date format
+	let g:netrw_timefmt='%Y/%m/%d(%a) %H:%M:%S'
+	" size format
+	let g:netrw_sizestyle="H"
+endif
 " }}}
 
 " moving wrap
@@ -92,10 +92,6 @@ set synmaxcol=256
 if has('mac')
 	set sessionoptions=blank,buffers,curdir,folds,help,tabpages,winsize,terminal
 endif
-
-" wrap
-" set wrap
-" set textwidth=80
 
 set signcolumn=yes
 
@@ -340,7 +336,6 @@ function! s:_registerCurrentFileDir()
 	elseif has('unix')
 		echo expand('%')
 	endif
-	echo expand('%')
 endfunction
 nnoremap <Space>rcb :<C-u>call <SID>_registerCurrentFileDir()<CR>
 
@@ -501,7 +496,6 @@ let g:lightline = {
 	\  'ale': 'ALEGetStatusLine'
 	\}
 \ }
-" Plug 'maximbaz/lightline-ale'
 
 Plug 'bronson/vim-trailing-whitespace'
 
@@ -668,6 +662,7 @@ nmap w <Plug>(smartword-w)
 nmap b <Plug>(smartword-b)
 nmap e <Plug>(smartword-e)
 
+" yank and paste via system register
 Plug 'christoomey/vim-system-copy'
 
 " neosnippet {{{2
