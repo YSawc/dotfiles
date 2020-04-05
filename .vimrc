@@ -673,6 +673,9 @@ nmap e <Plug>(smartword-e)
 " yank and paste via system register
 Plug 'christoomey/vim-system-copy'
 
+" Indexing search word with match number
+Plug 'google/vim-searchindex'
+
 " neosnippet {{{2
 Plug 'Shougo/neosnippet'
 Plug 'Shougo/neosnippet-snippets'
