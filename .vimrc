@@ -668,6 +668,8 @@ nmap w <Plug>(smartword-w)
 nmap b <Plug>(smartword-b)
 nmap e <Plug>(smartword-e)
 
+Plug 'christoomey/vim-system-copy'
+
 " neosnippet {{{2
 Plug 'Shougo/neosnippet'
 Plug 'Shougo/neosnippet-snippets'
@@ -692,7 +694,8 @@ let g:neosnippet#snippets_directory='~/dotfiles/neosnippet-snippets/snippets/'
 
 " ale {{{2
 Plug 'dense-analysis/ale'
-
+nmap <silent> [e <Plug>(ale_previous_wrap)
+nmap <silent> ]e <Plug>(ale_next_wrap)
 " error display qucickfix
 let g:ale_set_loclist = 0
 let g:ale_set_quickfix = 1
