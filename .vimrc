@@ -98,7 +98,7 @@ set signcolumn=yes
 " https://vim-jp.org/vimdoc-ja/change.html#fo-table
 set formatoptions-=cro
 
-set completeopt-=preview
+set completeopt=menuone,noinsert
 
 " setting for undo
 if has('persistent_undo')
@@ -762,7 +762,17 @@ Plug 'prabirshrestha/asyncomplete.vim'
 Plug 'prabirshrestha/asyncomplete-lsp.vim'
 Plug 'prabirshrestha/asyncomplete-necosyntax.vim'
 Plug 'Shougo/neco-syntax'
+
+Plug 'mattn/vim-lsp-settings'
+Plug 'mattn/vim-lsp-icons'
+
 imap <c-space> <Plug>(asyncomplete_force_refresh)
+let g:lsp_diagnostics_enabled = 1
+let g:lsp_diagnostics_echo_cursor = 1
+let g:asyncomplete_auto_popup = 1
+let g:asyncomplete_auto_completeopt = 0
+let g:asyncomplete_popup_delay = 200
+let g:lsp_text_edit_enabled = 1
 
 " asyn__omni {{{3
 Plug 'yami-beta/asyncomplete-omni.vim'
@@ -822,81 +832,13 @@ au User asyncomplete_setup call asyncomplete#register_source(asyncomplete#source
     \ }))
 " }}}
 
-let g:lsp_diagnostics_enabled = v:false
-" Plug 'natebosch/vim-lsc'
-let g:lsp_async_completion = 1
-" let g:lsc_auto_map = v:true
-
-" let g:lsp_diagnostics_enabled = 0
-" " debug
-" let g:lsp_log_verbose = 1
-" let g:lsp_log_file = expand('~/vim-lsp.log')
-" let g:asyncomplete_log_file = expand('~/asyncomplete.log')
-
-let g:lsp_signs_enabled = 1
-let g:lsp_diagnostics_echo_cursor = 1
-let g:lsp_signs_error = {'text': 'E'}
-let g:lsp_signs_warning = {'text': 'w'}
-
-if executable('clangd')
-    au User lsp_setup call lsp#register_server({
-        \ 'name': 'clangd',
-        \ 'cmd': {server_info->['clangd', '-background-index']},
-        \ 'whitelist': ['c', 'cpp', 'objc', 'objcpp'],
-        \ })
-endif
-
-" Plug 'ryanolsonx/vim-lsp-typescript'
-" if executable('typescript-language-server')
-"     au User lsp_setup call lsp#register_server({
-"         \ 'name': 'typescript-language-server',
-"         \ 'cmd': {server_info->[&shell, &shellcmdflag, 'typescript-language-server --stdio']},
-"         \ 'root_uri':{server_info->lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_file_directory(lsp#utils#get_buffer_path(), 'tsconfig.json'))},
-"         \ 'whitelist': ['typescript', 'typescript.tsx'],
+" if executable('ocaml-language-server')
+"   au User lsp_setup call lsp#register_server({
+"         \ 'name': 'ocaml-language-server',
+"         \ 'cmd': {server_info->[&shell, &shellcmdflag, 'ocaml-language-server --stdio']},
+"         \ 'whitelist': ['reason', 'ocaml'],
 "         \ })
 " endif
-
-if executable('hie')
-    au User lsp_setup call lsp#register_server({
-      \ 'name': 'hie',
-      \ 'cmd': {server_info->['hie']},
-      \ 'whitelist': ['haskell'],
-      \ })
-endif
-
-if executable('rls')
-    au User lsp_setup call lsp#register_server({
-        \ 'name': 'rls',
-        \ 'cmd': {server_info->['rustup', 'run', 'stable', 'rls']},
-        \ 'workspace_config': {'rust': {'clippy_preference': 'on'}},
-        \ 'whitelist': ['rust'],
-        \ })
-endif
-
-" if executable('rls')
-"     au User lsp_setup call lsp#register_server({
-"         \ 'name': 'rls',
-"         \ 'cmd': {server_info->['rustup', 'run', 'nightly', 'rls']},
-"         \ 'whitelist': ['rust'],
-"         \ })
-" endif
-
-" if executable('gopls')
-"     au User lsp_setup call lsp#register_server({
-"         \ 'name': 'gopls',
-"         \ 'cmd': {server_info->['gopls', '-mode', 'stdio']},
-"         \ 'whitelist': ['go'],
-"         \ })
-"     autocmd BufWritePre *.go LspDocumentFormatSync
-" endif
-
-if executable('ocaml-language-server')
-  au User lsp_setup call lsp#register_server({
-        \ 'name': 'ocaml-language-server',
-        \ 'cmd': {server_info->[&shell, &shellcmdflag, 'ocaml-language-server --stdio']},
-        \ 'whitelist': ['reason', 'ocaml'],
-        \ })
-endif
 
 " vim-lsp map {{{3
 nmap <silent> <Leader>ld :LspDefinition<CR>
@@ -930,20 +872,20 @@ let g:go_list_type = "quickfix"
 " }}}
 
 " rust {{{2
-Plug 'rust-lang/rust.vim'
-let g:rustfmt_autosave = 1
-let g:rustfmt_command = '$HOME/.cargo/bin/rustfmt'
-" let g:syntastic_rust_checkers = ['cargo']
-
-Plug 'racer-rust/vim-racer'
-set hidden
-let g:racer_cmd = '~/.cargo/bin/racer'
-let g:racer_experimental_completer = 1
-
-au FileType rust nmap gd <Plug>(rust-def)
-au FileType rust nmap gs <Plug>(rust-def-split)
-au FileType rust nmap gx <Plug>(rust-def-vertical)
-au FileType rust nmap <leader>gd <Plug>(rust-doc)
+if 0
+	Plug 'rust-lang/rust.vim'
+	Plug 'racer-rust/vim-racer'
+	let g:rustfmt_autosave = 1
+	let g:rustfmt_command = '$HOME/.cargo/bin/rustfmt'
+	" let g:syntastic_rust_checkers = ['cargo']
+	set hidden
+	let g:racer_cmd = '~/.cargo/bin/racer'
+	let g:racer_experimental_completer = 1
+	au FileType rust nmap gd <Plug>(rust-def)
+	au FileType rust nmap gs <Plug>(rust-def-split)
+	au FileType rust nmap gx <Plug>(rust-def-vertical)
+	au FileType rust nmap <leader>gd <Plug>(rust-doc)
+endif
 
 " }}}
 
