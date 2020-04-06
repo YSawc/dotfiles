@@ -597,6 +597,11 @@ let g:unite_enable_smart_case = 1
 
 Plug 'Shougo/neomru.vim'
 
+Plug 'Shougo/vimproc.vim', {'do' : 'make'}
+Plug 'Shougo/vimshell.vim'
+nnoremap <silent> <Leader>v :VimShell<CR>
+nnoremap <silent> <Leader>vp :VimShellPop<CR>
+
 Plug 'ctrlpvim/ctrlp.vim'
 let g:ctrlp_map = ''
 let g:ctrlp_show_hidden=1
