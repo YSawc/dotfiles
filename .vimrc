@@ -329,7 +329,10 @@ autocmd QuickFixCmdPost vimgrep cwindow
 autocmd QuickFixCmdPost *grep* cwindow
 
 nnoremap <Space>c :<C-u>Ag --hidden <cword><CR>
+
+" ripgrep map
 nnoremap <Space>r :Rg<Space>
+nnoremap <Space>rc :exec 'Rg' expand('<cword>')<CR>
 
 " register map
 function! s:_registerCurrentFileDir()
@@ -337,6 +340,7 @@ function! s:_registerCurrentFileDir()
 		let @* = expand('%')
 		echo '[' @* '] <- copied fileDir'
 	elseif has('unix')
+		" TODO: support this
 		echo expand('%')
 	endif
 endfunction
@@ -872,7 +876,7 @@ let g:go_list_type = "quickfix"
 " }}}
 
 " rust {{{2
-if 0
+if 1
 	Plug 'rust-lang/rust.vim'
 	Plug 'racer-rust/vim-racer'
 	let g:rustfmt_autosave = 1
