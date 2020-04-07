@@ -328,7 +328,7 @@ nnoremap <Leader>c :<C-u>Ag --hidden <cword><CR>
 
 " ripgrep map
 nnoremap <Leader>r :Rg<Leader>
-nnoremap <Leader>rc :exec 'Rg' expand('<cword>')<CR>
+nnoremap <Leader>rc :exec 'Rg' expand('<cword>')
 
 " register map
 function! s:_registerCurrentFileDir()
