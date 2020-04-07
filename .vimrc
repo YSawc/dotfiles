@@ -229,17 +229,17 @@ let g:mapleader = "\<Space>"
 " editting dotfiles {{{2
 
 let $VIMRC = $HOME . '/.vimrc'
-nnoremap <silent> <Space>ev :<C-u>edit $VIMRC<CR>
+nnoremap <silent> <Leader>ev :<C-u>edit $VIMRC<CR>
 
 let $ZSHRC = $HOME . '/.zshrc'
-nnoremap <silent> <Space>ez :<C-u>edit $ZSHRC<CR>
+nnoremap <silent> <Leader>ez :<C-u>edit $ZSHRC<CR>
 
 " }}}
 
-nnoremap <silent> <Space>en :<C-u>NeoSnippetEdit<CR>
+nnoremap <silent> <Leader>en :<C-u>NeoSnippetEdit<CR>
 
 " vpbuffer
-nnoremap <silent> <Space>lb :<C-u>LoadBuffer<CR>
+nnoremap <silent> <Leader>lb :<C-u>LoadBuffer<CR>
 
 inoremap <silent> jj <ESC>
 
@@ -314,7 +314,7 @@ inoremap <C-f> <Right>
 inoremap <C-b> <Left>
 
 " toggle hilight
-nnoremap <silent> <Space><Space> "zyiw:let @/ = '\<' . @z . '\>'<CR>:set hlsearch<CR>
+nnoremap <silent> <Leader><Leader> "zyiw:let @/ = '\<' . @z . '\>'<CR>:set hlsearch<CR>
 nnoremap <Esc><Esc> :nohlsearch<CR>
 
 nnoremap <Leader>bf :Buffers<CR>
@@ -328,11 +328,11 @@ nnoremap ]Q :<C-u>clast<CR>
 autocmd QuickFixCmdPost vimgrep cwindow
 autocmd QuickFixCmdPost *grep* cwindow
 
-nnoremap <Space>c :<C-u>Ag --hidden <cword><CR>
+nnoremap <Leader>c :<C-u>Ag --hidden <cword><CR>
 
 " ripgrep map
-nnoremap <Space>r :Rg<Space>
-nnoremap <Space>rc :exec 'Rg' expand('<cword>')<CR>
+nnoremap <Leader>r :Rg<Leader>
+nnoremap <Leader>rc :exec 'Rg' expand('<cword>')<CR>
 
 " register map
 function! s:_registerCurrentFileDir()
@@ -344,7 +344,7 @@ function! s:_registerCurrentFileDir()
 		echo expand('%')
 	endif
 endfunction
-nnoremap <Space>rcb :<C-u>call <SID>_registerCurrentFileDir()<CR>
+nnoremap <Leader>rcb :<C-u>call <SID>_registerCurrentFileDir()<CR>
 
 " vim slash(/) with match_num {{{2
 nnoremap <expr> / _(":%s/<Cursor>/&/gn")
@@ -380,15 +380,15 @@ augroup helpMapping
 augroup END
 
 " Quick toggle options.
-nnoremap <silent> <Space>or :<C-u>setlocal relativenumber! relativenumber?<CR>
-nnoremap <silent> <Space>on :<C-u>setlocal number! number?<CR>
-nnoremap <silent> <Space>ow :<C-u>setlocal wrap! wrap?<CR>
+nnoremap <silent> <Leader>or :<C-u>setlocal relativenumber! relativenumber?<CR>
+nnoremap <silent> <Leader>on :<C-u>setlocal number! number?<CR>
+nnoremap <silent> <Leader>ow :<C-u>setlocal wrap! wrap?<CR>
 
 " print current buffer path
-nnoremap <silent> <Space>pp :<C-u>echo expand('%')<CR>
+nnoremap <silent> <Leader>pp :<C-u>echo expand('%')<CR>
 
 " Insert the line to the next line.
-nnoremap <Space>pl :<C-u>call append(expand('.'), '')<CR>
+nnoremap <Leader>pl :<C-u>call append(expand('.'), '')<CR>
 
 " Very magic by default.
 nnoremap / /\v
@@ -516,14 +516,14 @@ Plug 'bronson/vim-trailing-whitespace'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 
-nnoremap <Space><C-p> :FZFFileList<CR>
+nnoremap <Leader><C-p> :FZFFileList<CR>
 command! FZFFileList call fzf#run({
 			\ 'source': 'find . -type d -name .git -prune -o ! -name .DS_Store',
 			\ 'sink': 'e',
 			\ 'down': '30%',
 			\ })
 " TODO: call with row hight and back back in the buffer
-nnoremap <Space><C-b> :FZFFileListInBuffer<CR>
+nnoremap <Leader><C-b> :FZFFileListInBuffer<CR>
 command! FZFFileListInBuffer call fzf#run({
 			\ 'source': 'find . -type d -name .git -prune -o ! -name .DS_Store',
 			\ 'sink': 'e',
@@ -569,9 +569,9 @@ Plug 'itchyny/vim-parenmatch'
 
 Plug 'Lokaltog/vim-easymotion'
 let g:EasyMotion_do_mapping = 0
-map <Space>f <plug>(easymotion-overwin-f2)
-map <Space>j <Plug>(easymotion-j)
-map <Space>k <Plug>(easymotion-k)
+map <Leader>f <plug>(easymotion-overwin-f2)
+map <Leader>j <Plug>(easymotion-j)
+map <Leader>k <Plug>(easymotion-k)
 let g:EasyMotion_smartcase = 1
 let g:EasyMotion_startofline = 0
 let g:EasyMotion_skipfoldedline = 0
@@ -580,7 +580,7 @@ let g:EasyMotion_cmigemo = 1
 Plug 'Shougo/unite.vim'
 " unite_vim {{{2
 
-nnoremap <Space>uf :<C-u>Unite file<CR>
+nnoremap <Leader>uf :<C-u>Unite file<CR>
 
 let g:unite_enable_start_insert = 1
 
@@ -622,7 +622,7 @@ Plug 'rking/ag.vim'
 
 " resize
 Plug 'simeji/winresizer'
-let g:winresizer_start_key = '<Space><C-T>'
+let g:winresizer_start_key = '<Leader><C-T>'
 let g:winresizer_vert_resize = 5
 
 " markdown
