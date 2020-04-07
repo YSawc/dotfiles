@@ -176,10 +176,6 @@ command! -bang -nargs=* Rg
 
 " apperance {{{1
 
-" setting line_num
-" set relativenumber
-" set number
-
 set cursorline
 
 if has('vim_starting')
@@ -448,10 +444,12 @@ augroup END
 " }}}
 
 " SyntaxSettings {{{2
-" augroup SyntaxSettings
-"     autocmd!
-"     " autocmd BufNewFile,BufRead *.jsx set filetype=javascriptreact
-" augroup END
+if 0
+	augroup SyntaxSettings
+	    autocmd!
+	    " autocmd BufNewFile,BufRead *.jsx set filetype=javascriptreact
+	augroup END
+endif
 " }}}
 
 " }}}
@@ -852,13 +850,16 @@ au User asyncomplete_setup call asyncomplete#register_source(asyncomplete#source
     \ }))
 " }}}
 
-" if executable('ocaml-language-server')
-"   au User lsp_setup call lsp#register_server({
-"         \ 'name': 'ocaml-language-server',
-"         \ 'cmd': {server_info->[&shell, &shellcmdflag, 'ocaml-language-server --stdio']},
-"         \ 'whitelist': ['reason', 'ocaml'],
-"         \ })
-" endif
+" vim-lsp ocaml
+if 0
+	if executable('ocaml-language-server')
+	  au User lsp_setup call lsp#register_server({
+	        \ 'name': 'ocaml-language-server',
+	        \ 'cmd': {server_info->[&shell, &shellcmdflag, 'ocaml-language-server --stdio']},
+	        \ 'whitelist': ['reason', 'ocaml'],
+	        \ })
+	endif
+endif
 
 " vim-lsp map {{{3
 nmap <silent> <Leader>ld :LspDefinition<CR>
@@ -914,14 +915,15 @@ Plug 'ymyzk/vim-copl'
 " }}}
 
 " fsharp {{{2
-" Plug 'fsharp/vim-fsharp', {
-"       \ 'for': 'fsharp',
-"       \ 'do':  'make fsautocomplete',
-"       \}
-
-" Plug 'ionide/Ionide-vim', {
-"       \ 'do':  'make fsautocomplete',
-"       \}
+if 0
+	Plug 'fsharp/vim-fsharp', {
+		  \ 'for': 'fsharp',
+		  \ 'do':  'make fsautocomplete',
+		  \}
+	Plug 'ionide/Ionide-vim', {
+		  \ 'do':  'make fsautocomplete',
+		  \}
+endif
 " }}}
 
 " ocaml {{{2
