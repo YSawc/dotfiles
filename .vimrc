@@ -605,6 +605,13 @@ nnoremap <silent> <Leader>vp :VimShellPop<CR>
 Plug 'ctrlpvim/ctrlp.vim'
 let g:ctrlp_map = ''
 let g:ctrlp_show_hidden=1
+Plug 'LeafCage/yankround.vim' " dependency: 'ctrlpvim/ctrlp.vim'
+nmap p <Plug>(yankround-p)
+nmap P <Plug>(yankround-P)
+nmap <C-p> <Plug>(yankround-prev)
+nmap <C-n> <Plug>(yankround-next)
+let g:yankround_max_history = 4
+nnoremap <silent> <Leader>y<C-p> :<C-u>CtrlPYankRound<CR>
 
 Plug 'lambdalisue/gina.vim'
 
