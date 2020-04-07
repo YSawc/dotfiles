@@ -692,6 +692,10 @@ Plug 'christoomey/vim-system-copy'
 " Indexing search word with match number
 Plug 'google/vim-searchindex'
 
+" powerful replace with original commandLine
+Plug 'osyo-manga/vim-over'
+nnoremap <Leader>sub :OverCommandLine<CR>%s///g<Left><Left><Left>
+
 " neosnippet {{{2
 Plug 'Shougo/neosnippet'
 Plug 'Shougo/neosnippet-snippets'
