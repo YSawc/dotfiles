@@ -513,6 +513,7 @@ Plug 'bronson/vim-trailing-whitespace'
 "
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
+let g:fzf_layout = { 'window': 'vertical new' }
 
 nnoremap <Leader><C-p> :FZFFileList<CR>
 command! FZFFileList call fzf#run({
@@ -745,22 +746,24 @@ Plug 'prettier/vim-prettier', {
 " }}}
 
 " syntax {{{2
-Plug 'scrooloose/syntastic'
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
+if 0
+	Plug 'scrooloose/syntastic'
+	set statusline+=%#warningmsg#
+	set statusline+=%{SyntasticStatuslineFlag()}
+	set statusline+=%*
 
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-nnoremap <C-C> :w<CR>:SyntasticCheck<CR>
-let g:syntastic_mode_map = {
-    \ 'mode': 'passive',
-    \ 'active_filetypes': ['']
-    \}
+	let g:syntastic_always_populate_loc_list = 1
+	let g:syntastic_auto_loc_list = 1
+	let g:syntastic_check_on_open = 1
+	let g:syntastic_check_on_wq = 0
+	nnoremap <C-C> :w<CR>:SyntasticCheck<CR>
+	let g:syntastic_mode_map = {
+	    \ 'mode': 'passive',
+	    \ 'active_filetypes': ['']
+	    \}
 
-let g:syntastic_javascript_checkers = ['lynt']
+	let g:syntastic_javascript_checkers = ['lynt']
+endif
 
 " }}}
 
