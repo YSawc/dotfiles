@@ -513,7 +513,6 @@ Plug 'bronson/vim-trailing-whitespace'
 "
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
-let g:fzf_layout = { 'window': 'vertical new' }
 
 nnoremap <Leader><C-p> :FZFFileList<CR>
 command! FZFFileList call fzf#run({
@@ -654,8 +653,10 @@ Plug 'thinca/vim-quickrun'
 
 
 " universal_ctags
+set tags+=.ctags
 Plug 'majutsushi/tagbar'
 Plug 'szw/vim-tags'
+let g:vim_tags_ctags_binary = '.ctags'
 nnoremap <C-]> g<C-]>
 
 " sandwitch vital_import
