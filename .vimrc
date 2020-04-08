@@ -703,6 +703,8 @@ Plug 'google/vim-searchindex'
 Plug 'osyo-manga/vim-over'
 nnoremap <Leader>sub :OverCommandLine<CR>%s///g<Left><Left><Left>
 
+Plug 'terryma/vim-multiple-cursors'
+
 " neosnippet {{{2
 Plug 'Shougo/neosnippet'
 Plug 'Shougo/neosnippet-snippets'
