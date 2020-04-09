@@ -597,8 +597,8 @@ Plug 'Shougo/neomru.vim'
 
 Plug 'Shougo/vimproc.vim', {'do' : 'make'}
 Plug 'Shougo/vimshell.vim'
-nnoremap <silent> <Leader>v :VimShell<CR>
-nnoremap <silent> <Leader>vp :VimShellPop<CR>
+nnoremap <silent> <Leader>v :VimShell
+nnoremap <silent> <Leader>vp :VimShellPop
 
 Plug 'ctrlpvim/ctrlp.vim'
 let g:ctrlp_map = ''
