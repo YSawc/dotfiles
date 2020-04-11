@@ -422,6 +422,8 @@ augroup fileTypeIndent
 	autocmd BufRead,BufNewFile *.rb setlocal tabstop=2 shiftwidth=2 softtabstop=2
 	autocmd BufRead,BufNewFile *.s setlocal tabstop=2 softtabstop=2 shiftwidth=2 expandtab
 	autocmd BufRead,BufNewFile *.c setlocal tabstop=2 softtabstop=2 shiftwidth=2 expandtab
+	autocmd BufRead,BufNewFile *.cpp setlocal tabstop=2 softtabstop=2 shiftwidth=2 expandtab
+	autocmd BufRead,BufNewFile *.h setlocal tabstop=2 softtabstop=2 shiftwidth=2 expandtab
 	autocmd BufRead,BufNewFile *.asm setlocal tabstop=4 softtabstop=4 shiftwidth=4 expandtab
 	autocmd BufRead,BufNewFile *.md setlocal tabstop=2 shiftwidth=2 softtabstop=2 expandtab
 	autocmd BufRead,BufNewFile *.js setlocal tabstop=2 softtabstop=2 shiftwidth=2
@@ -550,10 +552,9 @@ Plug 'Xuyuanp/nerdtree-git-plugin'
 
 " easy togle of comment
 Plug 'scrooloose/nerdcommenter'
-filetype on
-let g:NERDSpaceDelims=1
-let g:NERDDefaultAlign='left'
 let g:NerdCommenter_do_mapping = 0
+let g:NERDSpaceDelims = 1
+let g:NERDDefaultAlign = 'left'
 
 " }}}
 
@@ -667,9 +668,6 @@ Plug 'machakann/vim-swap'
 
 Plug 'mbbill/undotree'
 
-" TODO: select snippets usefull
-" Plug 'SirVer/ultisnips'
-
 Plug 'junegunn/vim-emoji'
 
 Plug 'mattn/gist-vim'
@@ -704,6 +702,8 @@ Plug 'osyo-manga/vim-over'
 nnoremap <Leader>sub :OverCommandLine<CR>%s///g<Left><Left><Left>
 
 Plug 'terryma/vim-multiple-cursors'
+
+Plug 'rafi/awesome-vim-colorschemes'
 
 " neosnippet {{{2
 Plug 'Shougo/neosnippet'
