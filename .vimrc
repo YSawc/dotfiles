@@ -676,6 +676,9 @@ Plug 'mattn/webapi-vim'
 Plug 'tpope/vim-fugitive'
 
 Plug 'mattn/emmet-vim'
+let g:user_emmet_leader_key='<C-Z>'
+let g:user_emmet_install_global = 0
+autocmd FileType html,css EmmetInstall
 
 Plug 'haya14busa/vim-edgemotion'
 map [d <Plug>(edgemotion-k)
