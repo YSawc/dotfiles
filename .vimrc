@@ -510,6 +510,7 @@ let g:lightline = {
 \ }
 
 Plug 'bronson/vim-trailing-whitespace'
+let g:extra_whitespace_ignored_filetypes = ['vimshell']
 
 " fzf for vim {{{2
 "
@@ -659,6 +660,7 @@ Plug 'majutsushi/tagbar'
 Plug 'szw/vim-tags'
 let g:vim_tags_ctags_binary = '.ctags'
 nnoremap <C-]> g<C-]>
+let g:tagbar_map_togglesort = "r" " conflict default map of 's' with my tmux toggle Key.
 
 " sandwitch vital_import
 Plug 'machakann/vim-sandwich'

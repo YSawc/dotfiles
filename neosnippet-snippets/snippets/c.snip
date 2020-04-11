@@ -2,12 +2,12 @@ snippet     __ifndef
 options     head
 alias       #ifndef
 abbr #ifndef ... #define ... #endif
-    #ifndef $1
-    #define ${1:#:SYMBOL}
+    #ifndef ${1:#:SYMBOL}
+    #define
 
+    ${0}
 
-
-    #endif${0}
+    #endif
 
 snippet     __strtoalpha
 options     head
