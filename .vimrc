@@ -498,15 +498,16 @@ call plug#begin('~/.vim/plugged')
 Plug 'itchyny/lightline.vim'    " Dependency: status line
 " dependencied: ale
 let g:lightline = {
-	\'active': {
-	\  'left': [
-	\    ['mode', 'paste'],
-	\    ['readonly', 'filename', 'modified', 'ale'],
-	\  ]
-	\},
-	\'component_function': {
-	\  'ale': 'ALEGetStatusLine'
-	\}
+	\ 'colorscheme': 'seoul256',
+	\ 'active': {
+	\   'left': [
+	\     ['mode', 'paste'],
+	\     ['readonly', 'filename', 'modified', 'ale'],
+	\   ],
+	\ },
+	\ 'component_function': {
+	\   'ale': 'ALEGetStatusLine'
+	\ }
 \ }
 
 Plug 'bronson/vim-trailing-whitespace'
