@@ -613,7 +613,7 @@ nmap <C-n> <Plug>(yankround-next)
 let g:yankround_max_history = 4
 nnoremap <silent> <Leader>y<C-p> :<C-u>CtrlPYankRound<CR>
 
-Plug 'lambdalisue/gina.vim'
+" Plug 'lambdalisue/gina.vim'
 
 Plug 'airblade/vim-gitgutter'
 
@@ -710,6 +710,9 @@ Plug 'terryma/vim-multiple-cursors'
 
 Plug 'rafi/awesome-vim-colorschemes'
 
+Plug 'matze/vim-move'
+let g:move_key_modifier = 'C'
+
 " neosnippet {{{2
 Plug 'Shougo/neosnippet'
 Plug 'Shougo/neosnippet-snippets'
@@ -800,7 +803,7 @@ let g:lsp_diagnostics_enabled = 1
 let g:lsp_diagnostics_echo_cursor = 1
 let g:asyncomplete_auto_popup = 1
 let g:asyncomplete_auto_completeopt = 0
-let g:asyncomplete_popup_delay = 200
+let g:asyncomplete_popup_delay = 50
 let g:lsp_text_edit_enabled = 1
 
 " asyn__omni {{{3
@@ -909,7 +912,6 @@ if 1
 	Plug 'racer-rust/vim-racer'
 	let g:rustfmt_autosave = 1
 	let g:rustfmt_command = '$HOME/.cargo/bin/rustfmt'
-	" let g:syntastic_rust_checkers = ['cargo']
 	set hidden
 	let g:racer_cmd = '~/.cargo/bin/racer'
 	let g:racer_experimental_completer = 1
