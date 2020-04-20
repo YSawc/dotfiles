@@ -806,6 +806,8 @@ let g:asyncomplete_auto_popup = 1
 let g:asyncomplete_auto_completeopt = 0
 let g:asyncomplete_popup_delay = 50
 let g:lsp_text_edit_enabled = 1
+nnoremap <Leader>lf :LspDocumentFormatSync<CR>
+nnoremap <Leader>lh :LspHover<CR>
 
 " asyn__omni {{{3
 Plug 'yami-beta/asyncomplete-omni.vim'
@@ -941,7 +943,7 @@ endif
 " }}}
 
 " ocaml {{{2
-
+if 0
 " merlin
 let g:syntastic_ocaml_checkers = ['merlin']
 let g:opamshare = substitute(system('opam config var share'),'\n$','','''')
@@ -1002,6 +1004,7 @@ augroup opamocp
 		endif
 augroup END
 " ## end of OPAM user-setup addition for vim / ocp-indent ## keep this line
+endif
 " }}}
 
 " }}}
