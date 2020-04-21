@@ -176,6 +176,10 @@ command! -bang -nargs=* Rg
 
 " apperance {{{1
 
+" setting list
+set list
+set listchars=tab:»-,trail:-,eol:↲,extends:»,precedes:«,nbsp:%,space:.
+
 set cursorline
 
 if has('vim_starting')
@@ -187,9 +191,6 @@ endif
 " set for statusLine
 set laststatus=2
 
-" setting list
-set list
-set listchars+=tab:\¦\ ,eol:\ ,trail:\ 
 " }}}
 
 " search in command_line {{{1
