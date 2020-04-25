@@ -539,7 +539,7 @@ command! -bang -nargs=? -complete=dir Files
 " }}}
 
 " nerdTree {{{2
-
+if 0
 Plug 'scrooloose/nerdtree'
 let g:NERDTreeWinPos = "right"
 " nerdtree sync other tabs
@@ -550,8 +550,10 @@ else
 	nnoremap <space>; :<C-u>NERDTreeTabsToggle<CR>
 endif
 nnoremap <space>n :<C-u>let NERDTreeIgnore = ['\.']<LEFT><LEFT>
+endif
 let g:extra_whitespace_ignored_filetypes = ['unite']
 Plug 'Xuyuanp/nerdtree-git-plugin'
+" }}}
 
 " easy togle of comment
 Plug 'scrooloose/nerdcommenter'
@@ -559,10 +561,9 @@ let g:NerdCommenter_do_mapping = 0
 let g:NERDSpaceDelims = 1
 let g:NERDDefaultAlign = 'left'
 
-" }}}
-
-" {{{2
+" vaffle {{{2
 Plug 'cocopon/vaffle.vim'
+nmap <Leader>; :Vaffle<CR>
 " }}}
 
 " light cursorWord
@@ -671,6 +672,7 @@ Plug 'machakann/vim-sandwich'
 Plug 'machakann/vim-swap'
 
 Plug 'mbbill/undotree'
+nmap <Leader>u :UndotreeToggle<CR>
 
 Plug 'junegunn/vim-emoji'
 
