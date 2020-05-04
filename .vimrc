@@ -717,6 +717,16 @@ Plug 'rafi/awesome-vim-colorschemes'
 Plug 'matze/vim-move'
 let g:move_key_modifier = 'C'
 
+Plug 't9md/vim-quickhl'
+xmap <Leader>mm <Plug>(quickhl-manual-this)
+nmap <Leader>mm <Plug>(quickhl-manual-this)
+nmap <Leader>mq <Plug>(quickhl-manual-reset)
+xmap <Leader>mq <Plug>(quickhl-manual-reset)
+
+Plug 'terryma/vim-expand-region'
+map <Leader>re <Plug>(expand_region_expand)
+map <Leader>rs <Plug>(expand_region_shrink)
+
 " neosnippet {{{2
 Plug 'Shougo/neosnippet'
 Plug 'Shougo/neosnippet-snippets'
