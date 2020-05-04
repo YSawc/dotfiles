@@ -680,6 +680,7 @@ Plug 'mattn/gist-vim'
 Plug 'mattn/webapi-vim'
 
 Plug 'tpope/vim-fugitive'
+nnoremap <Leader>gb :Gblame<CR>
 
 Plug 'mattn/emmet-vim'
 let g:user_emmet_leader_key='<C-Z>'
