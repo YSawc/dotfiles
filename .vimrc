@@ -482,7 +482,7 @@ if 0
 	endfunction
 
 	syntax report time
-	https://stackoverflow.com/questions/19030290/syntax-highlighting-causes-terrible-lag-in-vim
+	" https://stackoverflow.com/questions/19030290/syntax-highlighting-causes-terrible-lag-in-vim
 	set syntime=on
 	syntime report
 endif
@@ -1019,22 +1019,6 @@ augroup END
 endif
 " }}}
 
-" }}}
-
-" react {{{
-Plug 'pangloss/vim-javascript'
-Plug 'maxmellon/vim-jsx-pretty'
-
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_javascript_checkers = ['eslint']
-" only check with map
-let g:syntastic_check_on_open = 0
-let g:syntastic_check_on_wq = 0
-nnoremap <C-C> :w<CR>:SyntasticCheck<CR>
 " }}}
 
 call plug#end()
