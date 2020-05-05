@@ -76,10 +76,6 @@ set ttyfast
 " cursor setting: always set cursor center
 set scrolloff=100
 
-" mouseScroll on
-set mouse=a
-set ttymouse=xterm2
-
 " foftmethod setting
 set foldmethod=marker
 
