@@ -174,7 +174,7 @@ command! -bang -nargs=* Rg
 
 " setting list
 set list
-set listchars=tab:»-,trail:-,eol:↲,extends:»,precedes:«,nbsp:%,space:.
+set listchars=tab:»-,trail:-,eol:↲,extends:»,precedes:«,nbsp:%
 
 set cursorline
 
@@ -676,7 +676,7 @@ Plug 'mattn/gist-vim'
 Plug 'mattn/webapi-vim'
 
 Plug 'tpope/vim-fugitive'
-nnoremap <Leader>gb :Gblame<CR>
+nnoremap <Leader>vfb :Gblame<CR>
 
 Plug 'mattn/emmet-vim'
 let g:user_emmet_leader_key='<C-Z>'
