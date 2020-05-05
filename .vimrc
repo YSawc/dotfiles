@@ -724,6 +724,8 @@ Plug 'terryma/vim-expand-region'
 map <Leader>re <Plug>(expand_region_expand)
 map <Leader>rs <Plug>(expand_region_shrink)
 
+Plug 'mhinz/vim-grepper', { 'on': ['Grepper', '<plug>(GrepperOperator)'] }
+
 " neosnippet {{{2
 Plug 'Shougo/neosnippet'
 Plug 'Shougo/neosnippet-snippets'
