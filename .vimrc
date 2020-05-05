@@ -726,6 +726,9 @@ map <Leader>rs <Plug>(expand_region_shrink)
 
 Plug 'mhinz/vim-grepper', { 'on': ['Grepper', '<plug>(GrepperOperator)'] }
 
+nnoremap <Leader>gb :Buffers<CR>
+nnoremap <Leader>gf :Files<CR>
+
 " neosnippet {{{2
 Plug 'Shougo/neosnippet'
 Plug 'Shougo/neosnippet-snippets'
