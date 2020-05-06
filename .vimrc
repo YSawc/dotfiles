@@ -201,12 +201,10 @@ set hlsearch
 
 " color lines {{{1
 
-hi LineNr ctermbg=0 ctermfg=0
-hi CursorLineNr ctermbg=4 ctermfg=0
 " colorscheme gruvbox
-" colorscheme skeletor
-" colorscheme shades_of_purple
 colorscheme molokai
+highlight Normal guibg=black guifg=white
+set background=dark
 
 
 " }}}
@@ -495,7 +493,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'itchyny/lightline.vim'    " Dependency: status line
 " dependencied: ale
 let g:lightline = {
-	\ 'colorscheme': 'seoul256',
+	\ 'colorscheme': 'simpleblack',
 	\ 'active': {
 	\   'left': [
 	\     ['mode', 'paste'],
