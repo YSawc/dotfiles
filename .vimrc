@@ -19,7 +19,7 @@ set fileencodings=utf-8,iso-2022-jp,euc-jp,sjis
 scriptencoding utf-8
 
 " light weight setting {{{2
-if 0
+if 1
 	set lazyredraw
 	set ttyfast
 endif
@@ -68,10 +68,6 @@ endif
 
 " moving wrap
 set whichwrap=h,l,b,s,<,>,[,]
-
-" fast scroll
-set lazyredraw
-set ttyfast
 
 " cursor setting: always set cursor center
 set scrolloff=100
