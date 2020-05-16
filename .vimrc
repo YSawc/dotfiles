@@ -699,10 +699,6 @@ Plug 'christoomey/vim-system-copy'
 " Indexing search word with match number
 Plug 'google/vim-searchindex'
 
-" powerful replace with original commandLine
-Plug 'osyo-manga/vim-over'
-nnoremap <Leader>sub :OverCommandLine<CR>%s///g<Left><Left><Left>
-
 Plug 'terryma/vim-multiple-cursors'
 
 Plug 'rafi/awesome-vim-colorschemes'
@@ -724,6 +720,8 @@ Plug 'mhinz/vim-grepper', { 'on': ['Grepper', '<plug>(GrepperOperator)'] }
 
 nnoremap <Leader>gb :Buffers<CR>
 nnoremap <Leader>gf :Files<CR>
+
+Plug 'brooth/far.vim'
 
 " neosnippet {{{2
 Plug 'Shougo/neosnippet'
