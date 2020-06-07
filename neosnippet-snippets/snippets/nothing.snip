@@ -1,0 +1,97 @@
+snippet     __start
+abbr        sector section.
+options     head
+    _${1}_start = . ;
+    ${0}
+    *(.$1)
+    _e$1 = . ;
+
+snippet     __vector
+abbr        vector section.
+options     head
+    .vectors : {
+        vector.o(.data)
+    }
+
+snippet     __static_vector
+abbr        vector section.
+options     head
+    .vectors : {
+        vector.o(.data)
+    } > vectors
+
+snippet     __text
+abbr        text section.
+options     head
+    . text : {
+        *(.text)
+    }
+
+snippet     __static_text
+abbr        text section.
+options     head
+    . text : {
+        _text_start = . ;
+        *(.text)
+        _text = . ;
+    } > rom
+
+snippet     __rodata
+abbr        data section.
+options     head
+    .rodata : {
+        *(.strings)
+        *(.rodata)
+        *(.rodata.*)
+    }
+
+snippet     __static_rodata
+abbr        data section.
+options     head
+    .rodata : {
+        _rodata_start = . ;
+        *(.strings)
+        *(.rodata)
+        *(.rodata.*)
+    } > rom
+
+snippet     __data
+abbr        data section.
+options     head
+    .data : {
+        *(.data)
+    }
+
+snippet     __static_data
+abbr        data section.
+options     head
+    .data : {
+        _data_start = . ;
+        *(.data)
+        _edata = . ;
+    } > data AT> rom
+
+snippet     __bss
+abbr        bss section.
+options     head
+    .bss : {
+        *(.bss)
+        *(COMMON)
+    }
+
+snippet     __static_bss
+abbr        bss section.
+options     head
+    .bss : {
+        _bss_start = . ;
+        *(.bss)
+        *(COMMON)
+        _ebss = . ;
+    } > data AT> rom
+
+snippet     __static_stack
+abbr        stack section.
+options     head
+    .stack :{
+        _stack = . ;
+    } > stack
