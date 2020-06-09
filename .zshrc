@@ -161,6 +161,12 @@ gco_fzf() {
   commit=$(echo "$commits" | fzf --tac +s +m -e) &&
   git checkout $(echo "$commit" | sed "s/ .*//")
 }
+gco_fzf_log() {
+  local commits commit
+  commits=$(git log --pretty=oneline --abbrev-commit --reverse) &&
+  commit=$(echo "$commits" | fzf --cycle --tac +s +m -e) &&
+  git checkout $(echo "$commit" | sed "s/ .*//")
+}
 gco_fzf_remote() {
   local branches branch
   branches=$(git branch --all | grep -v HEAD) &&
