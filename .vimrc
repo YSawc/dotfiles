@@ -237,6 +237,10 @@ imap <C-e> <ESC>A
 
 nnoremap ; :
 
+nnoremap o O<ESC>
+nnoremap O o
+vnoremap d $d
+
 nnoremap <silent> yY :<C-u>%y<CR>
 
 nnoremap <Leader>w :w<CR>
