@@ -85,6 +85,10 @@ if has('mac')
 	set sessionoptions=blank,buffers,curdir,folds,help,tabpages,winsize,terminal
 endif
 
+set display=lastline
+
+set pumheight=10
+
 set signcolumn=yes
 
 " https://vim-jp.org/vimdoc-ja/change.html#fo-table
@@ -241,6 +245,7 @@ nnoremap o O<ESC>
 nnoremap O o
 vnoremap d $d
 
+nnoremap Y y$
 nnoremap <silent> yY :<C-u>%y<CR>
 
 nnoremap <Leader>w :w<CR>
@@ -386,6 +391,9 @@ nnoremap <Leader>pl :<C-u>call append(expand('.'), '')<CR>
 " Very magic by default.
 nnoremap / /\v
 nnoremap ? ?\v
+
+nnoremap + <C-a>
+nnoremap - <C-x>
 
 " }}}
 
