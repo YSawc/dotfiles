@@ -706,6 +706,9 @@ Plug 'google/vim-searchindex'
 Plug 'terryma/vim-multiple-cursors'
 
 Plug 'rafi/awesome-vim-colorschemes'
+Plug 'itchyny/landscape.vim'
+
+Plug 'itchyny/thumbnail.vim'
 
 Plug 'matze/vim-move'
 let g:move_key_modifier = 'C'
@@ -726,6 +729,8 @@ nnoremap <Leader>gb :Buffers<CR>
 nnoremap <Leader>gf :Files<CR>
 
 Plug 'brooth/far.vim'
+
+Plug 'vim-utils/vim-man'
 
 " neosnippet {{{2
 Plug 'Shougo/neosnippet'
