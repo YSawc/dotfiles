@@ -9,6 +9,23 @@ if has("unix")
 	set rtp+=/home/linuxbrew/.linuxbrew/opt/fzf
 endif
 
+" disable builtins
+let g:loaded_gzip=1
+let g:loaded_tar=1
+let g:loaded_tarPlugin=1
+let g:loaded_zip=1
+let g:loaded_zipPlugin=1
+let g:loaded_rrhelper=1
+let g:loaded_2html_plugin=1
+let g:loaded_vimball=1
+let g:loaded_vimballPlugin=1
+let g:loaded_getscript=1
+let g:loaded_getscriptPlugin=1
+let g:loaded_netrw=1
+let g:loaded_netrwPlugin=1
+let g:loaded_netrwSettings=1
+let g:loaded_netrwFileHandlers=1
+
 " }}}
 
 " basic {{{1
@@ -565,11 +582,6 @@ let g:NerdCommenter_do_mapping = 0
 let g:NERDSpaceDelims = 1
 let g:NERDDefaultAlign = 'left'
 
-" vaffle {{{2
-Plug 'cocopon/vaffle.vim'
-nmap <Leader>; :Vaffle<CR>
-" }}}
-
 " light cursorWord
 let g:loaded_matchparen = 1
 Plug 'itchyny/vim-parenmatch'
@@ -742,6 +754,9 @@ nnoremap <Leader>gf :Files<CR>
 Plug 'brooth/far.vim'
 
 Plug 'vim-utils/vim-man'
+
+Plug 'lambdalisue/fern.vim'
+nnoremap <Leader>; :Fern .<CR>
 
 " neosnippet {{{2
 Plug 'Shougo/neosnippet'
