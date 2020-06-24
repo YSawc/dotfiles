@@ -94,7 +94,7 @@ set signcolumn=yes
 " https://vim-jp.org/vimdoc-ja/change.html#fo-table
 set formatoptions-=cro
 
-set completeopt=menuone,noinsert
+set completeopt=menuone,noinsert,noselect
 
 " setting for undo
 if has('persistent_undo')
@@ -833,8 +833,8 @@ let g:lsp_diagnostics_enabled = 1
 let g:lsp_diagnostics_echo_cursor = 1
 let g:asyncomplete_auto_popup = 1
 let g:asyncomplete_auto_completeopt = 0
-let g:asyncomplete_popup_delay = 50
 let g:lsp_text_edit_enabled = 1
+let g:asyncomplete_popup_delay = 200
 nnoremap <Leader>lf :LspDocumentFormatSync<CR>
 nnoremap <Leader>lh :LspHover<CR>
 
