@@ -69,20 +69,6 @@ hi Visual cterm=reverse ctermbg=NONE
 " selector of short form
 set virtualedit+=block
 
-" netrw {{{2
-if 1
-	" prewiew setting
-	let g:netrw_banner=0
-	let g:netrw_preview=1
-	" TreeView
-	let g:netrw_liststyle = 3
-	" date format
-	let g:netrw_timefmt='%Y/%m/%d(%a) %H:%M:%S'
-	" size format
-	let g:netrw_sizestyle="H"
-endif
-" }}}
-
 " moving wrap
 set whichwrap=h,l,b,s,<,>,[,]
 
@@ -758,6 +744,7 @@ Plug 'vim-utils/vim-man'
 Plug 'lambdalisue/fern.vim'
 nnoremap <Leader>; :Fern .<CR>
 
+Plug 'vim-scripts/a.vim'
 " neosnippet {{{2
 Plug 'Shougo/neosnippet'
 Plug 'Shougo/neosnippet-snippets'
