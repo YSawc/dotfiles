@@ -181,12 +181,6 @@ set listchars=tab:»-,trail:-,eol:↲,extends:»,precedes:«,nbsp:%
 
 set cursorline
 
-if has('vim_starting')
-	let &t_SI .= "\e[5 q"
-	let &t_EI .= "\e[2 q"
-	let &t_SR .= "\e[1 q"
-endif
-
 " set for statusLine
 set laststatus=2
 
@@ -422,18 +416,19 @@ set smartindent
 " fileTypeIndent{{{2
 augroup fileTypeIndent
 	autocmd!
-	autocmd BufRead,BufNewFile *.go setlocal tabstop=2 shiftwidth=2 softtabstop=2
+	autocmd BufRead,BufNewFile *.go setlocal tabstop=2 softtabstop=2 shiftwidth=2
 	autocmd BufRead,BufNewFile *.rs setlocal tabstop=4 softtabstop=4 shiftwidth=4
 	autocmd BufRead,BufNewFile *.hs setlocal tabstop=4 softtabstop=4 shiftwidth=4 expandtab
 	autocmd BufRead,BufNewFile *.cabal setlocal tabstop=4 softtabstop=4 shiftwidth=4 expandtab
 	autocmd BufRead,BufNewFile *.copl setlocal tabstop=2 softtabstop=2 shiftwidth=2
-	autocmd BufRead,BufNewFile *.rb setlocal tabstop=2 shiftwidth=2 softtabstop=2
+	autocmd BufRead,BufNewFile *.java setlocal tabstop=2 softtabstop=2 shiftwidth=2 expandtab
+	autocmd BufRead,BufNewFile *.rb setlocal tabstop=2 softtabstop=2 shiftwidth=2
 	autocmd BufRead,BufNewFile *.s setlocal tabstop=2 softtabstop=2 shiftwidth=2 expandtab
 	autocmd BufRead,BufNewFile *.c setlocal tabstop=2 softtabstop=2 shiftwidth=2 expandtab
 	autocmd BufRead,BufNewFile *.cpp setlocal tabstop=2 softtabstop=2 shiftwidth=2 expandtab
 	autocmd BufRead,BufNewFile *.h setlocal tabstop=2 softtabstop=2 shiftwidth=2 expandtab
 	autocmd BufRead,BufNewFile *.asm setlocal tabstop=4 softtabstop=4 shiftwidth=4 expandtab
-	autocmd BufRead,BufNewFile *.md setlocal tabstop=2 shiftwidth=2 softtabstop=2 expandtab
+	autocmd BufRead,BufNewFile *.md setlocal tabstop=2 softtabstop=2 shiftwidth=2  expandtab
 	autocmd BufRead,BufNewFile *.js setlocal tabstop=2 softtabstop=2 shiftwidth=2
 	autocmd BufRead,BufNewFile *.ts setlocal tabstop=2 softtabstop=2 shiftwidth=2
 	autocmd BufRead,BufNewFile *.jsx setlocal tabstop=2 softtabstop=2 shiftwidth=2
@@ -446,8 +441,8 @@ augroup fileTypeIndent
 	autocmd BufRead,BufNewFile *.yaml setlocal tabstop=2 softtabstop=2 shiftwidth=2 expandtab
 	autocmd BufRead,BufNewFile *.s setlocal tabstop=2 softtabstop=2 shiftwidth=2 expandtab
 	autocmd BufRead,BufNewFile *.hdl setlocal tabstop=4 softtabstop=4 shiftwidth=4 expandtab
-	autocmd BufRead,BufNewFile Makefile setlocal tabstop=8 shiftwidth=8 softtabstop=8
-	autocmd BufRead,BufNewFile *.make setlocal tabstop=4 shiftwidth=4 softtabstop=4
+	autocmd BufRead,BufNewFile Makefile setlocal tabstop=8 softtabstop=8 shiftwidth=8
+	autocmd BufRead,BufNewFile *.make setlocal tabstop=4 softtabstop=4 shiftwidth=4
 	autocmd BufRead,BufNewFile *.dockerfile setlocal tabstop=2 softtabstop=2 shiftwidth=2 expandtab
 	autocmd BufRead,BufNewFile Dockerfile setlocal tabstop=2 softtabstop=2 shiftwidth=2 expandtab
 augroup END
@@ -744,7 +739,8 @@ Plug 'vim-utils/vim-man'
 Plug 'lambdalisue/fern.vim'
 nnoremap <Leader>; :Fern .<CR>
 
-Plug 'vim-scripts/a.vim'
+" Plug 'vim-scripts/a.vim'
+
 " neosnippet {{{2
 Plug 'Shougo/neosnippet'
 Plug 'Shougo/neosnippet-snippets'
@@ -820,7 +816,6 @@ endif
 
 " vim-lsp {{{2
 
-Plug 'prabirshrestha/async.vim'
 Plug 'prabirshrestha/vim-lsp'
 Plug 'prabirshrestha/asyncomplete.vim'
 Plug 'prabirshrestha/asyncomplete-lsp.vim'
