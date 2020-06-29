@@ -385,10 +385,6 @@ nnoremap <silent> <Leader>pp :<C-u>echo expand('%')<CR>
 " Insert the line to the next line.
 nnoremap <Leader>pl :<C-u>call append(expand('.'), '')<CR>
 
-" Very magic by default.
-nnoremap / /\v
-nnoremap ? ?\v
-
 nnoremap + <C-a>
 nnoremap - <C-x>
 
@@ -687,6 +683,37 @@ let g:user_emmet_leader_key='<C-Z>'
 let g:user_emmet_install_global = 0
 autocmd FileType html,css EmmetInstall
 
+" incsearch {{{1
+
+Plug 'haya14busa/incsearch.vim'
+map /  <Plug>(incsearch-forward)
+map ?  <Plug>(incsearch-backward)
+map g/ <Plug>(incsearch-stay)
+let g:incsearch#auto_nohlsearch = 1
+map n  <Plug>(incsearch-nohl-n)
+map N  <Plug>(incsearch-nohl-N)
+map *  <Plug>(incsearch-nohl-*)
+map #  <Plug>(incsearch-nohl-#)
+map g* <Plug>(incsearch-nohl-g*)
+map g# <Plug>(incsearch-nohl-g#)
+function! s:noregexp(pattern) abort
+  return '\V' . escape(a:pattern, '\')
+endfunction
+
+function! s:config() abort
+  return {'converters': [function('s:noregexp')]}
+endfunction
+
+noremap <silent><expr> z/ incsearch#go(<SID>config())
+
+" migemo
+Plug 'haya14busa/incsearch-migemo.vim'
+map m/ <Plug>(incsearch-migemo-/)
+map m? <Plug>(incsearch-migemo-?)
+map mg/ <Plug>(incsearch-migemo-stay)
+
+" }}}
+
 Plug 'haya14busa/vim-edgemotion'
 map [d <Plug>(edgemotion-k)
 map ]d <Plug>(edgemotion-j)
@@ -821,6 +848,9 @@ Plug 'prabirshrestha/asyncomplete.vim'
 Plug 'prabirshrestha/asyncomplete-lsp.vim'
 Plug 'prabirshrestha/asyncomplete-necosyntax.vim'
 Plug 'Shougo/neco-syntax'
+
+Plug 'SirVer/ultisnips'
+let g:lsp_ultisnips_integration = 1
 
 Plug 'mattn/vim-lsp-settings'
 Plug 'mattn/vim-lsp-icons'
