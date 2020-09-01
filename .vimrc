@@ -120,6 +120,9 @@ augroup END
 " Search the word nearest to the cursor in new window.
 nnoremap <C-w>*  <C-w>s*
 
+" disable auto resize window
+set noequalalways
+
 " }}}
 
 " cursorline {{{1
@@ -201,7 +204,7 @@ set hlsearch
 " colorscheme gruvbox
 colorscheme molokai
 highlight Normal guibg=black guifg=white
-set background=dark
+" set background=dark
 
 
 " }}}
@@ -245,6 +248,8 @@ vnoremap d $d
 nnoremap Y y$
 nnoremap <silent> yY :<C-u>%y<CR>
 
+nnoremap <silent> dD :<C-u>%d<CR>
+
 nnoremap <Leader>w :w<CR>
 nnoremap <Leader>q :q!<CR>
 
@@ -261,6 +266,11 @@ noremap <expr> <C-f> max([winheight(0) - 2, 1]) . "\<C-d>" . (line('.') > line('
 cnoremap <C-b> <Left>
 cnoremap <C-f> <Right>
 cnoremap <C-a> <Home>
+
+cnoremap <C-p> <Up>
+cnoremap <C-n> <Down>
+cnoremap <Up>   <C-p>
+cnoremap <Down> <C-n>
 
 " tmux {{{2
 nnoremap s <Nop>
@@ -425,15 +435,16 @@ augroup fileTypeIndent
 	autocmd BufRead,BufNewFile *.h setlocal tabstop=2 softtabstop=2 shiftwidth=2 expandtab
 	autocmd BufRead,BufNewFile *.asm setlocal tabstop=4 softtabstop=4 shiftwidth=4 expandtab
 	autocmd BufRead,BufNewFile *.md setlocal tabstop=2 softtabstop=2 shiftwidth=2  expandtab
-	autocmd BufRead,BufNewFile *.js setlocal tabstop=2 softtabstop=2 shiftwidth=2
-	autocmd BufRead,BufNewFile *.ts setlocal tabstop=2 softtabstop=2 shiftwidth=2
+	autocmd BufRead,BufNewFile *.js setlocal tabstop=2 softtabstop=2 shiftwidth=2 expandtab
+	autocmd BufRead,BufNewFile *.ts setlocal tabstop=2 softtabstop=2 shiftwidth=2 expandtab
 	autocmd BufRead,BufNewFile *.jsx setlocal tabstop=2 softtabstop=2 shiftwidth=2
 	autocmd BufRead,BufNewFile *.tsx setlocal tabstop=2 softtabstop=2 shiftwidth=2
-	autocmd BufRead,BufNewFile *.json setlocal tabstop=2 softtabstop=2 shiftwidth=2
-	autocmd BufRead,BufNewFile *.html setlocal tabstop=2 softtabstop=2 shiftwidth=2
+	autocmd BufRead,BufNewFile *.json setlocal tabstop=2 softtabstop=2 shiftwidth=2 expandtab
+	autocmd BufRead,BufNewFile *.html setlocal tabstop=2 softtabstop=2 shiftwidth=2 expandtab
 	autocmd BufRead,BufNewFile *.asm setlocal tabstop=2 softtabstop=2 shiftwidth=2
 	autocmd BufRead,BufNewFile *.fs setlocal tabstop=2 softtabstop=2 shiftwidth=2
 	autocmd BufRead,BufNewFile *.ml setlocal tabstop=4 softtabstop=4 shiftwidth=4
+	autocmd BufRead,BufNewFile *.hs setlocal tabstop=4 softtabstop=4 shiftwidth=4 expandtab
 	autocmd BufRead,BufNewFile *.yaml setlocal tabstop=2 softtabstop=2 shiftwidth=2 expandtab
 	autocmd BufRead,BufNewFile *.s setlocal tabstop=2 softtabstop=2 shiftwidth=2 expandtab
 	autocmd BufRead,BufNewFile *.hdl setlocal tabstop=4 softtabstop=4 shiftwidth=4 expandtab
@@ -497,7 +508,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'itchyny/lightline.vim'    " Dependency: status line
 " dependencied: ale
 let g:lightline = {
-	\ 'colorscheme': 'simpleblack',
+	\ 'colorscheme': 'molokai',
 	\ 'active': {
 	\   'left': [
 	\     ['mode', 'paste'],
@@ -679,11 +690,10 @@ Plug 'rhysd/git-messenger.vim'
 nmap <Leader>pg <Plug>(git-messenger)
 
 Plug 'mattn/emmet-vim'
-let g:user_emmet_leader_key='<C-Z>'
-let g:user_emmet_install_global = 0
+let g:user_emmet_leader_key='<C-y>'
 autocmd FileType html,css EmmetInstall
 
-" incsearch {{{1
+" incsearch {{{2
 
 Plug 'haya14busa/incsearch.vim'
 map /  <Plug>(incsearch-forward)
@@ -799,7 +809,6 @@ let g:ale_set_loclist = 0
 let g:ale_set_quickfix = 1
 let g:ale_linters = {
 	\'cpp': [''],
-	\'haskell': ['hie'],
 	\'asm': [''],
 	\}
 
@@ -964,7 +973,7 @@ if 1
 	let g:racer_cmd = '~/.cargo/bin/racer'
 	let g:racer_experimental_completer = 1
 	au FileType rust nmap gd <Plug>(rust-def)
-	au FileType rust nmap gs <Plug>(rust-def-split)
+	" au FileType rust nmap gs <Plug>(rust-def-split)
 	au FileType rust nmap gx <Plug>(rust-def-vertical)
 	au FileType rust nmap <leader>gd <Plug>(rust-doc)
 endif
@@ -992,6 +1001,26 @@ endif
 let g:opamshare = substitute(system('opam config var share'),'\n$','','''')
 execute "set rtp+=" . g:opamshare . "/merlin/vim"
 
+" }}}
+
+" haskell{{{2
+" augroup MyLsp
+"   autocmd FileType haskell setlocal omnifunc=lsp#complete
+
+  " if executable('hie')
+  "     au User lsp_setup call lsp#register_server({
+  "       \ 'name': 'hie',
+  "       \ 'cmd': {server_info->['hie']},
+  "       \ 'whitelist': ['haskell'],
+  "       \ })
+  " endif
+
+  " au FileType haskell nmap <leader>R <plug>(lsp-rename)
+  " au FileType haskell nmap <leader>D <plug>(lsp-definition)
+  " au FileType haskell nmap <leader>r <plug>(lsp-references)
+  " au FileType haskell nmap <leader>d <plug>(lsp-document-symbol)
+  " au FileType haskell nmap <leader>w <plug>(lsp-workspace-symbol)
+" augroup end
 " }}}
 
 call plug#end()
