@@ -138,8 +138,8 @@ function _vcs_git_indicator () {
 add-zsh-hook precmd _vcs_git_indicator
 
 function {
-local git='$_vcs_git_indicator'
-PROMPT="%F{cyan}%n%f:%F{yellow}%~%f$git %F{blue}"$'\n'"%%%f "
+	local git='$_vcs_git_indicator'
+	PROMPT="%F{cyan}%n%f:%F{yellow}%~%f$git %F{blue}"$'\n\r'"%%%f "
 }
 # }}}
 # }}}
@@ -198,8 +198,10 @@ zplugin light chrissicool/zsh-256color
 zplugin light zsh-users/zsh-completions
 zplugin light zsh-users/zsh-autosuggestions
 zplugin light zsh-users/zsh-syntax-highlighting
-zplugin light wfxr/forgit
 export FORGIT_NO_ALIASES=1
 zplugin ice wait lucid; zplugin light b4b4r07/enhancd
 export ENHANCD_HYPHEN_NUM="${ENHANCD_HYPHEN_NUM:-30}" # default "cd -" list number chagne to 20
 # }}}
+if [ -e /home/ysawc/.nix-profile/etc/profile.d/nix.sh ]; then . /home/ysawc/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
+
+export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
