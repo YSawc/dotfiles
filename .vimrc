@@ -202,8 +202,12 @@ set hlsearch
 " color lines {{{1
 
 " colorscheme gruvbox
-colorscheme molokai
-highlight Normal guibg=black guifg=white
+" colorscheme molokai
+set termguicolors
+
+let g:rigel_lightline = 1
+
+" highlight Normal guibg=black guifg=white
 " set background=dark
 
 
@@ -508,7 +512,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'itchyny/lightline.vim'    " Dependency: status line
 " dependencied: ale
 let g:lightline = {
-	\ 'colorscheme': 'molokai',
+	\ 'colorscheme': 'rigel',
 	\ 'active': {
 	\   'left': [
 	\     ['mode', 'paste'],
@@ -748,6 +752,7 @@ Plug 'terryma/vim-multiple-cursors'
 
 Plug 'rafi/awesome-vim-colorschemes'
 Plug 'itchyny/landscape.vim'
+Plug 'Rigellute/rigel'
 
 Plug 'itchyny/thumbnail.vim'
 
@@ -858,8 +863,8 @@ Plug 'prabirshrestha/asyncomplete-lsp.vim'
 Plug 'prabirshrestha/asyncomplete-necosyntax.vim'
 Plug 'Shougo/neco-syntax'
 
-Plug 'SirVer/ultisnips'
-let g:lsp_ultisnips_integration = 1
+" Plug 'SirVer/ultisnips'
+" let g:lsp_ultisnips_integration = 1
 
 Plug 'mattn/vim-lsp-settings'
 Plug 'mattn/vim-lsp-icons'
@@ -1031,3 +1036,5 @@ command Gps Git push
 " }}}
 
 " vim: foldmethod=marker
+
+ colorscheme rigel
