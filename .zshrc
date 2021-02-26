@@ -114,6 +114,7 @@ alias gr='git reset'
 
 # appearrance {{{1
 # git status {{{2
+if [[ 0 ]] then
 autoload -Uz add-zsh-hook
 setopt prompt_subst
 function _vcs_git_indicator () {
@@ -141,6 +142,9 @@ function {
 	local git='$_vcs_git_indicator'
 	PROMPT="%F{cyan}%n%f:%F{yellow}%~%f$git %F{blue}"$'\n\r'"%%%f "
 }
+
+fi
+
 # }}}
 # }}}
 
@@ -205,3 +209,5 @@ export ENHANCD_HYPHEN_NUM="${ENHANCD_HYPHEN_NUM:-30}" # default "cd -" list numb
 if [ -e /home/ysawc/.nix-profile/etc/profile.d/nix.sh ]; then . /home/ysawc/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
 
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+
+eval "$(starship init zsh)"
