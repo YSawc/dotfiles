@@ -143,9 +143,6 @@ require('packer').startup(function(use)
     end
   }
 
-  use 'rust-lang/rust.vim'
-  vim.g.rustfmt_autosave = 1
-
   use 'ntpeters/vim-better-whitespace'
 
   use {
@@ -551,6 +548,12 @@ require('packer').startup(function(use)
         debounce_ms = 150,
       })
     end
+  }
+
+  use 'voldikss/vim-floaterm'
+
+  use {
+    'LunarVim/bigfile.nvim'
   }
 end)
 

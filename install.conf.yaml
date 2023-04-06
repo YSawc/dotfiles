@@ -11,12 +11,12 @@
     - ~/projects
 
 - link:
-    ~/.tmux.conf: .tmux.conf
     ~/.vimrc: .vimrc
     ~/.zshrc: .zshrc
     ~/.config/nvim: .config/nvim
     ~/.config/alacritty : .config/alacritty
     ~/.config/starship.toml : .config/starship.toml
+    ~/.config/zellij: .config/zellij
 
 - shell:
   - [git submodule update --init --recursive, Installing submodules]
