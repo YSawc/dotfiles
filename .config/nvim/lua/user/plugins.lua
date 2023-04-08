@@ -143,7 +143,14 @@ require('packer').startup(function(use)
     end
   }
 
-  use 'ntpeters/vim-better-whitespace'
+  use {
+    'ntpeters/vim-better-whitespace',
+    config = function()
+      vim.g.better_whitespace_filetypes_blacklist =
+      { "diff", "git", "gitcommit", "unite", "qf", "help", "fugitive", "toggleterm" }
+      -- vim.cmd([[autocmd FileType terminal DisableWhitespace]])
+    end
+  }
 
   use {
     'Lokaltog/vim-easymotion',
@@ -160,16 +167,45 @@ require('packer').startup(function(use)
 
   use {
     'nvim-telescope/telescope.nvim', tag = '0.1.0',
-    requires = { { 'nvim-lua/plenary.nvim' } },
+    requires = {
+      { 'nvim-lua/plenary.nvim' },
+      { "nvim-telescope/telescope-live-grep-args.nvim" },
+    },
     config = function()
       local builtin = require('telescope.builtin')
       vim.keymap.set('n', '<Space>ff', builtin.find_files, {})
-      vim.keymap.set('n', '<Space>fg', builtin.live_grep, {})
+      -- vim.keymap.set('n', '<Space>fg', builtin.live_grep, {})
+      vim.keymap.set("n", "<Space>fg", ":lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>")
       vim.keymap.set('n', '<Space>fb', builtin.buffers, {})
       vim.keymap.set('n', '<Space>fh', builtin.help_tags, {})
       vim.keymap.set('n', '<Space>fq', builtin.quickfix, {})
-
       vim.keymap.set('n', '<Space>tt', '<cmd>Telescope<cr>')
+
+
+      require("telescope").load_extension("live_grep_args")
+
+      local telescope = require("telescope")
+      local lga_actions = require("telescope-live-grep-args.actions")
+
+      telescope.setup {
+        extensions = {
+          live_grep_args = {
+            auto_quoting = true, -- enable/disable auto-quoting
+            -- define mappings, e.g.
+            mappings = {
+              -- extend mappings
+              i = {
+                ["<C-k>"] = lga_actions.quote_prompt(),
+                ["<C-i>"] = lga_actions.quote_prompt({ postfix = " --iglob " }),
+              },
+            },
+            -- ... also accepts theme settings, for example:
+            -- theme = "dropdown", -- use dropdown theme
+            -- theme = { }, -- use own theme spec
+            -- layout_config = { mirror=true }, -- mirror preview pane
+          }
+        }
+      }
     end
   }
 
@@ -455,14 +491,16 @@ require('packer').startup(function(use)
     end
   })
 
-  use { 'ellisonleao/glow.nvim' }
+  use 'ellisonleao/glow.nvim'
 
   use {
     'akinsho/toggleterm.nvim',
     tag = '*',
     config = function()
-      require("toggleterm").setup {
-      }
+      require("toggleterm").setup({
+        size = 40,
+        open_mapping = [[<C-\>]]
+      })
     end
   }
 
@@ -554,6 +592,17 @@ require('packer').startup(function(use)
 
   use {
     'LunarVim/bigfile.nvim'
+  }
+
+  use { 'lambdalisue/fern.vim',
+    requires = {
+      'lambdalisue/fern-git-status.vim',
+      'lambdalisue/nerdfont.vim',
+      'lambdalisue/fern-renderer-nerdfont.vim',
+    },
+    config = function()
+      vim.g['fern#renderer'] = "nerdfont"
+    end
   }
 end)
 
