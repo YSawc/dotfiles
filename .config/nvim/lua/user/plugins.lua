@@ -153,19 +153,6 @@ require('packer').startup(function(use)
   }
 
   use {
-    'Lokaltog/vim-easymotion',
-    config = function()
-      vim.g.EasyMotion_do_mapping = 0
-      vim.g.EasyMotion_startofline = 0
-      vim.g.EasyMotion_skipfoldedline = 0
-      vim.g.EasyMotion_cmigemo = 1
-      vim.keymap.set('n', '<Space>ef', '<plug>(easymotion-overwin-f2)')
-      vim.keymap.set('n', '<Space>ej', '<plug>(easymotion-j)')
-      vim.keymap.set('n', '<Space>ek', '<plug>(easymotion-k)')
-    end
-  }
-
-  use {
     'nvim-telescope/telescope.nvim', tag = '0.1.0',
     requires = {
       { 'nvim-lua/plenary.nvim' },
@@ -602,6 +589,21 @@ require('packer').startup(function(use)
     },
     config = function()
       vim.g['fern#renderer'] = "nerdfont"
+    end
+  }
+
+  use {
+    'phaazon/hop.nvim',
+    branch = 'v2', -- optional but strongly recommended
+    config = function()
+      -- you can configure Hop the way you like here; see :h hop-config
+      -- require'hop'.setup { keys = 'etovxqpdygfblzhckisuran' }
+      local hop = require'hop'
+      hop.setup { keys = 'asdfghjkl;qwertyuiopzxcvbnm,./' }
+      vim.keymap.set('', '<Space>ef', function()
+        hop.hint_char2()
+      end, {remap=true})
+
     end
   }
 end)
