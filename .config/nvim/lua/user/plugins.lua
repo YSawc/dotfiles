@@ -110,6 +110,12 @@ require('packer').startup(function(use)
       'nvim-tree/nvim-web-devicons', -- optional, for file icons
     },
     config = function()
+      local function on_attach(bufnr)
+        local api = require('nvim-tree.api')
+        api.config.mappings.default_on_attach(bufnr)
+        vim.keymap.del('n', 's', { buffer = bufnr })
+      end
+
       vim.g.loaded_netrw = 1
       vim.g.loaded_netrwPlugin = 1
 
@@ -117,14 +123,10 @@ require('packer').startup(function(use)
 
       vim.keymap.set('n', '<Space>;', ':NvimTreeToggle<CR>')
       require('nvim-tree').setup({
+        on_attach = on_attach,
         sort_by = 'case_sensitive',
         view = {
           adaptive_size = true,
-          mappings = {
-            list = {
-              { key = 's', action = '' },
-            },
-          },
         },
         renderer = {
           group_empty = true,
@@ -598,12 +600,11 @@ require('packer').startup(function(use)
     config = function()
       -- you can configure Hop the way you like here; see :h hop-config
       -- require'hop'.setup { keys = 'etovxqpdygfblzhckisuran' }
-      local hop = require'hop'
+      local hop = require 'hop'
       hop.setup { keys = 'asdfghjkl;qwertyuiopzxcvbnm,./' }
       vim.keymap.set('', '<Space>ef', function()
         hop.hint_char2()
-      end, {remap=true})
-
+      end, { remap = true })
     end
   }
 end)
