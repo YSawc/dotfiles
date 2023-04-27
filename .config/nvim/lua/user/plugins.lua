@@ -109,42 +109,23 @@ require('lazy').setup({
 	'junegunn/fzf.vim',
 
 	{
-		'nvim-tree/nvim-tree.lua',
+		'nvim-neo-tree/neo-tree.nvim',
+		branch = 'v2.x',
 		dependencies = {
-			'nvim-tree/nvim-web-devicons', -- optional, for file icons
+			'nvim-lua/plenary.nvim',
+			'nvim-tree/nvim-web-devicons', -- not strictly required, but recommended
+			'MunifTanjim/nui.nvim',
 		},
 		config = function()
-			local function on_attach(bufnr)
-				local api = require('nvim-tree.api')
-				api.config.mappings.default_on_attach(bufnr)
-				vim.keymap.del('n', 's', { buffer = bufnr })
-			end
-
-			vim.g.loaded_netrw = 1
-			vim.g.loaded_netrwPlugin = 1
-
-			vim.opt.termguicolors = true
-
-			vim.keymap.set('n', '<Space>;', ':NvimTreeToggle<CR>')
-			require('nvim-tree').setup({
-				on_attach = on_attach,
-				sort_by = 'case_sensitive',
-				view = {
-					adaptive_size = true,
-				},
-				renderer = {
-					group_empty = true,
-				},
-				filters = {
-					dotfiles = true,
-				},
-				actions = {
-					open_file = {
-						window_picker = {
-							chars = "asdfghjkl",
+			require("neo-tree").setup({
+				vim.keymap.set('n', '<Space>;', ':Neotree<CR>'),
+				filesystem = {
+					window = {
+						mappings = {
+							["s"] = "noop"
 						}
 					}
-				},
+				}
 			})
 		end
 	},
@@ -613,16 +594,14 @@ require('lazy').setup({
 			end, { remap = true })
 		end
 	},
-})
 
-if is_bootstrap then
-	print '=================================='
-	print '    Plugins are being installed'
-	print '    Wait until Packer completes,'
-	print '       then restart nvim'
-	print '=================================='
-	return
-end
+	{
+		'simrat39/symbols-outline.nvim',
+		config = function()
+			require("symbols-outline").setup()
+		end
+	},
+})
 
 -- automatically run `:PackerCompile` whenever `plugins.lua` is updated
 -- vim.api.nvim_create_autocmd('BufWritePost', {
