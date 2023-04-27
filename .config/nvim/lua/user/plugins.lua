@@ -118,11 +118,12 @@ require('lazy').setup({
 		},
 		config = function()
 			require("neo-tree").setup({
-				vim.keymap.set('n', '<Space>;', ':Neotree<CR>'),
+				vim.keymap.set('n', '<Space>;', ':Neotree toggle<CR>'),
 				filesystem = {
 					window = {
 						mappings = {
-							["s"] = "noop"
+							["s"] = "noop",
+							["/"] = "noop"
 						}
 					}
 				}
