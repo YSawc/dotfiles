@@ -579,6 +579,14 @@ require('lazy').setup({
 			require("symbols-outline").setup()
 		end
 	},
+
+	{
+		'https://codeberg.org/esensar/nvim-dev-container',
+		requires = { 'nvim-treesitter/nvim-treesitter' },
+		config = function()
+			require("devcontainer").setup {}
+		end
+	}
 })
 
 -- automatically run `:PackerCompile` whenever `plugins.lua` is updated
