@@ -44,29 +44,6 @@ require('lazy').setup({
 
 	'tpope/vim-fugitive',
 	'airblade/vim-gitgutter',
-	'obaland/vfiler.vim',
-	{
-		'obaland/vfiler-fzf',
-		config = function()
-			local fzf_action = require 'vfiler/fzf/action'
-			require 'vfiler/config'.setup {
-				mappings = {
-					['f'] = fzf_action.files
-				},
-			}
-		end
-	},
-	{
-		'obaland/vfiler-column-devicons',
-		config = function()
-			require 'vfiler/config'.setup {
-				options = {
-					columns = 'indent,devicons,name,mode,size,time',
-					-- ...
-				},
-			}
-		end
-	},
 	'ibhagwan/fzf-lua',
 
 	{
