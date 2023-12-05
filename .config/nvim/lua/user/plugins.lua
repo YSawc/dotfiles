@@ -128,7 +128,8 @@ require('lazy').setup({
 			local builtin = require('telescope.builtin')
 			vim.keymap.set('n', '<Space>ff', builtin.find_files, {})
 			-- vim.keymap.set('n', '<Space>fg', builtin.live_grep, {})
-			vim.keymap.set("n", "<Space>fg", ":lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>")
+			vim.keymap.set("n", "<Space>fg",
+				":lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>")
 			vim.keymap.set('n', '<Space>fb', builtin.buffers, {})
 			vim.keymap.set('n', '<Space>fh', builtin.help_tags, {})
 			vim.keymap.set('n', '<Space>fq', builtin.quickfix, {})
@@ -250,7 +251,9 @@ require('lazy').setup({
 		config = function() require('nvim-autopairs').setup {} end
 	},
 
-	'andymass/vim-matchup',
+	{
+		'andymass/vim-matchup',
+	},
 
 	{
 		'pwntester/octo.nvim',
@@ -434,7 +437,8 @@ require('lazy').setup({
 		"gbprod/substitute.nvim",
 		config = function()
 			require("substitute").setup({})
-			vim.keymap.set("n", ",s", "<cmd>lua require('substitute.range').operator()<cr>", { noremap = true })
+			vim.keymap.set("n", ",s", "<cmd>lua require('substitute.range').operator()<cr>",
+				{ noremap = true })
 			vim.keymap.set("x", ",s", "<cmd>lua require('substitute.range').visual()<cr>", { noremap = true })
 			vim.keymap.set("n", ",ss", "<cmd>lua require('substitute.range').word()<cr>", { noremap = true })
 		end
