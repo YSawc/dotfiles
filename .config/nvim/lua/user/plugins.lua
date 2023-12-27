@@ -20,7 +20,7 @@ require('lazy').setup({
   },
   {
     'williamboman/mason.nvim',
-    'jose-elias-alvarez/null-ls.nvim',
+    'nvimtools/none-ls.nvim',
     'jay-babu/mason-null-ls.nvim',
     config = function()
       require("mason").setup()
@@ -29,7 +29,7 @@ require('lazy').setup({
         automatic_setup = true, -- Recommended, but optional
       })
 
-      require("null-ls").setup({
+      require("none-ls").setup({
         sources = {
           -- Anything not supported by mason.
         }
@@ -87,7 +87,7 @@ require('lazy').setup({
 
   {
     'nvim-neo-tree/neo-tree.nvim',
-    branch = 'v2.x',
+    branch = 'v3.x',
     dependencies = {
       'nvim-lua/plenary.nvim',
       'nvim-tree/nvim-web-devicons', -- not strictly required, but recommended
@@ -119,7 +119,7 @@ require('lazy').setup({
 
   {
     'nvim-telescope/telescope.nvim',
-    tag = '0.1.0',
+    tag = '0.1.5',
     dependencies = {
       { 'nvim-lua/plenary.nvim' },
       { "nvim-telescope/telescope-live-grep-args.nvim" },
@@ -160,6 +160,7 @@ require('lazy').setup({
           }
         }
       }
+      vim.api.nvim_create_autocmd("FileType", { pattern = "TelescopeResults", command = [[setlocal nofoldenable]] })
     end
   },
 
@@ -293,13 +294,6 @@ require('lazy').setup({
           }
         }
       })
-    end
-  },
-
-  {
-    'ray-x/starry.nvim',
-    config = function()
-      require('starry.functions').change_style("emerald")
     end
   },
 

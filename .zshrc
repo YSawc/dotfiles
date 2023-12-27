@@ -1,17 +1,6 @@
 # basic {{{
 
-autoload -U compinit
-compinit
-
 KEYTIMEOUT=0
-
-zstyle ':completion:*' list-colors di=34 fi=0
-
-zstyle ':completion:*:default' menu select=1
-
-# setopt PRINT_EIGHT_BIT
-
-# stack(haskell) completion setting
 
 # homebrew
 export PATH="/usr/local/sbin:$PATH"
@@ -21,8 +10,6 @@ export PATH="/usr/local/sbin:$PATH"
 # alias {{{
 
 alias lg='lazygit'
-
-alias _pb_cp='pbcopy && pbpaste'
 
 # git
 alias g="git"
@@ -42,42 +29,6 @@ alias gb='git branch'
 alias gm='git merge'
 alias gr='git reset'
 
-# }}}
-
-# appearrance {{{1
-# git status {{{2
-if [[ 0 ]] then
-autoload -Uz add-zsh-hook
-setopt prompt_subst
-function _vcs_git_indicator () {
-  typeset -A git_info
-  local git_indicator git_status
-  git_status=("${(f)$(git status --porcelain --branch 2> /dev/null)}")
-  (( $? == 0 )) && {
-    git_info[branch]="${${git_status[1]}#\#\# }"
-    shift git_status
-    git_info[changed]=${#git_status:#\?\?*}
-    git_info[untracked]=$(( $#git_status - ${git_info[changed]} ))
-    git_info[clean]=$(( $#git_status == 0 ))
-
-    git_indicator=(" %{%F{blue}%}${git_info[branch]}%{%f%}")
-	(( ${git_info[clean]}     )) && git_indicator+=("%{%F{green}%}clean%{%f%}")
-    (( ${git_info[changed]}   )) && git_indicator+=("%{%F{yellow}%}${git_info[changed]} changed%{%f%}")
-    (( ${git_info[untracked]} )) && git_indicator+=("%{%F{red}%}${git_info[untracked]} untracked%{%f%}")
-  }
-   _vcs_git_indicator="${git_indicator}"
-}
-
-add-zsh-hook precmd _vcs_git_indicator
-
-function {
-	local git='$_vcs_git_indicator'
-	PROMPT="%F{cyan}%n%f:%F{yellow}%~%f$git %F{blue}"$'\n\r'"%%%f "
-}
-
-fi
-
-# }}}
 # }}}
 
 # functions {{{
@@ -109,6 +60,10 @@ fd() {
                   -o -type d -print 2> /dev/null | fzf +m) &&
   cd "$dir"
 }
+
+git_reset_--soft_HEAD^() {
+  git reset --soft HEAD^
+}
 # }}}
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
@@ -125,17 +80,23 @@ source "${ZINIT_HOME}/zinit.zsh"
 autoload -Uz _zplugin
 (( ${+_comps} )) && _comps[zplugin]=_zplugin
 ### End of Zplugin installer's chunk
-zinit light chrissicool/zsh-256color
 zinit light zsh-users/zsh-completions
 zinit light zsh-users/zsh-autosuggestions
-zinit light zsh-users/zsh-syntax-highlighting
-export FORGIT_NO_ALIASES=1
-zinit ice wait lucid; zinit light b4b4r07/enhancd
-export ENHANCD_HYPHEN_NUM="${ENHANCD_HYPHEN_NUM:-30}" # default "cd -" list number chagne to 20
+zinit light marlonrichert/zsh-autocomplete
+zinit light z-shell/F-Sy-H
+zinit ice depth=1
+zinit light jeffreytse/zsh-vi-mode
+zinit load wfxr/forgit
+# zinit ice wait lucid; zinit light b4b4r07/enhancd
+export ENHANCD_HYPHEN_NUM="${ENHANCD_HYPHEN_NUM:-30}" # default "cd -" list number change to 20
 # }}}
-if [ -e /home/ysawc/.nix-profile/etc/profile.d/nix.sh ]; then . /home/ysawc/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
 
-export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+### forgit {{{1
+export FORGIT_NO_ALIASES=1
+PATH="$PATH:$FORGIT_INSTALL_DIR/bin"
+#}}}1
+
+if [ -e /home/ysawc/.nix-profile/etc/profile.d/nix.sh ]; then . /home/ysawc/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
 
 if [[ $(command -v starship) ]]; then
   eval "$(starship init zsh)"
@@ -176,3 +137,4 @@ if ! [[ $(command -v fzf) ]]; then
         eval "$(git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf && ~/.fzf/install)"
     fi
 fi
+### End of Zinit's installer chunk
