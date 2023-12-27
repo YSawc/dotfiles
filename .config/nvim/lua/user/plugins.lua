@@ -126,7 +126,20 @@ require('lazy').setup({
     },
     config = function()
       local builtin = require('telescope.builtin')
-      vim.keymap.set('n', '<Space>ff', builtin.find_files, {})
+      vim.keymap.set('n', '<Space>ff', function()
+        builtin.find_files({
+          -- layout_strategy = 'vertical',
+          use_regex = true,
+          file_ignore_patterns = { ".git", "dotbot" },
+        })
+      end, {})
+      vim.keymap.set('n', '<Space>fF', function()
+        builtin.find_files({
+          use_regex = true,
+          hidden = true,
+          file_ignore_patterns = { ".git", "dotbot" },
+        })
+      end, {})
       -- vim.keymap.set('n', '<Space>fg', builtin.live_grep, {})
       vim.keymap.set("n", "<Space>fg",
         ":lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>")
