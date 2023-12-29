@@ -1,7 +1,5 @@
 # basic {{{
 
-KEYTIMEOUT=0
-
 # homebrew
 export PATH="/usr/local/sbin:$PATH"
 
@@ -12,8 +10,6 @@ export PATH="/usr/local/sbin:$PATH"
 alias lg='lazygit'
 
 # git
-alias g="git"
-compdef g=git
 alias gs='git status --short --branch'
 alias ga='git add -A'
 alias gc='git commit -m'
@@ -34,13 +30,13 @@ alias gr='git reset'
 # functions {{{
 
 zrc(){
-	source ~/.zshrc
+  source ~/.zshrc
 }
 zprofile(){
-	source ~/.zprofile
+  source ~/.zprofile
 }
 vimrc(){
-	source ~/.vimrc
+  source ~/.vimrc
 }
 gco_fzf() {
   local commits commit
@@ -57,7 +53,7 @@ gco_fzf_log() {
 fd() {
   local dir
   dir=$(find ${1:-.} -path '*/\.*' -prune \
-                  -o -type d -print 2> /dev/null | fzf +m) &&
+    -o -type d -print 2> /dev/null | fzf +m) &&
   cd "$dir"
 }
 
@@ -86,7 +82,7 @@ zinit light marlonrichert/zsh-autocomplete
 zinit light z-shell/F-Sy-H
 zinit ice depth=1
 zinit light jeffreytse/zsh-vi-mode
-zinit load wfxr/forgit
+zinit light wfxr/forgit
 # zinit ice wait lucid; zinit light b4b4r07/enhancd
 export ENHANCD_HYPHEN_NUM="${ENHANCD_HYPHEN_NUM:-30}" # default "cd -" list number change to 20
 # }}}
@@ -101,40 +97,40 @@ if [ -e /home/ysawc/.nix-profile/etc/profile.d/nix.sh ]; then . /home/ysawc/.nix
 if [[ $(command -v starship) ]]; then
   eval "$(starship init zsh)"
 else
-    if [[ $(command -v cargo) ]]; then
-        eval "$(curl -sS https://starship.rs/install.sh | sh)"
-    fi
+  if [[ $(command -v cargo) ]]; then
+    eval "$(curl -sS https://starship.rs/install.sh | sh)"
+  fi
 fi
 ### End of Zinit's installer chunk
 
 if ! [[ $(command -v cargo) ]]; then
-    if [[ $(command -v curl) ]]; then
-        eval "$(curl https://sh.rustup.rs -sSf | sh)"
-    fi
+  if [[ $(command -v curl) ]]; then
+    eval "$(curl https://sh.rustup.rs -sSf | sh)"
+  fi
 fi
 
 # https://github.com/ajeetdsouza/zoxide
 if [[ $(command -v zoxide) ]]; then
-    eval "$(zoxide init zsh)"
+  eval "$(zoxide init zsh)"
 else
-    eval "$(cargo install zoxide --locked && zoxide init zsh)"
+  eval "$(cargo install zoxide --locked && zoxide init zsh)"
 fi
 
 if ! [[ $(command -v rg) ]]; then
-    eval "$(cargo install ripgrep)"
+  eval "$(cargo install ripgrep)"
 fi
 
 if ! [[ $(command -v zellij) ]]; then
-    eval "$(cargo install zellij)"
+  eval "$(cargo install zellij)"
 elif [[ -z $ZELLIJ ]]; then
-    zellij
+  zellij
 fi
 
 
 if ! [[ $(command -v fzf) ]]; then
-    # https://github.com/junegunn/fzf#using-git
-    if [[ $(command -v git) ]]; then
-        eval "$(git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf && ~/.fzf/install)"
-    fi
+  # https://github.com/junegunn/fzf#using-git
+  if [[ $(command -v git) ]]; then
+    eval "$(git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf && ~/.fzf/install)"
+  fi
 fi
 ### End of Zinit's installer chunk

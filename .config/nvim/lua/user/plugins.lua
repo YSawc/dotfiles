@@ -43,7 +43,15 @@ require('lazy').setup({
   'williamboman/mason-lspconfig.nvim',
 
   'tpope/vim-fugitive',
-  'airblade/vim-gitgutter',
+  {
+    'lewis6991/gitsigns.nvim',
+    config = function()
+      require('gitsigns').setup()
+    end
+  },
+
+  'junegunn/fzf',
+  'junegunn/fzf.vim',
   'ibhagwan/fzf-lua',
 
   {
@@ -76,14 +84,6 @@ require('lazy').setup({
       })
     end
   },
-  'hrsh7th/cmp-path',
-  'hrsh7th/cmp-buffer',
-  'hrsh7th/cmp-cmdline',
-  'hrsh7th/cmp-nvim-lsp',
-  'hrsh7th/vim-vsnip',
-
-  'junegunn/fzf',
-  'junegunn/fzf.vim',
 
   {
     'nvim-neo-tree/neo-tree.nvim',
@@ -143,6 +143,14 @@ require('lazy').setup({
       -- vim.keymap.set('n', '<Space>fg', builtin.live_grep, {})
       vim.keymap.set("n", "<Space>fg",
         ":lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>")
+      vim.keymap.set('n', '<Space>fG', function()
+        builtin.live_grep({
+          use_regex = true,
+          hidden = true,
+          file_ignore_patterns = { ".git", "dotbot" },
+        })
+      end, {})
+
       vim.keymap.set('n', '<Space>fb', builtin.buffers, {})
       vim.keymap.set('n', '<Space>fh', builtin.help_tags, {})
       vim.keymap.set('n', '<Space>fq', builtin.quickfix, {})
@@ -178,18 +186,8 @@ require('lazy').setup({
   },
 
   {
-    'nvim-telescope/telescope-file-browser.nvim',
-    config = function()
-      require('telescope').load_extension 'file_browser'
-
-      vim.keymap.set('n', '<Space>tf', ':Telescope file_browser<cr>')
-    end
-  },
-
-  'jremmen/vim-ripgrep',
-
-  {
     'j-hui/fidget.nvim',
+    tag = "v1.0.0",
     config = function() require('fidget').setup {} end
   },
 
@@ -233,9 +231,16 @@ require('lazy').setup({
 
   {
     'folke/which-key.nvim',
-    config = function()
-      require('which-key').setup {}
-    end
+    event = "VeryLazy",
+    init = function()
+      vim.o.timeout = true
+      vim.o.timeoutlen = 300
+    end,
+    opts = {
+      -- your configuration comes here
+      -- or leave it empty to use the default settings
+      -- refer to the configuration section below
+    },
   },
 
   {
@@ -286,7 +291,13 @@ require('lazy').setup({
     config = function() require('guess-indent').setup {} end,
   },
 
-  'simeji/winresizer',
+  {
+    'simeji/winresizer',
+    config = function()
+      vim.g.winresizer_vert_resize = 1
+      vim.g.winresizer_horiz_resize = 1
+    end
+  },
 
   {
     'nvim-lualine/lualine.nvim',
@@ -535,19 +546,6 @@ require('lazy').setup({
     end,
   },
 
-  {
-    'onsails/diaglist.nvim',
-    config = function()
-      require("diaglist").init({
-        -- optional settings
-        -- below are defaults
-        debug = false,
-        -- increase for noisy servers
-        debounce_ms = 150,
-      })
-    end
-  },
-
   'voldikss/vim-floaterm',
 
   'LunarVim/bigfile.nvim',
@@ -591,7 +589,28 @@ require('lazy').setup({
     config = function()
       require("devcontainer").setup {}
     end
-  }
+  },
+
+  {
+    "L3MON4D3/LuaSnip",
+    version = "v2.*",
+    dependencies = { "rafamadriz/friendly-snippets" },
+  },
+
+  -- {
+  --   "loctvl842/monokai-pro.nvim",
+  --   config = function()
+  --     require("monokai-pro").setup()
+  --   end
+  -- }
+
+  {
+    'Tsuzat/NeoSolarized.nvim',
+    config = function()
+      vim.cmd([[ colorscheme NeoSolarized ]])
+    end
+  },
+
 })
 
 -- automatically run `:PackerCompile` whenever `plugins.lua` is updated
@@ -657,4 +676,17 @@ require('mason-lspconfig').setup_handlers({
       }
     }
   end,
+})
+
+local status, null_ls = pcall(require, "null-ls")
+if (not status) then return end
+
+null_ls.setup({
+  sources = {
+    null_ls.builtins.diagnostics.eslint.with({
+      prefer_local = "node_modules/.bin",
+    }),
+    null_ls.builtins.formatting.prettier,
+  },
+  debug = false,
 })
