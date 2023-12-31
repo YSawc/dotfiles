@@ -14,6 +14,8 @@ vim.opt.rtp:prepend(lazypath)
 require('lazy').setup({
   {
     'williamboman/nvim-lsp-installer',
+    dependencies = {
+    },
     'neovim/nvim-lspconfig',
     config = function()
     end
@@ -39,6 +41,11 @@ require('lazy').setup({
     end
   },
 
+  {
+    'mrcjkb/rustaceanvim',
+    version = '^3', -- Recommended
+    ft = { 'rust' },
+  },
   'MunifTanjim/prettier.nvim',
   'williamboman/mason-lspconfig.nvim',
 
@@ -53,6 +60,12 @@ require('lazy').setup({
   'junegunn/fzf',
   'junegunn/fzf.vim',
   'ibhagwan/fzf-lua',
+
+  'hrsh7th/cmp-nvim-lsp',
+  'hrsh7th/cmp-buffer',
+  'hrsh7th/cmp-path',
+  'hrsh7th/cmp-cmdline',
+  'hrsh7th/vim-vsnip',
 
   {
     'hrsh7th/nvim-cmp',
@@ -661,8 +674,12 @@ require('mason').setup()
 require('mason-lspconfig').setup()
 require('mason-lspconfig').setup_handlers({
   function(server_name)
+    local capabilities = require('cmp_nvim_lsp').default_capabilities(
+      vim.lsp.protocol.make_client_capabilities()
+    )
     require("lspconfig")[server_name].setup {
-      on_attach = on_attach
+      on_attach    = on_attach,
+      capabilities = capabilities,
     }
   end,
   ['lua_ls'] = function()
