@@ -40,7 +40,6 @@ require('lazy').setup({
       require 'mason-null-ls'.setup_handlers()
     end
   },
-
   {
     'mrcjkb/rustaceanvim',
     version = '^3', -- Recommended
@@ -48,7 +47,6 @@ require('lazy').setup({
   },
   'MunifTanjim/prettier.nvim',
   'williamboman/mason-lspconfig.nvim',
-
   'tpope/vim-fugitive',
   {
     'lewis6991/gitsigns.nvim',
@@ -56,17 +54,14 @@ require('lazy').setup({
       require('gitsigns').setup()
     end
   },
-
   'junegunn/fzf',
   'junegunn/fzf.vim',
   'ibhagwan/fzf-lua',
-
   'hrsh7th/cmp-nvim-lsp',
   'hrsh7th/cmp-buffer',
   'hrsh7th/cmp-path',
   'hrsh7th/cmp-cmdline',
   'hrsh7th/vim-vsnip',
-
   {
     'hrsh7th/nvim-cmp',
     config = function()
@@ -97,7 +92,6 @@ require('lazy').setup({
       })
     end
   },
-
   {
     'nvim-neo-tree/neo-tree.nvim',
     branch = 'v3.x',
@@ -120,7 +114,6 @@ require('lazy').setup({
       })
     end
   },
-
   {
     'ntpeters/vim-better-whitespace',
     config = function()
@@ -129,7 +122,6 @@ require('lazy').setup({
       -- vim.cmd([[autocmd FileType terminal DisableWhitespace]])
     end
   },
-
   {
     'nvim-telescope/telescope.nvim',
     tag = '0.1.5',
@@ -197,13 +189,11 @@ require('lazy').setup({
       vim.api.nvim_create_autocmd("FileType", { pattern = "TelescopeResults", command = [[setlocal nofoldenable]] })
     end
   },
-
   {
     'j-hui/fidget.nvim',
     tag = "v1.0.0",
     config = function() require('fidget').setup {} end
   },
-
   {
     'folke/trouble.nvim',
     dependencies = 'nvim-tree/nvim-web-devicons',
@@ -215,7 +205,6 @@ require('lazy').setup({
       }
     end
   },
-
   {
     'onsails/lspkind.nvim',
     dependencies = {
@@ -241,7 +230,6 @@ require('lazy').setup({
       }
     end
   },
-
   {
     'folke/which-key.nvim',
     event = "VeryLazy",
@@ -255,15 +243,12 @@ require('lazy').setup({
       -- refer to the configuration section below
     },
   },
-
   {
     "lukas-reineke/indent-blankline.nvim",
     main = "ibl",
     opts = {}
   },
-
   'RRethy/vim-illuminate',
-
   {
     'folke/todo-comments.nvim',
     dependencies = 'nvim-lua/plenary.nvim',
@@ -275,18 +260,14 @@ require('lazy').setup({
       }
     end
   },
-
   'unblevable/quick-scope',
-
   {
     'windwp/nvim-autopairs',
     config = function() require('nvim-autopairs').setup {} end
   },
-
   {
     'andymass/vim-matchup',
   },
-
   {
     'pwntester/octo.nvim',
     dependencies = {
@@ -298,12 +279,10 @@ require('lazy').setup({
       require 'octo'.setup()
     end
   },
-
   {
     'nmac427/guess-indent.nvim',
     config = function() require('guess-indent').setup {} end,
   },
-
   {
     'simeji/winresizer',
     config = function()
@@ -311,7 +290,6 @@ require('lazy').setup({
       vim.g.winresizer_horiz_resize = 1
     end
   },
-
   {
     'nvim-lualine/lualine.nvim',
     config = function()
@@ -333,7 +311,6 @@ require('lazy').setup({
       })
     end
   },
-
   {
     'norcalli/nvim-colorizer.lua',
     cmd = 'ColorizerToggle',
@@ -341,15 +318,12 @@ require('lazy').setup({
       require('colorizer').setup()
     end,
   },
-
   'ryanoasis/vim-devicons',
-
   -- use({
   --   'https://git.sr.ht/~whynothugo/lsp_lines.nvim',
   --   config = function()
   --     require('lsp_lines').setup()
   --   end,
-  -- })
 
   {
     'kevinhwang91/nvim-hlslens',
@@ -368,7 +342,6 @@ require('lazy').setup({
       vim.api.nvim_set_keymap('n', 'g#', [[g#<Cmd>lua require('hlslens').start()<CR>]], kopts)
     end
   },
-
   {
     'anuvyklack/pretty-fold.nvim',
     config = function()
@@ -386,26 +359,23 @@ require('lazy').setup({
       })
     end
   },
-
-  { 'sindrets/diffview.nvim', dependencies = 'nvim-lua/plenary.nvim' },
-
-  { 'stevearc/dressing.nvim' },
-
+  {
+    'sindrets/diffview.nvim',
+    dependencies = 'nvim-lua/plenary.nvim'
+  },
+  'stevearc/dressing.nvim',
   {
     'ray-x/lsp_signature.nvim',
     config = function()
       require 'lsp_signature'.setup()
     end
   },
-
   {
     'weilbith/nvim-code-action-menu',
     cmd = 'CodeActionMenu',
   },
-
   { 'kevinhwang91/nvim-bqf',           ft = 'qf' },
   { 'nvim-treesitter/nvim-treesitter', build = ':TSUpdate' },
-
   {
     "b0o/incline.nvim",
     event = { "FocusLost", "CursorHold" },
@@ -413,7 +383,6 @@ require('lazy').setup({
       require("incline").setup {}
     end,
   },
-
   {
     'petertriho/nvim-scrollbar',
     event = {
@@ -430,9 +399,7 @@ require('lazy').setup({
       require("scrollbar").setup {}
     end,
   },
-
   'mizlan/iswap.nvim',
-
   {
     "kylechui/nvim-surround",
     config = function()
@@ -441,7 +408,6 @@ require('lazy').setup({
       })
     end
   },
-
   {
     "folke/zen-mode.nvim",
     config = function()
@@ -452,7 +418,6 @@ require('lazy').setup({
       }
     end
   },
-
   {
     "folke/twilight.nvim",
     config = function()
@@ -463,7 +428,6 @@ require('lazy').setup({
       }
     end
   },
-
   {
     "gbprod/substitute.nvim",
     config = function()
@@ -474,9 +438,7 @@ require('lazy').setup({
       vim.keymap.set("n", ",ss", "<cmd>lua require('substitute.range').word()<cr>", { noremap = true })
     end
   },
-
   'ellisonleao/glow.nvim',
-
   {
     'akinsho/toggleterm.nvim',
     config = function()
@@ -486,7 +448,6 @@ require('lazy').setup({
       })
     end
   },
-
   {
     'xiyaowong/nvim-transparent',
     config = function()
@@ -511,21 +472,17 @@ require('lazy').setup({
       })
     end
   },
-
   {
     "iamcco/markdown-preview.nvim",
     build = function() vim.fn["mkdp#util#install"]() end,
   },
-
   {
     'akinsho/git-conflict.nvim',
     config = function()
       require('git-conflict').setup()
     end
   },
-
   'dalance/veryl.vim',
-
   {
     "glepnir/lspsaga.nvim",
     branch = "main",
@@ -538,14 +495,12 @@ require('lazy').setup({
       { "nvim-treesitter/nvim-treesitter" }
     }
   },
-
   {
     'numToStr/Comment.nvim',
     config = function()
       require('Comment').setup()
     end
   },
-
   {
     'gelguy/wilder.nvim',
     config = function()
@@ -558,11 +513,8 @@ require('lazy').setup({
       }))
     end,
   },
-
   'voldikss/vim-floaterm',
-
   'LunarVim/bigfile.nvim',
-
   {
     'lambdalisue/fern.vim',
     dependencies = {
@@ -574,7 +526,6 @@ require('lazy').setup({
       vim.g['fern#renderer'] = "nerdfont"
     end
   },
-
   {
     'phaazon/hop.nvim',
     branch = 'v2', -- optional but strongly recommended
@@ -588,14 +539,12 @@ require('lazy').setup({
       end, { remap = true })
     end
   },
-
   {
     'simrat39/symbols-outline.nvim',
     config = function()
       require("symbols-outline").setup()
     end
   },
-
   {
     'https://codeberg.org/esensar/nvim-dev-container',
     requires = { 'nvim-treesitter/nvim-treesitter' },
@@ -603,36 +552,36 @@ require('lazy').setup({
       require("devcontainer").setup {}
     end
   },
-
   {
     "L3MON4D3/LuaSnip",
     version = "v2.*",
     dependencies = { "rafamadriz/friendly-snippets" },
   },
-
   -- {
   --   "loctvl842/monokai-pro.nvim",
   --   config = function()
   --     require("monokai-pro").setup()
   --   end
   -- }
-
   {
     'Tsuzat/NeoSolarized.nvim',
     config = function()
       vim.cmd([[ colorscheme NeoSolarized ]])
     end
   },
-
+  {
+    'Wansmer/sibling-swap.nvim',
+    requires = { 'nvim-treesitter' },
+    config = function()
+      require('sibling-swap').setup {
+        keymaps = {
+          ['swh'] = 'swap_with_left',
+          ['swl'] = 'swap_with_right',
+        }
+      }
+    end,
+  },
 })
-
--- automatically run `:PackerCompile` whenever `plugins.lua` is updated
--- vim.api.nvim_create_autocmd('BufWritePost', {
--- 	pattern = 'plugins.lua',
--- 	command = 'source <afile> | PackerCompile',
--- 	group = vim.api.nvim_create_augroup('PackerUserConfig', { clear = true }),
--- 	desc = 'automatically run `:PackerCompile` whenever `user.plugins.lua` is updated',
--- })
 
 --- lsp
 local on_attach = function(client, bufnr)
