@@ -33,8 +33,13 @@ require('lazy').setup({
 
       require("none-ls").setup({
         sources = {
-          -- Anything not supported by mason.
-        }
+          eslint.with({
+            prefer_local = "node_modules/.bin",
+          }),
+          formatting.prettier,
+        },
+        debug = false,
+
       })
 
       require 'mason-null-ls'.setup_handlers()
@@ -46,7 +51,82 @@ require('lazy').setup({
     ft = { 'rust' },
   },
   'MunifTanjim/prettier.nvim',
-  'williamboman/mason-lspconfig.nvim',
+  {
+    'williamboman/mason-lspconfig.nvim',
+    dependencies = {
+      'williamboman/mason.nvim',
+      'nvimtools/none-ls.nvim',
+      'jay-babu/mason-null-ls.nvim',
+      'hrsh7th/cmp-nvim-lsp',
+      'hrsh7th/cmp-buffer',
+      'hrsh7th/cmp-path',
+      'hrsh7th/cmp-cmdline',
+      'hrsh7th/vim-vsnip',
+      'williamboman/nvim-lsp-installer',
+      'neovim/nvim-lspconfig',
+    },
+    config = function()
+      local on_attach = function(client, bufnr)
+        local _ = client;
+        local set = vim.keymap.set
+        local bufopts = { noremap = true, silent = true, buffer = bufnr }
+        set('n', ',gD', '<cmd>lua vim.lsp.buf.declaration()<CR>', bufopts)
+        set('n', ',gd', '<cmd>lua vim.lsp.buf.definition()<CR>', bufopts)
+        set('n', ',K', '<cmd>lua vim.lsp.buf.hover()<CR>', bufopts)
+        set('n', ',gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', bufopts)
+        set('n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', bufopts)
+        set('n', ',D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', bufopts)
+        set('n', ',rn', '<cmd>lua vim.lsp.buf.rename()<CR>', bufopts)
+        set('n', ',ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', bufopts)
+        set('n', ',gr', '<cmd>lua vim.lsp.buf.references()<CR>', bufopts)
+        set('n', ',e', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', bufopts)
+        set('n', '[d', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', bufopts)
+        set('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', bufopts)
+        set('n', ',q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', bufopts)
+        vim.keymap.set('n', ',f', function()
+          vim.lsp.buf.format { async = true }
+        end, bufopts)
+        set('n', ',wa', vim.lsp.buf.add_workspace_folder, bufopts)
+        set('n', ',wr', vim.lsp.buf.remove_workspace_folder, bufopts)
+        set('n', ',wl', function()
+          print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
+        end, bufopts)
+      end
+
+      local lspconfig = require 'lspconfig'
+
+      vim.api.nvim_create_autocmd('BufWritePre', {
+        callback = function()
+          vim.lsp.buf.format { async = false }
+        end
+      })
+
+      require('mason').setup()
+      require('mason-lspconfig').setup()
+      require('mason-lspconfig').setup_handlers({
+        function(server_name)
+          local capabilities = require('cmp_nvim_lsp').default_capabilities(
+            vim.lsp.protocol.make_client_capabilities()
+          )
+          require("lspconfig")[server_name].setup {
+            on_attach    = on_attach,
+            capabilities = capabilities,
+          }
+        end,
+        ['lua_ls'] = function()
+          lspconfig.lua_ls.setup {
+            settings = {
+              Lua = {
+                diagnostics = {
+                  globals = { 'vim' }
+                }
+              }
+            }
+          }
+        end,
+      })
+    end
+  },
   'tpope/vim-fugitive',
   {
     'lewis6991/gitsigns.nvim',
@@ -57,11 +137,6 @@ require('lazy').setup({
   'junegunn/fzf',
   'junegunn/fzf.vim',
   'ibhagwan/fzf-lua',
-  'hrsh7th/cmp-nvim-lsp',
-  'hrsh7th/cmp-buffer',
-  'hrsh7th/cmp-path',
-  'hrsh7th/cmp-cmdline',
-  'hrsh7th/vim-vsnip',
   {
     'hrsh7th/nvim-cmp',
     config = function()
@@ -581,78 +656,37 @@ require('lazy').setup({
       }
     end,
   },
-})
+  {
+    'hrsh7th/nvim-insx',
+    config = function()
+      require('insx.preset.standard').setup()
+      local insx = require('insx')
 
---- lsp
-local on_attach = function(client, bufnr)
-  local _ = client;
-  local set = vim.keymap.set
-  local bufopts = { noremap = true, silent = true, buffer = bufnr }
-  set('n', ',gD', '<cmd>lua vim.lsp.buf.declaration()<CR>', bufopts)
-  set('n', ',gd', '<cmd>lua vim.lsp.buf.definition()<CR>', bufopts)
-  set('n', ',K', '<cmd>lua vim.lsp.buf.hover()<CR>', bufopts)
-  set('n', ',gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', bufopts)
-  set('n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', bufopts)
-  set('n', ',D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', bufopts)
-  set('n', ',rn', '<cmd>lua vim.lsp.buf.rename()<CR>', bufopts)
-  set('n', ',ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', bufopts)
-  set('n', ',gr', '<cmd>lua vim.lsp.buf.references()<CR>', bufopts)
-  set('n', ',e', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', bufopts)
-  set('n', '[d', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', bufopts)
-  set('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', bufopts)
-  set('n', ',q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', bufopts)
-  vim.keymap.set('n', ',f', function()
-    vim.lsp.buf.format { async = true }
-  end, bufopts)
-  set('n', ',wa', vim.lsp.buf.add_workspace_folder, bufopts)
-  set('n', ',wr', vim.lsp.buf.remove_workspace_folder, bufopts)
-  set('n', ',wl', function()
-    print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
-  end, bufopts)
-end
+      insx.add(
+        "<",
+        insx.with(require('insx.recipe.auto_pair')({
+          open = "<",
+          close = ">"
+        }), {
+          insx.with.in_string(false),
+          insx.with.in_comment(false),
+          insx.with.nomatch([[\\\%#]]),
+          insx.with.nomatch([[\a\%#]])
+        })
+      )
 
-local lspconfig = require 'lspconfig'
-
-vim.api.nvim_create_autocmd('BufWritePre', {
-  callback = function()
-    vim.lsp.buf.format { async = false }
-  end
-})
-
-require('mason').setup()
-require('mason-lspconfig').setup()
-require('mason-lspconfig').setup_handlers({
-  function(server_name)
-    local capabilities = require('cmp_nvim_lsp').default_capabilities(
-      vim.lsp.protocol.make_client_capabilities()
-    )
-    require("lspconfig")[server_name].setup {
-      on_attach    = on_attach,
-      capabilities = capabilities,
-    }
-  end,
-  ['lua_ls'] = function()
-    lspconfig.lua_ls.setup {
-      settings = {
-        Lua = {
-          diagnostics = {
-            globals = { 'vim' }
-          }
-        }
-      }
-    }
-  end,
-})
-
-local status, null_ls = pcall(require, "null-ls")
-if (not status) then return end
-
-null_ls.setup({
-  sources = {
-    null_ls.builtins.diagnostics.eslint.with({
-      prefer_local = "node_modules/.bin",
-    }),
-    null_ls.builtins.formatting.prettier,
+      insx.add(
+        "<",
+        insx.with(require('insx.recipe.auto_pair')({
+          open = "<",
+          close = ">"
+        }), {
+          insx.with.in_string(false),
+          insx.with.in_comment(false),
+          insx.with.nomatch([[\\\%#]]),
+          insx.with.nomatch([[\a\%#]])
+        })
+      )
+    end
   },
-  debug = false,
 })
