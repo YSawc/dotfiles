@@ -504,13 +504,20 @@ require('lazy').setup({
     end
   },
   {
-    "gbprod/substitute.nvim",
+    'nvim-pack/nvim-spectre',
     config = function()
-      require("substitute").setup({})
-      vim.keymap.set("n", ",s", "<cmd>lua require('substitute.range').operator()<cr>",
-        { noremap = true })
-      vim.keymap.set("x", ",s", "<cmd>lua require('substitute.range').visual()<cr>", { noremap = true })
-      vim.keymap.set("n", ",ss", "<cmd>lua require('substitute.range').word()<cr>", { noremap = true })
+      vim.keymap.set('n', ',S', '<cmd>lua require("spectre").toggle()<CR>', {
+        desc = "Toggle Spectre"
+      })
+      vim.keymap.set('n', ',sw', '<cmd>lua require("spectre").open_visual({select_word=true})<CR>', {
+        desc = "Search current word"
+      })
+      vim.keymap.set('v', ',sw', '<esc><cmd>lua require("spectre").open_visual()<CR>', {
+        desc = "Search current word"
+      })
+      vim.keymap.set('n', ',sp', '<cmd>lua require("spectre").open_file_search({select_word=true})<CR>', {
+        desc = "Search on current file"
+      })
     end
   },
   'ellisonleao/glow.nvim',
@@ -687,6 +694,64 @@ require('lazy').setup({
           insx.with.nomatch([[\a\%#]])
         })
       )
+    end
+  },
+  {
+    "gbprod/yanky.nvim",
+    config = function()
+      require("yanky").setup({})
+      vim.keymap.set({ "n", "x" }, "p", "<Plug>(YankyPutAfter)")
+      vim.keymap.set({ "n", "x" }, "P", "<Plug>(YankyPutBefore)")
+      vim.keymap.set({ "n", "x" }, "gp", "<Plug>(YankyGPutAfter)")
+      vim.keymap.set({ "n", "x" }, "gP", "<Plug>(YankyGPutBefore)")
+      vim.keymap.set("n", "<c-p>", "<Plug>(YankyPreviousEntry)")
+      vim.keymap.set("n", "<c-n>", "<Plug>(YankyNextEntry)")
+    end,
+    opts = {
+      -- your configuration comes here
+      -- or leave it empty to use the default settings
+      -- refer to the configuration section below
+    },
+  },
+  {
+    'kevinhwang91/nvim-ufo',
+    dependencies = {
+      'kevinhwang91/promise-async',
+    },
+    config = function()
+      vim.o.foldcolumn = '1' -- '0' is not bad
+      vim.o.foldlevel = 99   -- Using ufo provider need a large value, feel free to decrease the value
+      vim.o.foldlevelstart = 99
+      vim.o.foldenable = true
+
+      -- Using ufo provider need remap `zR` and `zM`. If Neovim is 0.6.1, remap yourself
+      vim.keymap.set('n', 'zR', require('ufo').openAllFolds)
+      vim.keymap.set('n', 'zM', require('ufo').closeAllFolds)
+
+      -- Option 2: nvim lsp as LSP client
+      -- Tell the server the capability of foldingRange,
+      -- Neovim hasn't added foldingRange to default capabilities, users must add it manually
+      local capabilities = vim.lsp.protocol.make_client_capabilities()
+      capabilities.textDocument.foldingRange = {
+        dynamicRegistration = false,
+        lineFoldingOnly = true
+      }
+      local language_servers = require("lspconfig").util.available_servers() -- or list servers manually like {'gopls', 'clangd'}
+      for _, ls in ipairs(language_servers) do
+        require('lspconfig')[ls].setup({
+          capabilities = capabilities
+          -- you can add other fields for setting up lsp server in this table
+        })
+      end
+
+      -- Option 3: treesitter as a main provider instead
+      -- Only depend on `nvim-treesitter/queries/filetype/folds.scm`,
+      -- performance and stability are better than `foldmethod=nvim_treesitter#foldexpr()`
+      require('ufo').setup({
+        provider_selector = function(bufnr, filetype, buftype)
+          return { 'treesitter', 'indent' }
+        end
+      })
     end
   },
 })

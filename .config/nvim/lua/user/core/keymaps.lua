@@ -1,5 +1,6 @@
 local set = vim.keymap.set
 
+vim.g.mapleader = " "
 set('n', 's', '<Nop>', { noremap = true })
 set('n', 'sj', '<C-w>j', { noremap = true })
 set('n', 'sk', '<C-w>k', { noremap = true })
