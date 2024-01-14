@@ -210,14 +210,14 @@ require('lazy').setup({
         builtin.find_files({
           -- layout_strategy = 'vertical',
           use_regex = true,
-          file_ignore_patterns = { ".git", "dotbot" },
+          file_ignore_patterns = { ".git" },
         })
       end, {})
       vim.keymap.set('n', '<Space>fF', function()
         builtin.find_files({
           use_regex = true,
           hidden = true,
-          file_ignore_patterns = { ".git", "dotbot" },
+          file_ignore_patterns = { ".git" },
         })
       end, {})
       -- vim.keymap.set('n', '<Space>fg', builtin.live_grep, {})
@@ -226,8 +226,8 @@ require('lazy').setup({
       vim.keymap.set('n', '<Space>fG', function()
         builtin.live_grep({
           use_regex = true,
-          hidden = true,
-          file_ignore_patterns = { ".git", "dotbot" },
+          additional_args = { '-u' },
+          file_ignore_patterns = { ".git" },
         })
       end, {})
 
@@ -639,16 +639,41 @@ require('lazy').setup({
     version = "v2.*",
     dependencies = { "rafamadriz/friendly-snippets" },
   },
-  -- {
-  --   "loctvl842/monokai-pro.nvim",
-  --   config = function()
-  --     require("monokai-pro").setup()
-  --   end
-  -- }
   {
-    'Tsuzat/NeoSolarized.nvim',
+    "loctvl842/monokai-pro.nvim",
     config = function()
-      vim.cmd([[ colorscheme NeoSolarized ]])
+      require("monokai-pro").setup({
+        overridePalette = function(_filter)
+          return {
+            background = "#000000",
+            text = "#caccc0",
+            accent1 = "#c42632",
+            -- accent1 = "#c42652",
+            accent3 = "#b3b42b",
+            accenf4 = "#86b42b",
+            accent5 = "#56adbc",
+          }
+        end
+        -- classic default
+        -- return {
+        --   dark2 = "#161613",
+        --   dark1 = "#1d1e19",
+        --   background = "#272822",
+        --   text = "#fdfff1",
+        --   accent1 = "#f92672",
+        --   accent2 = "#fd971f",
+        --   accent3 = "#e6db74",
+        --   accent4 = "#a6e22e",
+        --   accent5 = "#66d9ef",
+        --   accent6 = "#ae81ff",
+        --   dimmed1 = "#c0c1b5",
+        --   dimmed2 = "#919288",
+        --   dimmed3 = "#6e7066",
+        --   dimmed4 = "#57584f",
+        --   dimmed5 = "#3b3c35",
+        -- }
+      })
+      vim.cmd([[ colorscheme monokai-pro-classic]])
     end
   },
   {
@@ -662,56 +687,6 @@ require('lazy').setup({
         }
       }
     end,
-  },
-  {
-    'hrsh7th/nvim-insx',
-    config = function()
-      require('insx.preset.standard').setup()
-      local insx = require('insx')
-
-      insx.add(
-        "<",
-        insx.with(require('insx.recipe.auto_pair')({
-          open = "<",
-          close = ">"
-        }), {
-          insx.with.in_string(false),
-          insx.with.in_comment(false),
-          insx.with.nomatch([[\\\%#]]),
-          insx.with.nomatch([[\a\%#]])
-        })
-      )
-
-      insx.add(
-        "<",
-        insx.with(require('insx.recipe.auto_pair')({
-          open = "<",
-          close = ">"
-        }), {
-          insx.with.in_string(false),
-          insx.with.in_comment(false),
-          insx.with.nomatch([[\\\%#]]),
-          insx.with.nomatch([[\a\%#]])
-        })
-      )
-    end
-  },
-  {
-    "gbprod/yanky.nvim",
-    config = function()
-      require("yanky").setup({})
-      vim.keymap.set({ "n", "x" }, "p", "<Plug>(YankyPutAfter)")
-      vim.keymap.set({ "n", "x" }, "P", "<Plug>(YankyPutBefore)")
-      vim.keymap.set({ "n", "x" }, "gp", "<Plug>(YankyGPutAfter)")
-      vim.keymap.set({ "n", "x" }, "gP", "<Plug>(YankyGPutBefore)")
-      vim.keymap.set("n", "<c-p>", "<Plug>(YankyPreviousEntry)")
-      vim.keymap.set("n", "<c-n>", "<Plug>(YankyNextEntry)")
-    end,
-    opts = {
-      -- your configuration comes here
-      -- or leave it empty to use the default settings
-      -- refer to the configuration section below
-    },
   },
   {
     'kevinhwang91/nvim-ufo',
@@ -754,4 +729,11 @@ require('lazy').setup({
       })
     end
   },
+  {
+    'hrsh7th/nvim-pasta',
+    config = function()
+      vim.keymap.set({ 'n', 'x' }, 'p', require('pasta.mapping').p)
+      vim.keymap.set({ 'n', 'x' }, 'P', require('pasta.mapping').P)
+    end
+  }
 })
