@@ -13,14 +13,6 @@ vim.opt.rtp:prepend(lazypath)
 
 require('lazy').setup({
   {
-    'williamboman/nvim-lsp-installer',
-    dependencies = {
-    },
-    'neovim/nvim-lspconfig',
-    config = function()
-    end
-  },
-  {
     'williamboman/mason.nvim',
     'nvimtools/none-ls.nvim',
     'jay-babu/mason-null-ls.nvim',
@@ -62,7 +54,6 @@ require('lazy').setup({
       'hrsh7th/cmp-path',
       'hrsh7th/cmp-cmdline',
       'hrsh7th/vim-vsnip',
-      'williamboman/nvim-lsp-installer',
       'neovim/nvim-lspconfig',
     },
     config = function()
@@ -127,18 +118,13 @@ require('lazy').setup({
       })
     end
   },
-  'tpope/vim-fugitive',
-  {
-    'lewis6991/gitsigns.nvim',
-    config = function()
-      require('gitsigns').setup()
-    end
-  },
-  'junegunn/fzf',
-  'junegunn/fzf.vim',
-  'ibhagwan/fzf-lua',
   {
     'hrsh7th/nvim-cmp',
+    dependencies = {
+      'hrsh7th/cmp-buffer',
+      'hrsh7th/cmp-path',
+      'hrsh7th/cmp-cmdline',
+    },
     config = function()
       local cmp = require('cmp')
       cmp.setup({
@@ -149,8 +135,8 @@ require('lazy').setup({
         },
         sources = {
           { name = 'nvim_lsp' },
-          -- { name = 'buffer' },
-          -- { name = 'path' },
+          { name = 'buffer' },
+          { name = 'path' },
         },
         mapping = cmp.mapping.preset.insert({
           ['<C-p>'] = cmp.mapping.select_prev_item(),
@@ -165,8 +151,23 @@ require('lazy').setup({
           ghost_text = true,
         },
       })
+      cmp.setup.cmdline('/', {
+        mapping = cmp.mapping.preset.cmdline(),
+        sources = {
+          { name = 'buffer' }
+        }
+      })
     end
   },
+  {
+    'lewis6991/gitsigns.nvim',
+    config = function()
+      require('gitsigns').setup()
+    end
+  },
+  'junegunn/fzf',
+  'junegunn/fzf.vim',
+  'ibhagwan/fzf-lua',
   {
     'nvim-neo-tree/neo-tree.nvim',
     branch = 'v3.x',
@@ -321,7 +322,10 @@ require('lazy').setup({
   {
     "lukas-reineke/indent-blankline.nvim",
     main = "ibl",
-    opts = {}
+    opts = {},
+    config = function()
+      require("ibl").setup()
+    end
   },
   'RRethy/vim-illuminate',
   {
@@ -335,14 +339,14 @@ require('lazy').setup({
       }
     end
   },
-  'unblevable/quick-scope',
+  -- 'unblevable/quick-scope',
   {
     'windwp/nvim-autopairs',
     config = function() require('nvim-autopairs').setup {} end
   },
-  {
-    'andymass/vim-matchup',
-  },
+  -- {
+  --   'andymass/vim-matchup',
+  -- },
   {
     'pwntester/octo.nvim',
     dependencies = {
@@ -641,6 +645,7 @@ require('lazy').setup({
   },
   {
     "loctvl842/monokai-pro.nvim",
+    priority = 1000,
     config = function()
       require("monokai-pro").setup({
         overridePalette = function(_filter)
