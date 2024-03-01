@@ -39,7 +39,7 @@ require('lazy').setup({
   },
   {
     'mrcjkb/rustaceanvim',
-    version = '^3', -- Recommended
+    version = '^4', -- Recommended
     ft = { 'rust' },
   },
   'MunifTanjim/prettier.nvim',
@@ -115,12 +115,14 @@ require('lazy').setup({
             }
           }
         end,
+        ["rust_analyzer"] = function() end,
       })
     end
   },
   {
     'hrsh7th/nvim-cmp',
     dependencies = {
+      'hrsh7th/cmp-nvim-lsp',
       'hrsh7th/cmp-buffer',
       'hrsh7th/cmp-path',
       'hrsh7th/cmp-cmdline',
