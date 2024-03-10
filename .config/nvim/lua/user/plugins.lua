@@ -742,5 +742,29 @@ require('lazy').setup({
       vim.keymap.set({ 'n', 'x' }, 'p', require('pasta.mapping').p)
       vim.keymap.set({ 'n', 'x' }, 'P', require('pasta.mapping').P)
     end
-  }
+  },
+  {
+    "johmsalas/text-case.nvim",
+    dependencies = { "nvim-telescope/telescope.nvim" },
+    config = function()
+      require("textcase").setup({})
+      require("telescope").load_extension("textcase")
+    end,
+    keys = {
+      "ga", -- Default invocation prefix
+      { "ga.", "<cmd>TextCaseOpenTelescope<CR>", mode = { "n", "v" }, desc = "Telescope" },
+    },
+  },
+  {
+    "dnlhc/glance.nvim",
+    config = function()
+      require('glance').setup({
+        -- your configuration
+      })
+      vim.keymap.set('n', 'gd', '<CMD>Glance definitions<CR>')
+      vim.keymap.set('n', 'gr', '<CMD>Glance references<CR>')
+      vim.keymap.set('n', 'gt', '<CMD>Glance type_definitions<CR>')
+      vim.keymap.set('n', 'gi', '<CMD>Glance implementations<CR>')
+    end,
+  },
 })

@@ -22,7 +22,7 @@ yellow = "#B3B42B"
 [colors.primary]
 # background = "#1B1D1E"
 background = "#000000"
-foreground = "#F8F8F2"
+foreground = "#caccc0"
 
 # Colors (Baitong)
 

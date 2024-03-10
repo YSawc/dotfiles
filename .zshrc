@@ -112,6 +112,7 @@ fi
 # https://github.com/ajeetdsouza/zoxide
 if [[ $(command -v zoxide) ]]; then
   eval "$(zoxide init zsh)"
+  alias zi=__zoxide_zi
 else
   eval "$(cargo install zoxide --locked && zoxide init zsh)"
 fi
