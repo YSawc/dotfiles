@@ -779,4 +779,12 @@ require('lazy').setup({
     end,
   },
   { "folke/neodev.nvim",    opts = {} },
+  {
+    "ecthelionvi/NeoComposer.nvim",
+    dependencies = { "kkharji/sqlite.lua" },
+    opts = {},
+    config = function()
+      require("NeoComposer").setup()
+    end
+  },
 })
