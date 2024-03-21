@@ -91,9 +91,9 @@ keybinds {
         bind "w" { SearchToggleOption "Wrap"; }
         bind "o" { SearchToggleOption "WholeWord"; }
     }
-   entersearch {
-        bind "Ctrl c" "Esc" { SwitchToMode "Scroll"; }
-        bind "Enter" { SwitchToMode "Search"; }
+    entersearch {
+         bind "Ctrl c" "Esc" { SwitchToMode "Scroll"; }
+         bind "Enter" { SwitchToMode "Search"; }
     }
     renametab {
         bind "Esc" { UndoRenameTab; SwitchToMode "Locked"; }
@@ -138,6 +138,7 @@ plugins {
 //   - quit
 //
 // on_force_close "quit"
+on_force_close "quit"
 
 //  Send a request for a simplified ui (without arrow fonts) to plugins
 //  Options:
@@ -194,7 +195,7 @@ theme "compact"
 // The name of the default layout to load on startup
 // Default: "default"
 //
-default_layout "disable-status-bar"
+// default_layout "disable-status-bar"
 
 // Choose the mode that zellij uses when starting up.
 // Default: normal

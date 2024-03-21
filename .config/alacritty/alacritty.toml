@@ -24,8 +24,6 @@ yellow = "#B3B42B"
 background = "#000000"
 foreground = "#caccc0"
 
-# Colors (Baitong)
-
 [font.normal]
 family = "Ubuntu Mono"
 style = "Bold"
