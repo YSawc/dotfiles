@@ -189,8 +189,10 @@ require('lazy').setup({
       'nvim-lua/plenary.nvim',
       'nvim-tree/nvim-web-devicons', -- not strictly required, but recommended
       'MunifTanjim/nui.nvim',
+      'xiyaowong/transparent.nvim'
     },
     config = function()
+      require('transparent').clear_prefix('NeoTree')
       require("neo-tree").setup({
         vim.keymap.set('n', '<Space>;', ':Neotree toggle<CR>'),
         filesystem = {
@@ -549,7 +551,7 @@ require('lazy').setup({
     end
   },
   {
-    'xiyaowong/nvim-transparent',
+    'xiyaowong/transparent.nvim',
     config = function()
       require("transparent").setup({
         extra_groups = { -- table/string: additional groups that should be cleared
