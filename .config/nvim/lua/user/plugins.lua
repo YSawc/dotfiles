@@ -661,6 +661,8 @@ require('lazy').setup({
     priority = 1000,
     config = function()
       require("monokai-pro").setup({
+        transparent_background = true,
+        terminal_colors = true,
         overridePalette = function(_filter)
           return {
             background = "#000000",
@@ -778,7 +780,7 @@ require('lazy').setup({
       vim.keymap.set('n', 'gi', '<CMD>Glance implementations<CR>')
     end,
   },
-  { "folke/neodev.nvim",    opts = {} },
+  { "folke/neodev.nvim", opts = {} },
   {
     "ecthelionvi/NeoComposer.nvim",
     dependencies = { "kkharji/sqlite.lua" },

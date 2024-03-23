@@ -13,6 +13,7 @@
 - link:
     ~/.vimrc: .vimrc
     ~/.zshrc: .zshrc
+    ~/.wezterm.lua: .wezterm.lua
     ~/.config/nvim: .config/nvim
     ~/.config/alacritty : .config/alacritty
     ~/.config/starship.toml : .config/starship.toml
