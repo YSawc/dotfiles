@@ -387,7 +387,11 @@ require('lazy').setup({
   },
   {
     'nvim-lualine/lualine.nvim',
+    dependencies = {
+      'xiyaowong/transparent.nvim'
+    },
     config = function()
+      require('transparent').clear_prefix('lualine')
       require('lualine').setup({
         options = {
           globalstatus = true,
@@ -469,8 +473,12 @@ require('lazy').setup({
     'weilbith/nvim-code-action-menu',
     cmd = 'CodeActionMenu',
   },
-  { 'kevinhwang91/nvim-bqf',           ft = 'qf' },
-  { 'nvim-treesitter/nvim-treesitter', build = ':TSUpdate' },
+  { 'kevinhwang91/nvim-bqf', ft = 'qf' },
+  {
+    'nvim-treesitter/nvim-treesitter',
+    tag = 'v0.9.2',
+    build = ':TSUpdate',
+  },
   {
     "b0o/incline.nvim",
     event = { "FocusLost", "CursorHold" },
@@ -782,7 +790,7 @@ require('lazy').setup({
       vim.keymap.set('n', 'gi', '<CMD>Glance implementations<CR>')
     end,
   },
-  { "folke/neodev.nvim", opts = {} },
+  { "folke/neodev.nvim",     opts = {} },
   {
     "ecthelionvi/NeoComposer.nvim",
     dependencies = { "kkharji/sqlite.lua" },
@@ -791,4 +799,11 @@ require('lazy').setup({
       require("NeoComposer").setup()
     end
   },
+  {
+    'alvarosevilla95/luatab.nvim',
+    requires = 'kyazdani42/nvim-web-devicons',
+    config = function()
+      require('luatab').setup {}
+    end
+  }
 })
