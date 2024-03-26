@@ -34,6 +34,9 @@ set('n', 'sq', ':<C-u>q<CR>', { noremap = true })
 set('n', 'sQ', ':<C-u>bd<CR>', { noremap = true })
 set('n', 'sb', ':<C-u>Unite buffer_tab -buffer-name=file<CR>', { noremap = true })
 set('n', '<Space>L', ':luafile %<CR>', { noremap = true })
+set('n', '<Space>or', ':set relativenumber!<CR>', { noremap = true })
+set('n', '<Space>on', ':set number!<CR>', { noremap = true })
+set('n', '<Space>ow', ':set wrap!<CR>', { noremap = true })
 
 function _G.ReloadConfig()
   for name, _ in pairs(package.loaded) do
