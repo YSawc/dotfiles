@@ -57,6 +57,16 @@ require('lazy').setup({
       'hrsh7th/cmp-cmdline',
       'hrsh7th/vim-vsnip',
       'neovim/nvim-lspconfig',
+      {
+        "folke/neoconf.nvim",
+        config = function()
+          require("neoconf").setup({
+            -- override any of the default settings here
+          })
+        end,
+        cmd = "Neoconf",
+      },
+
     },
     config = function()
       vim.keymap.set('n', ',e', vim.diagnostic.open_float)
@@ -782,7 +792,11 @@ require('lazy').setup({
     "dnlhc/glance.nvim",
     config = function()
       require('glance').setup({
-        -- your configuration
+        border = {
+          enable = true, -- Show window borders. Only horizontal borders allowed
+          top_char = '―',
+          bottom_char = '―',
+        },
       })
       vim.keymap.set('n', 'gd', '<CMD>Glance definitions<CR>')
       vim.keymap.set('n', 'gr', '<CMD>Glance references<CR>')
@@ -791,19 +805,25 @@ require('lazy').setup({
     end,
   },
   { "folke/neodev.nvim",     opts = {} },
-  {
-    "ecthelionvi/NeoComposer.nvim",
-    dependencies = { "kkharji/sqlite.lua" },
-    opts = {},
-    config = function()
-      require("NeoComposer").setup()
-    end
-  },
+  -- {
+  --   "ecthelionvi/NeoComposer.nvim",
+  --   dependencies = { "kkharji/sqlite.lua" },
+  --   opts = {},
+  --   config = function()
+  --     require("NeoComposer").setup()
+  --   end
+  -- },
   {
     'alvarosevilla95/luatab.nvim',
     requires = 'kyazdani42/nvim-web-devicons',
     config = function()
       require('luatab').setup {}
     end
-  }
+  },
+  {
+    'lewis6991/satellite.nvim',
+    config = function()
+      require('satellite').setup {}
+    end
+  },
 })
