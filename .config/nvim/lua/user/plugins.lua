@@ -148,6 +148,7 @@ require('lazy').setup({
       'hrsh7th/cmp-buffer',
       'hrsh7th/cmp-path',
       'hrsh7th/cmp-cmdline',
+      'rinx/cmp-skkeleton',
     },
     config = function()
       local cmp = require('cmp')
@@ -161,6 +162,7 @@ require('lazy').setup({
           { name = 'nvim_lsp' },
           { name = 'buffer' },
           { name = 'path' },
+          { name = 'skkeleton' },
         },
         mapping = cmp.mapping.preset.insert({
           ['<C-p>'] = cmp.mapping.select_prev_item(),
@@ -824,6 +826,24 @@ require('lazy').setup({
     'lewis6991/satellite.nvim',
     config = function()
       require('satellite').setup {}
+    end
+  },
+  {
+    'vim-skk/skkeleton',
+    dependencies = { 'vim-denops/denops.vim' },
+    config = function()
+      vim.keymap.set({ 'i', 'c' }, '<C-j>', '<Plug>(skkeleton-enable)')
+      vim.api.nvim_create_autocmd("User", {
+        pattern = "skkeleton-initialize-pre",
+        callback = function()
+          vim.fn["skkeleton#config"]({
+            globalDictionaries = { "~/.config/skk/SKK-JISYO.L" },
+          })
+          vim.fn["skkeleton#register_kanatable"]("rom", {
+            jj = "escape",
+          })
+        end,
+      })
     end
   },
 })

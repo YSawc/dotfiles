@@ -15,6 +15,7 @@
     ~/.zshrc: .zshrc
     ~/.wezterm.lua: .wezterm.lua
     ~/.config/nvim: .config/nvim
+    ~/.config/skk: .config/skk
     ~/.config/alacritty : .config/alacritty
     ~/.config/starship.toml : .config/starship.toml
     ~/.config/zellij: .config/zellij
