@@ -24,6 +24,7 @@ alias gcob='git checkout -b'
 alias gb='git branch'
 alias gm='git merge'
 alias gr='git reset'
+alias gsw='git switch'
 
 # }}}
 

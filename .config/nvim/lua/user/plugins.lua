@@ -42,7 +42,7 @@ require('lazy').setup({
   {
     'mrcjkb/rustaceanvim',
     version = '^4', -- Recommended
-    ft = { 'rust' },
+    lazy = false,   -- This plugin is already lazy
   },
   'MunifTanjim/prettier.nvim',
   {
@@ -149,6 +149,7 @@ require('lazy').setup({
       'hrsh7th/cmp-path',
       'hrsh7th/cmp-cmdline',
       'rinx/cmp-skkeleton',
+      'nvim-orgmode/orgmode',
     },
     config = function()
       local cmp = require('cmp')
@@ -163,6 +164,7 @@ require('lazy').setup({
           { name = 'buffer' },
           { name = 'path' },
           { name = 'skkeleton' },
+          { name = 'orgmode' },
         },
         mapping = cmp.mapping.preset.insert({
           ['<C-p>'] = cmp.mapping.select_prev_item(),
@@ -435,24 +437,6 @@ require('lazy').setup({
   --   config = function()
   --     require('lsp_lines').setup()
   --   end,
-
-  {
-    'kevinhwang91/nvim-hlslens',
-    config = function()
-      require('hlslens').setup()
-      local kopts = { noremap = true, silent = true }
-      vim.api.nvim_set_keymap('n', 'n',
-        [[<Cmd>execute('normal! ' . v:count1 . 'n')<CR><Cmd>lua require('hlslens').start()<CR>]],
-        kopts)
-      vim.api.nvim_set_keymap('n', 'N',
-        [[<Cmd>execute('normal! ' . v:count1 . 'N')<CR><Cmd>lua require('hlslens').start()<CR>]],
-        kopts)
-      vim.api.nvim_set_keymap('n', '*', [[*<Cmd>lua require('hlslens').start()<CR>]], kopts)
-      vim.api.nvim_set_keymap('n', '#', [[#<Cmd>lua require('hlslens').start()<CR>]], kopts)
-      vim.api.nvim_set_keymap('n', 'g*', [[g*<Cmd>lua require('hlslens').start()<CR>]], kopts)
-      vim.api.nvim_set_keymap('n', 'g#', [[g#<Cmd>lua require('hlslens').start()<CR>]], kopts)
-    end
-  },
   {
     'anuvyklack/pretty-fold.nvim',
     config = function()
@@ -845,5 +829,195 @@ require('lazy').setup({
         end,
       })
     end
+  },
+  {
+    'nvim-orgmode/orgmode',
+    event = 'VeryLazy',
+    ft = { 'org' },
+    config = function()
+      local template = {}
+
+      template.journal = [[
+* %<%Y-%m-%d> %<%a>
+  %U
+
+** Daily reviews [/]
+   - [ ] Check mail.
+   - [ ] Check schedule.
+   - [ ] Check Slack.
+   - [ ] Add tasks to agenda.
+]]
+
+      template.todo = [[
+* TODO %?
+  %U
+]]
+
+      template.plan = [[
+* PLAN %?
+  SCHEDULED: %^T
+  %U
+]]
+
+      template.document = [[
+* %?
+  %U
+
+** Cue
+
+** Note
+
+** Summary
+]]
+
+      template.index = [[
+* %?
+  %U
+]]
+
+      template.memo = [[
+* %?      :Memo:
+  %U
+]]
+
+      template.note = [[
+* %?
+  %U
+]]
+
+      ---@param name "journal" | "todo" | "plan" | "document" | "index" | "memo" | "note"
+      ---@return string
+      template.get = function(name)
+        return template[name]
+      end
+
+      require("nvim-treesitter.configs").setup({
+        highlight = {
+          enable = true,
+          additional_vim_regex_highlighting = { "org" },
+        },
+        ensure_installed = { "org" },
+      })
+
+      -- Setup orgmode
+      require('orgmode').setup({
+        org_agenda_files = '~/notes/org/**/*',
+        org_default_notes_file = '~/notes/org/journal.org',
+      })
+
+      -- NOTE: If you are using nvim-treesitter with `ensure_installed = "all"` option
+      -- add `org` to ignore_install
+      -- require('nvim-treesitter.configs').setup({
+      --   ensure_installed = 'all',
+      --   ignore_install = { 'org' },
+      -- })
+
+      -- require("orgmode").setup({
+      --   org_agenda_files = { "~/notes/org/agenda/**" },
+      --   org_default_notes_file = "~/notes/org/inbox.org",
+      --   org_archive_location = "~/notes/org/archive/%s_archive::",
+      --   org_todo_keywords = {
+      --     "TODO(t)",
+      --     "NEXT(n)",
+      --     "WAITING(w)",
+      --     "PROJECT(p)",
+      --     "PLAN(l)",
+      --     "SOMEDAY(s)",
+      --     "|",
+      --     "DONE(d)",
+      --     "TRASH(r)",
+      --     "CANCELED(c)",
+      --     "DELEGATED(g)",
+      --   },
+      --   org_todo_keyword_faces = {
+      --     TODO = ":foreground #db4b4b",
+      --     NEXT = ":foreground #e0af68",
+      --     WAITING = ":foreground #ff9e64",
+      --     PROJECT = ":foreground #9d7cd8",
+      --     PLAN = ":foreground #9ece6a",
+      --     SOMEDAY = ":foreground #7aa2f7",
+      --     DONE = ":foreground #449dab",
+      --     TRASH = ":foreground #545c7e",
+      --     CANCELED = ":foreground #545c7e",
+      --     DELEGATED = ":foreground #449dab",
+      --   },
+      --   org_capture_templates = {
+      --     t = {
+      --       description = "Todo",
+      --       template = template.get("todo"),
+      --       headline = "Todo",
+      --       target = "~/notes/org/agenda/inbox.org",
+      --     },
+      --     l = {
+      --       description = "Plan",
+      --       template = template.get("plan"),
+      --       headline = "Plan",
+      --       target = "~/notes/org/agenda/inbox.org",
+      --     },
+      --     j = {
+      --       description = "Journal",
+      --       template = template.get("journal"),
+      --       target = "~/notes/org/journal.org",
+      --       datetree = { tree_type = "month" },
+      --     },
+      --     d = {
+      --       description = "Document",
+      --       template = template.get("document"),
+      --       target = "~/notes/org/documents/inbox.org",
+      --     },
+      --     i = {
+      --       description = "Index",
+      --       template = template.get("index"),
+      --       target = "~/notes/org/index/inbox.org",
+      --     },
+      --     m = {
+      --       description = "Memo",
+      --       template = template.get("memo"),
+      --     },
+      --     n = {
+      --       description = "Note",
+      --       template = template.get("note"),
+      --       target = "~/notes/org/notes/inbox.org",
+      --     },
+      --   },
+      --   org_startup_folded = "content",
+      --   -- win_split_mode = { "float", 0.8 },
+      -- })
+    end,
+    enabled = true,
+  },
+  'lambdalisue/gin.vim',
+  {
+    "vhyrro/luarocks.nvim",
+    priority = 1000,
+    config = true,
+    opts = {
+      rocks = { "lua-curl", "nvim-nio", "mimetypes", "xml2lua" }
+    }
+  },
+  'veryl-lang/veryl.vim',
+  {
+    'bennypowers/nvim-regexplainer',
+    dependencies = {
+      'nvim-treesitter/nvim-treesitter',
+      'MunifTanjim/nui.nvim',
+    },
+    config = function()
+      require('regexplainer').setup()
+    end,
+  },
+  'nvim-treesitter/nvim-treesitter-context',
+  -- {
+  --   'karb94/neoscroll.nvim',
+  --   config = function()
+  --     require('neoscroll').setup({})
+  --   end
+  -- },
+  {
+    'nvimdev/indentmini.nvim',
+    config = function()
+      require("indentmini").setup()
+      vim.cmd.highlight('IndentLineCurrent guifg=#B627F2')
+    end,
   },
 })
