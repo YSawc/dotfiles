@@ -67,27 +67,6 @@ git_reset_--soft_HEAD^() {
 
 source $HOME/.zprofile
 
-# Zplugin {{{
-### Added by Zplugin's installer
-ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
-mkdir -p "$(dirname $ZINIT_HOME)"
-# git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
-source "${ZINIT_HOME}/zinit.zsh"
-
-autoload -Uz _zplugin
-(( ${+_comps} )) && _comps[zplugin]=_zplugin
-### End of Zplugin installer's chunk
-zinit light zsh-users/zsh-completions
-zinit light zsh-users/zsh-autosuggestions
-zinit light marlonrichert/zsh-autocomplete
-zinit light z-shell/F-Sy-H
-zinit ice depth=1
-zinit light jeffreytse/zsh-vi-mode
-zinit light wfxr/forgit
-# zinit ice wait lucid; zinit light b4b4r07/enhancd
-export ENHANCD_HYPHEN_NUM="${ENHANCD_HYPHEN_NUM:-30}" # default "cd -" list number change to 20
-# }}}
-
 ### forgit {{{1
 export FORGIT_NO_ALIASES=1
 PATH="$PATH:$FORGIT_INSTALL_DIR/bin"
@@ -113,7 +92,6 @@ fi
 # https://github.com/ajeetdsouza/zoxide
 if [[ $(command -v zoxide) ]]; then
   eval "$(zoxide init zsh)"
-  unalias zi
   alias zi=__zoxide_zi
 else
   eval "$(cargo install zoxide --locked && zoxide init zsh)"

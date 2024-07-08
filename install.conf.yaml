@@ -21,6 +21,7 @@
     ~/.config/starship.toml : .config/starship.toml
     ~/.config/zellij: .config/zellij
     ~/.config/nushell: .config/nushell
+    ~/.config/sheldon: .config/sheldon
 
 - shell:
   - [git submodule update --init --recursive, Installing submodules]
