@@ -19,10 +19,15 @@ white = "#CACCC0"
 # white = "#E3E3DD"
 yellow = "#B3B42B"
 
+# // night-mode
+# [colors.primary]
+# # background = "#080808"
+# foreground = "#caccc0"
+
+# light-mode
 [colors.primary]
-# background = "#1B1D1E"
-background = "#080808"
-foreground = "#caccc0"
+background = "#fafafa"
+foreground = "#080808"
 
 [font.normal]
 family = "Ubuntu Mono"

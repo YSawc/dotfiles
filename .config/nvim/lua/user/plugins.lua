@@ -663,45 +663,74 @@ require('lazy').setup({
     dependencies = { "rafamadriz/friendly-snippets" },
   },
   {
-    "loctvl842/monokai-pro.nvim",
-    priority = 1000,
+    "catppuccin/nvim",
+    name = "catppuccin",
+    priority = 3000,
     config = function()
-      require("monokai-pro").setup({
-        transparent_background = true,
-        terminal_colors = true,
-        overridePalette = function(_filter)
-          return {
-            background = "#000000",
-            text = "#caccc0",
-            accent1 = "#c42632",
-            -- accent1 = "#c42652",
-            accent3 = "#b3b42b",
-            accenf4 = "#86b42b",
-            accent5 = "#56adbc",
-          }
-        end
-        -- classic default
-        -- return {
-        --   dark2 = "#161613",
-        --   dark1 = "#1d1e19",
-        --   background = "#272822",
-        --   text = "#fdfff1",
-        --   accent1 = "#f92672",
-        --   accent2 = "#fd971f",
-        --   accent3 = "#e6db74",
-        --   accent4 = "#a6e22e",
-        --   accent5 = "#66d9ef",
-        --   accent6 = "#ae81ff",
-        --   dimmed1 = "#c0c1b5",
-        --   dimmed2 = "#919288",
-        --   dimmed3 = "#6e7066",
-        --   dimmed4 = "#57584f",
-        --   dimmed5 = "#3b3c35",
-        -- }
+      vim.opt.termguicolors = true
+      require("catppuccin").setup({
+        flavour = "latte"
       })
-      vim.cmd([[ colorscheme monokai-pro-classic]])
+      vim.cmd("colorscheme catppuccin-latte")
     end
   },
+  -- {
+  --   "polirritmico/monokai-nightasty.nvim",
+  --   lazy = false,
+  --   priority = 1000,
+  --   config = function(_, opts)
+  --     vim.o.background = "light" -- dark | light
+  --   end
+  -- },
+  -- {
+  --   "loctvl842/monokai-pro.nvim",
+  --   priority = 1000,
+  --   config = function()
+  --     require("monokai-pro").setup({
+  --       transparent_background = true,
+  --       terminal_colors = true,
+  --       overridePalette = function(_filter)
+  --         return {
+  --           background = "#fafafa",
+  --           text = "#1B1D1E",
+  --           accent1 = "#c42632",
+  --           -- accent1 = "#c42652",
+  --           accent3 = "#b3b42b",
+  --           accenf4 = "#86b42b",
+  --           accent5 = "#56adbc",
+  --         }
+  --         -- return {
+  --         --   background = "#000000",
+  --         --   text = "#caccc0",
+  --         --   accent1 = "#c42632",
+  --         --   -- accent1 = "#c42652",
+  --         --   accent3 = "#b3b42b",
+  --         --   accenf4 = "#86b42b",
+  --         --   accent5 = "#56adbc",
+  --         -- }
+  --       end
+  --       -- classic default
+  --       -- return {
+  --       --   dark2 = "#161613",
+  --       --   dark1 = "#1d1e19",
+  --       --   background = "#272822",
+  --       --   text = "#fdfff1",
+  --       --   accent1 = "#f92672",
+  --       --   accent2 = "#fd971f",
+  --       --   accent3 = "#e6db74",
+  --       --   accent4 = "#a6e22e",
+  --       --   accent5 = "#66d9ef",
+  --       --   accent6 = "#ae81ff",
+  --       --   dimmed1 = "#c0c1b5",
+  --       --   dimmed2 = "#919288",
+  --       --   dimmed3 = "#6e7066",
+  --       --   dimmed4 = "#57584f",
+  --       --   dimmed5 = "#3b3c35",
+  --       -- }
+  --     })
+  --     vim.cmd([[ colorscheme monokai-pro-classic]])
+  --   end
+  -- },
   {
     'Wansmer/sibling-swap.nvim',
     requires = { 'nvim-treesitter' },
