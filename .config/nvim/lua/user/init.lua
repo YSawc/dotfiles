@@ -5,4 +5,4 @@ require('user.core.options')
 require('user.core.preference')
 require('user.core.utils')
 
--- vim.cmd("colorscheme catppuccin-latte")
+vim.cmd("colorscheme catppuccin-latte")

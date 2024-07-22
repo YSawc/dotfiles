@@ -70,8 +70,8 @@ require('lazy').setup({
     },
     config = function()
       vim.keymap.set('n', ',e', vim.diagnostic.open_float)
-      vim.keymap.set('n', '[d', vim.diagnostic.goto_prev)
-      vim.keymap.set('n', ']d', vim.diagnostic.goto_next)
+      -- vim.keymap.set('n', '[d', vim.diagnostic.goto_prev)
+      -- vim.keymap.set('n', ']d', vim.diagnostic.goto_next)
       vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist)
 
       vim.api.nvim_create_autocmd('LspAttach', {
@@ -385,7 +385,11 @@ require('lazy').setup({
       'nvim-tree/nvim-web-devicons',
     },
     config = function()
-      require 'octo'.setup()
+      require 'octo'.setup({
+        suppress_missing_scope = {
+          projects_v2 = true,
+        }
+      })
     end
   },
   {
@@ -479,7 +483,58 @@ require('lazy').setup({
     "b0o/incline.nvim",
     event = { "FocusLost", "CursorHold" },
     config = function()
-      require("incline").setup {}
+      local devicons = require 'nvim-web-devicons'
+      require('incline').setup {
+        render = function(props)
+          local filename = vim.fn.fnamemodify(vim.api.nvim_buf_get_name(props.buf), ':t')
+          if filename == '' then
+            filename = '[No Name]'
+          end
+          local ft_icon, ft_color = devicons.get_icon_color(filename)
+
+          local function get_git_diff()
+            local icons = { removed = '', changed = '', added = '' }
+            local signs = vim.b[props.buf].gitsigns_status_dict
+            local labels = {}
+            if signs == nil then
+              return labels
+            end
+            for name, icon in pairs(icons) do
+              if tonumber(signs[name]) and signs[name] > 0 then
+                table.insert(labels, { icon .. signs[name] .. ' ', group = 'Diff' .. name })
+              end
+            end
+            if #labels > 0 then
+              table.insert(labels, { '┊ ' })
+            end
+            return labels
+          end
+
+          local function get_diagnostic_label()
+            local icons = { error = '', warn = '', info = '', hint = '' }
+            local label = {}
+
+            for severity, icon in pairs(icons) do
+              local n = #vim.diagnostic.get(props.buf, { severity = vim.diagnostic.severity[string.upper(severity)] })
+              if n > 0 then
+                table.insert(label, { icon .. n .. ' ', group = 'DiagnosticSign' .. severity })
+              end
+            end
+            if #label > 0 then
+              table.insert(label, { '┊ ' })
+            end
+            return label
+          end
+
+          return {
+            { get_diagnostic_label() },
+            { get_git_diff() },
+            { (ft_icon or '') .. ' ', guifg = ft_color, guibg = 'none' },
+            { filename .. ' ', gui = vim.bo[props.buf].modified and 'bold,italic' or 'bold' },
+            { '┊  ' .. vim.api.nvim_win_get_number(props.win), group = 'DevIconWindows' },
+          }
+        end,
+      }
     end,
   },
   {
@@ -664,6 +719,10 @@ require('lazy').setup({
   },
   {
     "catppuccin/nvim",
+    dependencies = {
+      -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
+      "folke/noice.nvim",
+    },
     name = "catppuccin",
     priority = 3000,
     config = function()
@@ -671,7 +730,9 @@ require('lazy').setup({
       require("catppuccin").setup({
         flavour = "latte"
       })
-      vim.cmd("colorscheme catppuccin-latte")
+      require("notify").setup({
+        background_colour = "#000000",
+      })
     end
   },
   -- {
@@ -1043,10 +1104,60 @@ require('lazy').setup({
   --   end
   -- },
   {
+    "nvim-zh/colorful-winsep.nvim",
+    config = true,
+    event = { "WinLeave" },
+  },
+  {
     'nvimdev/indentmini.nvim',
     config = function()
       require("indentmini").setup()
       vim.cmd.highlight('IndentLineCurrent guifg=#B627F2')
     end,
+  },
+  {
+    "amitds1997/remote-nvim.nvim",
+    version = "*",                     -- Pin to GitHub releases
+    dependencies = {
+      "nvim-lua/plenary.nvim",         -- For standard functions
+      "MunifTanjim/nui.nvim",          -- To build the plugin UI
+      "nvim-telescope/telescope.nvim", -- For picking b/w different remote methods
+    },
+    config = true,
+  },
+  {
+    "folke/noice.nvim",
+    event = "VeryLazy",
+    opts = {
+      -- add any options here
+    },
+    dependencies = {
+      -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
+      "MunifTanjim/nui.nvim",
+      -- OPTIONAL:
+      --   `nvim-notify` is only needed, if you want to use the notification view.
+      --   If not available, we use `mini` as the fallback
+      "rcarriga/nvim-notify",
+    },
+    config = function()
+      require("noice").setup({
+        lsp = {
+          -- override markdown rendering so that **cmp** and other plugins use **Treesitter**
+          override = {
+            ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
+            ["vim.lsp.util.stylize_markdown"] = true,
+            ["cmp.entry.get_documentation"] = true, -- requires hrsh7th/nvim-cmp
+          },
+        },
+        -- you can enable a preset for easier configuration
+        presets = {
+          bottom_search = true,         -- use a classic bottom cmdline for search
+          command_palette = true,       -- position the cmdline and popupmenu together
+          long_message_to_split = true, -- long messages will be sent to a split
+          inc_rename = false,           -- enables an input dialog for inc-rename.nvim
+          lsp_doc_border = true,        -- add a border to hover docs and signature help
+        },
+      })
+    end
   },
 })
