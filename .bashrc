@@ -30,8 +30,8 @@ alias gsw='git switch'
 
 # functions {{{
 
-zprofile(){
-  source ~/.zprofile
+bprofile(){
+  source ~/.bash_profile
 }
 
 gco_fzf() {
@@ -58,13 +58,13 @@ git_reset_--soft_HEAD^() {
 }
 # }}}
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
-if [[ ! -a $HOME/.zprofile ]]; then
-    touch $HOME/.zprofile
+if [[ ! -a $HOME/.bash_profile ]]; then
+    touch $HOME/.bash_profile
 fi
 
-source $HOME/.zprofile
+source $HOME/.bash_profile
 
 ### forgit {{{1
 export FORGIT_NO_ALIASES=1
@@ -72,7 +72,7 @@ PATH="$PATH:$FORGIT_INSTALL_DIR/bin"
 #}}}1
 
 if [[ $(command -v starship) ]]; then
-  eval "$(starship init zsh)"
+  eval "$(starship init bash)"
 else
   if [[ $(command -v cargo) ]]; then
     eval "$(curl -sS https://starship.rs/install.sh | sh)"
@@ -86,10 +86,10 @@ if ! [[ $(command -v cargo) ]]; then
 fi
 
 if [[ $(command -v zoxide) ]]; then
-  eval "$(zoxide init zsh)"
+  eval "$(zoxide init bash)"
   alias zi=__zoxide_zi
 else
-  eval "$(cargo install zoxide --locked && zoxide init zsh)"
+  eval "$(cargo install zoxide --locked && zoxide init bash)"
 fi
 
 if ! [[ $(command -v rg) ]]; then

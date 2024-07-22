@@ -12,6 +12,7 @@
 
 - link:
     ~/.vimrc: .vimrc
+    ~/.bashrc: .bashrc
     ~/.zshrc: .zshrc
     ~/.wezterm.lua: .wezterm.lua
     ~/.config/nvim: .config/nvim
