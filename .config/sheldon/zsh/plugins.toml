@@ -33,8 +33,3 @@ github = "jeffreytse/zsh-vi-mode"
 
 [plugins.wfxr_forgit]
 github = "wfxr/forgit"
-
-# For example:
-#
-# [plugins.base16]
-# github = "chriskempson/base16-shell"

@@ -123,6 +123,11 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-eval "$(sheldon source)"
+if ! [[ $(command -v sheldon) ]]; then
+  eval "$(cargo install sheldon)"
+else
+  export SHELDON_CONFIG_DIR=~/.config/sheldon/zsh
+  eval "$(sheldon source)"
+fi
 
 . "$HOME/.cargo/env"
