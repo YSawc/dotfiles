@@ -638,6 +638,18 @@ require('lazy').setup({
     build = function() vim.fn["mkdp#util#install"]() end,
   },
   {
+    "OXY2DEV/markview.nvim",
+    ft = "markdown",
+
+    dependencies = {
+      -- You may not need this if you don't lazy load
+      -- Or if the parsers are in your $RUNTIMEPATH
+      "nvim-treesitter/nvim-treesitter",
+
+      "nvim-tree/nvim-web-devicons"
+    },
+  },
+  {
     'akinsho/git-conflict.nvim',
     config = function()
       require('git-conflict').setup()
@@ -660,18 +672,6 @@ require('lazy').setup({
     config = function()
       require('Comment').setup()
     end
-  },
-  {
-    'gelguy/wilder.nvim',
-    config = function()
-      local wilder = require('wilder')
-      wilder.setup({ modes = { ':', '/', '?' } })
-      wilder.set_option('renderer', wilder.popupmenu_renderer({
-        highlighter = wilder.basic_highlighter(),
-        left = { ' ', wilder.popupmenu_devicons() },
-        right = { ' ', wilder.popupmenu_scrollbar() },
-      }))
-    end,
   },
   'voldikss/vim-floaterm',
   'LunarVim/bigfile.nvim',
@@ -730,8 +730,51 @@ require('lazy').setup({
       require("catppuccin").setup({
         flavour = "latte"
       })
-      require("notify").setup({
+      require("noice").setup({
         background_colour = "#000000",
+        views = {
+          cmdline_popup = {
+            position = {
+              row = 5,
+              col = "50%",
+            },
+            size = {
+              width = 60,
+              height = "auto",
+            },
+          },
+          popupmenu = {
+            relative = "editor",
+            position = {
+              row = 8,
+              col = "50%",
+            },
+            size = {
+              width = 60,
+              height = 10,
+            },
+            border = {
+              style = "rounded",
+              padding = { 0, 1 },
+            },
+            win_options = {
+              winhighlight = { Normal = "Normal", FloatBorder = "DiagnosticInfo" },
+            },
+            routes = {
+              {
+                filter = {
+                  event = "lsp",
+                  kind = "progress",
+                  cond = function(message)
+                    local client = vim.tbl_get(message.opts, "progress", "client")
+                    return client == "lua_ls"
+                  end,
+                },
+                opts = { skip = true },
+              },
+            },
+          },
+        },
       })
     end
   },
@@ -1085,7 +1128,6 @@ require('lazy').setup({
       rocks = { "lua-curl", "nvim-nio", "mimetypes", "xml2lua" }
     }
   },
-  'veryl-lang/veryl.vim',
   {
     'bennypowers/nvim-regexplainer',
     dependencies = {
@@ -1137,7 +1179,14 @@ require('lazy').setup({
       -- OPTIONAL:
       --   `nvim-notify` is only needed, if you want to use the notification view.
       --   If not available, we use `mini` as the fallback
-      "rcarriga/nvim-notify",
+      {
+        "rcarriga/nvim-notify",
+        config = function()
+          require('notify').setup({
+            background_colour = "#000000",
+          })
+        end
+      },
     },
     config = function()
       require("noice").setup({
@@ -1154,7 +1203,7 @@ require('lazy').setup({
           bottom_search = true,         -- use a classic bottom cmdline for search
           command_palette = true,       -- position the cmdline and popupmenu together
           long_message_to_split = true, -- long messages will be sent to a split
-          inc_rename = false,           -- enables an input dialog for inc-rename.nvim
+          inc_rename = true,            -- enables an input dialog for inc-rename.nvim
           lsp_doc_border = true,        -- add a border to hover docs and signature help
         },
       })

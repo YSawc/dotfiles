@@ -1,37 +1,31 @@
-# [colors.bright]
-# black = "#666666"
-# blue = "#819AFF"
-# cyan = "#66D9EF"
-# green = "#A6E22E"
-# magenta = "#AE81FF"
-# red = "#F92672"
-# white = "#F8F8F2"
-# yellow = "#E2E22E"
+[colors.bright]
+black = "0x57606a"
+blue = "0x218bff"
+cyan = "0x1b7c83"
+green = "0x1a7f37"
+magenta = "0x8250df"
+red = "0xa40e26"
+white = "0x6e7781"
+yellow = "0x633c01"
+
+[colors.cursor]
+cursor = "0x1f2328"
+text = "0xffffff"
 
 [colors.normal]
-black = "#333333"
-blue = "#6A7EC8"
-cyan = "#56ADBC"
-green = "#86B42B"
-magenta = "#8C6BC8"
-red = "#C4265E"
-white = "#CACCC0"
-# white = "#E3E3DD"
-yellow = "#B3B42B"
+black = "0x24292f"
+blue = "0x0969da"
+cyan = "0x1b7c83"
+green = "0x116329"
+magenta = "0x8250df"
+red = "0xcf222e"
+white = "0x6e7781"
+yellow = "0x4d2d00"
 
-# // night-mode
-# [colors.primary]
-# # background = "#080808"
-# foreground = "#caccc0"
-
-# light-mode
 [colors.primary]
-background = "#fafafa"
-foreground = "#080808"
+background = "0xffffff"
+foreground = "0x1F2328"
 
 [font.normal]
 family = "Ubuntu Mono"
 style = "Bold"
-
-[window]
-opacity = 1
