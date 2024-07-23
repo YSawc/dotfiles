@@ -464,12 +464,6 @@ require('lazy').setup({
   },
   'stevearc/dressing.nvim',
   {
-    'ray-x/lsp_signature.nvim',
-    config = function()
-      require 'lsp_signature'.setup()
-    end
-  },
-  {
     'weilbith/nvim-code-action-menu',
     cmd = 'CodeActionMenu',
   },
