@@ -238,8 +238,7 @@ require('lazy').setup({
             mappings = {
               ["s"] = "noop",
               ["/"] = "noop",
-              ["P"] = { "toggle_preview", config = { use_float = true, use_image_nvim = true } },
-              ["p"] = function(state)
+              ["P"] = function(state)
                 local node = state.tree:get_node()
                 require("neo-tree.ui.renderer").focus_node(state, node:get_parent_id())
               end,
