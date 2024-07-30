@@ -696,7 +696,12 @@ require('lazy').setup({
     end
   },
   'voldikss/vim-floaterm',
-  'LunarVim/bigfile.nvim',
+  {
+    'pteroctopus/faster.nvim',
+    config = function()
+      require('faster').setup()
+    end
+  },
   {
     'lambdalisue/fern.vim',
     dependencies = {
