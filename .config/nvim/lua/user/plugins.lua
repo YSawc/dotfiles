@@ -233,6 +233,7 @@ require('lazy').setup({
       require('transparent').clear_prefix('NeoTree')
       require("neo-tree").setup({
         vim.keymap.set('n', '<Space>;', ':Neotree toggle<CR>'),
+        vim.keymap.set('n', '<Space>:', ':Neotree position=current<CR>'),
         filesystem = {
           window = {
             mappings = {
