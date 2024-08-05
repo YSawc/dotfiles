@@ -90,7 +90,6 @@ require('lazy').setup({
         end,
         cmd = "Neoconf",
       },
-
     },
     config = function()
       vim.keymap.set('n', ',e', vim.diagnostic.open_float)
@@ -499,7 +498,6 @@ require('lazy').setup({
   { 'kevinhwang91/nvim-bqf', ft = 'qf' },
   {
     'nvim-treesitter/nvim-treesitter',
-    tag = 'v0.9.2',
     build = ':TSUpdate',
   },
   {
