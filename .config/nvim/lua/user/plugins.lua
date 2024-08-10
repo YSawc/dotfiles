@@ -258,7 +258,7 @@ require('lazy').setup({
   },
   {
     'nvim-telescope/telescope.nvim',
-    tag = '0.1.5',
+    tag = '0.1.8',
     dependencies = {
       { 'nvim-lua/plenary.nvim' },
       { "nvim-telescope/telescope-live-grep-args.nvim" },
@@ -723,12 +723,6 @@ require('lazy').setup({
       vim.keymap.set('', '<Space>ef', function()
         hop.hint_char2()
       end, { remap = true })
-    end
-  },
-  {
-    'simrat39/symbols-outline.nvim',
-    config = function()
-      require("symbols-outline").setup()
     end
   },
   {
