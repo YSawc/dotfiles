@@ -161,6 +161,7 @@ require('lazy').setup({
           }
         end,
         ["rust_analyzer"] = function() end,
+        ["hls"] = function() end,
       })
     end
   },
@@ -325,7 +326,6 @@ require('lazy').setup({
   },
   {
     'j-hui/fidget.nvim',
-    tag = "v1.0.0",
     config = function() require('fidget').setup {} end
   },
   {
@@ -1228,5 +1228,20 @@ require('lazy').setup({
         },
       })
     end
+  },
+  {
+  {
+    'mrcjkb/haskell-tools.nvim',
+    dependencies = {
+      'nvim-lua/plenary.nvim',
+    },
+    version = '^4', -- Recommended
+    ft = { 'haskell', 'lhaskell', 'cabal', 'cabalproject' },
+    config = function()
+      local ht = require('haskell-tools')
+      local bufnr = vim.api.nvim_get_current_buf()
+      local opts = { noremap = true, silent = true, buffer = bufnr, }
+      vim.keymap.set('n', '<space>hs', ht.hoogle.hoogle_signature, opts)
+    end,
   },
 })
