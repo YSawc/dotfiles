@@ -85,21 +85,30 @@ if ! [[ $(command -v cargo) ]]; then
   fi
 fi
 
-if [[ $(command -v zoxide) ]]; then
-  eval "$(zoxide init bash)"
-  alias zi=__zoxide_zi
-else
-  eval "$(cargo install zoxide --locked && zoxide init bash)"
-fi
+if [[ $(command -v cargo) ]]; then
+  if [[ $(command -v zoxide) ]]; then
+    eval "$(zoxide init bash)"
+    alias zi=__zoxide_zi
+  else
+    eval "$(cargo install zoxide --locked && zoxide init bash)"
+  fi
 
-if ! [[ $(command -v rg) ]]; then
-  eval "$(cargo install ripgrep)"
-fi
+  if ! [[ $(command -v rg) ]]; then
+    eval "$(cargo install ripgrep)"
+  fi
 
-if ! [[ $(command -v zellij) ]]; then
-  eval "$(cargo install zellij)"
-elif [[ -z $ZELLIJ ]]; then
-  zellij
+  if ! [[ $(command -v zellij) ]]; then
+    eval "$(cargo install zellij)"
+  elif [[ -z $ZELLIJ ]]; then
+    zellij
+  fi
+
+  if ! [[ $(command -v sheldon) ]]; then
+    eval "$(cargo install sheldon)"
+  else
+    export SHELDON_CONFIG_DIR=~/.config/sheldon/bash
+    eval "$(sheldon source)"
+  fi
 fi
 
 if ! [[ $(command -v fzf) ]]; then
@@ -122,12 +131,5 @@ esac
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
-if ! [[ $(command -v sheldon) ]]; then
-  eval "$(cargo install sheldon)"
-else
-  export SHELDON_CONFIG_DIR=~/.config/sheldon/bash
-  eval "$(sheldon source)"
-fi
 
 . "$HOME/.cargo/env"
