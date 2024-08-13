@@ -4,13 +4,14 @@ wo.number = true
 vim.opt.list = true
 vim.opt.listchars:append 'space:⋅'
 vim.opt.listchars:append 'eol:↴'
+vim.opt.listchars:append 'tab:»-'
 vim.opt.signcolumn = "yes"
 vim.opt.termguicolors = true
-vim.api.nvim_set_hl(
-  0,
-  "NonText",
-  { fg = "#181818" }
-)
+-- vim.api.nvim_set_hl(
+--   0,
+--   "NonText",
+--   { fg = "#181818" }
+-- )
 
 -- You will likely want to reduce updatetime which affects CursorHold
 -- note: this setting is global and should be set only once
