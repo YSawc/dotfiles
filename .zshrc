@@ -61,7 +61,7 @@ git_reset_--soft_HEAD^() {
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 if [[ ! -a $HOME/.zprofile ]]; then
-    touch $HOME/.zprofile
+  touch $HOME/.zprofile
 fi
 
 source $HOME/.zprofile
@@ -106,7 +106,7 @@ if [[ $(command -v cargo) ]]; then
   if ! [[ $(command -v sheldon) ]]; then
     eval "$(cargo install sheldon)"
   else
-    export SHELDON_CONFIG_DIR=~/.config/sheldon/bash
+    export SHELDON_CONFIG_DIR=~/.config/sheldon/zsh
     eval "$(sheldon source)"
   fi
 fi

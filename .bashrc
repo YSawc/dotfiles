@@ -61,7 +61,7 @@ git_reset_--soft_HEAD^() {
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
 if [[ ! -a $HOME/.bash_profile ]]; then
-    touch $HOME/.bash_profile
+  touch $HOME/.bash_profile
 fi
 
 source $HOME/.bash_profile
