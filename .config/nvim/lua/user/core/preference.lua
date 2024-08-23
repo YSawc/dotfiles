@@ -2,9 +2,16 @@ local wo = vim.wo
 wo.number = true
 
 vim.opt.list = true
-vim.opt.listchars:append 'space:⋅'
-vim.opt.listchars:append 'eol:↴'
-vim.opt.listchars:append 'tab:»-'
+vim.opt.listchars = {
+  space = "⋅",
+  eol = "↴",
+  tab = "»-",
+}
+
+-- make custom group with regux, then it enable to custom highlight
+-- :match SpaceGroup / /
+-- :hi SpaceGroup    ctermbg=None ctermfg=59 guibg=NONE guifg=None
+
 vim.opt.signcolumn = "yes"
 vim.opt.termguicolors = true
 -- vim.api.nvim_set_hl(
