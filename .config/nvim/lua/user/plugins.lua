@@ -162,6 +162,43 @@ require('lazy').setup({
         end,
         ["rust_analyzer"] = function() end,
         ["hls"] = function() end,
+        ["denols"] = function()
+          lspconfig.denols.setup {
+            settings = {
+              deno = {
+                config = {
+                  -- root_dir = lspconfig.util.root_pattern("deno.json"),
+                  init_options = {
+                    lint = true,
+                    unstable = true,
+                    suggest = {
+                      imports = {
+                        hosts = {
+                          ["https://deno.land"] = true,
+                          ["https://cdn.nest.land"] = true,
+                          ["https://crux.land"] = true,
+                        },
+                      },
+                    },
+                  }
+                }
+              }
+            },
+          }
+        end,
+        ["tsserver"] = function()
+          lspconfig.tsserver.setup {
+            settings = {
+              typescript = {
+                tsserver = {
+                  config = {
+                    root_dir = lspconfig.util.root_pattern("package.json"),
+                  }
+                }
+              }
+            }
+          }
+        end
       })
     end
   },
