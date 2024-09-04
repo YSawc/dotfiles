@@ -775,66 +775,16 @@ require('lazy').setup({
     dependencies = { "rafamadriz/friendly-snippets" },
   },
   {
-    "catppuccin/nvim",
-    dependencies = {
-      -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
-      "folke/noice.nvim",
-    },
-    name = "catppuccin",
-    priority = 3000,
+    'projekt0n/github-nvim-theme',
+    lazy = false,    -- make sure we load this during startup if it is your main colorscheme
+    priority = 1000, -- make sure to load this before all the other start plugins
     config = function()
-      vim.opt.termguicolors = true
-      require("catppuccin").setup({
-        flavour = "latte"
+      require('github-theme').setup({
+        -- ...
       })
-      require("noice").setup({
-        background_colour = "#000000",
-        views = {
-          cmdline_popup = {
-            position = {
-              row = 5,
-              col = "50%",
-            },
-            size = {
-              width = 60,
-              height = "auto",
-            },
-          },
-          popupmenu = {
-            relative = "editor",
-            position = {
-              row = 8,
-              col = "50%",
-            },
-            size = {
-              width = 60,
-              height = 10,
-            },
-            border = {
-              style = "rounded",
-              padding = { 0, 1 },
-            },
-            win_options = {
-              winhighlight = { Normal = "Normal", FloatBorder = "DiagnosticInfo" },
-            },
-            routes = {
-              {
-                filter = {
-                  event = "lsp",
-                  kind = "progress",
-                  cond = function(message)
-                    local client = vim.tbl_get(message.opts, "progress", "client")
-                    return client == "lua_ls"
-                  end,
-                },
-                opts = { skip = true },
-              },
-            },
-          },
-        },
-      })
-      vim.cmd("colorscheme catppuccin-latte")
-    end
+
+      vim.cmd('colorscheme github_light_tritanopia')
+    end,
   },
   -- {
   --   "polirritmico/monokai-nightasty.nvim",
