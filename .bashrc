@@ -71,20 +71,20 @@ export FORGIT_NO_ALIASES=1
 PATH="$PATH:$FORGIT_INSTALL_DIR/bin"
 #}}}1
 
-if [[ $(command -v starship) ]]; then
-  eval "$(starship init bash)"
-else
-  if [[ $(command -v cargo) ]]; then
-    eval "$(curl -sS https://starship.rs/install.sh | sh)"
-  fi
-fi
-
-if ! [[ $(command -v cargo) ]]; then
-  if [[ $(command -v curl) ]]; then
-    eval "$(curl https://sh.rustup.rs -sSf | sh)"
-  fi
-fi
-
+# if [[ $(command -v starship) ]]; then
+#   eval "$(starship init bash)"
+# else
+#   if [[ $(command -v cargo) ]]; then
+#     eval "$(curl -sS https://starship.rs/install.sh | sh)"
+#   fi
+# fi
+#
+# if ! [[ $(command -v cargo) ]]; then
+#   if [[ $(command -v curl) ]]; then
+#     eval "$(curl https://sh.rustup.rs -sSf | sh)"
+#   fi
+# fi
+#
 if [[ $(command -v cargo) ]]; then
   if [[ $(command -v zoxide) ]]; then
     eval "$(zoxide init bash)"
@@ -133,3 +133,6 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 . "$HOME/.cargo/env"
+
+[[ -f ~/.bash-preexec.sh ]] && source ~/.bash-preexec.sh
+eval "$(atuin init bash)"
