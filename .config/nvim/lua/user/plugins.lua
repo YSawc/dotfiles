@@ -92,6 +92,23 @@ require('lazy').setup({
       },
     },
     config = function()
+      local border = {
+        { "╭", "FloatBorder" },
+        { "─", "FloatBorder" },
+        { "╮", "FloatBorder" },
+        { "│", "FloatBorder" },
+        { "╯", "FloatBorder" },
+        { "─", "FloatBorder" },
+        { "╰", "FloatBorder" },
+        { "│", "FloatBorder" },
+      }
+      local orig_util_open_floating_preview = vim.lsp.util.open_floating_preview
+      function vim.lsp.util.open_floating_preview(contents, syntax, opts, ...)
+        opts = opts or {}
+        opts.border = opts.border or border
+        return orig_util_open_floating_preview(contents, syntax, opts, ...)
+      end
+
       vim.keymap.set('n', ',e', vim.diagnostic.open_float)
       -- vim.keymap.set('n', '[d', vim.diagnostic.goto_prev)
       -- vim.keymap.set('n', ']d', vim.diagnostic.goto_next)
@@ -186,19 +203,6 @@ require('lazy').setup({
             },
           }
         end,
-        ["tsserver"] = function()
-          lspconfig.tsserver.setup {
-            settings = {
-              typescript = {
-                tsserver = {
-                  config = {
-                    root_dir = lspconfig.util.root_pattern("package.json"),
-                  }
-                }
-              }
-            }
-          }
-        end
       })
     end
   },
@@ -296,7 +300,6 @@ require('lazy').setup({
   },
   {
     'nvim-telescope/telescope.nvim',
-    tag = '0.1.8',
     dependencies = {
       { 'nvim-lua/plenary.nvim' },
       { "nvim-telescope/telescope-live-grep-args.nvim" },
@@ -335,8 +338,8 @@ require('lazy').setup({
 
 
       require("telescope").load_extension("live_grep_args")
-
       local telescope = require("telescope")
+
       local lga_actions = require("telescope-live-grep-args.actions")
 
       telescope.setup {
@@ -363,7 +366,16 @@ require('lazy').setup({
   },
   {
     'j-hui/fidget.nvim',
-    config = function() require('fidget').setup {} end
+    config = function()
+      local fidget = require("fidget")
+
+      fidget.setup {
+        -- Options related to notification subsystem
+        notification = {
+          override_vim_notify = true, -- Automatically override vim.notify() with Fidget
+        },
+      }
+    end,
   },
   {
     'folke/trouble.nvim',
@@ -750,23 +762,9 @@ require('lazy').setup({
     end
   },
   {
-    'phaazon/hop.nvim',
-    branch = 'v2', -- optional but strongly recommended
+    'ggandor/leap.nvim',
     config = function()
-      -- you can configure Hop the way you like here; see :h hop-config
-      -- require'hop'.setup { keys = 'etovxqpdygfblzhckisuran' }
-      local hop = require 'hop'
-      hop.setup { keys = 'asdfghjkl;qwertyuiopzxcvbnm,./' }
-      vim.keymap.set('', '<Space>ef', function()
-        hop.hint_char2()
-      end, { remap = true })
-    end
-  },
-  {
-    'https://codeberg.org/esensar/nvim-dev-container',
-    requires = { 'nvim-treesitter/nvim-treesitter' },
-    config = function()
-      require("devcontainer").setup {}
+      vim.keymap.set({ 'n', 'x', 'o' }, '<Space>ef', '<Plug>(leap)')
     end
   },
   {
@@ -1133,7 +1131,7 @@ require('lazy').setup({
     priority = 1000,
     config = true,
     opts = {
-      rocks = { "lua-curl", "nvim-nio", "mimetypes", "xml2lua" }
+      rocks = { "lua-curl", "nvim-nio", "mimetypes", "xml2lua", hererocks = false, }
     }
   },
   {
@@ -1176,48 +1174,14 @@ require('lazy').setup({
     config = true,
   },
   {
-    "folke/noice.nvim",
-    event = "VeryLazy",
-    opts = {
-      -- add any options here
-    },
+    'stevearc/aerial.nvim',
+    opts = {},
+    -- Optional dependencies
     dependencies = {
-      -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
-      "MunifTanjim/nui.nvim",
-      -- OPTIONAL:
-      --   `nvim-notify` is only needed, if you want to use the notification view.
-      --   If not available, we use `mini` as the fallback
-      {
-        "rcarriga/nvim-notify",
-        config = function()
-          require('notify').setup({
-            background_colour = "#000000",
-          })
-        end
-      },
+      "nvim-treesitter/nvim-treesitter",
+      "nvim-tree/nvim-web-devicons"
     },
-    config = function()
-      require("noice").setup({
-        lsp = {
-          -- override markdown rendering so that **cmp** and other plugins use **Treesitter**
-          override = {
-            ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
-            ["vim.lsp.util.stylize_markdown"] = true,
-            ["cmp.entry.get_documentation"] = true, -- requires hrsh7th/nvim-cmp
-          },
-        },
-        -- you can enable a preset for easier configuration
-        presets = {
-          bottom_search = true,         -- use a classic bottom cmdline for search
-          command_palette = true,       -- position the cmdline and popupmenu together
-          long_message_to_split = true, -- long messages will be sent to a split
-          inc_rename = true,            -- enables an input dialog for inc-rename.nvim
-          lsp_doc_border = true,        -- add a border to hover docs and signature help
-        },
-      })
-    end
   },
-  {
   {
     'mrcjkb/haskell-tools.nvim',
     dependencies = {
