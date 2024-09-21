@@ -426,14 +426,6 @@ require('lazy').setup({
       -- refer to the configuration section below
     },
   },
-  {
-    "lukas-reineke/indent-blankline.nvim",
-    main = "ibl",
-    opts = {},
-    config = function()
-      require("ibl").setup()
-    end
-  },
   'RRethy/vim-illuminate',
   {
     'folke/todo-comments.nvim',
@@ -630,16 +622,6 @@ require('lazy').setup({
       require("nvim-surround").setup({
         -- Configuration here, or leave empty to use defaults
       })
-    end
-  },
-  {
-    "folke/zen-mode.nvim",
-    config = function()
-      require("zen-mode").setup {
-        -- your configuration comes here
-        -- or leave it empty to use the default settings
-        -- refer to the configuration section below
-      }
     end
   },
   {
@@ -929,7 +911,6 @@ require('lazy').setup({
       vim.keymap.set('n', 'gi', '<CMD>Glance implementations<CR>')
     end,
   },
-  { "folke/neodev.nvim",     opts = {} },
   -- {
   --   "ecthelionvi/NeoComposer.nvim",
   --   dependencies = { "kkharji/sqlite.lua" },
@@ -968,162 +949,6 @@ require('lazy').setup({
         end,
       })
     end
-  },
-  {
-    'nvim-orgmode/orgmode',
-    event = 'VeryLazy',
-    ft = { 'org' },
-    config = function()
-      local template = {}
-
-      template.journal = [[
-* %<%Y-%m-%d> %<%a>
-  %U
-
-** Daily reviews [/]
-   - [ ] Check mail.
-   - [ ] Check schedule.
-   - [ ] Check Slack.
-   - [ ] Add tasks to agenda.
-]]
-
-      template.todo = [[
-* TODO %?
-  %U
-]]
-
-      template.plan = [[
-* PLAN %?
-  SCHEDULED: %^T
-  %U
-]]
-
-      template.document = [[
-* %?
-  %U
-
-** Cue
-
-** Note
-
-** Summary
-]]
-
-      template.index = [[
-* %?
-  %U
-]]
-
-      template.memo = [[
-* %?      :Memo:
-  %U
-]]
-
-      template.note = [[
-* %?
-  %U
-]]
-
-      ---@param name "journal" | "todo" | "plan" | "document" | "index" | "memo" | "note"
-      ---@return string
-      template.get = function(name)
-        return template[name]
-      end
-
-      require("nvim-treesitter.configs").setup({
-        highlight = {
-          enable = true,
-          additional_vim_regex_highlighting = { "org" },
-        },
-        ensure_installed = { "org" },
-      })
-
-      -- Setup orgmode
-      require('orgmode').setup({
-        org_agenda_files = '~/notes/org/**/*',
-        org_default_notes_file = '~/notes/org/journal.org',
-      })
-
-      -- NOTE: If you are using nvim-treesitter with `ensure_installed = "all"` option
-      -- add `org` to ignore_install
-      -- require('nvim-treesitter.configs').setup({
-      --   ensure_installed = 'all',
-      --   ignore_install = { 'org' },
-      -- })
-
-      -- require("orgmode").setup({
-      --   org_agenda_files = { "~/notes/org/agenda/**" },
-      --   org_default_notes_file = "~/notes/org/inbox.org",
-      --   org_archive_location = "~/notes/org/archive/%s_archive::",
-      --   org_todo_keywords = {
-      --     "TODO(t)",
-      --     "NEXT(n)",
-      --     "WAITING(w)",
-      --     "PROJECT(p)",
-      --     "PLAN(l)",
-      --     "SOMEDAY(s)",
-      --     "|",
-      --     "DONE(d)",
-      --     "TRASH(r)",
-      --     "CANCELED(c)",
-      --     "DELEGATED(g)",
-      --   },
-      --   org_todo_keyword_faces = {
-      --     TODO = ":foreground #db4b4b",
-      --     NEXT = ":foreground #e0af68",
-      --     WAITING = ":foreground #ff9e64",
-      --     PROJECT = ":foreground #9d7cd8",
-      --     PLAN = ":foreground #9ece6a",
-      --     SOMEDAY = ":foreground #7aa2f7",
-      --     DONE = ":foreground #449dab",
-      --     TRASH = ":foreground #545c7e",
-      --     CANCELED = ":foreground #545c7e",
-      --     DELEGATED = ":foreground #449dab",
-      --   },
-      --   org_capture_templates = {
-      --     t = {
-      --       description = "Todo",
-      --       template = template.get("todo"),
-      --       headline = "Todo",
-      --       target = "~/notes/org/agenda/inbox.org",
-      --     },
-      --     l = {
-      --       description = "Plan",
-      --       template = template.get("plan"),
-      --       headline = "Plan",
-      --       target = "~/notes/org/agenda/inbox.org",
-      --     },
-      --     j = {
-      --       description = "Journal",
-      --       template = template.get("journal"),
-      --       target = "~/notes/org/journal.org",
-      --       datetree = { tree_type = "month" },
-      --     },
-      --     d = {
-      --       description = "Document",
-      --       template = template.get("document"),
-      --       target = "~/notes/org/documents/inbox.org",
-      --     },
-      --     i = {
-      --       description = "Index",
-      --       template = template.get("index"),
-      --       target = "~/notes/org/index/inbox.org",
-      --     },
-      --     m = {
-      --       description = "Memo",
-      --       template = template.get("memo"),
-      --     },
-      --     n = {
-      --       description = "Note",
-      --       template = template.get("note"),
-      --       target = "~/notes/org/notes/inbox.org",
-      --     },
-      --   },
-      --   org_startup_folded = "content",
-      --   -- win_split_mode = { "float", 0.8 },
-      -- })
-    end,
-    enabled = true,
   },
   'lambdalisue/gin.vim',
   {
@@ -1195,5 +1020,27 @@ require('lazy').setup({
       local opts = { noremap = true, silent = true, buffer = bufnr, }
       vim.keymap.set('n', '<space>hs', ht.hoogle.hoogle_signature, opts)
     end,
+  },
+  "rest-nvim/rest.nvim",
+  {
+    'kevinhwang91/nvim-hlslens',
+    config = function()
+      require('hlslens').setup()
+
+      local kopts = { noremap = true, silent = true }
+
+      vim.api.nvim_set_keymap('n', 'n',
+        [[<Cmd>execute('normal! ' . v:count1 . 'n')<CR><Cmd>lua require('hlslens').start()<CR>]],
+        kopts)
+      vim.api.nvim_set_keymap('n', 'N',
+        [[<Cmd>execute('normal! ' . v:count1 . 'N')<CR><Cmd>lua require('hlslens').start()<CR>]],
+        kopts)
+      vim.api.nvim_set_keymap('n', '*', [[*<Cmd>lua require('hlslens').start()<CR>]], kopts)
+      vim.api.nvim_set_keymap('n', '#', [[#<Cmd>lua require('hlslens').start()<CR>]], kopts)
+      vim.api.nvim_set_keymap('n', 'g*', [[g*<Cmd>lua require('hlslens').start()<CR>]], kopts)
+      vim.api.nvim_set_keymap('n', 'g#', [[g#<Cmd>lua require('hlslens').start()<CR>]], kopts)
+
+      vim.api.nvim_set_keymap('n', '<Leader>l', '<Cmd>noh<CR>', kopts)
+    end
   },
 })
