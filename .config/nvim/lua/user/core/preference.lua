@@ -20,6 +20,8 @@ vim.opt.termguicolors = true
 --   { fg = "#181818" }
 -- )
 
+vim.diagnostic.config({ severity_sort = true })
+
 -- You will likely want to reduce updatetime which affects CursorHold
 -- note: this setting is global and should be set only once
 vim.o.updatetime = 250
