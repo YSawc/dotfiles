@@ -26,7 +26,8 @@ yellow = "0x4d2d00"
 background = "0xffffff"
 foreground = "0x1F2328"
 
-# fc-list
+# ubuntu: fc-list
+# mac: atsutil fonts -list
 [font.normal]
 family = "Ubuntu Mono"
 style = "Bold"
