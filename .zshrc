@@ -30,7 +30,7 @@ alias gsw='git switch'
 
 # functions {{{
 
-zprofile(){
+zprofile() {
   source ~/.zprofile
 }
 
