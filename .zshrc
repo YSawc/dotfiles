@@ -30,30 +30,30 @@ alias gsw='git switch'
 
 # functions {{{
 
-zprofile() {
+function zprofile() {
   source ~/.zprofile
 }
 
-gco_fzf() {
+function gco_fzf() {
   local commits commit
   commits=$(git log --pretty=oneline --abbrev-commit --reverse) &&
   commit=$(echo "$commits" | fzf --tac +s +m -e) &&
   git checkout $(echo "$commit" | sed "s/ .*//")
 }
-gco_fzf_log() {
+function gco_fzf_log() {
   local commits commit
   commits=$(git log --pretty=oneline --abbrev-commit --reverse) &&
   commit=$(echo "$commits" | fzf --cycle --tac +s +m -e) &&
   git checkout $(echo "$commit" | sed "s/ .*//")
 }
-fd() {
+function fd() {
   local dir
   dir=$(find ${1:-.} -path '*/\.*' -prune \
     -o -type d -print 2> /dev/null | fzf +m) &&
   cd "$dir"
 }
 
-git_reset_--soft_HEAD^() {
+function git_reset_--soft_HEAD^() {
   git reset --soft HEAD^
 }
 # }}}
