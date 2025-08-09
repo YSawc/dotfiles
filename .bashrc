@@ -1,3 +1,7 @@
+# Skip .bashrc in devenv shell (Nix/devenv environment)
+if [[ "$SHELL" =~ /nix/store ]]; then
+    return
+fi
 # basic {{{
 
 # homebrew
