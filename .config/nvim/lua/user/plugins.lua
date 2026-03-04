@@ -17,7 +17,6 @@ require('lazy').setup({
     'nvimtools/none-ls.nvim',
     'jay-babu/mason-null-ls.nvim',
     config = function()
-      require("mason").setup()
       require("mason-null-ls").setup({
         automatic_installation = false,
         automatic_setup = true, -- Recommended, but optional
@@ -143,66 +142,50 @@ require('lazy').setup({
           end, bufopts)
         end,
       });
-      local on_attach = function(client, bufnr)
-      end
-
-      local lspconfig = require 'lspconfig'
-
       vim.api.nvim_create_autocmd('BufWritePre', {
         callback = function()
           vim.lsp.buf.format { async = false }
         end
       })
 
-      require('mason').setup()
-      require('mason-lspconfig').setup()
-      require('mason-lspconfig').setup_handlers({
-        function(server_name)
-          local capabilities = require('cmp_nvim_lsp').default_capabilities(
-            vim.lsp.protocol.make_client_capabilities()
-          )
-          require("lspconfig")[server_name].setup {
-            on_attach    = on_attach,
-            capabilities = capabilities,
-          }
-        end,
-        ['lua_ls'] = function()
-          lspconfig.lua_ls.setup {
-            settings = {
-              Lua = {
-                diagnostics = {
-                  globals = { 'vim' }
-                }
-              }
+      vim.lsp.config('*', {
+        capabilities = require('cmp_nvim_lsp').default_capabilities(
+          vim.lsp.protocol.make_client_capabilities()
+        ),
+      })
+
+      vim.lsp.config('lua_ls', {
+        settings = {
+          Lua = {
+            diagnostics = {
+              globals = { 'vim' }
             }
           }
-        end,
-        ["rust_analyzer"] = function() end,
-        ["hls"] = function() end,
-        ["denols"] = function()
-          lspconfig.denols.setup {
-            settings = {
-              deno = {
-                config = {
-                  -- root_dir = lspconfig.util.root_pattern("deno.json"),
-                  init_options = {
-                    lint = true,
-                    unstable = true,
-                    suggest = {
-                      imports = {
-                        hosts = {
-                          ["https://deno.land"] = true,
-                          ["https://cdn.nest.land"] = true,
-                          ["https://crux.land"] = true,
-                        },
-                      },
-                    },
-                  }
-                }
-              }
+        }
+      })
+
+      vim.lsp.config('denols', {
+        init_options = {
+          lint = true,
+          unstable = true,
+          suggest = {
+            imports = {
+              hosts = {
+                ["https://deno.land"] = true,
+                ["https://cdn.nest.land"] = true,
+                ["https://crux.land"] = true,
+              },
             },
           }
-        end,
+        }
+      })
+
+      require('mason').setup()
+      require('mason-lspconfig').setup({
+        ensure_installed = {},
+        automatic_enable = {
+          exclude = { 'rust_analyzer', 'hls' }
+        },
       })
     end
   },
@@ -364,19 +347,13 @@ require('lazy').setup({
       vim.api.nvim_create_autocmd("FileType", { pattern = "TelescopeResults", command = [[setlocal nofoldenable]] })
     end
   },
-  {
-    'j-hui/fidget.nvim',
-    config = function()
-      local fidget = require("fidget")
-
-      fidget.setup {
-        -- Options related to notification subsystem
-        notification = {
-          override_vim_notify = true, -- Automatically override vim.notify() with Fidget
-        },
-      }
-    end,
-  },
+  -- {
+  --   'j-hui/fidget.nvim',
+  --   tag = 'legacy',
+  --   config = function()
+  --     require("fidget").setup({})
+  --   end,
+  -- },
   {
     'folke/trouble.nvim',
     dependencies = 'nvim-tree/nvim-web-devicons',
@@ -446,21 +423,21 @@ require('lazy').setup({
   -- {
   --   'andymass/vim-matchup',
   -- },
-  {
-    'pwntester/octo.nvim',
-    dependencies = {
-      'nvim-lua/plenary.nvim',
-      'nvim-telescope/telescope.nvim',
-      'nvim-tree/nvim-web-devicons',
-    },
-    config = function()
-      require 'octo'.setup({
-        suppress_missing_scope = {
-          projects_v2 = true,
-        }
-      })
-    end
-  },
+  -- {
+  --   'pwntester/octo.nvim',
+  --   dependencies = {
+  --     'nvim-lua/plenary.nvim',
+  --     'nvim-telescope/telescope.nvim',
+  --     'nvim-tree/nvim-web-devicons',
+  --   },
+  --   config = function()
+  --     require 'octo'.setup({
+  --       suppress_missing_scope = {
+  --         projects_v2 = true,
+  --       }
+  --     })
+  --   end
+  -- },
   {
     'nmac427/guess-indent.nvim',
     config = function() require('guess-indent').setup {} end,
@@ -685,22 +662,22 @@ require('lazy').setup({
       })
     end
   },
-  {
-    "iamcco/markdown-preview.nvim",
-    build = function() vim.fn["mkdp#util#install"]() end,
-  },
-  {
-    "OXY2DEV/markview.nvim",
-    ft = "markdown",
+  -- {
+  --   "iamcco/markdown-preview.nvim",
+  --   build = function() vim.fn["mkdp#util#install"]() end,
+  -- },
+  -- {
+  --   "OXY2DEV/markview.nvim",
+  --   ft = "markdown",
 
-    dependencies = {
-      -- You may not need this if you don't lazy load
-      -- Or if the parsers are in your $RUNTIMEPATH
-      "nvim-treesitter/nvim-treesitter",
+  --   dependencies = {
+  --     -- You may not need this if you don't lazy load
+  --     -- Or if the parsers are in your $RUNTIMEPATH
+  --     "nvim-treesitter/nvim-treesitter",
 
-      "nvim-tree/nvim-web-devicons"
-    },
-  },
+  --     "nvim-tree/nvim-web-devicons"
+  --   },
+  -- },
   {
     'akinsho/git-conflict.nvim',
     config = function()
