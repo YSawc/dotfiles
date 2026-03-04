@@ -198,9 +198,11 @@ require('lazy').setup({
       'hrsh7th/cmp-cmdline',
       'rinx/cmp-skkeleton',
       'nvim-orgmode/orgmode',
+      'onsails/lspkind.nvim',
     },
     config = function()
       local cmp = require('cmp')
+      local lspkind = require('lspkind')
       cmp.setup({
         snippet = {
           expand = function(args)
@@ -223,6 +225,13 @@ require('lazy').setup({
           ['<C-k>'] = cmp.mapping.scroll_docs(-4),
           ['<C-j>'] = cmp.mapping.scroll_docs(4),
         }),
+        formatting = {
+          format = lspkind.cmp_format({
+            mode = 'symbol_text',
+            maxwidth = 50,
+            ellipsis_char = '...',
+          })
+        },
         experimental = {
           ghost_text = true,
         },
@@ -362,31 +371,6 @@ require('lazy').setup({
         vim.keymap.set('n', '<Space>xx', '<cmd>TroubleToggle<cr>',
           { silent = true, noremap = true }
         )
-      }
-    end
-  },
-  {
-    'onsails/lspkind.nvim',
-    dependencies = {
-      'hrsh7th/nvim-cmp',
-    },
-    config = function()
-      local lspkind = require('lspkind')
-      local cmp = require('cmp')
-      cmp.setup {
-        formatting = {
-          format = lspkind.cmp_format({
-            mode = 'symbol_text',  -- show only symbol annotations
-            maxwidth = 50,         -- prevent the popup from showing more than provided characters (e.g 50 will not show more than 50 characters)
-            ellipsis_char = '...', -- when popup menu exceed maxwidth, the truncated part would show ellipsis_char instead (must define maxwidth first)
-            -- The function below will be called before any actual modifications from lspkind
-            -- so that you can provide more controls on popup customization. (See [#30](https://github.com/onsails/lspkind-nvim/pull/30))
-            -- before = function(entry, vim_item)
-            --   -- ...
-            --   return vim_item
-            -- end
-          })
-        }
       }
     end
   },
@@ -721,7 +705,7 @@ require('lazy').setup({
     end
   },
   {
-    'ggandor/leap.nvim',
+    url = "https://codeberg.org/andyg/leap.nvim",
     config = function()
       vim.keymap.set({ 'n', 'x', 'o' }, '<Space>ef', '<Plug>(leap)')
     end
